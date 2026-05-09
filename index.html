@@ -125,7 +125,7 @@ nav { position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);background:rg
 .card::before { content:'';position:absolute;top:0;left:var(--s4);right:var(--s4);height:1px;background:linear-gradient(90deg,transparent,var(--c,var(--accent)),transparent);opacity:0;transition:opacity .2s; }
 .card:hover { border-color:rgba(255,255,255,0.09);transform:translateY(-3px);box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.25); }
 .card:hover::before { opacity:1; }
-.card.dim { opacity:.55;pointer-events:none; }
+.card.dim { opacity:.55; }
 .card-icon { width:var(--s6);height:var(--s6);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--r2);display:grid;place-items:center;font-size:22px; }
 .card-name { font-family:'Syne',sans-serif;font-weight:700;font-size:var(--text-xl); }
 .card-name em { font-style:normal;color:var(--c,var(--accent)); }
