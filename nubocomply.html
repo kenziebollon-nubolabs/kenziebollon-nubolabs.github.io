@@ -403,11 +403,11 @@ document.addEventListener('click',()=>{
     x:BW*.6+Math.sin(i*2.1)*BW*.15,
     y:BH*.15+i*(BH*.06),
     done:false,
-    showAt:i*60,
+    showAt:i*400,
   }));
 
   (function draw(){
-    t++;progress=Math.min(total,(t/120)*total*1.5%(total+1));
+    t++;progress=Math.min(total,(t/800)*total%(total+1));
     xx.clearRect(0,0,BW,BH);
 
     // Central radial progress wheel
