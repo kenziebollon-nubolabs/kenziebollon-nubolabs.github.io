@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>NuboPipe — Nubo Labs</title>
-  <meta name="description" content="Broken builds, slow deployments, manual releases. NuboPipe designs and implements CI/CD pipelines that make deploying fast, reliable, and automatic — so your team ships features, not fixes."/>
+  <title>Onboarding — Nubo Labs</title>
+  <meta name="description" content="How to set up read-only AWS or Azure credentials for your Nubo Labs audit."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -138,72 +138,26 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 @media(max-width:640px){.nav-centre{display:none}}
 
 
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:float 14s ease-in-out infinite}
-.orb1{width:600px;height:500px;top:-150px;left:50%;transform:translateX(-50%);
-  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.09)),transparent 70%)}
-.orb2{width:400px;height:400px;bottom:10%;right:-100px;
-  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.05)),transparent 70%);
-  animation-duration:20s;animation-delay:-8s}
-.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
-  background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
-.prod-label{display:inline-flex;align-items:center;gap:var(--s1);
-  background:var(--pc-dim,var(--accent-dim));
-  border:1px solid var(--pc-border,rgba(26,143,255,0.18));
-  color:var(--pc,var(--accent));font-size:12px;font-weight:500;letter-spacing:.5px;
-  padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);
-  opacity:0;animation:up .5s .1s forwards}
-.prod-label-dot{width:5px;height:5px;background:var(--pc,var(--accent));border-radius:50%;animation:blink 2s infinite}
-.prod-hero h1{font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(48px,8vw,88px);line-height:1.01;letter-spacing:-3px;
-  margin-bottom:var(--s3);color:var(--text-1);
-  opacity:0;animation:up .6s .2s forwards}
-.prod-hero h1 em{font-style:normal;color:var(--pc,var(--accent))}
-.prod-desc{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
-  max-width:600px;line-height:1.7;margin-bottom:var(--s8);
-  opacity:0;animation:up .6s .35s forwards}
-.coming-badge{display:inline-flex;align-items:center;gap:var(--s3);
-  background:var(--bg2);border:1px solid var(--pc-border,rgba(26,143,255,0.2));
-  border-radius:var(--r4);padding:var(--s3) var(--s6);margin-bottom:var(--s8);
-  opacity:0;animation:up .6s .5s forwards;
-  box-shadow:0 0 var(--s8) var(--pc-glow,var(--accent-glow))}
-.coming-badge-icon{font-size:36px;animation:float 3s ease-in-out infinite}
-.coming-badge h3{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px}
-.coming-badge p{font-size:14px;color:var(--text-3)}
-.notify-form{display:flex;gap:var(--s1);max-width:460px;width:100%;
-  opacity:0;animation:up .6s .65s forwards}
-.notify-input{flex:1;background:rgba(255,255,255,0.04);
-  border:1px solid var(--border-md);border-radius:var(--r2);
-  padding:var(--s2);color:var(--text-1);font-size:15px;
-  font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .15s,box-shadow .15s}
-.notify-input:focus{border-color:var(--pc-border,rgba(26,143,255,0.4));
-  box-shadow:0 0 0 3px var(--pc-dim,rgba(26,143,255,0.08))}
-.notify-input::placeholder{color:var(--text-3)}
-.notify-btn{background:var(--pc,var(--accent));color:#fff;border:none;
-  border-radius:var(--r2);padding:var(--s2) var(--s3);
-  font-size:14px;font-weight:500;font-family:'Inter',sans-serif;
-  white-space:nowrap;
-  box-shadow:0 0 var(--s4) var(--pc-glow,var(--accent-glow));
-  transition:opacity .15s,transform .1s}
-.notify-btn:hover{opacity:.9;transform:translateY(-1px)}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
-.feat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);transition:border-color .2s,transform .2s}
-.feat-card:hover{border-color:rgba(255,255,255,0.09);transform:translateY(-2px)}
-.feat-icon{font-size:28px;margin-bottom:var(--s2)}
-.feat-title{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
-.feat-desc{font-size:14px;color:var(--text-2);line-height:1.65}
-.feat-tags{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s8)}
-.feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
-/* background canvases */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
-@media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 14s ease-in-out infinite}
+.orb1{width:500px;height:400px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%)}
+.ob-hero{padding:calc(var(--s8) + var(--s8)) var(--s4) var(--s8);text-align:center;position:relative;z-index:2}
+.ob-hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,5vw,56px);letter-spacing:-2px;margin-bottom:var(--s3)}
+.ob-hero p{font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto;line-height:1.7}
+.ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s10)}
+.ob-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)}
+.ob-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;margin-bottom:var(--s2);display:flex;align-items:center;gap:var(--s2)}
+.ob-card-sub{font-size:14px;color:var(--text-2);margin-bottom:var(--s5);line-height:1.6}
+.ob-step{display:flex;gap:var(--s3);margin-bottom:var(--s4)}
+.ob-step:last-child{margin-bottom:0}
+.ob-step-num{width:28px;height:28px;background:var(--accent-dim);border:1px solid rgba(26,143,255,0.2);border-radius:50%;display:grid;place-items:center;font-size:12px;color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+.ob-step h4{font-family:'Syne',sans-serif;font-weight:600;font-size:15px;margin-bottom:4px}
+.ob-step p{font-size:13px;color:var(--text-2);line-height:1.6}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:var(--s2) var(--s3);font-family:'Courier New',monospace;font-size:12px;color:#a78bfa;margin-top:var(--s1);word-break:break-all}
+.ob-trust{background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);border-radius:var(--r3);padding:var(--s4);margin-top:var(--s8);display:flex;gap:var(--s3);align-items:flex-start}
+.ob-trust-icon{font-size:24px;flex-shrink:0}
+.ob-trust h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
+.ob-trust p{font-size:14px;color:var(--text-2);line-height:1.6}
+@media(max-width:760px){.ob-grid{grid-template-columns:1fr}}
 
   </style>
 </head>
@@ -221,94 +175,93 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get a free audit →</a>
   </div>
 </nav>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(255,60,90,0.13)"></div>
-<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(255,60,90,0.13)"></div>
-<div class="dot-grid" aria-hidden="true"></div>
-
-<section class="prod-hero" style="--pc:#ff3c5a;--pc-glow:rgba(255,60,90,0.13);--pc-dim:rgba(255,60,90,0.09);--pc-border:rgba(255,60,90,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>CI/CD Pipelines</div>
-  <h1>Nubo<em>Pipe</em></h1>
-  <p class="prod-desc">Broken builds, slow deployments, manual releases. NuboPipe designs and implements CI/CD pipelines that make deploying fast, reliable, and automatic — so your team ships features, not fixes.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🔴</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboPipe Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboPipe launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
-</section>
-
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="ob-hero">
+  <div class="sec-tag" style="justify-content:center">Onboarding</div>
+  <h1>Preparing your cloud credentials</h1>
+  <p>We only ever need read-only access. Here's exactly how to set it up in AWS or Azure — takes less than 5 minutes.</p>
+</div>
+<section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="r">
-      <div class="sec-tag" style="--accent:#ff3c5a">What's coming</div>
-      <h2 class="sec-h">Everything NuboPipe will do</h2>
+    <div class="ob-grid">
+
+      <!-- AWS -->
+      <div class="ob-card r">
+        <div class="ob-card-title">
+          <span style="font-size:24px">☁</span> AWS Setup
+        </div>
+        <div class="ob-card-sub">Create a read-only IAM user in your AWS account. This gives us visibility into your resources with zero ability to make changes.</div>
+
+        <div class="ob-step">
+          <div class="ob-step-num">1</div>
+          <div><h4>Open IAM in AWS Console</h4><p>Go to console.aws.amazon.com → Services → IAM → Users → Add User</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">2</div>
+          <div><h4>Name the user</h4><p>Call it something like <strong>nubolabs-readonly</strong> so it's easy to identify and revoke later.</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">3</div>
+          <div><h4>Attach permissions</h4><p>Select "Attach policies directly" and search for and attach:</p><div class="code-block">ReadOnlyAccess</div></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">4</div>
+          <div><h4>Create access keys</h4><p>Go to the user → Security credentials → Create access key → Select "Third-party service"</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">5</div>
+          <div><h4>Send us the credentials</h4><p>Email your Access Key ID and Secret Access Key to:<br><strong>kenziebollon@nubolabs.co.uk</strong></p><p style="color:var(--text-3);font-size:12px;margin-top:4px">We recommend using a secure method like 1Password Share. Never send via Slack or WhatsApp.</p></div>
+        </div>
+      </div>
+
+      <!-- Azure -->
+      <div class="ob-card r r2">
+        <div class="ob-card-title">
+          <span style="font-size:24px">🔷</span> Azure Setup
+        </div>
+        <div class="ob-card-sub">Create a service principal with Reader role in your Azure subscription. Read-only, zero ability to make changes.</div>
+
+        <div class="ob-step">
+          <div class="ob-step-num">1</div>
+          <div><h4>Open Azure Cloud Shell</h4><p>Go to portal.azure.com and click the Cloud Shell icon (top right) or use the Azure CLI locally.</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">2</div>
+          <div><h4>Create a service principal</h4><p>Run this command:</p><div class="code-block">az ad sp create-for-rbac --name "nubolabs-readonly" --role Reader --scopes /subscriptions/YOUR_SUBSCRIPTION_ID</div></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">3</div>
+          <div><h4>Copy the output</h4><p>The command returns a JSON object with appId, password, and tenant. Copy all of it.</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">4</div>
+          <div><h4>Send us the credentials</h4><p>Email the JSON output to:<br><strong>kenziebollon@nubolabs.co.uk</strong></p><p style="color:var(--text-3);font-size:12px;margin-top:4px">Use a secure sharing method. We recommend 1Password Share or similar.</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">5</div>
+          <div><h4>Revoke after audit</h4><p>Once the audit is complete, delete the service principal:<br></p><div class="code-block">az ad sp delete --id YOUR_APP_ID</div></div>
+        </div>
+      </div>
+
     </div>
-    <div class="feat-grid">
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-title">Fast setup</div>
-        <div class="feat-desc">A complete CI/CD pipeline from scratch in days, not weeks — covering build, test, staging, and production deployment.</div>
-      </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">🔀</div>
-        <div class="feat-title">GitHub & GitLab</div>
-        <div class="feat-desc">Native support for GitHub Actions and GitLab CI — the two platforms your team is most likely already using.</div>
-      </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">🧪</div>
-        <div class="feat-title">Automated testing gates</div>
-        <div class="feat-desc">Quality gates that automatically run your test suite and block deployments when tests fail. No more broken production deploys.</div>
-      </div>
-
-      <div class="feat-card r r1">
-        <div class="feat-icon">🚀</div>
-        <div class="feat-title">Deployment strategies</div>
-        <div class="feat-desc">Blue-green, canary, and rolling deployment strategies so you can release with confidence and roll back in seconds.</div>
-      </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">📊</div>
-        <div class="feat-title">Pipeline monitoring</div>
-        <div class="feat-desc">Visibility into build times, failure rates, and deployment frequency — the DORA metrics that show how your team is performing.</div>
-      </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">🔧</div>
-        <div class="feat-title">Ongoing optimisation</div>
-        <div class="feat-desc">Monthly review of pipeline performance with recommendations to keep build times fast as your codebase grows.</div>
+    <div class="ob-trust r">
+      <div class="ob-trust-icon">🔒</div>
+      <div>
+        <h4>Our security commitment</h4>
+        <p>Your credentials are used solely for the agreed audit. They are stored encrypted, never shared with any third party, and we request you revoke them within 30 days of audit completion unless on an active retainer. We have never and will never make changes to a client's infrastructure without explicit written approval. Read our full <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a> and <a href="terms.html" style="color:var(--accent)">Terms of Service</a>.</p>
       </div>
     </div>
-  </div>
-</section>
 
-
-
-<section class="sec sec-alt" style="text-align:center">
-  <div class="wrap">
-    <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://linkedin.com/company/nubolabs" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+    <div style="text-align:center;margin-top:var(--s8)" class="r">
+      <p style="font-size:16px;color:var(--text-2);margin-bottom:var(--s4)">Ready to go? Send your credentials and we'll get started.</p>
+      <a href="mailto:kenziebollon@nubolabs.co.uk" class="btn btn-lg">Email credentials →</a>
     </div>
   </div>
 </section>
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboPipe</span></div>
+    <div class="f-logo">Nubo<em>Labs</em></div>
     <div class="f-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#pricing">Pricing</a>
@@ -385,39 +338,6 @@ document.addEventListener('click',()=>{
   });
 });
 
-
-// Pipeline flow animation
-const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-let W,H;const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight;};resize();addEventListener('resize',resize);
-const stages=['Build','Test','Stage','Deploy','Live'];
-const dots=[];for(let i=0;i<8;i++)dots.push({progress:i/8,speed:.002+Math.random()*.001});
-let t=0;
-(function draw(){t+=1;x.clearRect(0,0,W,H);
-  const y=H*.5,margin=W*.15,stageW=(W-margin*2)/(stages.length-1);
-  // draw connections
-  stages.forEach((_,i)=>{
-    if(i<stages.length-1){
-      x.beginPath();x.moveTo(margin+i*stageW,y);x.lineTo(margin+(i+1)*stageW,y);
-      x.strokeStyle='rgba(255,60,90,0.1)';x.lineWidth=2;x.stroke();}
-  });
-  // draw stage nodes
-  stages.forEach((s,i)=>{
-    const sx=margin+i*stageW;
-    x.beginPath();x.arc(sx,y,8,0,Math.PI*2);
-    x.fillStyle='rgba(255,60,90,0.15)';x.fill();
-    x.strokeStyle='rgba(255,60,90,0.3)';x.lineWidth=1.5;x.stroke();
-    x.font='11px Inter,sans-serif';x.fillStyle='rgba(255,60,90,0.2)';x.textAlign='center';
-    x.fillText(s,sx,y+24);x.textAlign='left';
-  });
-  // animate dots along pipeline
-  dots.forEach(d=>{
-    d.progress+=d.speed;if(d.progress>1)d.progress=0;
-    const totalLen=(stages.length-1)*stageW;
-    const dx=margin+d.progress*totalLen;
-    x.beginPath();x.arc(dx,y,4,0,Math.PI*2);
-    x.fillStyle='rgba(255,60,90,0.5)';x.fill();
-  });
-  requestAnimationFrame(draw);})();
 
 </script>
 </body>

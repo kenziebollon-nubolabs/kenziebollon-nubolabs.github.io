@@ -1,357 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
   <title>Nubo Labs — Build fast. Spend less. Stay secure.</title>
-  <meta name="description" content="Nubo Labs builds cloud infrastructure tools and services that help startups and SaaS companies take full control of their cloud." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta name="description" content="Nubo Labs builds cloud infrastructure tools and services helping startups take full control of their cloud — cost, security, monitoring, and beyond."/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <!-- CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'"/>
+
   <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 :root{
-  --bg:#080c14;--bg2:#0d1220;--bg3:#111827;
-  --border:rgba(255,255,255,0.06);--border-md:rgba(255,255,255,0.10);
-  --text-1:#f0f4fa;--text-2:#9aa5b8;--text-3:#5a6678;
-  --accent:#1a8fff;--accent-dim:rgba(26,143,255,0.12);--accent-glow:rgba(26,143,255,0.20);--accent-hover:#3d9fff;
-  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;--s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
+  --bg:#070b12;--bg2:#0c1220;--bg3:#101828;
+  --border:rgba(255,255,255,0.06);--border-md:rgba(255,255,255,0.11);
+  --text-1:#eef2f8;--text-2:#8e9db4;--text-3:#4e5f72;
+  --accent:#1a8fff;--accent-dim:rgba(26,143,255,0.11);
+  --accent-glow:rgba(26,143,255,0.22);--accent-hover:#3d9fff;
+  --green:#34d399;--red:#ef4444;--amber:#f59e0b;
+  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;
+  --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .15s,height .15s}
-#cur-r{position:fixed;top:0;left:0;width:32px;height:32px;border:1px solid rgba(26,143,255,0.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
-#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.45}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+/* cursor — default on interactive, custom elsewhere */
+body{cursor:auto}
+canvas,section,main,.hero,.card-area{cursor:none}
+a,button,input,select,textarea,label{cursor:pointer!important}
+input,select,textarea{cursor:text!important}
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+  border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+#cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
+  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,border-color .2s;display:none}
+@media(pointer:fine){#cur,#cur-r{display:block}}
+/* canvas */
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+/* layout */
 .wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4);position:relative;z-index:2}
-
 /* NAV */
-nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);background:rgba(8,12,20,0.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4);height:100%;display:flex;align-items:center;justify-content:space-between}
+nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
+  background:rgba(7,11,18,0.82);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border)}
+.nav-wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4);height:100%;
+  display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:var(--s2);text-decoration:none;color:var(--text-1)}
-.nav-logo-mark{width:var(--s4);height:var(--s4);background:var(--accent);border-radius:var(--r1);display:grid;place-items:center;font-size:16px}
+.nav-logo-mark{width:var(--s4);height:var(--s4);background:var(--accent);
+  border-radius:var(--r1);display:grid;place-items:center;font-size:16px}
 .nav-logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:18px}
 .nav-logo-name em{font-style:normal;color:var(--accent)}
 .nav-centre{display:flex;align-items:center;gap:var(--s1)}
-.nav-link{color:var(--text-2);text-decoration:none;font-size:14px;font-weight:400;padding:var(--s1) var(--s2);border-radius:var(--r1);transition:color .15s,background .15s;background:none;border:none;cursor:none;font-family:'Inter',sans-serif}
-.nav-link:hover{color:var(--text-1);background:rgba(255,255,255,0.04)}
+.nav-link{color:var(--text-2);text-decoration:none;font-size:14px;padding:var(--s1) var(--s2);
+  border-radius:var(--r1);transition:color .15s,background .15s;
+  background:none;border:none;font-family:'Inter',sans-serif}
+.nav-link:hover,.nav-link:focus{color:var(--text-1);background:rgba(255,255,255,0.04);outline:none}
+/* dropdown — works on hover AND click/tap/keyboard */
 .nav-dd{position:relative}
-.nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:12px;width:210px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:200}
-.nav-dd:hover .nav-dd-menu{opacity:1;pointer-events:all}
-.nav-dd-inner{background:var(--bg2);border:1px solid var(--border-md);border-radius:var(--r3);padding:var(--s1);box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.5)}
-.nav-dd-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s2);border-radius:var(--r1);text-decoration:none;color:var(--text-1);font-size:14px;transition:background .15s}
-.nav-dd-item:hover{background:rgba(255,255,255,0.05)}
+.nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  padding-top:10px;width:215px;opacity:0;pointer-events:none;
+  transition:opacity .15s;z-index:200}
+.nav-dd:hover .nav-dd-menu,
+.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:all}
+.nav-dd-inner{background:var(--bg2);border:1px solid var(--border-md);
+  border-radius:var(--r3);padding:var(--s1);
+  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.55)}
+.nav-dd-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s2);
+  border-radius:var(--r1);text-decoration:none;color:var(--text-1);
+  font-size:14px;transition:background .15s}
+.nav-dd-item:hover,.nav-dd-item:focus{background:rgba(255,255,255,0.05);outline:none}
 .nav-dd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.nav-dd-soon{margin-left:auto;font-size:10px;color:var(--text-3);background:rgba(255,255,255,0.05);padding:2px var(--s1);border-radius:100px}
-.nav-dd-live{margin-left:auto;font-size:10px;color:#34d399;background:rgba(52,211,153,0.1);padding:2px var(--s1);border-radius:100px}
-.btn{display:inline-flex;align-items:center;gap:var(--s1);background:var(--accent);color:#fff;text-decoration:none;font-size:14px;font-weight:500;padding:var(--s1) var(--s3);border-radius:var(--r2);border:none;cursor:none;font-family:'Inter',sans-serif;box-shadow:0 0 0 1px rgba(26,143,255,0.3),0 0 var(--s4) var(--accent-glow);transition:background .15s,transform .1s,box-shadow .15s;white-space:nowrap}
-.btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 0 0 1px rgba(26,143,255,0.5),0 0 var(--s6) rgba(26,143,255,0.3)}
+.nav-dd-soon{margin-left:auto;font-size:10px;color:var(--text-3);
+  background:rgba(255,255,255,0.05);padding:2px var(--s1);border-radius:100px}
+.nav-dd-live{margin-left:auto;font-size:10px;color:var(--green);
+  background:rgba(52,211,153,0.1);padding:2px var(--s1);border-radius:100px}
+.nav-back{color:var(--text-2);text-decoration:none;font-size:14px;
+  padding:var(--s1) var(--s2);border-radius:var(--r1);border:1px solid var(--border);
+  transition:color .15s,border-color .15s}
+.nav-back:hover{color:var(--text-1);border-color:var(--border-md)}
+/* THE ONE CTA BUTTON */
+.btn{display:inline-flex;align-items:center;gap:var(--s1);background:var(--accent);
+  color:#fff;text-decoration:none;font-size:14px;font-weight:500;
+  padding:var(--s1) var(--s3);border-radius:var(--r2);border:none;
+  font-family:'Inter',sans-serif;
+  box-shadow:0 0 0 1px rgba(26,143,255,0.3),0 0 var(--s4) var(--accent-glow);
+  transition:background .15s,transform .1s,box-shadow .15s;white-space:nowrap}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);
+  box-shadow:0 0 0 1px rgba(26,143,255,0.5),0 0 var(--s6) rgba(26,143,255,0.3)}
 .btn-lg{font-size:16px;padding:var(--s2) var(--s5)}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8) + var(--s10)) var(--s4) var(--s10);position:relative;z-index:2;overflow:hidden}
-.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse 55% 45% at 50% 25%,rgba(26,143,255,0.11) 0%,transparent 70%);pointer-events:none;z-index:0}
-.hero-label{display:inline-flex;align-items:center;gap:var(--s1);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);color:var(--accent);font-size:12px;font-weight:500;letter-spacing:.5px;padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);opacity:0;animation:up .5s .1s forwards;position:relative;z-index:1}
-.hero-label-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 2s infinite}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,7.5vw,88px);line-height:1.02;letter-spacing:-3px;margin-bottom:var(--s3);color:var(--text-1);opacity:0;animation:up .6s .2s forwards;position:relative;z-index:1}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;max-width:560px;line-height:1.7;margin-bottom:var(--s6);opacity:0;animation:up .6s .35s forwards;position:relative;z-index:1}
-.hero-cta{opacity:0;animation:up .6s .5s forwards;margin-bottom:var(--s10);position:relative;z-index:1}
-
-/* INFRA GRAPHIC */
-.infra-wrap{opacity:0;animation:up .8s .65s forwards;width:100%;max-width:880px;position:relative;z-index:1}
-.infra-label-row{display:flex;align-items:center;justify-content:center;gap:var(--s2);margin-bottom:var(--s3)}
-.infra-label-pill{display:flex;align-items:center;gap:var(--s1);background:var(--bg2);border:1px solid var(--border);border-radius:100px;padding:var(--s1) var(--s3);font-size:12px;color:var(--text-3)}
-.infra-label-pill span{color:var(--accent);font-weight:600}
-.infra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2)}
-.infra-node{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);display:flex;flex-direction:column;align-items:center;gap:var(--s1);text-align:center;position:relative;opacity:0;transform:translateY(12px);transition:border-color .3s,box-shadow .3s}
-.infra-node.n-warn{border-color:rgba(239,68,68,0.2)}
-.infra-node.n-active{border-color:rgba(26,143,255,0.3);box-shadow:0 0 var(--s4) rgba(26,143,255,0.08)}
-.infra-node.n-good{border-color:rgba(52,211,153,0.25);box-shadow:0 0 var(--s3) rgba(52,211,153,0.06)}
-.i-icon{font-size:22px}
-.i-name{font-size:11px;color:var(--text-3);font-weight:500;letter-spacing:.2px}
-.i-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px}
-.i-red{color:#ef4444;background:rgba(239,68,68,0.1)}
-.i-blue{color:var(--accent);background:var(--accent-dim)}
-.i-green{color:#34d399;background:rgba(52,211,153,0.1)}
-.i-saving{font-size:11px;color:#ef4444;font-weight:600}
-.i-win{font-size:11px;color:#34d399;font-weight:600}
-
-/* STATS */
-.stats{position:relative;z-index:2;padding:var(--s6) 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1120px;margin:0 auto;padding:0 var(--s4)}
-.stat{text-align:center;padding:0 var(--s4);border-right:1px solid var(--border)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:var(--accent);letter-spacing:-1px;line-height:1;display:block;margin-bottom:var(--s1)}
-.stat-l{font-size:14px;color:var(--text-3)}
-
-/* SECTIONS */
+.btn-outline{background:transparent;color:var(--accent);
+  border:1px solid rgba(26,143,255,0.35);
+  box-shadow:none}
+.btn-outline:hover{background:var(--accent-dim);transform:translateY(-1px);box-shadow:none}
+/* sections */
 .sec{padding:var(--s16) 0;position:relative;z-index:2}
 .sec-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.sec-tag{display:inline-flex;align-items:center;gap:var(--s1);color:var(--accent);font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:var(--s2)}
+.sec-tag{display:inline-flex;align-items:center;gap:var(--s1);color:var(--accent);
+  font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:var(--s2)}
 .sec-tag::before{content:'';width:var(--s3);height:1px;background:var(--accent)}
-.sec-h{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:var(--s2);color:var(--text-1)}
+.sec-h{font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1.5px;
+  margin-bottom:var(--s2);color:var(--text-1)}
 .sec-sub{font-size:18px;color:var(--text-2);font-weight:300;line-height:1.7;max-width:520px}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:relative;z-index:2}
+.footer-inner{max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
+.f-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:16px}
+.f-logo em{font-style:normal;color:var(--accent)}
+.f-links{display:flex;gap:var(--s4);flex-wrap:wrap}
+.f-links a{color:var(--text-3);text-decoration:none;font-size:14px;transition:color .15s}
+.f-links a:hover{color:var(--text-2)}
+.f-copy{font-size:13px;color:var(--text-3)}
+/* REVEAL */
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.r.on{opacity:1;transform:translateY(0)}
+.r2{transition-delay:.1s}.r3{transition-delay:.2s}.r4{transition-delay:.3s}
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes slide{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes pulse-glow{0%,100%{opacity:.4}50%{opacity:.9}}
+@keyframes draw{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes count-up{from{opacity:0}to{opacity:1}}
+/* RESPONSIVE */
+@media(max-width:640px){.nav-centre{display:none}}
 
-/* PRODUCTS */
-.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
-.card-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.4fr;gap:var(--s8);align-items:center}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);text-decoration:none;color:var(--text-1);display:flex;flex-direction:column;gap:var(--s3);position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
-.card::before{content:'';position:absolute;top:0;left:var(--s4);right:var(--s4);height:1px;background:linear-gradient(90deg,transparent,var(--c,var(--accent)),transparent);opacity:0;transition:opacity .2s}
-.card:hover{border-color:rgba(255,255,255,0.09);transform:translateY(-3px);box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.25)}
+
+/* ── Orb background ── */
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 12s ease-in-out infinite}
+.orb1{width:600px;height:600px;top:-200px;left:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%);animation-duration:14s}
+.orb2{width:500px;height:500px;top:40%;right:-150px;background:radial-gradient(circle,rgba(26,143,255,0.05),transparent 70%);animation-duration:18s;animation-delay:-6s}
+.orb3{width:400px;height:400px;bottom:10%;left:20%;background:radial-gradient(circle,rgba(26,143,255,0.04),transparent 70%);animation-duration:22s;animation-delay:-10s}
+/* dot grid */
+.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(26,143,255,0.12) 1px,transparent 1px);
+  background-size:32px 32px;opacity:.35}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  padding:calc(var(--s8) + var(--s10)) var(--s4) var(--s10);
+  position:relative;z-index:2;overflow:hidden}
+.hero-label{display:inline-flex;align-items:center;gap:var(--s1);
+  background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);
+  color:var(--accent);font-size:12px;font-weight:500;letter-spacing:.5px;
+  padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);
+  opacity:0;animation:up .5s .1s forwards}
+.hero-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 2s infinite}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(44px,7.5vw,96px);line-height:1.01;letter-spacing:-3.5px;
+  margin-bottom:var(--s3);color:var(--text-1);
+  opacity:0;animation:up .6s .2s forwards}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
+  max-width:580px;line-height:1.7;margin-bottom:var(--s5);
+  opacity:0;animation:up .6s .35s forwards}
+/* quick capture */
+.hero-capture{display:flex;gap:var(--s1);max-width:440px;width:100%;
+  opacity:0;animation:up .6s .5s forwards;margin-bottom:var(--s4)}
+.capture-input{flex:1;background:rgba(255,255,255,0.05);
+  border:1px solid var(--border-md);border-radius:var(--r2);
+  padding:var(--s2) var(--s2);color:var(--text-1);font-size:15px;
+  font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .15s,box-shadow .15s}
+.capture-input:focus{border-color:rgba(26,143,255,0.5);box-shadow:0 0 0 3px rgba(26,143,255,0.08)}
+.capture-input::placeholder{color:var(--text-3)}
+/* infra nodes */
+.hero-infra{width:100%;max-width:900px;opacity:0;animation:up .7s .7s forwards;margin-top:var(--s6)}
+.infra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2)}
+.inode{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
+  padding:var(--s3);display:flex;flex-direction:column;align-items:center;
+  gap:var(--s1);text-align:center;position:relative;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s}
+.inode::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--ic,transparent),transparent)}
+.inode.red{border-color:rgba(239,68,68,0.2);--ic:rgba(239,68,68,0.6)}
+.inode.amber{border-color:rgba(245,158,11,0.2);--ic:rgba(245,158,11,0.6)}
+.inode.blue{border-color:rgba(26,143,255,0.3);--ic:var(--accent);box-shadow:0 0 var(--s4) rgba(26,143,255,0.1)}
+.inode.green{border-color:rgba(52,211,153,0.25);--ic:var(--green);box-shadow:0 0 var(--s4) rgba(52,211,153,0.07)}
+.inode-icon{font-size:22px}
+.inode-label{font-size:11px;color:var(--text-3);font-weight:500}
+.inode-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px}
+.inode-badge.red{color:var(--red);background:rgba(239,68,68,0.1)}
+.inode-badge.amber{color:var(--amber);background:rgba(245,158,11,0.1)}
+.inode-badge.blue{color:var(--accent);background:var(--accent-dim)}
+.inode-badge.green{color:var(--green);background:rgba(52,211,153,0.1)}
+.inode-val{font-size:11px;font-weight:600;color:var(--red)}
+.inode-val.pos{color:var(--green)}
+
+/* ── STATS ── */
+.stats{position:relative;z-index:2;padding:var(--s6) 0;
+  background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);
+  max-width:1120px;margin:0 auto;padding:0 var(--s4)}
+.stat{text-align:center;padding:0 var(--s4);border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:40px;
+  color:var(--accent);letter-spacing:-1px;line-height:1;display:block;margin-bottom:var(--s1)}
+.stat-l{font-size:14px;color:var(--text-3)}
+
+/* ── PRODUCTS ── */
+.products-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--s2);margin-top:var(--s8)}
+/* NuboLens spans 3 cols × 2 rows */
+.card-hero{grid-column:span 3;grid-row:span 2;display:flex;flex-direction:column}
+/* others span 3 cols */
+.card-half{grid-column:span 3}
+/* mini cards span 2 cols */
+.card-third{grid-column:span 2}
+.more-teaser{grid-column:1/-1;display:flex;align-items:center;justify-content:center;
+  gap:var(--s3);padding:var(--s4);
+  background:rgba(26,143,255,0.03);border:1px dashed rgba(26,143,255,0.15);
+  border-radius:var(--r3);margin-top:var(--s2)}
+.more-teaser p{color:var(--text-3);font-size:14px}
+.more-teaser a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:500}
+
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
+  padding:var(--s4);text-decoration:none;color:var(--text-1);
+  display:flex;flex-direction:column;gap:var(--s3);
+  position:relative;overflow:hidden;
+  transition:border-color .2s,transform .2s,box-shadow .2s}
+.card::before{content:'';position:absolute;top:0;left:var(--s4);right:var(--s4);height:1px;
+  background:linear-gradient(90deg,transparent,var(--c,var(--accent)),transparent);
+  opacity:0;transition:opacity .2s}
+.card:hover{border-color:rgba(255,255,255,0.1);transform:translateY(-3px);
+  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.28)}
 .card:hover::before{opacity:1}
-.card.dim{opacity:.6}
-.card-icon{width:var(--s6);height:var(--s6);background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--r2);display:grid;place-items:center;font-size:22px}
+.card.dim{opacity:.65}
 .card-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px}
 .card-name em{font-style:normal;color:var(--c,var(--accent))}
+.card-hero .card-name{font-size:clamp(24px,3vw,36px)}
 .card-desc{font-size:14px;color:var(--text-2);line-height:1.65;flex:1}
-.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:var(--s2);border-top:1px solid var(--border)}
+.card-hero .card-desc{font-size:16px}
+.card-footer{display:flex;align-items:center;justify-content:space-between;
+  padding-top:var(--s2);border-top:1px solid var(--border);margin-top:auto}
 .badge{font-size:11px;font-weight:500;padding:3px var(--s1);border-radius:100px}
-.badge-live{color:#34d399;background:rgba(52,211,153,0.1)}
+.badge-live{color:var(--green);background:rgba(52,211,153,0.1)}
 .badge-soon{color:var(--text-3);background:rgba(255,255,255,0.05)}
 .card-arrow{color:var(--text-3);font-size:20px;transition:transform .2s,color .2s}
 .card:hover .card-arrow{transform:translate(3px,-3px);color:var(--c,var(--accent))}
-.card-featured .card-left{display:flex;flex-direction:column;gap:var(--s3)}
-.card-featured .card-name{font-size:32px}
-.card-featured .card-desc{font-size:16px;max-width:380px}
 .card-tags{display:flex;flex-wrap:wrap;gap:var(--s1)}
-.tag{font-size:12px;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.15);padding:3px var(--s1);border-radius:var(--r1)}
+.tag{font-size:12px;color:var(--accent);background:var(--accent-dim);
+  border:1px solid rgba(26,143,255,0.15);padding:3px var(--s1);border-radius:var(--r1)}
 
-/* MOCKUP */
-.mockup{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden}
-.mockup-bar{display:flex;align-items:center;gap:var(--s1);padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
-.mk-dot{width:var(--s1);height:var(--s1);border-radius:50%}
-.mockup-title{font-size:12px;color:var(--text-3);margin-left:auto;letter-spacing:.3px}
-.mockup-body{padding:var(--s3);display:flex;flex-direction:column;gap:var(--s1)}
-.mk-row{display:flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s2);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r1);font-size:13px;opacity:0;animation:slide .35s ease forwards}
-.mk-row:nth-child(1){animation-delay:.05s}.mk-row:nth-child(2){animation-delay:.15s}.mk-row:nth-child(3){animation-delay:.25s}.mk-row:nth-child(4){animation-delay:.35s}.mk-row:nth-child(5){animation-delay:.45s}.mk-row:nth-child(6){animation-delay:.55s}
-.mk-status{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.mk-label{flex:1;color:var(--text-2)}
-.mk-val{color:#34d399;font-weight:500;font-size:12px}
-.mockup-total{margin:var(--s2) var(--s3) var(--s3);padding:var(--s2) var(--s3);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center}
-.mockup-total-l{font-size:14px;color:var(--text-2)}
-.mockup-total-v{font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:var(--accent);letter-spacing:-0.5px}
+/* mini mockup inside card-hero */
+.mini-mockup{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-top:auto}
+.mm-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
+.mm-dot{width:8px;height:8px;border-radius:50%}
+.mm-title{font-size:11px;color:var(--text-3);margin-left:auto}
+.mm-body{padding:var(--s2);display:flex;flex-direction:column;gap:6px}
+.mm-row{display:flex;align-items:center;gap:var(--s1);padding:6px var(--s1);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);
+  border-radius:var(--r1);font-size:12px;
+  opacity:0;animation:slide .3s ease forwards}
+.mm-row:nth-child(1){animation-delay:.1s}.mm-row:nth-child(2){animation-delay:.2s}
+.mm-row:nth-child(3){animation-delay:.3s}.mm-row:nth-child(4){animation-delay:.4s}
+.mm-status{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.mm-label{flex:1;color:var(--text-2)}
+.mm-val{color:var(--green);font-weight:500;font-size:11px}
+.mm-total{margin:6px 8px 8px;padding:8px 12px;background:var(--accent-dim);
+  border:1px solid rgba(26,143,255,0.18);border-radius:var(--r1);
+  display:flex;justify-content:space-between;align-items:center}
+.mm-total-l{font-size:12px;color:var(--text-2)}
+.mm-total-v{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;
+  color:var(--accent);letter-spacing:-0.5px}
 
-/* CLOUD DIVIDER */
-.cloud-divider{position:relative;z-index:2;padding:var(--s8) 0;overflow:hidden}
-.cloud-divider-line{position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent 0%,var(--border) 20%,rgba(26,143,255,0.15) 50%,var(--border) 80%,transparent 100%)}
-.cloud-pills{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:var(--s3)}
-.c-pill{display:flex;align-items:center;gap:var(--s1);background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:var(--s1) var(--s3);font-size:13px;color:var(--text-2)}
-.c-pill strong{color:var(--accent);font-weight:600}
-.c-pill svg{flex-shrink:0;opacity:.6}
+/* product mini graphics */
+.card-graphic{height:72px;border-radius:var(--r2);overflow:hidden;
+  position:relative;background:rgba(255,255,255,0.02);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
 
-/* HOW */
+/* ── HOW IT WORKS ── */
 .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s10);align-items:start;margin-top:var(--s8)}
 .steps{display:flex;flex-direction:column}
 .step{display:flex;gap:var(--s3);padding:var(--s4) 0;border-bottom:1px solid var(--border)}
 .step:last-child{border-bottom:none}
-.step-num{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:var(--accent);width:var(--s4);flex-shrink:0;padding-top:2px;letter-spacing:1px}
-.step h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1);color:var(--text-1)}
+.step-num{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:var(--accent);
+  width:var(--s4);flex-shrink:0;padding-top:2px;letter-spacing:1px}
+.step h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
 .step p{font-size:14px;color:var(--text-2);line-height:1.65}
-.depth-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);overflow:hidden;box-shadow:0 var(--s6) var(--s16) rgba(0,0,0,0.3),0 0 0 1px rgba(26,143,255,0.04)}
-.depth-card-hdr{padding:var(--s2) var(--s4);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02);display:flex;align-items:center;gap:var(--s2)}
+.depth-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
+  overflow:hidden;box-shadow:0 var(--s6) var(--s16) rgba(0,0,0,0.3),0 0 0 1px rgba(26,143,255,0.04)}
+.depth-card-header{padding:var(--s2) var(--s4);border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,0.02);display:flex;align-items:center;gap:var(--s2)}
 .depth-card-title{font-size:12px;color:var(--text-3);margin-left:auto;letter-spacing:.3px}
 .depth-card-body{padding:var(--s4)}
-.depth-card-body .mk-row{border-radius:var(--r2);padding:var(--s2);margin-bottom:var(--s1)}
-.depth-total{margin-top:var(--s3);padding:var(--s3);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center}
+.depth-card-body .mm-row{border-radius:var(--r2);padding:var(--s2);margin-bottom:var(--s1);font-size:13px}
+.depth-total{margin-top:var(--s3);padding:var(--s3);background:var(--accent-dim);
+  border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);
+  display:flex;justify-content:space-between;align-items:center}
 .depth-total-l{font-size:14px;color:var(--text-2)}
 .depth-total-v{font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:var(--accent);letter-spacing:-1px}
 
-/* PRICING */
+/* ── BUNDLE CALCULATOR ── */
+.calc-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
+  padding:var(--s8);margin-top:var(--s8)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:start}
+.calc-products{display:flex;flex-direction:column;gap:var(--s2)}
+.calc-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s2) var(--s3);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r2);
+  transition:border-color .2s,background .2s}
+.calc-item.selected{border-color:rgba(26,143,255,0.3);background:rgba(26,143,255,0.05)}
+.calc-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.calc-item-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.calc-item-name{flex:1;font-size:14px;font-weight:500}
+.calc-item-price{font-size:13px;color:var(--text-3)}
+.calc-item-price.active{color:var(--accent);font-weight:500}
+.calc-result{position:sticky;top:var(--s10);background:var(--bg3);
+  border:1px solid rgba(26,143,255,0.2);border-radius:var(--r3);padding:var(--s5)}
+.calc-result-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:var(--s4)}
+.calc-result-lines{display:flex;flex-direction:column;gap:var(--s2);margin-bottom:var(--s4);
+  min-height:120px}
+.calc-line{display:flex;justify-content:space-between;font-size:14px;
+  color:var(--text-2);padding:var(--s1) 0;border-bottom:1px solid var(--border)}
+.calc-line:last-child{border-bottom:none}
+.calc-divider{height:1px;background:var(--border);margin:var(--s2) 0}
+.calc-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s2)}
+.calc-total-label{font-size:14px;color:var(--text-2)}
+.calc-total-val{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;
+  color:var(--accent);letter-spacing:-1.5px}
+.calc-saving{font-size:13px;color:var(--green);margin-bottom:var(--s4)}
+.calc-empty{color:var(--text-3);font-size:14px;font-style:italic;padding:var(--s4) 0;text-align:center}
+.calc-note{font-size:12px;color:var(--text-3);margin-top:var(--s2)}
+
+/* ── PRICING ── */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)}
-.p-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5);position:relative;transition:transform .2s}
+.p-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
+  padding:var(--s5);position:relative;transition:transform .2s}
 .p-card:hover{transform:translateY(-3px)}
-.p-card.p-pop{border-color:rgba(26,143,255,0.22);background:linear-gradient(160deg,rgba(26,143,255,0.05) 0%,var(--bg2) 60%);box-shadow:0 0 0 1px rgba(26,143,255,0.08),0 var(--s4) var(--s8) rgba(0,0,0,0.2)}
-.p-pop-tag{position:absolute;top:var(--s3);right:var(--s3);background:var(--accent);color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px}
+.p-card.p-pop{border-color:rgba(26,143,255,0.22);
+  background:linear-gradient(160deg,rgba(26,143,255,0.05) 0%,var(--bg2) 60%);
+  box-shadow:0 0 0 1px rgba(26,143,255,0.08)}
+.p-pop-tag{position:absolute;top:var(--s3);right:var(--s3);background:var(--accent);
+  color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px}
 .p-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)}
 .p-desc{font-size:14px;color:var(--text-2);margin-bottom:var(--s4);line-height:1.6}
-.p-amount{font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;line-height:1;color:var(--text-1)}
+.p-amount{font-family:'Syne',sans-serif;font-weight:800;font-size:56px;
+  letter-spacing:-2px;line-height:1;color:var(--text-1)}
 .p-period{font-size:14px;color:var(--text-3)}
 .p-list{list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)}
 .p-list li{display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2);line-height:1.5}
 .p-list li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:1px}
-.p-btn{display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04);transition:background .15s,border-color .15s}
+.p-btn{display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);
+  border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);
+  color:var(--text-1);background:rgba(255,255,255,0.04);transition:background .15s,border-color .15s}
 .p-btn:hover{background:rgba(255,255,255,0.07);border-color:var(--border-md)}
 .p-btn-fill{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 0 var(--s4) var(--accent-glow)}
 .p-btn-fill:hover{background:var(--accent-hover);border-color:transparent}
 .pricing-note{font-size:14px;color:var(--text-3);margin-top:var(--s3)}
 .pricing-note a{color:var(--accent);text-decoration:none}
 
-/* ABOUT */
+/* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s10);align-items:center}
-.about-quote-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);padding:var(--s6);position:relative;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.2),0 0 0 1px rgba(26,143,255,0.04)}
-.about-quote-card::before{content:'"';position:absolute;top:var(--s3);left:var(--s4);font-family:'Syne',sans-serif;font-size:80px;color:rgba(26,143,255,0.1);line-height:1}
-.about-quote{font-family:'Syne',sans-serif;font-weight:600;font-size:20px;line-height:1.45;color:var(--text-1);position:relative;z-index:1;margin-bottom:var(--s4)}
+.about-quote-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
+  padding:var(--s6);position:relative;
+  box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.2),0 0 0 1px rgba(26,143,255,0.04)}
+.about-quote-card::before{content:'"';position:absolute;top:var(--s3);left:var(--s4);
+  font-family:'Syne',sans-serif;font-size:80px;color:rgba(26,143,255,0.1);line-height:1}
+.about-quote{font-family:'Syne',sans-serif;font-weight:600;font-size:20px;
+  line-height:1.45;color:var(--text-1);position:relative;z-index:1;margin-bottom:var(--s4)}
 .about-attr{font-size:14px;color:var(--text-3)}
 .about-pills{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s5)}
-.pill{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
+.pill{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 
-/* FORM */
+/* ── FORM ── */
 .form-section{padding:var(--s16) 0 var(--s12);position:relative;z-index:2}
-.form-card{background:var(--bg2);border:1px solid rgba(26,143,255,0.14);border-radius:var(--r4);overflow:hidden;box-shadow:0 0 0 1px rgba(26,143,255,0.05),0 var(--s6) var(--s16) rgba(0,0,0,0.3)}
-.form-card-top{padding:var(--s8);border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(26,143,255,0.04) 0%,transparent 100%)}
-.form-card-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin-bottom:var(--s2)}
+.form-card{background:var(--bg2);border:1px solid rgba(26,143,255,0.14);border-radius:var(--r4);
+  overflow:hidden;box-shadow:0 0 0 1px rgba(26,143,255,0.05),0 var(--s6) var(--s16) rgba(0,0,0,0.3)}
+.form-card-top{padding:var(--s8);border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(26,143,255,0.05) 0%,transparent 100%)}
+.form-card-h{font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin-bottom:var(--s2)}
 .form-card-sub{font-size:18px;color:var(--text-2);font-weight:300;max-width:500px;line-height:1.6}
 .form-body{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);padding:var(--s8)}
 .form-col{display:flex;flex-direction:column;gap:var(--s3)}
 .form-g{display:flex;flex-direction:column;gap:var(--s1)}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
 .form-l{font-size:14px;color:var(--text-2);font-weight:500}
-.form-i,.form-s,.form-t{width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--r2);padding:var(--s2);color:var(--text-1);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .15s,box-shadow .15s}
+.form-i,.form-s,.form-t{width:100%;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);border-radius:var(--r2);
+  padding:var(--s2);color:var(--text-1);font-size:14px;
+  font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .15s,box-shadow .15s}
 .form-i:focus,.form-s:focus,.form-t:focus{border-color:rgba(26,143,255,0.4);box-shadow:0 0 0 3px rgba(26,143,255,0.07)}
 .form-i::placeholder{color:var(--text-3)}
-.form-s{appearance:none;cursor:none}
+.form-s{appearance:none}
 .form-t{resize:vertical;min-height:96px}
-.form-submit{width:100%;padding:var(--s2) var(--s3);border-radius:var(--r2);border:none;cursor:none;background:var(--accent);color:#fff;font-size:16px;font-weight:500;font-family:'Inter',sans-serif;box-shadow:0 0 var(--s4) var(--accent-glow);transition:background .15s,box-shadow .15s,transform .1s}
+.form-submit{width:100%;padding:var(--s2) var(--s3);border-radius:var(--r2);border:none;
+  background:var(--accent);color:#fff;font-size:16px;font-weight:500;
+  font-family:'Inter',sans-serif;box-shadow:0 0 var(--s4) var(--accent-glow);
+  transition:background .15s,box-shadow .15s,transform .1s}
 .form-submit:hover{background:var(--accent-hover);box-shadow:0 0 var(--s6) rgba(26,143,255,0.3);transform:translateY(-1px)}
+.trust-note{display:flex;align-items:center;gap:var(--s1);font-size:12px;color:var(--text-3);margin-top:var(--s2)}
 .benefits{display:flex;flex-direction:column;gap:var(--s3);justify-content:center}
-.benefit{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s3);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r3)}
-.benefit-icon{width:var(--s6);height:var(--s6);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.benefit{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s3);
+  background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r3)}
+.benefit-icon{width:var(--s6);height:var(--s6);background:var(--accent-dim);
+  border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);
+  display:grid;place-items:center;font-size:20px;flex-shrink:0}
 .benefit h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:3px}
 .benefit p{font-size:14px;color:var(--text-2);line-height:1.55}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:relative;z-index:2}
-.footer-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
-.f-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:16px}
-.f-logo em{font-style:normal;color:var(--accent)}
-.f-links{display:flex;gap:var(--s4)}
-.f-links a{color:var(--text-3);text-decoration:none;font-size:14px;transition:color .15s}
-.f-links a:hover{color:var(--text-2)}
-.f-copy{font-size:14px;color:var(--text-3)}
-
-/* REVEAL */
-.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.r.on{opacity:1;transform:translateY(0)}
-.r2{transition-delay:.1s}.r3{transition-delay:.2s}.r4{transition-delay:.3s}
-
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes slide{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
-
 @media(max-width:960px){
-  .products-grid{grid-template-columns:1fr 1fr}
-  .card-featured{grid-column:span 2;grid-template-columns:1fr}
-  .how-grid,.about-grid,.form-body{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .card-hero{grid-column:span 2;grid-row:span 1}
+  .card-half{grid-column:span 1}
+  .card-third{grid-column:span 1}
+  .how-grid,.about-grid,.form-body,.calc-grid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .stat{border-right:none;border-bottom:1px solid var(--border);padding:var(--s3) 0}
   .pricing-grid{grid-template-columns:1fr;max-width:400px}
   .infra-grid{grid-template-columns:repeat(4,1fr)}
-  .cloud-pills{flex-wrap:wrap;gap:var(--s2)}
 }
 @media(max-width:640px){
   .products-grid{grid-template-columns:1fr}
-  .card-featured{grid-column:span 1}
+  .card-hero,.card-half,.card-third{grid-column:span 1}
   .form-row-2{grid-template-columns:1fr}
-  .nav-centre{display:none}
   .infra-grid{grid-template-columns:repeat(2,1fr)}
 }
+
   </style>
 </head>
 <body>
-
-<div id="cur"></div>
-<div id="cur-r"></div>
-<canvas id="cvs"></canvas>
-
-<!-- NAV -->
-<nav>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
+<nav aria-label="Main navigation">
   <div class="nav-wrap">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-mark">☁</div>
+    <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
+      <div class="nav-logo-mark" aria-hidden="true">☁</div>
       <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
-    <div class="nav-centre">
+    <div class="nav-centre" role="navigation">
       <div class="nav-dd">
-        <button class="nav-link" style="display:flex;align-items:center;gap:6px">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
           Products
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </button>
-        <div class="nav-dd-menu">
+        <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
-            <a href="nuboslens.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#1a8fff"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#9b5cff"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubowatch.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#00c896"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubobase.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#ff8c2a"></span>NuboBase<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubopipe.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#ff3c5a"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubocomply.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#f59e0b"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubobot.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#38bdf8"></span>NuboBot<span class="nav-dd-soon">Soon</span></a>
-            <a href="nuboenv.html" class="nav-dd-item"><span class="nav-dd-dot" style="background:#2dd4bf"></span>NuboEnv<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
+            <a href="#" class="nav-dd-item" role="menuitem" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
           </div>
         </div>
       </div>
-      <a href="#how" class="nav-link">How it works</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="#about" class="nav-link">About</a>
+      <a href="index.html#how" class="nav-link">How it works</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="index.html#about" class="nav-link">About</a>
     </div>
-    <a href="#audit" class="btn">Get a free audit →</a>
+    <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+<!-- Orbs + dot grid -->
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="orb orb2" aria-hidden="true"></div>
+<div class="orb orb3" aria-hidden="true"></div>
+<div class="dot-grid" aria-hidden="true"></div>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-label"><span class="hero-label-dot"></span>Cloud infrastructure, reimagined</div>
+<section class="hero" aria-label="Hero">
+  <div class="hero-label"><span class="hero-dot" aria-hidden="true"></span>Cloud infrastructure, reimagined</div>
   <h1>Build fast.<br>Spend less.<br><em>Stay secure.</em></h1>
   <p class="hero-sub">Nubo Labs builds cloud tools and services that give startups and SaaS companies complete control over their infrastructure — cost, security, monitoring, and beyond.</p>
-  <div class="hero-cta"><a href="#audit" class="btn btn-lg">Get a free audit →</a></div>
-
-  <div class="infra-wrap">
-    <div class="infra-label-row">
-      <div class="infra-label-pill">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#1a8fff" stroke-width="1.2"/><path d="M7 4v3l2 1" stroke="#1a8fff" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Live NuboLens scan — example environment
-      </div>
-    </div>
+  <form class="hero-capture" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Quick audit request">
+    <input type="hidden" name="_subject" value="Quick Audit Request"/>
+    <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
+    <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We'll be in touch within 24 hours to arrange your free cloud audit. — The Nubo Labs team"/>
+    <input type="hidden" name="_captcha" value="false"/>
+    <input type="email" name="email" class="capture-input" placeholder="your@company.com" required aria-label="Your work email"/>
+    <button type="submit" class="btn">Get free audit →</button>
+  </form>
+  <div class="hero-infra" aria-hidden="true">
     <div class="infra-grid">
-      <div class="infra-node n-warn">
-        <div class="i-icon">🖥️</div>
-        <div class="i-name">EC2 Instances</div>
-        <div class="i-badge i-red">3 idle</div>
-        <div class="i-saving">−£210/mo</div>
-      </div>
-      <div class="infra-node n-warn">
-        <div class="i-icon">🗄️</div>
-        <div class="i-name">RDS Database</div>
-        <div class="i-badge i-red">Oversized</div>
-        <div class="i-saving">−£380/mo</div>
-      </div>
-      <div class="infra-node n-warn">
-        <div class="i-icon">💾</div>
-        <div class="i-name">EBS Volumes</div>
-        <div class="i-badge i-red">7 orphaned</div>
-        <div class="i-saving">−£95/mo</div>
-      </div>
-      <div class="infra-node n-active">
-        <div class="i-icon">🔵</div>
-        <div class="i-name">NuboLens</div>
-        <div class="i-badge i-blue">Scanning</div>
-        <div class="i-win">£1,137 found</div>
-      </div>
-      <div class="infra-node n-warn">
-        <div class="i-icon">🪣</div>
-        <div class="i-name">S3 Storage</div>
-        <div class="i-badge i-red">No lifecycle</div>
-        <div class="i-saving">−£140/mo</div>
-      </div>
-      <div class="infra-node n-warn">
-        <div class="i-icon">🌐</div>
-        <div class="i-name">Elastic IPs</div>
-        <div class="i-badge i-red">Unassociated</div>
-        <div class="i-saving">−£22/mo</div>
-      </div>
-      <div class="infra-node n-warn">
-        <div class="i-icon">⚙️</div>
-        <div class="i-name">Dev Envs</div>
-        <div class="i-badge i-red">24/7 on</div>
-        <div class="i-saving">−£290/mo</div>
-      </div>
-      <div class="infra-node n-good">
-        <div class="i-icon">✅</div>
-        <div class="i-name">Post-NuboLens</div>
-        <div class="i-badge i-green">Optimised</div>
-        <div class="i-win">£13,644/yr saved</div>
-      </div>
+      <div class="inode red"><div class="inode-icon">🖥️</div><div class="inode-label">EC2 Instances</div><div class="inode-badge red">3 idle</div><div class="inode-val">£210/mo</div></div>
+      <div class="inode red"><div class="inode-icon">🗄️</div><div class="inode-label">RDS Database</div><div class="inode-badge red">Oversized</div><div class="inode-val">£380/mo</div></div>
+      <div class="inode amber"><div class="inode-icon">💾</div><div class="inode-label">EBS Volumes</div><div class="inode-badge amber">7 orphaned</div><div class="inode-val">£95/mo</div></div>
+      <div class="inode blue"><div class="inode-icon">🔵</div><div class="inode-label">NuboLens</div><div class="inode-badge blue">Scanning…</div><div class="inode-val" style="color:var(--accent)">£1,137 found</div></div>
+      <div class="inode amber"><div class="inode-icon">🪣</div><div class="inode-label">S3 Storage</div><div class="inode-badge amber">No lifecycle</div><div class="inode-val">£140/mo</div></div>
+      <div class="inode amber"><div class="inode-icon">🌐</div><div class="inode-label">Elastic IPs</div><div class="inode-badge amber">Unassociated</div><div class="inode-val">£22/mo</div></div>
+      <div class="inode red"><div class="inode-icon">⚙️</div><div class="inode-label">Dev Envs</div><div class="inode-badge red">24/7 running</div><div class="inode-val">£290/mo</div></div>
+      <div class="inode green"><div class="inode-icon">✅</div><div class="inode-label">After NuboLens</div><div class="inode-badge green">Optimised</div><div class="inode-val pos">£13,644/yr saved</div></div>
     </div>
   </div>
 </section>
@@ -374,74 +521,166 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <h2 class="sec-h">Everything your cloud needs</h2>
       <p class="sec-sub">Eight focused products. One company. Full control of your cloud infrastructure.</p>
     </div>
-    <div class="products-grid">
+    <div class="products-grid card-area">
 
-      <a href="nuboslens.html" class="card card-featured r" style="--c:#1a8fff">
-        <div class="card-left">
-          <div class="card-icon">🔵</div>
-          <div>
-            <div class="card-name">Nubo<em>Lens</em></div>
-            <div class="card-desc">Cloud cost visibility and optimisation. We scan your AWS or Azure environment, find waste, and deliver a clear savings report — with actionable fixes that save money from day one.</div>
-          </div>
-          <div class="card-tags">
-            <span class="tag">AWS &amp; Azure</span><span class="tag">Idle resources</span>
-            <span class="tag">Rightsizing</span><span class="tag">Monthly reports</span><span class="tag">Cost alerts</span>
-          </div>
-          <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow">↗</span></div>
+      <!-- NuboLens hero card -->
+      <a href="nuboslens.html" class="card card-hero r" style="--c:#1a8fff">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(26,143,255,0.15);border:1px solid rgba(26,143,255,0.25);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔵</div>
+          <div class="card-name">Nubo<em>Lens</em></div>
         </div>
-        <div class="mockup">
-          <div class="mockup-bar">
-            <div class="mk-dot" style="background:#ff5f57"></div>
-            <div class="mk-dot" style="background:#febc2e"></div>
-            <div class="mk-dot" style="background:#28c840"></div>
-            <div class="mockup-title">NuboLens — Audit Report</div>
-          </div>
-          <div class="mockup-body">
-            <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Idle EC2 instances (3)</div><div class="mk-val">£210/mo</div></div>
-            <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Oversized RDS database</div><div class="mk-val">£380/mo</div></div>
-            <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">Unattached EBS volumes (7)</div><div class="mk-val">£95/mo</div></div>
-            <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">S3 — no lifecycle rules</div><div class="mk-val">£140/mo</div></div>
-            <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Dev envs running 24/7</div><div class="mk-val">£290/mo</div></div>
-            <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">Unassociated Elastic IPs</div><div class="mk-val">£22/mo</div></div>
-          </div>
-          <div class="mockup-total"><div class="mockup-total-l">Total monthly waste</div><div class="mockup-total-v">£1,137</div></div>
+        <div class="card-desc">Cloud cost visibility and optimisation. We scan your AWS or Azure environment, identify waste, and deliver a clear savings report — with actionable fixes that save money from day one.</div>
+        <div class="card-tags">
+          <span class="tag">AWS &amp; Azure</span><span class="tag">Idle resources</span><span class="tag">Rightsizing</span><span class="tag">Cost alerts</span>
         </div>
+        <div class="mini-mockup">
+          <div class="mm-bar"><div class="mm-dot" style="background:#ff5f57"></div><div class="mm-dot" style="background:#febc2e"></div><div class="mm-dot" style="background:#28c840"></div><div class="mm-title">Audit Report</div></div>
+          <div class="mm-body">
+            <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Idle EC2 instances (3)</div><div class="mm-val">£210/mo</div></div>
+            <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Oversized RDS database</div><div class="mm-val">£380/mo</div></div>
+            <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Unattached EBS volumes</div><div class="mm-val">£95/mo</div></div>
+            <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Dev envs 24/7</div><div class="mm-val">£290/mo</div></div>
+          </div>
+          <div class="mm-total"><div class="mm-total-l">Monthly waste found</div><div class="mm-total-v">£1,137</div></div>
+        </div>
+        <div class="card-footer" style="margin-top:var(--s3)"><span class="badge badge-live">● Live now</span><span class="card-arrow">↗</span></div>
       </a>
 
-      <a href="nuboshield.html" class="card dim r r2" style="--c:#9b5cff"><div class="card-icon">🟣</div><div class="card-name">Nubo<em style="color:#9b5cff">Shield</em></div><div class="card-desc">Cloud security auditing and misconfiguration detection. Find vulnerabilities before attackers do.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#9b5cff">↗</span></div></a>
-      <a href="nubowatch.html" class="card dim r r3" style="--c:#00c896"><div class="card-icon">🟢</div><div class="card-name">Nubo<em style="color:#00c896">Watch</em></div><div class="card-desc">Managed monitoring and observability. Real-time visibility into system health and performance.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#00c896">↗</span></div></a>
-      <a href="nubobase.html" class="card dim r r2" style="--c:#ff8c2a"><div class="card-icon">🟠</div><div class="card-name">Nubo<em style="color:#ff8c2a">Base</em></div><div class="card-desc">Infrastructure as Code consultancy. Terraform and Ansible done properly, from day one.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff8c2a">↗</span></div></a>
-      <a href="nubopipe.html" class="card dim r r3" style="--c:#ff3c5a"><div class="card-icon">🔴</div><div class="card-name">Nubo<em style="color:#ff3c5a">Pipe</em></div><div class="card-desc">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div></a>
-      <a href="nubocomply.html" class="card dim r r2" style="--c:#f59e0b"><div class="card-icon">🟡</div><div class="card-name">Nubo<em style="color:#f59e0b">Comply</em></div><div class="card-desc">SOC2 and ISO27001 readiness. Automated compliance gap analysis so you can land enterprise clients faster.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#f59e0b">↗</span></div></a>
-      <a href="nubobot.html" class="card dim r r3" style="--c:#38bdf8"><div class="card-icon">🤖</div><div class="card-name">Nubo<em style="color:#38bdf8">Bot</em></div><div class="card-desc">Your cloud assistant in Slack. Daily cost insights, anomaly alerts, and instant answers without leaving your workflow.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#38bdf8">↗</span></div></a>
-      <a href="nuboenv.html" class="card dim r r2" style="--c:#2dd4bf"><div class="card-icon">🌿</div><div class="card-name">Nubo<em style="color:#2dd4bf">Env</em></div><div class="card-desc">Automated environment scheduling. Shut down dev and staging environments overnight and save up to 65% on non-production costs.</div><div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#2dd4bf">↗</span></div></a>
+      <!-- NuboShield -->
+      <a href="nuboshield.html" class="card card-half dim r r2" style="--c:#9b5cff">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟣</div>
+          <div class="card-name">Nubo<em style="color:#9b5cff">Shield</em></div>
+        </div>
+        <div class="card-desc">Cloud security auditing. Misconfigurations, open security groups, exposed IAM policies — found before attackers do.</div>
+        <div class="card-graphic">
+          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" style="opacity:.4">
+            <path d="M20 30 L40 10 L60 30 L40 50 Z" stroke="#9b5cff" stroke-width="1" fill="rgba(155,92,255,0.05)"/>
+            <circle cx="40" cy="30" r="4" fill="#9b5cff" opacity=".6"/>
+            <line x1="60" y1="30" x2="90" y2="30" stroke="#9b5cff" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/>
+            <circle cx="110" cy="22" r="3" fill="#ef4444" opacity=".7"/>
+            <circle cx="130" cy="38" r="3" fill="#ef4444" opacity=".5"/>
+            <circle cx="155" cy="20" r="3" fill="#34d399" opacity=".7"/>
+            <circle cx="175" cy="35" r="3" fill="#34d399" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#9b5cff">↗</span></div>
+      </a>
+
+      <!-- NuboVault -->
+      <a href="nubovault.html" class="card card-half dim r r3" style="--c:#f43f5e">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔐</div>
+          <div class="card-name">Nubo<em style="color:#f43f5e">Vault</em></div>
+        </div>
+        <div class="card-desc">Secrets and credentials management. Finds hardcoded API keys, exposed secrets, and implements proper vaulting.</div>
+        <div class="card-graphic">
+          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" style="opacity:.4">
+            <rect x="15" y="18" width="50" height="24" rx="3" stroke="#f43f5e" stroke-width="1" fill="rgba(244,63,94,0.05)"/>
+            <text x="22" y="34" font-size="9" fill="#f43f5e" opacity=".7" font-family="monospace">API_KEY=***</text>
+            <path d="M75 30 L95 30" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2" opacity=".4"/>
+            <rect x="100" y="18" width="50" height="24" rx="3" stroke="#34d399" stroke-width="1" fill="rgba(52,211,153,0.05)"/>
+            <text x="107" y="34" font-size="9" fill="#34d399" opacity=".7" font-family="monospace">🔒 secured</text>
+            <circle cx="170" cy="30" r="10" stroke="#34d399" stroke-width="1" fill="none" opacity=".4"/>
+            <path d="M165 30 L169 34 L176 26" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#f43f5e">↗</span></div>
+      </a>
+
+      <!-- NuboWatch -->
+      <a href="nubowatch.html" class="card card-third dim r r2" style="--c:#00c896">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟢</div>
+          <div class="card-name" style="font-size:16px">Nubo<em style="color:#00c896">Watch</em></div>
+        </div>
+        <div class="card-desc" style="font-size:13px">Managed monitoring and observability. Prometheus, Grafana, alerting — without the overhead.</div>
+        <div class="card-graphic">
+          <svg width="160" height="50" viewBox="0 0 160 50" fill="none" style="opacity:.5;width:100%">
+            <polyline points="10,40 30,30 50,35 70,15 90,25 110,10 130,20 150,12" stroke="#00c896" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="110" cy="10" r="3" fill="#00c896" opacity=".8">
+              <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#00c896">↗</span></div>
+      </a>
+
+      <!-- NuboComply -->
+      <a href="nubocomply.html" class="card card-third dim r r3" style="--c:#f59e0b">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟡</div>
+          <div class="card-name" style="font-size:16px">Nubo<em style="color:#f59e0b">Comply</em></div>
+        </div>
+        <div class="card-desc" style="font-size:13px">SOC2 and ISO27001 readiness. Automated gap analysis so you can land enterprise clients faster.</div>
+        <div class="card-graphic" style="display:flex;flex-direction:column;gap:4px;padding:var(--s1) var(--s2);height:auto">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#34d399">✓</span> Access controls</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#34d399">✓</span> Encryption at rest</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#f59e0b">○</span> Incident response</div>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#f59e0b">↗</span></div>
+      </a>
+
+      <!-- NuboGreen -->
+      <a href="nubogreen.html" class="card card-third dim r r2" style="--c:#22c55e">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🌿</div>
+          <div class="card-name" style="font-size:16px">Nubo<em style="color:#22c55e">Green</em></div>
+        </div>
+        <div class="card-desc" style="font-size:13px">Cloud carbon footprint reporting. ESG compliance for your infrastructure — an untapped, growing market.</div>
+        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center;gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e">2.4t</div><div style="font-size:10px;color:var(--text-3)">CO₂ saved</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e">-34%</div><div style="font-size:10px;color:var(--text-3)">emissions</div></div>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#22c55e">↗</span></div>
+      </a>
+
+      <!-- NuboPredict -->
+      <a href="nubopredict.html" class="card card-third dim r r3" style="--c:#a78bfa">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔮</div>
+          <div class="card-name" style="font-size:16px">Nubo<em style="color:#a78bfa">Predict</em></div>
+        </div>
+        <div class="card-desc" style="font-size:13px">AI-powered spend forecasting. Know next month's cloud bill before it arrives.</div>
+        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center">
+          <svg width="140" height="45" viewBox="0 0 140 45" fill="none" style="opacity:.5;width:100%">
+            <polyline points="10,35 30,30 50,28 70,22 90,18" stroke="#a78bfa" stroke-width="1.5" fill="none"/>
+            <polyline points="90,18 110,12 130,8" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-dasharray="3 2" opacity=".6"/>
+            <circle cx="90" cy="18" r="3" fill="#a78bfa"/>
+          </svg>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#a78bfa">↗</span></div>
+      </a>
+
+      <!-- NuboPipe -->
+      <a href="nubopipe.html" class="card card-third dim r r2" style="--c:#ff3c5a">
+        <div style="display:flex;align-items:center;gap:var(--s2)">
+          <div style="width:var(--s5);height:var(--s5);background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔴</div>
+          <div class="card-name" style="font-size:16px">Nubo<em style="color:#ff3c5a">Pipe</em></div>
+        </div>
+        <div class="card-desc" style="font-size:13px">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div>
+        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center;gap:4px;padding:0 var(--s2)">
+          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Build<br><span style="color:#34d399;font-size:9px">✓</span></div>
+          <div style="width:20px;height:1px;background:linear-gradient(90deg,#34d399,#ff3c5a)"></div>
+          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Test<br><span style="color:#34d399;font-size:9px">✓</span></div>
+          <div style="width:20px;height:1px;background:linear-gradient(90deg,#34d399,#f59e0b)"></div>
+          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Deploy<br><span style="color:#f59e0b;font-size:9px">●</span></div>
+          <div style="width:20px;height:1px;background:var(--border)"></div>
+          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Live<br><span style="color:var(--text-3);font-size:9px">○</span></div>
+        </div>
+        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div>
+      </a>
+
+      <!-- More teaser -->
+      <div class="more-teaser r">
+        <p>NuboVault, NuboScale, NuboDR, NuboID, NuboGreen and more are on the roadmap.</p>
+        <a href="https://linkedin.com/company/nubolabs" target="_blank" rel="noopener">Follow on LinkedIn for updates →</a>
+      </div>
 
     </div>
   </div>
 </section>
-
-<!-- CLOUD DIVIDER -->
-<div class="cloud-divider">
-  <div class="cloud-divider-line"></div>
-  <div class="cloud-pills">
-    <div class="c-pill">
-      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M11 7H3C1.9 7 1 6.1 1 5C1 3.9 1.9 3 3 3C3.12 3 3.24 3.01 3.35 3.03C3.77 1.88 4.87 1 6.16 1C7.79 1 9.1 2.31 9.1 3.94V4H9.5C10.88 4 12 5.12 12 6.5" stroke="rgba(26,143,255,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <strong>£1,137</strong> avg monthly waste found
-    </div>
-    <div class="c-pill">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="rgba(26,143,255,0.5)" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1" stroke="rgba(26,143,255,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <strong>48hr</strong> audit turnaround
-    </div>
-    <div class="c-pill">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10l2-4 2 2 2-4 2 4" stroke="rgba(26,143,255,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <strong>8</strong> cloud products
-    </div>
-    <div class="c-pill">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="rgba(26,143,255,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <strong>£0</strong> first audit
-    </div>
-  </div>
-</div>
 
 <!-- HOW IT WORKS -->
 <section class="sec sec-alt" id="how">
@@ -459,19 +698,19 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="step"><div class="step-num">04</div><div><h4>We implement the fixes</h4><p>Optionally let us handle the fixes and monitor your account monthly so waste doesn't creep back.</p></div></div>
       </div>
       <div class="depth-card r r2">
-        <div class="depth-card-hdr">
-          <div class="mk-dot" style="background:#ff5f57;width:10px;height:10px;border-radius:50%"></div>
-          <div class="mk-dot" style="background:#febc2e;width:10px;height:10px;border-radius:50%"></div>
-          <div class="mk-dot" style="background:#28c840;width:10px;height:10px;border-radius:50%"></div>
+        <div class="depth-card-header">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
           <div class="depth-card-title">NuboLens — example report</div>
         </div>
         <div class="depth-card-body">
-          <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Idle EC2 instances (3)</div><div class="mk-val">£210/mo</div></div>
-          <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Oversized RDS database</div><div class="mk-val">£380/mo</div></div>
-          <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">Unattached EBS volumes</div><div class="mk-val">£95/mo</div></div>
-          <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">S3 — no lifecycle rules</div><div class="mk-val">£140/mo</div></div>
-          <div class="mk-row"><div class="mk-status" style="background:#ef4444"></div><div class="mk-label">Dev envs running 24/7</div><div class="mk-val">£290/mo</div></div>
-          <div class="mk-row"><div class="mk-status" style="background:#f59e0b"></div><div class="mk-label">Unassociated Elastic IPs</div><div class="mk-val">£22/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Idle EC2 instances (3)</div><div class="mm-val">£210/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Oversized RDS database</div><div class="mm-val">£380/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Unattached EBS volumes</div><div class="mm-val">£95/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">S3 — no lifecycle rules</div><div class="mm-val">£140/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Dev envs running 24/7</div><div class="mm-val">£290/mo</div></div>
+          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Unassociated Elastic IPs</div><div class="mm-val">£22/mo</div></div>
           <div class="depth-total"><div class="depth-total-l">Total monthly waste found</div><div class="depth-total-v">£1,137</div></div>
         </div>
       </div>
@@ -479,34 +718,76 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- BUNDLE CALCULATOR -->
 <section class="sec" id="pricing">
   <div class="wrap">
     <div class="r">
       <div class="sec-tag">Pricing</div>
-      <h2 class="sec-h">Transparent pricing</h2>
-      <p class="sec-sub">No hidden fees. No "contact us for pricing." You always know exactly what you pay.</p>
+      <h2 class="sec-h">Build your bundle</h2>
+      <p class="sec-sub">Select the products you need and see your monthly price instantly. Save up to 25% when combining products.</p>
+    </div>
+    <div class="calc-wrap r">
+      <div class="calc-grid">
+        <div>
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--s3)">Select products:</p>
+          <div class="calc-products" id="calcProducts">
+            <label class="calc-item" data-price="400" data-name="NuboLens"><input type="checkbox" checked/><span class="calc-item-dot" style="background:#1a8fff"></span><span class="calc-item-name">NuboLens</span><span class="calc-item-price active">£400/mo</span></label>
+            <label class="calc-item" data-price="500" data-name="NuboShield"><input type="checkbox"/><span class="calc-item-dot" style="background:#9b5cff"></span><span class="calc-item-name">NuboShield</span><span class="calc-item-price">£500/mo</span></label>
+            <label class="calc-item" data-price="450" data-name="NuboVault"><input type="checkbox"/><span class="calc-item-dot" style="background:#f43f5e"></span><span class="calc-item-name">NuboVault</span><span class="calc-item-price">£450/mo</span></label>
+            <label class="calc-item" data-price="450" data-name="NuboWatch"><input type="checkbox"/><span class="calc-item-dot" style="background:#00c896"></span><span class="calc-item-name">NuboWatch</span><span class="calc-item-price">£450/mo</span></label>
+            <label class="calc-item" data-price="600" data-name="NuboComply"><input type="checkbox"/><span class="calc-item-dot" style="background:#f59e0b"></span><span class="calc-item-name">NuboComply</span><span class="calc-item-price">£600/mo</span></label>
+            <label class="calc-item" data-price="350" data-name="NuboGreen"><input type="checkbox"/><span class="calc-item-dot" style="background:#22c55e"></span><span class="calc-item-name">NuboGreen</span><span class="calc-item-price">£350/mo</span></label>
+            <label class="calc-item" data-price="300" data-name="NuboPredict"><input type="checkbox"/><span class="calc-item-dot" style="background:#a78bfa"></span><span class="calc-item-name">NuboPredict</span><span class="calc-item-price">£300/mo</span></label>
+            <label class="calc-item" data-price="400" data-name="NuboPipe"><input type="checkbox"/><span class="calc-item-dot" style="background:#ff3c5a"></span><span class="calc-item-name">NuboPipe</span><span class="calc-item-price">£400/mo</span></label>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-title">Your bundle</div>
+          <div class="calc-result-lines" id="calcLines">
+            <div class="calc-empty">Select products to see pricing</div>
+          </div>
+          <div class="calc-divider"></div>
+          <div class="calc-total-row">
+            <span class="calc-total-label">Monthly total</span>
+            <span class="calc-total-val" id="calcTotal">£400</span>
+          </div>
+          <div class="calc-saving" id="calcSaving"></div>
+          <a href="#audit" class="btn" style="width:100%;justify-content:center;margin-bottom:var(--s2)">Get started →</a>
+          <div class="calc-note">* All products include a free audit before commitment. Custom enterprise pricing available.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simple pricing cards below -->
+    <div style="margin-top:var(--s8)" class="r">
+      <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Or start simple:</p>
     </div>
     <div class="pricing-grid">
       <div class="p-card r">
         <div class="p-name">One-off Audit</div>
-        <div class="p-desc">A full scan of your environment with a detailed savings report.</div>
+        <div class="p-desc">A full NuboLens scan with a detailed savings report. No ongoing commitment.</div>
         <div><span class="p-amount">£500</span><span class="p-period"> one time</span></div>
         <ul class="p-list">
-          <li>Full AWS or Azure audit</li><li>Detailed savings report</li>
-          <li>Actionable fix recommendations</li><li>48 hour turnaround</li><li>No ongoing commitment</li>
+          <li>Full AWS or Azure audit</li>
+          <li>Detailed savings report</li>
+          <li>Actionable fix recommendations</li>
+          <li>48 hour turnaround</li>
+          <li>No ongoing commitment</li>
         </ul>
         <a href="#audit" class="p-btn">Get started</a>
       </div>
       <div class="p-card p-pop r r2">
         <div class="p-pop-tag">Most popular</div>
-        <div class="p-name">Monthly Retainer</div>
-        <div class="p-desc">Ongoing monitoring so waste doesn't creep back as you grow.</div>
-        <div><span class="p-amount">£300</span><span class="p-period">/month</span></div>
+        <div class="p-name">NuboLens Retainer</div>
+        <div class="p-desc">Ongoing monitoring so waste doesn't creep back as your infrastructure grows.</div>
+        <div><span class="p-amount">£400</span><span class="p-period">/month</span></div>
         <ul class="p-list">
-          <li>Everything in One-off Audit</li><li>Monthly automated scans</li>
-          <li>Cost spike alerts</li><li>Monthly savings report</li>
-          <li>Fix implementation included</li><li>Priority response</li>
+          <li>Everything in One-off Audit</li>
+          <li>Monthly automated scans</li>
+          <li>Cost spike alerts</li>
+          <li>Monthly savings report</li>
+          <li>Fix implementation included</li>
+          <li>Priority response</li>
         </ul>
         <a href="#audit" class="p-btn p-btn-fill">Get started</a>
       </div>
@@ -522,12 +803,12 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <div class="r">
         <div class="sec-tag">About</div>
         <h2 class="sec-h">Built by engineers,<br>for engineers</h2>
-        <p class="sec-sub" style="margin-bottom:var(--s4)">Nubo Labs was founded after years of working inside enterprise cloud environments and seeing the same problems everywhere — wasted spend, security gaps, and fragile infrastructure nobody had time to fix.</p>
+        <p class="sec-sub" style="margin-bottom:var(--s4)">Nubo Labs was founded after years of working inside enterprise cloud environments as a contractor and seeing the same problems everywhere — wasted spend, security gaps, and fragile infrastructure nobody had time to fix.</p>
         <p class="sec-sub">We built the tools we wished existed and made them available to the startups who need them most.</p>
         <div class="about-pills">
           <span class="pill">AWS Certified</span><span class="pill">Azure</span><span class="pill">Terraform</span>
           <span class="pill">Ansible</span><span class="pill">Prometheus</span><span class="pill">Grafana</span>
-          <span class="pill">CI/CD</span><span class="pill">Linux</span>
+          <span class="pill">CI/CD</span><span class="pill">Linux</span><span class="pill">Leeds, UK</span>
         </div>
       </div>
       <div class="about-quote-card r r2">
@@ -538,35 +819,38 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </section>
 
-<!-- FORM -->
+<!-- FULL AUDIT FORM -->
 <section class="form-section" id="audit">
   <div class="wrap">
     <div class="form-card r">
       <div class="form-card-top">
         <div class="sec-tag">Free audit</div>
         <div class="form-card-h">Find out what your cloud<br>is really costing you</div>
-        <div class="form-card-sub">Fill in the form and we'll come back within 24 hours. No calls, no commitment — just a clear picture of what your cloud is actually costing you.</div>
+        <div class="form-card-sub">Fill in the form and we'll come back within 24 hours. No calls, no commitment — just a clear picture of what your infrastructure is actually costing you.</div>
       </div>
       <div class="form-body">
-        <form class="form-col" action="https://formsubmit.co/kenziebollon@nubolabs.co.uk" method="POST">
-          <input type="hidden" name="_subject" value="New NuboLens Audit Request" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
+        <form class="form-col" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Full audit request form">
+          <input type="hidden" name="_subject" value="New NuboLens Audit Request"/>
+          <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
+          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We have received your audit request and will be in touch within 24 hours. In the meantime, visit nubolabs.co.uk/onboarding.html to see how to prepare your AWS or Azure credentials. — The Nubo Labs team"/>
+          <input type="hidden" name="_captcha" value="false"/>
+          <input type="hidden" name="_template" value="table"/>
           <div class="form-row-2">
-            <div class="form-g"><label class="form-l">Your name</label><input type="text" name="name" class="form-i" placeholder="Alex Johnson" required /></div>
-            <div class="form-g"><label class="form-l">Company</label><input type="text" name="company" class="form-i" placeholder="Acme Ltd" required /></div>
+            <div class="form-g"><label class="form-l" for="fname">Your name</label><input type="text" id="fname" name="name" class="form-i" placeholder="Alex Johnson" required/></div>
+            <div class="form-g"><label class="form-l" for="fcompany">Company</label><input type="text" id="fcompany" name="company" class="form-i" placeholder="Acme Ltd" required/></div>
           </div>
-          <div class="form-g"><label class="form-l">Email address</label><input type="email" name="email" class="form-i" placeholder="alex@acme.com" required /></div>
+          <div class="form-g"><label class="form-l" for="femail">Email address</label><input type="email" id="femail" name="email" class="form-i" placeholder="alex@acme.com" required/></div>
           <div class="form-row-2">
-            <div class="form-g"><label class="form-l">Cloud platform</label><select name="platform" class="form-s"><option>AWS</option><option>Azure</option><option>Both</option></select></div>
-            <div class="form-g"><label class="form-l">Monthly spend</label><select name="spend" class="form-s"><option>£1k – £5k/mo</option><option>£5k – £20k/mo</option><option>£20k – £100k/mo</option><option>£100k+/mo</option></select></div>
+            <div class="form-g"><label class="form-l" for="fplatform">Cloud platform</label><select id="fplatform" name="platform" class="form-s"><option>AWS</option><option>Azure</option><option>Both</option></select></div>
+            <div class="form-g"><label class="form-l" for="fspend">Monthly spend</label><select id="fspend" name="spend" class="form-s"><option>£1k – £5k/mo</option><option>£5k – £20k/mo</option><option>£20k – £100k/mo</option><option>£100k+/mo</option></select></div>
           </div>
-          <div class="form-g"><label class="form-l">Anything specific? (optional)</label><textarea name="message" class="form-t" placeholder="High bills, specific services, security concerns..."></textarea></div>
+          <div class="form-g"><label class="form-l" for="fmsg">Anything specific? (optional)</label><textarea id="fmsg" name="message" class="form-t" placeholder="High bills, security concerns, specific services..."></textarea></div>
           <button type="submit" class="form-submit">Request free audit →</button>
+          <div class="trust-note">🔒 Read-only access only. We never store credentials. Your data is never shared.</div>
         </form>
         <div class="benefits">
           <div class="benefit"><div class="benefit-icon">🔍</div><div><h4>Complete visibility</h4><p>We scan every corner of your environment — compute, storage, networking, databases.</p></div></div>
-          <div class="benefit"><div class="benefit-icon">🔒</div><div><h4>Read-only access only</h4><p>We never need write access. Your infrastructure stays completely safe throughout the audit.</p></div></div>
+          <div class="benefit"><div class="benefit-icon">🔒</div><div><h4>Read-only access only</h4><p>We never need write access. Your infrastructure stays completely safe throughout.</p></div></div>
           <div class="benefit"><div class="benefit-icon">⚡</div><div><h4>48 hour turnaround</h4><p>A full savings report in your inbox within 48 hours of granting access.</p></div></div>
           <div class="benefit"><div class="benefit-icon">💰</div><div><h4>Average saving of 30%</h4><p>Most clients find they're wasting 20–40% of their monthly cloud bill on unused resources.</p></div></div>
         </div>
@@ -574,43 +858,148 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:14px;margin-left:var(--s2)">📍 Leeds, UK</span></div>
-    <div class="f-links"><a href="#products">Products</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#audit">Contact</a></div>
-    <div class="f-copy">© 2026 Nubo Labs. All rights reserved.</div>
+    <div class="f-logo">Nubo<em>Labs</em></div>
+    <div class="f-links">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#audit">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="https://linkedin.com/company/nubolabs" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--s3)">
+      <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
+      <span class="f-copy">© 2026 Nubo Labs Ltd</span>
+    </div>
   </div>
 </footer>
-
 <script>
-// Cursor
+
+// Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,input,select,textarea').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';curR.style.width='44px';curR.style.height='44px';curR.style.borderColor='rgba(26,143,255,0.6)';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='32px';curR.style.height='32px';curR.style.borderColor='rgba(26,143,255,0.35)';});
-});
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(tick);})();
+  // expand on cards, shrink on form elements
+  document.querySelectorAll('.card,.card-area,[data-cursor="expand"]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{curR.style.width='48px';curR.style.height='48px';curR.style.borderColor='rgba(26,143,255,0.6)';});
+    el.addEventListener('mouseleave',()=>{curR.style.width='32px';curR.style.height='32px';curR.style.borderColor='rgba(26,143,255,0.35)';});
+  });
+}
 
 // Particles
 const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
 let W,H;
 const resize=()=>{W=cvs.width=innerWidth;H=cvs.height=innerHeight;};
 resize();addEventListener('resize',resize);
-const pts=Array.from({length:55},()=>({x:Math.random()*1920,y:Math.random()*1080,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.2+.4,a:Math.random()*.4+.08}));
-(function draw(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(26,143,255,${p.a})`;ctx.fill();});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(26,143,255,${.1*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(draw);})();
+const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.1+.3,a:Math.random()*.35+.07}));
+(function draw(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(26,143,255,${p.a})`;ctx.fill();});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=`rgba(26,143,255,${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}}
+  requestAnimationFrame(draw);
+})();
 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
-// Infra nodes staggered entrance
-document.querySelectorAll('.infra-node').forEach((n,i)=>{
-  setTimeout(()=>{n.style.opacity='1';n.style.transform='translateY(0)';},700+i*80);
+// Accessible dropdown — click/tap/keyboard + Escape + outside click
+document.querySelectorAll('.nav-dd').forEach(dd=>{
+  const btn=dd.querySelector('button,a');
+  if(!btn)return;
+  btn.setAttribute('aria-haspopup','true');
+  btn.setAttribute('aria-expanded','false');
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const open=dd.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  dd.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus();}
+  });
 });
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.nav-dd.open').forEach(dd=>{
+    dd.classList.remove('open');
+    const btn=dd.querySelector('button,a');
+    if(btn)btn.setAttribute('aria-expanded','false');
+  });
+});
+
+
+// Stagger infra nodes
+document.querySelectorAll('.inode').forEach((n,i)=>{
+  n.style.opacity='0';n.style.transform='translateY(14px)';
+  n.style.transition=`opacity .4s ${.7+i*.07}s ease,transform .4s ${.7+i*.07}s ease`;
+  setTimeout(()=>{n.style.opacity='1';n.style.transform='translateY(0)';},50);
+});
+
+// Bundle calculator
+const items = document.querySelectorAll('#calcProducts .calc-item');
+const linesEl = document.getElementById('calcLines');
+const totalEl = document.getElementById('calcTotal');
+const savingEl = document.getElementById('calcSaving');
+
+function updateCalc(){
+  const selected = [];
+  items.forEach(item=>{
+    const cb = item.querySelector('input');
+    const priceEl = item.querySelector('.calc-item-price');
+    if(cb.checked){
+      selected.push({name: item.dataset.name, price: parseInt(item.dataset.price)});
+      item.classList.add('selected');
+      priceEl.classList.add('active');
+    } else {
+      item.classList.remove('selected');
+      priceEl.classList.remove('active');
+    }
+  });
+
+  if(selected.length === 0){
+    linesEl.innerHTML = '<div class="calc-empty">Select products to see pricing</div>';
+    totalEl.textContent = '£0';
+    savingEl.textContent = '';
+    return;
+  }
+
+  const subtotal = selected.reduce((s,i)=>s+i.price,0);
+  let discount = 0;
+  if(selected.length >= 5) discount = 0.25;
+  else if(selected.length >= 3) discount = 0.15;
+  else if(selected.length >= 2) discount = 0.10;
+
+  const total = Math.round(subtotal * (1-discount));
+
+  linesEl.innerHTML = selected.map(i=>
+    `<div class="calc-line"><span>${i.name}</span><span>£${i.price}/mo</span></div>`
+  ).join('');
+
+  totalEl.textContent = '£'+total.toLocaleString();
+
+  if(discount > 0){
+    const saved = subtotal - total;
+    savingEl.textContent = `You save £${saved}/mo (${Math.round(discount*100)}% bundle discount)`;
+  } else {
+    savingEl.textContent = 'Add 2+ products to unlock bundle discounts';
+  }
+}
+
+items.forEach(item=>{
+  item.querySelector('input').addEventListener('change', updateCalc);
+});
+updateCalc();
+
 </script>
 </body>
 </html>
