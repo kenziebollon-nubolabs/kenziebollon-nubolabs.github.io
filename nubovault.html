@@ -33,7 +33,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
 /* cursor — default on interactive, custom elsewhere */
 body{cursor:auto}
-canvas,section,main,.hero,.card-area{cursor:none}
+canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
+body.has-custom-cursor{cursor:none}
 a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
 #cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
@@ -43,7 +44,7 @@ input,select,textarea{cursor:text!important}
   border:1px solid rgba(26,143,255,0.35);border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}}
+@media(pointer:fine){#cur,#cur-r{display:block}body{cursor:none}a,button,input,select,textarea,label{cursor:pointer!important}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -202,7 +203,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
   border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 /* background canvases */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
+#bg-canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none;opacity:.55}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
   </style>
@@ -302,7 +303,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <div class="r">
       <h2 class="sec-h">Stay updated</h2>
       <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://linkedin.com/company/nubolabs" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
     </div>
   </div>
 </section>
@@ -317,7 +318,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
       <a href="cookies.html">Cookies</a>
-      <a href="https://linkedin.com/company/nubolabs" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -388,7 +389,10 @@ document.addEventListener('click',()=>{
 
 // Floating code snippets
 const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-let W,H;const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight;};resize();addEventListener('resize',resize);
+c.style.width='100%';c.style.height='100%';
+let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
+const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
+window.addEventListener('resize',resize);
 const snippets=['API_KEY=sk-***','DB_PASS=***','SECRET=***','TOKEN=***','AWS_KEY=***'];
 const floats=snippets.map((s,i)=>({text:s,x:100+i*200,y:200+i*80,vy:-.15,a:0.3+i*.05}));
 let t=0;
