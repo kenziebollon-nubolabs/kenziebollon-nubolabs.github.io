@@ -213,8 +213,31 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <div class="nav-logo-mark" aria-hidden="true">☁</div>
       <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
-    <a href="index.html" class="nav-back">← All products</a>
-    <a href="index.html#audit" class="btn">Get a free audit →</a>
+    <div class="nav-centre" role="navigation">
+      <div class="nav-dd">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
+          Products
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="nav-dd-menu" role="menu">
+          <div class="nav-dd-inner">
+            <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
+            <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#how" class="nav-link">How it works</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </div>
+    <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -383,144 +406,149 @@ document.addEventListener('click',()=>{
   });
 });
 
+
+
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
   let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
   window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  const cx=()=>BW/2, cy=()=>BH/2, SR=Math.min(BW,BH)*.22;
+  const COLS=10, ROWS=7;
+  const padX=BW*0.08, padY=BH*0.1;
+  const cellW=(BW-padX*2)/COLS, cellH=(BH-padY*2)/ROWS;
 
-  function drawShield(ctx,x,y,r,a){
-    ctx.save();ctx.globalAlpha=a;
-    ctx.strokeStyle='rgba(155,92,255,1)';ctx.lineWidth=1.5;
-    ctx.beginPath();
-    ctx.moveTo(x,y-r);
-    ctx.bezierCurveTo(x+r*.8,y-r*.8, x+r,y-.2*r, x+r,y+.2*r);
-    ctx.bezierCurveTo(x+r,y+.6*r, x,y+r, x,y+r);
-    ctx.bezierCurveTo(x,y+r, x-r,y+.6*r, x-r,y+.2*r);
-    ctx.bezierCurveTo(x-r,y-.2*r, x-r*.8,y-r*.8, x,y-r);
-    ctx.closePath();ctx.stroke();
-    ctx.restore();
+  function makeLock(col, row){
+    return {
+      x: padX + col*cellW + cellW*0.5,
+      y: padY + row*cellH + cellH*0.5,
+      locked: Math.random() > 0.45,
+      lockProgress: Math.random() > 0.45 ? 1 : 0,
+      lockSpeed: 0.04 + Math.random()*0.03,
+      pulse: Math.random()*Math.PI*2,
+      size: 14 + Math.random()*6,
+      delay: (col*ROWS+row) * 18,
+      flashTimer: 0,
+    };
   }
 
-  // Attacks
-  const attacks=Array.from({length:12},(_,i)=>{
-    const ang=(i/12)*Math.PI*2;
-    const dist=Math.min(BW,BH)*.55;
-    return{
-      x:BW/2+Math.cos(ang)*dist,
-      y:BH/2+Math.sin(ang)*dist,
-      ang:ang+Math.PI,
-      speed:1.2+Math.random()*.8,
-      size:3+Math.random()*3,
-      blocked:false,blockTimer:0,
-      reset(){
-        const a=(Math.random())*Math.PI*2;
-        const d=Math.min(BW,BH)*.55;
-        this.x=BW/2+Math.cos(a)*d;
-        this.y=BH/2+Math.sin(a)*d;
-        this.ang=Math.atan2(BH/2-this.y,BW/2-this.x);
-        this.blocked=false;this.blockTimer=0;
-      }
-    };
-  });
+  const locks = [];
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) locks.push(makeLock(c,r));
 
-  // Safe particles inside shield
-  const safeParticles=Array.from({length:8},()=>({
-    ang:Math.random()*Math.PI*2,
-    r:SR*.2+Math.random()*SR*.4,
-    speed:.008+Math.random()*.006,
-    size:2+Math.random()*2,
-  }));
+  // Security sweep — a vertical line that secures locks as it passes
+  let sweepX = -100;
+  let sweepSpeed = 1.2;
+  let sweepPhase = 0; // 0=scanning left-right, 1=pausing, 2=resetting
 
-  let t=0;
+  function drawLock(ctx, x, y, s, progress, flash){
+    // progress 0=unlocked, 1=locked
+    const col = progress > 0.5
+      ? `rgba(52,211,153,${0.4+progress*0.4})`
+      : `rgba(239,68,68,${0.4+(1-progress)*0.3})`;
+
+    ctx.strokeStyle = col;
+    ctx.lineWidth = 1.5;
+
+    // Lock body (rectangle)
+    const bw=s*0.7, bh=s*0.55;
+    ctx.beginPath();
+    ctx.roundRect(x-bw/2, y, bw, bh, 3);
+    ctx.stroke();
+
+    // Keyhole
+    ctx.beginPath();
+    ctx.arc(x, y+bh*0.38, bh*0.15, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y+bh*0.5);
+    ctx.lineTo(x, y+bh*0.72);
+    ctx.stroke();
+
+    // Shackle — open (unlocked) or closed (locked)
+    const shackleH = s*0.42;
+    const shackleW = bw*0.55;
+    ctx.beginPath();
+    if(progress > 0.5){
+      // Closed shackle — semicircle on top
+      ctx.arc(x, y - shackleH*0.1, shackleW/2, Math.PI, 0);
+    } else {
+      // Open shackle — offset to the right
+      const openOffset = (1-progress)*s*0.35;
+      ctx.arc(x + openOffset, y - shackleH*0.1, shackleW/2, Math.PI*0.9, 0.1);
+    }
+    ctx.stroke();
+
+    // Flash glow on lock
+    if(flash > 0){
+      ctx.save();
+      ctx.globalAlpha = flash * 0.5;
+      ctx.fillStyle = 'rgba(52,211,153,1)';
+      ctx.beginPath();
+      ctx.arc(x, y+bh*0.5, s*0.9, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  let t = 0;
   (function draw(){
-    t+=.016;
+    t++;
     xx.clearRect(0,0,BW,BH);
 
-    // Outer hex grid
-    const cols=Math.ceil(BW/70)+2,rows=Math.ceil(BH/60)+2;
-    for(let r=0;r<rows;r++)for(let col=0;col<cols;col++){
-      const hx=(col-.5)*70+(r%2)*35,hy=r*60-20;
-      const dist=Math.sqrt((hx-BW/2)**2+(hy-BH/2)**2);
-      const alpha=Math.max(0,.12-dist/(Math.min(BW,BH)*1.2));
-      xx.beginPath();
-      for(let i=0;i<6;i++){const ang=Math.PI/3*i;xx.lineTo(hx+22*Math.cos(ang),hy+22*Math.sin(ang));}
-      xx.closePath();xx.strokeStyle=`rgba(155,92,255,${alpha})`;xx.lineWidth=.6;xx.stroke();
+    // Move sweep line
+    sweepX += sweepSpeed;
+    if(sweepX > BW+100){
+      sweepX = -100;
+      // Reset some locks to unlocked for next sweep
+      locks.forEach(l=>{
+        if(Math.random() > 0.7){ l.locked=false; l.lockProgress=0; }
+      });
     }
 
-    // Shield glow
-    const grd=xx.createRadialGradient(BW/2,BH/2,SR*.3,BW/2,BH/2,SR*1.2);
-    grd.addColorStop(0,'rgba(155,92,255,0.06)');
-    grd.addColorStop(1,'rgba(155,92,255,0)');
-    xx.fillStyle=grd;xx.fillRect(0,0,BW,BH);
+    // Sweep line glow
+    const sgrd = xx.createLinearGradient(sweepX-60,0,sweepX+20,0);
+    sgrd.addColorStop(0,'rgba(155,92,255,0)');
+    sgrd.addColorStop(0.6,'rgba(155,92,255,0.08)');
+    sgrd.addColorStop(1,'rgba(155,92,255,0.02)');
+    xx.fillStyle=sgrd;
+    xx.fillRect(sweepX-60,0,80,BH);
 
-    // Multiple shield rings
-    for(let ring=3;ring>0;ring--){
-      drawShield(xx,BW/2,BH/2,SR*(.7+ring*.12),(.12-ring*.03)+.05*Math.sin(t+ring));
-    }
-    // Main shield bright
-    drawShield(xx,BW/2,BH/2,SR,.45+.05*Math.sin(t*.7));
-
-    // Shield fill
-    xx.save();xx.globalAlpha=.04+.01*Math.sin(t);
-    xx.fillStyle='rgba(155,92,255,1)';
+    // Bright sweep line
     xx.beginPath();
-    xx.moveTo(BW/2,BH/2-SR);
-    xx.bezierCurveTo(BW/2+SR*.8,BH/2-SR*.8,BW/2+SR,BH/2-.2*SR,BW/2+SR,BH/2+.2*SR);
-    xx.bezierCurveTo(BW/2+SR,BH/2+.6*SR,BW/2,BH/2+SR,BW/2,BH/2+SR);
-    xx.bezierCurveTo(BW/2,BH/2+SR,BW/2-SR,BH/2+.6*SR,BW/2-SR,BH/2+.2*SR);
-    xx.bezierCurveTo(BW/2-SR,BH/2-.2*SR,BW/2-SR*.8,BH/2-SR*.8,BW/2,BH/2-SR);
-    xx.closePath();xx.fill();xx.restore();
+    xx.moveTo(sweepX,0);
+    xx.lineTo(sweepX,BH);
+    xx.strokeStyle='rgba(155,92,255,0.35)';
+    xx.lineWidth=1.5;
+    xx.stroke();
 
-    // Safe particles inside
-    safeParticles.forEach(p=>{
-      p.ang+=p.speed;
-      const px=BW/2+Math.cos(p.ang)*p.r;
-      const py=BH/2+Math.sin(p.ang)*p.r*.8;
-      xx.beginPath();xx.arc(px,py,p.size,0,Math.PI*2);
-      xx.fillStyle=`rgba(52,211,153,${.4+.2*Math.sin(t+p.ang)})`;xx.fill();
+    // Update and draw locks
+    locks.forEach(lk=>{
+      lk.pulse += 0.02;
+
+      // Lock when sweep passes over
+      if(!lk.locked && sweepX > lk.x - 10 && sweepX < lk.x + 60){
+        lk.locked = true;
+        lk.flashTimer = 1;
+      }
+      if(lk.locked && lk.lockProgress < 1){
+        lk.lockProgress = Math.min(1, lk.lockProgress + lk.lockSpeed);
+      }
+      if(lk.flashTimer > 0) lk.flashTimer = Math.max(0, lk.flashTimer - 0.06);
+
+      const baseAlpha = lk.lockProgress > 0.5
+        ? 0.3 + 0.15*Math.sin(lk.pulse)
+        : 0.2 + 0.1*Math.sin(lk.pulse);
+
+      xx.save();
+      xx.globalAlpha = baseAlpha;
+      drawLock(xx, lk.x, lk.y-lk.size*0.5, lk.size, lk.lockProgress, lk.flashTimer);
+      xx.restore();
     });
 
-    // Attacks
-    attacks.forEach(atk=>{
-      if(atk.blocked){
-        atk.blockTimer++;
-        // Flash on impact
-        xx.beginPath();xx.arc(atk.x,atk.y,Math.max(0.1,12*(1-atk.blockTimer/30)),0,Math.PI*2);
-        xx.fillStyle=`rgba(239,68,68,${.7*(1-atk.blockTimer/30)})`;xx.fill();
-        if(atk.blockTimer>30)atk.reset();
-        return;
-      }
-      atk.x+=Math.cos(atk.ang)*atk.speed;
-      atk.y+=Math.sin(atk.ang)*atk.speed;
-
-      // Check if hit shield
-      const dx=atk.x-BW/2,dy=atk.y-BH/2;
-      // Approximate shield collision as ellipse
-      const shieldDist=Math.sqrt(dx*dx+dy*dy/1.2);
-      if(shieldDist<SR+5){
-        atk.blocked=true;
-        // Impact flash
-        xx.beginPath();xx.arc(atk.x,atk.y,15,0,Math.PI*2);
-        xx.fillStyle='rgba(239,68,68,0.8)';xx.fill();
-        // Shield flash at impact point
-        xx.beginPath();xx.arc(atk.x,atk.y,8,0,Math.PI*2);
-        xx.fillStyle='rgba(155,92,255,0.9)';xx.fill();
-        return;
-      }
-
-      // Draw attack dot with trail
-      xx.beginPath();xx.arc(atk.x,atk.y,atk.size,0,Math.PI*2);
-      xx.fillStyle=`rgba(239,68,68,${.5+.3*Math.sin(t*3+atk.ang)})`;xx.fill();
-      // Trail
-      for(let tr=1;tr<=5;tr++){
-        const tx=atk.x-Math.cos(atk.ang)*atk.speed*tr*4;
-        const ty=atk.y-Math.sin(atk.ang)*atk.speed*tr*4;
-        xx.beginPath();xx.arc(tx,ty,Math.max(0.1,atk.size*(1-tr*.18)),0,Math.PI*2);
-        xx.fillStyle=`rgba(239,68,68,${(.4-tr*.07)})`;xx.fill();
-      }
-    });
+    // Stats overlay — locked count
+    const lockedCount = locks.filter(l=>l.lockProgress>0.5).length;
+    xx.font = 'bold 13px monospace';
+    xx.fillStyle = 'rgba(52,211,153,0.25)';
+    xx.fillText(`${lockedCount}/${locks.length} secured`, BW*0.04, BH*0.96);
 
     requestAnimationFrame(draw);
   })();

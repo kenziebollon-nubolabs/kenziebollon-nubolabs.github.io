@@ -213,8 +213,31 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <div class="nav-logo-mark" aria-hidden="true">☁</div>
       <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
-    <a href="index.html" class="nav-back">← All products</a>
-    <a href="index.html#audit" class="btn">Get a free audit →</a>
+    <div class="nav-centre" role="navigation">
+      <div class="nav-dd">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
+          Products
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="nav-dd-menu" role="menu">
+          <div class="nav-dd-inner">
+            <a href="nuboslens.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
+            <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#how" class="nav-link">How it works</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </div>
+    <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
@@ -413,59 +436,153 @@ document.addEventListener('click',()=>{
   });
 });
 
+
+
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
   let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
   window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  const COLS=Math.floor(BW/28);
-  const cols=Array.from({length:COLS},(_,i)=>({
-    x:i*28+14,
-    y:-Math.random()*BH,
-    speed:1.5+Math.random()*2.5,
-    chars:['£','$','%','↓','→','0','1','.'],
-    trail:[],
-    trailLen:6+Math.floor(Math.random()*8),
+  const resources=[
+    'EC2 i3.xlarge','S3 bucket','RDS db.m5.lg','Lambda fn',
+    'EBS vol-0a1b','ElastiCache','CloudFront','EKS cluster',
+    'RDS db.r5.2xl','EC2 t3.micro','S3 logs','VPC subnet',
+    'NAT Gateway','Load Balancer','EC2 m5.4xl','SQS queue',
+    'DynamoDB','EC2 c5.2xl','S3 backups','RDS db.t3',
+    'Elastic IP','Route53','ACM cert','EC2 g4dn',
+    'Aurora DB','Redshift','MSK cluster','EC2 p3.2xl',
+  ];
+
+  const waste=['£210/mo','£380/mo','£95/mo','£140/mo','£290/mo','£22/mo','£180/mo','£65/mo'];
+
+  // Floating resource nodes
+  const nodes = resources.map((txt,i)=>({
+    txt,
+    x: 60 + (i%7)*(BW/7.2),
+    y: 60 + Math.floor(i/7)*(BH/4.5),
+    a: 0.12 + Math.random()*0.08,
+    highlight: 0,
+    waste: waste[i%waste.length],
+    found: false,
   }));
 
-  // Floating cost figures
-  const floaters=[
-    {txt:'£1,137/mo',x:BW*.6,y:BH*.2,a:.3},
-    {txt:'£13,644/yr',x:BW*.7,y:BH*.45,a:.25},
-    {txt:'-30% waste',x:BW*.58,y:BH*.65,a:.28},
-    {txt:'£380/mo',x:BW*.75,y:BH*.3,a:.22},
-    {txt:'48hr audit',x:BW*.65,y:BH*.75,a:.2},
+  // Multiple independent magnifying glasses
+  const glasses = [
+    { r:55, speed:0.0025, pathOffset:0,       pathScale:1,   angle:0 },
+    { r:45, speed:0.0035, pathOffset:Math.PI,  pathScale:0.7, angle:0 },
+    { r:50, speed:0.002,  pathOffset:Math.PI/2,pathScale:1.2, angle:0 },
+    { r:40, speed:0.004,  pathOffset:Math.PI*1.5,pathScale:0.8,angle:0},
+    { r:48, speed:0.003,  pathOffset:Math.PI*0.7,pathScale:0.9,angle:0},
   ];
+
+  // Each glass follows a slow lissajous-style path
+  function glassPath(g, t){
+    const ox = BW/2, oy = BH/2;
+    const rx = BW*0.38*g.pathScale, ry = BH*0.32*g.pathScale;
+    const phase = t*g.speed + g.pathOffset;
+    return {
+      x: ox + rx*Math.sin(phase*1.3),
+      y: oy + ry*Math.sin(phase*0.9 + 0.5),
+    };
+  }
+
+  function drawGlass(g, pos){
+    // Lens
+    xx.beginPath();
+    xx.arc(pos.x, pos.y, g.r, 0, Math.PI*2);
+    xx.strokeStyle=`rgba(26,143,255,0.5)`;
+    xx.lineWidth=4;
+    xx.stroke();
+
+    // Interior tint
+    const grd=xx.createRadialGradient(pos.x,pos.y,0,pos.x,pos.y,g.r);
+    grd.addColorStop(0,'rgba(26,143,255,0.06)');
+    grd.addColorStop(1,'rgba(26,143,255,0.01)');
+    xx.fillStyle=grd;xx.fill();
+
+    // Shine
+    xx.beginPath();
+    xx.arc(pos.x-g.r*0.28,pos.y-g.r*0.28,g.r*0.16,0,Math.PI*2);
+    xx.strokeStyle='rgba(26,143,255,0.22)';
+    xx.lineWidth=1.5;xx.stroke();
+
+    // Scan line
+    const scanY = pos.y - g.r + ((t*0.8+g.pathOffset*20)%(g.r*2));
+    xx.save();
+    xx.beginPath();xx.arc(pos.x,pos.y,g.r-2,0,Math.PI*2);xx.clip();
+    xx.beginPath();xx.moveTo(pos.x-g.r,scanY);xx.lineTo(pos.x+g.r,scanY);
+    xx.strokeStyle='rgba(26,143,255,0.12)';xx.lineWidth=1.5;xx.stroke();
+    xx.restore();
+
+    // Handle at 135 degrees
+    const ha=Math.PI*0.75;
+    const hx1=pos.x+Math.cos(ha)*g.r, hy1=pos.y+Math.sin(ha)*g.r;
+    const hx2=hx1+Math.cos(ha)*40,   hy2=hy1+Math.sin(ha)*40;
+    xx.beginPath();xx.moveTo(hx1,hy1);xx.lineTo(hx2,hy2);
+    xx.strokeStyle='rgba(26,143,255,0.55)';xx.lineWidth=5;
+    xx.lineCap='round';xx.stroke();xx.lineCap='butt';
+  }
 
   let t=0;
   (function draw(){
-    t+=.5;
+    t+=0.4;
     xx.clearRect(0,0,BW,BH);
 
-    // Matrix rain
-    cols.forEach(col=>{
-      col.y+=col.speed;
-      if(col.y>BH+50){col.y=-50;col.speed=1.5+Math.random()*2.5;}
+    // Compute glass positions
+    const positions = glasses.map(g=>glassPath(g,t));
 
-      // Trail
-      col.trail.unshift({y:col.y,char:col.chars[Math.floor(Math.random()*col.chars.length)]});
-      if(col.trail.length>col.trailLen)col.trail.pop();
-
-      col.trail.forEach((tr,i)=>{
-        const alpha=(.35*(1-i/col.trailLen))*(i===0?.9:.4);
-        const size=i===0?14:11;
-        xx.font=`${size}px monospace`;
-        xx.fillStyle=`rgba(26,143,255,${alpha})`;
-        xx.fillText(tr.char,col.x,tr.y);
+    // Update highlights
+    nodes.forEach(n=>{
+      let underGlass=false;
+      positions.forEach((pos,gi)=>{
+        const dx=n.x-pos.x,dy=n.y-pos.y;
+        if(Math.sqrt(dx*dx+dy*dy)<glasses[gi].r+20) underGlass=true;
       });
+      if(underGlass) n.highlight=Math.min(1,n.highlight+0.05);
+      else n.highlight=Math.max(0,n.highlight-0.025);
     });
 
-    // Floating cost labels with gentle pulse
-    floaters.forEach((f,i)=>{
-      const aa=f.a+.05*Math.sin(t*.03+i);
-      xx.font='bold 15px Syne,sans-serif';
-      xx.fillStyle=`rgba(26,143,255,${aa})`;
-      xx.fillText(f.txt,f.x,f.y+10*Math.sin(t*.02+i));
+    // Draw resource nodes
+    nodes.forEach(n=>{
+      xx.font='12px monospace';
+      if(n.highlight>0.3){
+        xx.fillStyle=`rgba(239,68,68,${n.a+n.highlight*0.45})`;
+        xx.fillText('⚠ '+n.txt,n.x,n.y);
+        xx.font='bold 11px monospace';
+        xx.fillStyle=`rgba(52,211,153,${n.highlight*0.85})`;
+        xx.fillText(n.waste,n.x,n.y+15);
+      } else {
+        xx.fillStyle=`rgba(26,143,255,${n.a+n.highlight*0.15})`;
+        xx.fillText(n.txt,n.x,n.y);
+      }
+    });
+
+    // Draw all glasses (with magnified view inside each)
+    glasses.forEach((g,gi)=>{
+      const pos=positions[gi];
+
+      // Magnified content inside glass
+      xx.save();
+      xx.beginPath();xx.arc(pos.x,pos.y,g.r-2,0,Math.PI*2);xx.clip();
+      nodes.forEach(n=>{
+        const dx=n.x-pos.x,dy=n.y-pos.y;
+        if(Math.sqrt(dx*dx+dy*dy)<g.r+30){
+          xx.font='bold 12px monospace';
+          if(n.highlight>0.3){
+            xx.fillStyle='rgba(239,68,68,0.9)';
+            xx.fillText('⚠ '+n.txt,n.x,n.y);
+            xx.font='bold 11px monospace';
+            xx.fillStyle='rgba(52,211,153,0.95)';
+            xx.fillText(n.waste,n.x,n.y+15);
+          } else {
+            xx.fillStyle='rgba(26,143,255,0.55)';
+            xx.fillText(n.txt,n.x,n.y);
+          }
+        }
+      });
+      xx.restore();
+
+      drawGlass(g,pos);
     });
 
     requestAnimationFrame(draw);
