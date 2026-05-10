@@ -30,21 +30,19 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 /* cursor — default on interactive, custom elsewhere */
-body{cursor:auto}
-canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
-body.has-custom-cursor{cursor:none}
-a,button,input,select,textarea,label{cursor:pointer!important}
+
+canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#00c896;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+  transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  border:1px solid #00c89680;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}body{cursor:none}a,button,input,select,textarea,label{cursor:pointer!important}input,select,textarea{cursor:text!important}}
+@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -148,10 +146,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
   background:var(--pc-dim,var(--accent-dim));
   border:1px solid var(--pc-border,rgba(26,143,255,0.18));
@@ -203,7 +198,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
   border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 /* background canvases */
-#bg-canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none;opacity:.55}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
   </style>
@@ -363,6 +358,8 @@ const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
+
+
 // Accessible dropdown — click/tap/keyboard + Escape + outside click
 document.querySelectorAll('.nav-dd').forEach(dd=>{
   const btn=dd.querySelector('button,a');
@@ -386,27 +383,96 @@ document.addEventListener('click',()=>{
   });
 });
 
+;(function(){
+  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
+  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
+  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-// Animated graph lines
-const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-c.style.width='100%';c.style.height='100%';
-let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
-const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
-window.addEventListener('resize',resize);
-const lines=Array.from({length:4},(_,i)=>({pts:Array.from({length:40},(_,j)=>({x:j*(W/39),y:H/2+Math.random()*100-50})),color:['rgba(0,200,150,.15)','rgba(0,200,150,.08)','rgba(26,143,255,.1)','rgba(0,200,150,.05)'][i],speed:.3+i*.1,offset:i*20}));
-let t=0;
-(function draw(){t+=.4;x.clearRect(0,0,W,H);
-  lines.forEach(l=>{
-    l.pts.forEach((p,i)=>{if(i>0)p.y+=.3*Math.sin((t+i*20+l.offset)*.05);p.y=Math.max(50,Math.min(H-50,p.y));});
-    x.beginPath();l.pts.forEach((p,i)=>{i===0?x.moveTo(p.x,p.y):x.lineTo(p.x,p.y);});
-    x.strokeStyle=l.color;x.lineWidth=1.5;x.stroke();
-  });
-  // alert dot
-  const ax=W*.7,ay=H*.35,pulse=.5+.4*Math.sin(t*.08);
-  x.beginPath();x.arc(ax,ay,5,0,Math.PI*2);x.fillStyle=`rgba(239,68,68,${pulse})`;x.fill();
-  x.beginPath();x.arc(ax,ay,12+8*pulse,0,Math.PI*2);x.strokeStyle=`rgba(239,68,68,${pulse*.4})`;x.lineWidth=1;x.stroke();
-  requestAnimationFrame(draw);})();
+  // Multiple ECG lines at different heights
+  const lines=[
+    {y:.3,color:'rgba(0,200,150,1)',width:1.8,amp:60,freq:.08,speed:2,label:'CPU',val:'47%'},
+    {y:.5,color:'rgba(26,143,255,1)',width:1.5,amp:40,freq:.12,speed:1.5,label:'Memory',val:'2.1GB'},
+    {y:.7,color:'rgba(0,200,150,1)',width:1.2,amp:30,freq:.06,speed:2.5,label:'Latency',val:'42ms'},
+  ];
 
+  const history=lines.map(()=>Array(BW).fill(0));
+  let t=0,offset=0;
+
+  // Alert dot position
+  let alertX=BW*.7,alertPulse=0;
+
+  (function draw(){
+    t+=.5;offset=(offset+1.5)%BW;
+    xx.clearRect(0,0,BW,BH);
+
+    // Grid
+    for(let x=0;x<BW;x+=BW/12){
+      xx.beginPath();xx.moveTo(x,0);xx.lineTo(x,BH);
+      xx.strokeStyle='rgba(0,200,150,0.04)';xx.lineWidth=1;xx.stroke();
+    }
+    for(let y=0;y<BH;y+=BH/8){
+      xx.beginPath();xx.moveTo(0,y);xx.lineTo(BW,y);
+      xx.strokeStyle='rgba(0,200,150,0.04)';xx.lineWidth=1;xx.stroke();
+    }
+
+    lines.forEach((ln,li)=>{
+      const baseY=BH*ln.y;
+
+      // Build ECG shape - flat then spike
+      const pos=Math.floor(offset);
+      // Generate ECG value at current position
+      const phase=t*ln.freq;
+      let val=Math.sin(phase)*ln.amp*.3;
+      // Add ECG spike periodically
+      const spikeMod=t%(60/ln.speed);
+      if(spikeMod<3) val=spikeMod<1.5?spikeMod*ln.amp*2:(3-spikeMod)*ln.amp*2;
+
+      history[li][pos]=val;
+
+      // Draw the line
+      xx.beginPath();
+      xx.lineWidth=ln.width;
+      xx.strokeStyle=ln.color.replace('1)',`${.35})`);
+
+      for(let x=0;x<BW;x++){
+        const idx=(pos-BW+x+BW)%BW;
+        const fade=x/BW;
+        const yp=baseY+history[li][idx];
+        x===0?xx.moveTo(x,yp):xx.lineTo(x,yp);
+      }
+      xx.stroke();
+
+      // Bright moving head
+      const headX=pos;
+      const headY=baseY+history[li][pos];
+      xx.beginPath();xx.arc(headX,headY,3,0,Math.PI*2);
+      xx.fillStyle=ln.color;xx.fill();
+
+      // Glow at head
+      const grd=xx.createRadialGradient(headX,headY,0,headX,headY,20);
+      grd.addColorStop(0,ln.color.replace('1)','.3)'));
+      grd.addColorStop(1,ln.color.replace('1)','0)'));
+      xx.fillStyle=grd;xx.fillRect(headX-20,headY-20,40,40);
+
+      // Label
+      xx.font='11px Inter,sans-serif';
+      xx.fillStyle=ln.color.replace('1)','.5)');
+      xx.fillText(`${ln.label}: ${ln.val}`,20,baseY-15);
+    });
+
+    // Alert pulse
+    alertPulse+=.05;
+    const alertA=.4+.3*Math.sin(alertPulse*3);
+    xx.beginPath();xx.arc(alertX,BH*.3,6,0,Math.PI*2);
+    xx.fillStyle=`rgba(239,68,68,${alertA})`;xx.fill();
+    for(let ring=1;ring<=3;ring++){
+      xx.beginPath();xx.arc(alertX,BH*.3,6+ring*8*(alertPulse%1),0,Math.PI*2);
+      xx.strokeStyle=`rgba(239,68,68,${.4*(1-alertPulse%1)/ring})`;xx.lineWidth=1;xx.stroke();
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
 </script>
 </body>
 </html>

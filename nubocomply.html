@@ -30,21 +30,19 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 /* cursor — default on interactive, custom elsewhere */
-body{cursor:auto}
-canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
-body.has-custom-cursor{cursor:none}
-a,button,input,select,textarea,label{cursor:pointer!important}
+
+canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#f59e0b;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+  transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  border:1px solid #f59e0b80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}body{cursor:none}a,button,input,select,textarea,label{cursor:pointer!important}input,select,textarea{cursor:text!important}}
+@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -148,10 +146,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
   background:var(--pc-dim,var(--accent-dim));
   border:1px solid var(--pc-border,rgba(26,143,255,0.18));
@@ -203,7 +198,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
   border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 /* background canvases */
-#bg-canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none;opacity:.55}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
   </style>
@@ -363,6 +358,8 @@ const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
+
+
 // Accessible dropdown — click/tap/keyboard + Escape + outside click
 document.querySelectorAll('.nav-dd').forEach(dd=>{
   const btn=dd.querySelector('button,a');
@@ -386,31 +383,83 @@ document.addEventListener('click',()=>{
   });
 });
 
+;(function(){
+  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
+  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
+  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-// Animated checklist
-const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-c.style.width='100%';c.style.height='100%';
-let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
-const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
-window.addEventListener('resize',resize);
-const items=['Access controls','Encryption at rest','Audit logging','Incident response','Vendor management','Risk assessment','Change management','Business continuity'];
-let t=0,tick=0;
-(function draw(){t+=.006;tick++;x.clearRect(0,0,W,H);
-  items.forEach((item,i)=>{
-    const yy=120+i*70,a=.07+.04*Math.sin(t+i*.5);
-    const checked=i<Math.floor(tick/80)%items.length;
-    x.font='13px Inter,sans-serif';
-    x.fillStyle=`rgba(245,158,11,${a*1.5})`;
-    x.fillText(checked?'✓ '+item:'○ '+item,W*.6,yy);
-  });
-  // radial progress
-  const prog=(tick%300)/300,cx=W*.25,cy=H*.4,r=80;
-  x.beginPath();x.arc(cx,cy,r,-.5*Math.PI,-.5*Math.PI+prog*2*Math.PI);
-  x.strokeStyle='rgba(245,158,11,0.2)';x.lineWidth=3;x.stroke();
-  x.font='bold 28px Syne,sans-serif';x.fillStyle='rgba(245,158,11,0.15)';x.textAlign='center';
-  x.fillText(Math.round(prog*100)+'%',cx,cy+10);x.textAlign='left';
-  requestAnimationFrame(draw);})();
+  const checks=[
+    'Access Controls','Encryption at Rest','Audit Logging',
+    'Incident Response','Vendor Management','Risk Assessment',
+    'Change Management','Business Continuity','Data Retention',
+    'Penetration Testing','Security Training','Vulnerability Mgmt'
+  ];
+  const total=checks.length;
+  let progress=0,t=0;
 
+  // Floating check items
+  const items=checks.map((c,i)=>({
+    txt:c,
+    x:BW*.6+Math.sin(i*2.1)*BW*.15,
+    y:BH*.15+i*(BH*.06),
+    done:false,
+    showAt:i*60,
+  }));
+
+  (function draw(){
+    t++;progress=Math.min(total,(t/120)*total*1.5%(total+1));
+    xx.clearRect(0,0,BW,BH);
+
+    // Central radial progress wheel
+    const cx=BW*.25,cy=BH*.5,r=Math.min(BW,BH)*.18;
+
+    // Background ring
+    xx.beginPath();xx.arc(cx,cy,r,0,Math.PI*2);
+    xx.strokeStyle='rgba(245,158,11,0.1)';xx.lineWidth=8;xx.stroke();
+
+    // Progress arc
+    const prog=progress/total;
+    xx.beginPath();xx.arc(cx,cy,r,-Math.PI*.5,-Math.PI*.5+prog*Math.PI*2);
+    xx.strokeStyle='rgba(245,158,11,0.55)';xx.lineWidth=8;
+    xx.lineCap='round';xx.stroke();xx.lineCap='butt';
+
+    // Percentage text
+    xx.font=`bold ${r*.5}px Syne,sans-serif`;
+    xx.fillStyle='rgba(245,158,11,0.35)';
+    xx.textAlign='center';
+    xx.fillText(Math.round(prog*100)+'%',cx,cy+r*.18);
+    xx.font=`${r*.18}px Inter,sans-serif`;
+    xx.fillStyle='rgba(245,158,11,0.25)';
+    xx.fillText('compliant',cx,cy+r*.45);
+    xx.textAlign='left';
+
+    // Spokes
+    for(let i=0;i<total;i++){
+      const ang=-Math.PI*.5+(i/total)*Math.PI*2;
+      const done=i<progress;
+      xx.beginPath();
+      xx.moveTo(cx+Math.cos(ang)*(r*.85),cy+Math.sin(ang)*(r*.85));
+      xx.lineTo(cx+Math.cos(ang)*(r+20),cy+Math.sin(ang)*(r+20));
+      xx.strokeStyle=done?'rgba(52,211,153,0.5)':'rgba(245,158,11,0.15)';
+      xx.lineWidth=done?2:1;xx.stroke();
+      // Dot at end
+      xx.beginPath();xx.arc(cx+Math.cos(ang)*(r+24),cy+Math.sin(ang)*(r+24),4,0,Math.PI*2);
+      xx.fillStyle=done?'rgba(52,211,153,0.6)':'rgba(245,158,11,0.2)';xx.fill();
+    }
+
+    // Checklist items on the right
+    items.forEach((item,i)=>{
+      if(t<item.showAt)return;
+      const done=i<progress;
+      const aa=Math.min(1,(t-item.showAt)/30);
+      xx.font='12px Inter,sans-serif';
+      xx.fillStyle=done?`rgba(52,211,153,${aa*.5})`:`rgba(245,158,11,${aa*.3})`;
+      xx.fillText((done?'✓ ':'○ ')+item.txt,item.x,item.y);
+    });
+
+    requestAnimationFrame(draw);
+  })();
+})();
 </script>
 </body>
 </html>

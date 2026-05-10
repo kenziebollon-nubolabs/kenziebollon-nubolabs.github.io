@@ -30,21 +30,19 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 /* cursor — default on interactive, custom elsewhere */
-body{cursor:auto}
-canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
-body.has-custom-cursor{cursor:none}
-a,button,input,select,textarea,label{cursor:pointer!important}
+
+canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#a78bfa;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+  transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  border:1px solid #a78bfa80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}body{cursor:none}a,button,input,select,textarea,label{cursor:pointer!important}input,select,textarea{cursor:text!important}}
+@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -148,10 +146,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
   background:var(--pc-dim,var(--accent-dim));
   border:1px solid var(--pc-border,rgba(26,143,255,0.18));
@@ -203,7 +198,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
   border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 /* background canvases */
-#bg-canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none;opacity:.55}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
   </style>
@@ -363,6 +358,8 @@ const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
+
+
 // Accessible dropdown — click/tap/keyboard + Escape + outside click
 document.querySelectorAll('.nav-dd').forEach(dd=>{
   const btn=dd.querySelector('button,a');
@@ -386,37 +383,115 @@ document.addEventListener('click',()=>{
   });
 });
 
+;(function(){
+  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
+  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
+  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-// Forecast graph
-const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-c.style.width='100%';c.style.height='100%';
-let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
-const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
-window.addEventListener('resize',resize);
-let t=0;
-(function draw(){t+=.005;x.clearRect(0,0,W,H);
-  const pts=20,startX=W*.1,endX=W*.9,midX=W*.55,baseY=H*.6;
-  // historical line
-  x.beginPath();
-  for(let i=0;i<pts;i++){
-    const px=startX+(midX-startX)*(i/pts);
-    const py=baseY-80*Math.sin(i*.3)-30*i+i*i*.8;
-    i===0?x.moveTo(px,py):x.lineTo(px,py);}
-  x.strokeStyle='rgba(167,139,250,0.25)';x.lineWidth=2;x.stroke();
-  // forecast dashed
-  x.beginPath();x.setLineDash([4,3]);
-  const lastPy=baseY-80*Math.sin(pts*.3)-30*pts+pts*pts*.8;
-  x.moveTo(midX,lastPy);
-  for(let i=0;i<pts*.6;i++){
-    const px=midX+(endX-midX)*(i/(pts*.6));
-    const py=lastPy-15*i+.5*i*i+10*Math.sin(t+i*.5);
-    x.lineTo(px,py);}
-  x.strokeStyle='rgba(167,139,250,0.18)';x.lineWidth=2;x.stroke();x.setLineDash([]);
-  // forecast label
-  x.font='12px monospace';x.fillStyle='rgba(167,139,250,0.2)';
-  x.fillText('← actual    forecast →',W*.45,baseY-120);
-  requestAnimationFrame(draw);})();
+  const HIST=24,FORE=12;
+  const all=HIST+FORE;
+  const padL=80,padR=60,padT=100,padB=80;
+  const chartW=BW-padL-padR,chartH=BH-padT-padB;
 
+  // Generate realistic spend data with growth
+  function getY(i){
+    const base=4000+i*120;
+    const noise=Math.sin(i*.7)*300+Math.sin(i*1.3)*150;
+    return base+noise;
+  }
+
+  let t=0,revealProgress=0;
+  (function draw(){
+    t+=.008;revealProgress=Math.min(1,revealProgress+.003);
+    xx.clearRect(0,0,BW,BH);
+
+    // Grid
+    for(let i=0;i<=4;i++){
+      const y=padT+chartH*(i/4);
+      xx.beginPath();xx.moveTo(padL,y);xx.lineTo(padL+chartW,y);
+      xx.strokeStyle='rgba(167,139,250,0.08)';xx.lineWidth=1;xx.stroke();
+      // Y axis labels
+      xx.font='11px Inter,sans-serif';
+      xx.fillStyle='rgba(167,139,250,0.3)';
+      xx.textAlign='right';
+      xx.fillText('£'+(8000-i*2000).toLocaleString(),padL-8,y+4);
+    }
+    xx.textAlign='left';
+
+    // Month labels
+    for(let i=0;i<all;i+=3){
+      const x=padL+(i/all)*chartW;
+      xx.font='10px Inter,sans-serif';
+      xx.fillStyle=i<HIST?'rgba(167,139,250,0.3)':'rgba(167,139,250,0.2)';
+      xx.textAlign='center';
+      xx.fillText(`M${i+1}`,x,padT+chartH+20);
+    }
+    xx.textAlign='left';
+
+    // Divider line between history and forecast
+    const divX=padL+(HIST/all)*chartW;
+    xx.beginPath();xx.moveTo(divX,padT-20);xx.lineTo(divX,padT+chartH+10);
+    xx.strokeStyle='rgba(167,139,250,0.2)';xx.lineWidth=1;xx.setLineDash([4,4]);xx.stroke();xx.setLineDash([]);
+    xx.font='10px Inter,sans-serif';xx.fillStyle='rgba(167,139,250,0.25)';xx.textAlign='center';
+    xx.fillText('forecast →',divX+40,padT-8);xx.fillText('← actual',divX-40,padT-8);
+    xx.textAlign='left';
+
+    // Confidence band (forecast)
+    const bandPts_upper=[],bandPts_lower=[];
+    for(let i=HIST;i<=all;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const uncertainty=(i-HIST)*80;
+      const maxY=8000,minY=2000,range=maxY-minY;
+      bandPts_upper.push([x,padT+chartH-((val+uncertainty-minY)/range)*chartH]);
+      bandPts_lower.push([x,padT+chartH-((val-uncertainty-minY)/range)*chartH]);
+    }
+    xx.beginPath();
+    bandPts_upper.forEach((p,i)=>i===0?xx.moveTo(p[0],p[1]):xx.lineTo(p[0],p[1]));
+    [...bandPts_lower].reverse().forEach(p=>xx.lineTo(p[0],p[1]));
+    xx.closePath();
+    xx.fillStyle='rgba(167,139,250,0.07)';xx.fill();
+
+    // Historical line
+    xx.beginPath();xx.lineWidth=2;xx.strokeStyle='rgba(167,139,250,0.55)';
+    for(let i=0;i<=HIST;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===0?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();
+
+    // Forecast line (dashed, animated)
+    xx.beginPath();xx.lineWidth=1.5;xx.strokeStyle='rgba(167,139,250,0.4)';
+    xx.setLineDash([6,4]);
+    const forePoints=Math.floor(FORE*revealProgress);
+    for(let i=HIST;i<=HIST+forePoints;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===HIST?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();xx.setLineDash([]);
+
+    // Moving dot on forecast head
+    if(forePoints>0){
+      const i=HIST+forePoints;
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const y=padT+chartH-((val-2000)/6000)*chartH;
+      xx.beginPath();xx.arc(x,y,5,0,Math.PI*2);
+      xx.fillStyle=`rgba(167,139,250,${.7+.2*Math.sin(t*3)})`;xx.fill();
+      const grd=xx.createRadialGradient(x,y,0,x,y,20);
+      grd.addColorStop(0,'rgba(167,139,250,0.3)');grd.addColorStop(1,'rgba(167,139,250,0)');
+      xx.fillStyle=grd;xx.fillRect(x-20,y-20,40,40);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
 </script>
 </body>
 </html>

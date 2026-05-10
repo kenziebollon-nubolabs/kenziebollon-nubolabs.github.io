@@ -30,21 +30,19 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 /* cursor — default on interactive, custom elsewhere */
-body{cursor:auto}
-canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
-body.has-custom-cursor{cursor:none}
-a,button,input,select,textarea,label{cursor:pointer!important}
+
+canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#ff3c5a;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+  transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  border:1px solid #ff3c5a80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}body{cursor:none}a,button,input,select,textarea,label{cursor:pointer!important}input,select,textarea{cursor:text!important}}
+@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -148,10 +146,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
   background:var(--pc-dim,var(--accent-dim));
   border:1px solid var(--pc-border,rgba(26,143,255,0.18));
@@ -203,7 +198,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
   border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
 /* background canvases */
-#bg-canvas{position:fixed;top:0;left:0;z-index:0;pointer-events:none;opacity:.55}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
   </style>
@@ -363,6 +358,8 @@ const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
+
+
 // Accessible dropdown — click/tap/keyboard + Escape + outside click
 document.querySelectorAll('.nav-dd').forEach(dd=>{
   const btn=dd.querySelector('button,a');
@@ -386,43 +383,120 @@ document.addEventListener('click',()=>{
   });
 });
 
+;(function(){
+  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
+  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
+  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-// Pipeline flow animation
-const c=document.getElementById('bg-canvas'),x=c.getContext('2d');
-c.style.width='100%';c.style.height='100%';
-let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
-const resize=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight;};
-window.addEventListener('resize',resize);
-const stages=['Build','Test','Stage','Deploy','Live'];
-const dots=[];for(let i=0;i<8;i++)dots.push({progress:i/8,speed:.002+Math.random()*.001});
-let t=0;
-(function draw(){t+=1;x.clearRect(0,0,W,H);
-  const y=H*.5,margin=W*.15,stageW=(W-margin*2)/(stages.length-1);
-  // draw connections
-  stages.forEach((_,i)=>{
-    if(i<stages.length-1){
-      x.beginPath();x.moveTo(margin+i*stageW,y);x.lineTo(margin+(i+1)*stageW,y);
-      x.strokeStyle='rgba(255,60,90,0.1)';x.lineWidth=2;x.stroke();}
-  });
-  // draw stage nodes
-  stages.forEach((s,i)=>{
-    const sx=margin+i*stageW;
-    x.beginPath();x.arc(sx,y,8,0,Math.PI*2);
-    x.fillStyle='rgba(255,60,90,0.15)';x.fill();
-    x.strokeStyle='rgba(255,60,90,0.3)';x.lineWidth=1.5;x.stroke();
-    x.font='11px Inter,sans-serif';x.fillStyle='rgba(255,60,90,0.2)';x.textAlign='center';
-    x.fillText(s,sx,y+24);x.textAlign='left';
-  });
-  // animate dots along pipeline
-  dots.forEach(d=>{
-    d.progress+=d.speed;if(d.progress>1)d.progress=0;
-    const totalLen=(stages.length-1)*stageW;
-    const dx=margin+d.progress*totalLen;
-    x.beginPath();x.arc(dx,y,4,0,Math.PI*2);
-    x.fillStyle='rgba(255,60,90,0.5)';x.fill();
-  });
-  requestAnimationFrame(draw);})();
+  // Pipeline stages
+  const stages=[
+    {name:'Source',x:.1,y:.5,color:'rgba(255,60,90,1)'},
+    {name:'Build',x:.28,y:.35,color:'rgba(255,60,90,1)'},
+    {name:'Test',x:.28,y:.65,color:'rgba(255,60,90,1)'},
+    {name:'Stage',x:.5,y:.5,color:'rgba(245,158,11,1)'},
+    {name:'Scan',x:.68,y:.35,color:'rgba(245,158,11,1)'},
+    {name:'Approve',x:.68,y:.65,color:'rgba(52,211,153,1)'},
+    {name:'Deploy',x:.85,y:.5,color:'rgba(52,211,153,1)'},
+    {name:'Live',x:.95,y:.5,color:'rgba(52,211,153,1)'},
+  ];
 
+  const connections=[
+    [0,1],[0,2],[1,3],[2,3],[3,4],[3,5],[4,6],[5,6],[6,7]
+  ];
+
+  // Signals travelling along connections
+  const signals=connections.map(([from,to])=>({
+    from,to,progress:Math.random(),
+    speed:.004+Math.random()*.003,
+    color:stages[to].color,
+  }));
+
+  let t=0;
+  (function draw(){
+    t+=.012;
+    xx.clearRect(0,0,BW,BH);
+
+    // Circuit board background traces
+    for(let i=0;i<8;i++){
+      const x=Math.random()*BW;
+      xx.beginPath();
+      xx.moveTo(x,0);
+      // Random right-angle traces
+      const y1=Math.random()*BH;
+      const x2=x+(-1+Math.floor(Math.random()*3))*80;
+      xx.lineTo(x,y1);xx.lineTo(x2,y1);
+      xx.strokeStyle='rgba(255,60,90,0.04)';xx.lineWidth=1;xx.stroke();
+    }
+
+    // Draw connections
+    connections.forEach(([fi,ti])=>{
+      const fs=stages[fi],ts=stages[ti];
+      xx.beginPath();
+      xx.moveTo(fs.x*BW,fs.y*BH);
+      // Right-angle routing
+      const mx=(fs.x+ts.x)/2*BW;
+      xx.lineTo(mx,fs.y*BH);
+      xx.lineTo(mx,ts.y*BH);
+      xx.lineTo(ts.x*BW,ts.y*BH);
+      xx.strokeStyle='rgba(255,60,90,0.15)';xx.lineWidth=1.5;xx.stroke();
+    });
+
+    // Animate signals
+    signals.forEach(sig=>{
+      sig.progress+=sig.speed;
+      if(sig.progress>1)sig.progress=0;
+
+      const fs=stages[sig.from],ts=stages[sig.to];
+      const mx=(fs.x+ts.x)/2*BW;
+
+      // Calculate position along the right-angle path
+      let px,py;
+      const p=sig.progress;
+      // Path has 3 segments: horizontal, vertical, horizontal
+      const seg1=Math.abs(mx-fs.x*BW),seg2=Math.abs(ts.y-fs.y)*BH,seg3=Math.abs(ts.x*BW-mx);
+      const total=seg1+seg2+seg3;
+      const dist=p*total;
+      if(dist<seg1){
+        px=fs.x*BW+(mx-fs.x*BW)*(dist/seg1);py=fs.y*BH;
+      } else if(dist<seg1+seg2){
+        px=mx;py=fs.y*BH+(ts.y-fs.y)*BH*((dist-seg1)/seg2);
+      } else {
+        px=mx+(ts.x*BW-mx)*((dist-seg1-seg2)/seg3);py=ts.y*BH;
+      }
+
+      // Draw signal dot with glow
+      xx.beginPath();xx.arc(px,py,4,0,Math.PI*2);
+      xx.fillStyle=sig.color.replace('1)','.7)');xx.fill();
+      const grd=xx.createRadialGradient(px,py,0,px,py,12);
+      grd.addColorStop(0,sig.color.replace('1)','.3)'));
+      grd.addColorStop(1,sig.color.replace('1)','0)'));
+      xx.fillStyle=grd;xx.fillRect(px-12,py-12,24,24);
+    });
+
+    // Draw stage nodes
+    stages.forEach((st,i)=>{
+      const sx=st.x*BW,sy=st.y*BH;
+      const pulse=.3+.12*Math.sin(t*2+i);
+
+      xx.beginPath();xx.arc(sx,sy,18,0,Math.PI*2);
+      xx.fillStyle=st.color.replace('1)',`${pulse*.15})`);xx.fill();
+      xx.strokeStyle=st.color.replace('1)',`${pulse})`);xx.lineWidth=1.5;xx.stroke();
+
+      // Outer ring pulse
+      xx.beginPath();xx.arc(sx,sy,22+4*Math.sin(t+i),0,Math.PI*2);
+      xx.strokeStyle=st.color.replace('1)',`${pulse*.3})`);xx.lineWidth=1;xx.stroke();
+
+      // Label
+      xx.font='10px Inter,sans-serif';
+      xx.fillStyle=st.color.replace('1)','.4)');
+      xx.textAlign='center';
+      xx.fillText(st.name,sx,sy+32);
+      xx.textAlign='left';
+    });
+
+    requestAnimationFrame(draw);
+  })();
+})();
 </script>
 </body>
 </html>
