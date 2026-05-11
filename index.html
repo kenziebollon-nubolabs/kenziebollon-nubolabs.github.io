@@ -209,19 +209,16 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .stat-l{font-size:14px;color:var(--text-3)}
 
 /* ── PRODUCTS ── */
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:var(--s2);margin-top:var(--s8)}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin-top:var(--s8)}
 /* NuboLens spans 3 cols × 2 rows */
 .card-hero{display:flex;flex-direction:column}
 /* others span 3 cols */
 .card-half{}
 /* mini cards span 2 cols */
 .card-third{}
-.more-teaser{grid-column:1/-1;display:flex;align-items:center;justify-content:center;
-  gap:var(--s3);padding:var(--s4);
-  background:rgba(26,143,255,0.03);border:1px dashed rgba(26,143,255,0.15);
-  border-radius:var(--r3);margin-top:var(--s2)}
-.more-teaser p{color:var(--text-3);font-size:14px}
-.more-teaser a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:500}
+.more-teaser{grid-column:1/-1;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--s2);padding:0;margin:0}
+.more-teaser p{color:var(--text-3);font-size:13px}
+.more-teaser a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:500}
 
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
   padding:var(--s4);text-decoration:none;color:var(--text-1);
@@ -428,7 +425,17 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   
 }
 
-  </style>
+  
+@media(max-width:640px){
+  #cvs{opacity:.25}
+  .dot-grid{display:none}
+  .orb{display:none}
+}
+@media(max-width:960px){
+  #cvs{opacity:.3}
+  .dot-grid{opacity:.15}
+}
+</style>
 </head>
 <body>
 <div id="cur" aria-hidden="true"></div>
@@ -500,7 +507,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 </div>
 
 <!-- PRODUCTS -->
-<section class="sec" id="products">
+<section class="sec" id="products" style="padding-bottom:var(--s4)">
   <div class="wrap">
     <div class="r" style="margin-bottom:var(--s8)">
       <div class="sec-tag">Products</div>
@@ -541,16 +548,10 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div class="card-name">Nubo<em style="color:#9b5cff">Shield</em></div>
         </div>
         <div class="card-desc">Cloud security auditing. Misconfigurations, open security groups, exposed IAM policies — found before attackers do.</div>
-        <div class="card-graphic">
-          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" style="opacity:.4">
-            <path d="M20 30 L40 10 L60 30 L40 50 Z" stroke="#9b5cff" stroke-width="1" fill="rgba(155,92,255,0.05)"/>
-            <circle cx="40" cy="30" r="4" fill="#9b5cff" opacity=".6"/>
-            <line x1="60" y1="30" x2="90" y2="30" stroke="#9b5cff" stroke-width="1" stroke-dasharray="3 3" opacity=".4"/>
-            <circle cx="110" cy="22" r="3" fill="#ef4444" opacity=".7"/>
-            <circle cx="130" cy="38" r="3" fill="#ef4444" opacity=".5"/>
-            <circle cx="155" cy="20" r="3" fill="#34d399" opacity=".7"/>
-            <circle cx="175" cy="35" r="3" fill="#34d399" opacity=".5"/>
-          </svg>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#9b5cff">247</div><div style="font-size:10px;color:var(--text-3)">threats blocked</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#34d399">0</div><div style="font-size:10px;color:var(--text-3)">breaches</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#9b5cff">↗</span></div>
       </a>
@@ -562,16 +563,10 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div class="card-name">Nubo<em style="color:#f43f5e">Vault</em></div>
         </div>
         <div class="card-desc">Secrets and credentials management. Finds hardcoded API keys, exposed secrets, and implements proper vaulting.</div>
-        <div class="card-graphic">
-          <svg width="200" height="60" viewBox="0 0 200 60" fill="none" style="opacity:.4">
-            <rect x="15" y="18" width="50" height="24" rx="3" stroke="#f43f5e" stroke-width="1" fill="rgba(244,63,94,0.05)"/>
-            <text x="22" y="34" font-size="9" fill="#f43f5e" opacity=".7" font-family="monospace">API_KEY=***</text>
-            <path d="M75 30 L95 30" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2" opacity=".4"/>
-            <rect x="100" y="18" width="50" height="24" rx="3" stroke="#34d399" stroke-width="1" fill="rgba(52,211,153,0.05)"/>
-            <text x="107" y="34" font-size="9" fill="#34d399" opacity=".7" font-family="monospace">🔒 secured</text>
-            <circle cx="170" cy="30" r="10" stroke="#34d399" stroke-width="1" fill="none" opacity=".4"/>
-            <path d="M165 30 L169 34 L176 26" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-          </svg>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="font-family:'Courier New',monospace;font-size:11px;color:#f43f5e;opacity:.7">API_KEY=<span style="color:#34d399">●●●●●●</span></div>
+          <div style="font-size:14px">→</div>
+          <div style="font-size:11px;color:#34d399">🔒 vaulted</div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#f43f5e">↗</span></div>
       </a>
@@ -580,16 +575,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="nubowatch.html" class="card dim r r2" style="--c:#00c896">
         <div style="display:flex;align-items:center;gap:var(--s2)">
           <div style="width:var(--s5);height:var(--s5);background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟢</div>
-          <div class="card-name" style="font-size:16px">Nubo<em style="color:#00c896">Watch</em></div>
+          <div class="card-name">Nubo<em style="color:#00c896">Watch</em></div>
         </div>
-        <div class="card-desc" style="font-size:13px">Managed monitoring and observability. Prometheus, Grafana, alerting — without the overhead.</div>
-        <div class="card-graphic">
-          <svg width="160" height="50" viewBox="0 0 160 50" fill="none" style="opacity:.5;width:100%">
-            <polyline points="10,40 30,30 50,35 70,15 90,25 110,10 130,20 150,12" stroke="#00c896" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <circle cx="110" cy="10" r="3" fill="#00c896" opacity=".8">
-              <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
+        <div class="card-desc">Managed monitoring and observability. Prometheus, Grafana, alerting — without the overhead.</div>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#00c896">99.97%</div><div style="font-size:10px;color:var(--text-3)">uptime</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#00c896">42ms</div><div style="font-size:10px;color:var(--text-3)">avg latency</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#00c896">↗</span></div>
       </a>
@@ -598,13 +590,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="nubocomply.html" class="card dim r r3" style="--c:#f59e0b">
         <div style="display:flex;align-items:center;gap:var(--s2)">
           <div style="width:var(--s5);height:var(--s5);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟡</div>
-          <div class="card-name" style="font-size:16px">Nubo<em style="color:#f59e0b">Comply</em></div>
+          <div class="card-name">Nubo<em style="color:#f59e0b">Comply</em></div>
         </div>
-        <div class="card-desc" style="font-size:13px">SOC2 and ISO27001 readiness. Automated gap analysis so you can land enterprise clients faster.</div>
-        <div class="card-graphic" style="display:flex;flex-direction:column;gap:4px;padding:var(--s1) var(--s2);height:auto">
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#34d399">✓</span> Access controls</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#34d399">✓</span> Encryption at rest</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="color:#f59e0b">○</span> Incident response</div>
+        <div class="card-desc">SOC2 and ISO27001 readiness. Automated gap analysis so you can land enterprise clients faster.</div>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f59e0b">SOC2</div><div style="font-size:10px;color:var(--text-3)">ready in weeks</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f59e0b">£20k</div><div style="font-size:10px;color:var(--text-3)">saved vs consultant</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#f59e0b">↗</span></div>
       </a>
@@ -613,13 +605,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="nubogreen.html" class="card dim r r2" style="--c:#22c55e">
         <div style="display:flex;align-items:center;gap:var(--s2)">
           <div style="width:var(--s5);height:var(--s5);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🌿</div>
-          <div class="card-name" style="font-size:16px">Nubo<em style="color:#22c55e">Green</em></div>
+          <div class="card-name">Nubo<em style="color:#22c55e">Green</em></div>
         </div>
-        <div class="card-desc" style="font-size:13px">Cloud carbon footprint reporting. ESG compliance for your infrastructure — an untapped, growing market.</div>
-        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center;gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e">2.4t</div><div style="font-size:10px;color:var(--text-3)">CO₂ saved</div></div>
+        <div class="card-desc">Cloud carbon footprint reporting. ESG compliance for your infrastructure — an untapped, growing market.</div>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#22c55e">2.4t</div><div style="font-size:10px;color:var(--text-3)">CO₂ saved</div></div>
           <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e">-34%</div><div style="font-size:10px;color:var(--text-3)">emissions</div></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#22c55e">-34%</div><div style="font-size:10px;color:var(--text-3)">emissions</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#22c55e">↗</span></div>
       </a>
@@ -628,15 +620,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="nubopredict.html" class="card dim r r3" style="--c:#a78bfa">
         <div style="display:flex;align-items:center;gap:var(--s2)">
           <div style="width:var(--s5);height:var(--s5);background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔮</div>
-          <div class="card-name" style="font-size:16px">Nubo<em style="color:#a78bfa">Predict</em></div>
+          <div class="card-name">Nubo<em style="color:#a78bfa">Predict</em></div>
         </div>
-        <div class="card-desc" style="font-size:13px">AI-powered spend forecasting. Know next month's cloud bill before it arrives.</div>
-        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center">
-          <svg width="140" height="45" viewBox="0 0 140 45" fill="none" style="opacity:.5;width:100%">
-            <polyline points="10,35 30,30 50,28 70,22 90,18" stroke="#a78bfa" stroke-width="1.5" fill="none"/>
-            <polyline points="90,18 110,12 130,8" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-dasharray="3 2" opacity=".6"/>
-            <circle cx="90" cy="18" r="3" fill="#a78bfa"/>
-          </svg>
+        <div class="card-desc">AI-powered spend forecasting. Know next month's cloud bill before it arrives.</div>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#a78bfa">95%</div><div style="font-size:10px;color:var(--text-3)">forecast accuracy</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#a78bfa">-18%</div><div style="font-size:10px;color:var(--text-3)">bill surprises</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#a78bfa">↗</span></div>
       </a>
@@ -645,24 +635,20 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="nubopipe.html" class="card dim r r2" style="--c:#ff3c5a">
         <div style="display:flex;align-items:center;gap:var(--s2)">
           <div style="width:var(--s5);height:var(--s5);background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔴</div>
-          <div class="card-name" style="font-size:16px">Nubo<em style="color:#ff3c5a">Pipe</em></div>
+          <div class="card-name">Nubo<em style="color:#ff3c5a">Pipe</em></div>
         </div>
-        <div class="card-desc" style="font-size:13px">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div>
-        <div class="card-graphic" style="display:flex;align-items:center;justify-content:center;gap:4px;padding:0 var(--s2)">
-          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Build<br><span style="color:#34d399;font-size:9px">✓</span></div>
-          <div style="width:20px;height:1px;background:linear-gradient(90deg,#34d399,#ff3c5a)"></div>
-          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Test<br><span style="color:#34d399;font-size:9px">✓</span></div>
-          <div style="width:20px;height:1px;background:linear-gradient(90deg,#34d399,#f59e0b)"></div>
-          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Deploy<br><span style="color:#f59e0b;font-size:9px">●</span></div>
-          <div style="width:20px;height:1px;background:var(--border)"></div>
-          <div style="font-size:10px;color:var(--text-3);text-align:center;flex:1">Live<br><span style="color:var(--text-3);font-size:9px">○</span></div>
+        <div class="card-desc">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div>
+        <div class="card-graphic" style="gap:var(--s3)">
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#ff3c5a">4×</div><div style="font-size:10px;color:var(--text-3)">faster deploys</div></div>
+          <div style="width:1px;height:32px;background:var(--border)"></div>
+          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#34d399">0</div><div style="font-size:10px;color:var(--text-3)">broken builds</div></div>
         </div>
         <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div>
       </a>
 
       <!-- More teaser -->
-      <div class="more-teaser r">
-        <p>NuboVault, NuboScale, NuboDR, NuboID, NuboGreen and more are on the roadmap.</p>
+      <div class="more-teaser r" style="border:none;background:none">
+        <p>NuboScale, NuboDR, NuboID, NuboVault, NuboBot, NuboEnv and more are on the roadmap.</p>
         <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">Follow on LinkedIn for updates →</a>
       </div>
 

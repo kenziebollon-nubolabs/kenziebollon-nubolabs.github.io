@@ -204,7 +204,17 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 @media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
-  </style>
+  
+@media(max-width:960px){
+  #bg-canvas{opacity:.3}
+  .dot-grid{opacity:.15}
+}
+@media(max-width:640px){
+  #bg-canvas{opacity:.2}
+  .dot-grid{display:none}
+  .orb,.orb1,.orb2{display:none}
+}
+</style>
 </head>
 <body>
 <div id="cur" aria-hidden="true"></div>
