@@ -212,11 +212,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -232,7 +227,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
             <a href="nubovault.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
@@ -250,91 +245,300 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(244,63,94,0.14)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(244,63,94,0.14)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
+<!-- HERO -->
 <section class="prod-hero" style="--pc:#f43f5e;--pc-glow:rgba(244,63,94,0.14);--pc-dim:rgba(244,63,94,0.10);--pc-border:rgba(244,63,94,0.22)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Secrets Management</div>
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Secrets & Exposure Scanning</div>
   <h1>Nubo<em>Vault</em></h1>
-  <p class="prod-desc">Hardcoded API keys in repos. Passwords in Slack. Credentials in .env files. NuboVault finds every exposed secret and implements proper vaulting so it never happens again.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🔐</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboVault Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboVault launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">68 checks across 12 AWS services. Hardcoded API keys, private keys sitting in S3, passwords in Lambda env vars, credentials in user data — found, flagged, and remediated before an attacker finds them first.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.4)">Get a free secrets audit →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access only. We never touch your infrastructure.</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(244,63,94,0.12);border-bottom:1px solid rgba(244,63,94,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums">68</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">checks run</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#ef4444;letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums">32</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">critical findings</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1">12</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">AWS services</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">scan duration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE CHECK -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f43f5e">What's coming</div>
-      <h2 class="sec-h">Everything NuboVault will do</h2>
+      <div class="sec-tag" style="--accent:#f43f5e">What we scan</div>
+      <h2 class="sec-h">Every place a secret can hide.</h2>
+      <p class="sec-sub">Most breaches start with an exposed credential. NuboVault finds them across every AWS service before an attacker does.</p>
     </div>
-    <div class="feat-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🔍</div>
-        <div class="feat-title">Secret scanning</div>
-        <div class="feat-desc">Scans your Git repos, CI/CD configs, and environment files for exposed API keys, tokens, and passwords.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚡</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Lambda & ECS</div><div style="font-size:11px;color:var(--text-3)">Env var secrets</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Hardcoded passwords & API keys</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Stripe, Twilio, SendGrid live keys</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>JWT secrets & auth tokens</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Suspicious variable names</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Deprecated runtimes</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">🔐</div>
-        <div class="feat-title">Vault implementation</div>
-        <div class="feat-desc">Sets up AWS Secrets Manager or HashiCorp Vault and migrates your credentials into a properly managed store.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🪣</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">S3 Buckets</div><div style="font-size:11px;color:var(--text-3)">File & content scanning</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>.env files with live credentials</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Private keys (.pem, id_rsa, .p12)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>terraform.tfstate (infrastructure secrets)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS credentials files</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Database dumps & kubeconfigs</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Config files with embedded secrets</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">🔄</div>
-        <div class="feat-title">Rotation policies</div>
-        <div class="feat-desc">Implements automatic credential rotation so secrets expire and refresh without manual intervention.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🖥️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">EC2 & User Data</div><div style="font-size:11px;color:var(--text-3)">Instance secret scanning</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Credentials in user data scripts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS keys bootstrapped at launch</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Sensitive data in instance tags</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Instances running 180+ days</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Database connection strings</div>
+        </div>
       </div>
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">📡</div>
-        <div class="feat-title">Real-time monitoring</div>
-        <div class="feat-desc">Continuously monitors for new secret exposures and alerts immediately when credentials appear in code.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔧</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">SSM & Secrets Manager</div><div style="font-size:11px;color:var(--text-3)">Secret store hygiene</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>SSM String params that should be SecureString</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Secret values scanned for patterns</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets with no rotation configured</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets not rotated in 90+ days</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Orphaned secrets (unused 90+ days)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>No resource policy (over-accessible)</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">🛡️</div>
-        <div class="feat-title">Access control</div>
-        <div class="feat-desc">Implements least-privilege access to secrets — every service gets exactly what it needs and nothing more.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚙️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">CodeBuild & CloudFormation</div><div style="font-size:11px;color:var(--text-3)">Build & infra secrets</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Plaintext env vars in build projects</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>CFN parameters without NoEcho</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Secrets in stack outputs</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Build logs exposing credentials</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Stacks in ROLLBACK state</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">📋</div>
-        <div class="feat-title">Audit trail</div>
-        <div class="feat-desc">Full audit log of who accessed which secrets and when — essential for compliance and incident response.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">💡</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Advisory Checks</div><div style="font-size:11px;color:var(--text-3)">Not harmful, not standard</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>No AWS Budgets configured</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Orphaned SNS topics</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Log groups with no retention</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>No IAM Identity Center (SSO)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Single-account AWS setup</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Expiring ACM certificates</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pattern library callout -->
+    <div class="r" style="margin-top:var(--s4);background:rgba(244,63,94,0.04);border:1px solid rgba(244,63,94,0.12);border-radius:var(--r3);padding:var(--s4);display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">25+ secret pattern types detected</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">We scan file contents against patterns for AWS keys, GitHub tokens, Stripe, Twilio, SendGrid, Slack, MongoDB, PostgreSQL, MySQL, Redis, JWT, private keys, PGP keys, and more.</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;max-width:420px">
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">AWS Keys</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">GitHub Tokens</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Stripe Live Keys</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Slack Tokens</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Private Keys</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">JWT Secrets</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">DB Connections</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Twilio</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">SendGrid</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Terraform State</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Kubeconfigs</span>
+        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">PGP Keys</span>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CASE STUDY -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#f43f5e">Case study</div>
+      <h2 class="sec-h">68 findings. 32 CRITICAL. Under 5 minutes.</h2>
+      <p class="sec-sub">Here's exactly what NuboVault found on a live AWS account in a single scan.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
 
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(244,63,94,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboVault v1.0 — Audit Report</span>
+          </div>
+          <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:10px;color:#ef4444;letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px;font-weight:600">⚠ Critical — 32 findings</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">Stripe live key in env var</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">GitHub token in env var</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">.env file with AWS keys + DB password</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">terraform.tfstate with credentials</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">id_rsa private key in bucket</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">AWS keys + DB password in user data</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="font-size:10px;color:#f59e0b;letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px;font-weight:600">High — 23 · Medium — 7 · Advisory — 6</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">SSM</span><span style="color:var(--text-3);flex:2">5 secrets stored as plaintext String</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">CloudFormation</span><span style="color:var(--text-3);flex:2">DB password without NoEcho</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(26,143,255,0.05);border:1px solid rgba(26,143,255,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#1a8fff;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">Deprecated Python 3.8 runtime</span><span style="color:#1a8fff;font-weight:600;font-size:10px">ADVISORY</span></div>
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:13px;color:var(--text-2)">Total findings</div>
+                <div style="font-size:11px;color:var(--text-3);margin-top:2px">68 findings · 12 services · &lt;5 minutes</div>
+              </div>
+              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#f43f5e;font-variant-numeric:tabular-nums">68</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;font-variant-numeric:tabular-nums">32</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px;font-variant-numeric:tabular-nums">68</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px">&lt;5m</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">scan duration</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px">12</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">services scanned</div>
+          </div>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">A Stripe live key was found in a Lambda environment variable.</strong> Anyone with AWS console access to that function — or any IAM user with lambda:GetFunction — could have been charging cards or accessing customer payment data.</p>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">A terraform.tfstate file was sitting in a public-readable S3 bucket.</strong> That file contained database credentials, API keys, and infrastructure passwords for the entire production environment.</p>
+        </div>
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.35)">Get your free secrets audit →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#f43f5e">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 68-check scan across 12 services with prioritised report.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£600</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>68 checks across 12 services</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>CRITICAL / HIGH / MEDIUM / ADVISORY</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>File content scanning for 25+ patterns</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Exact remediation per finding</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(244,63,94,0.07),var(--bg2));border:1px solid rgba(244,63,94,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#f43f5e;color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Continuous scanning — catch new secrets the moment they appear.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£450</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Weekly automated rescans</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>New secret alert within 24 hours</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Remediation implementation included</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Monthly exposure report</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#f43f5e;color:#fff;box-shadow:0 0 var(--s4) rgba(244,63,94,0.4)">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
 <section class="sec sec-alt" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <h2 class="sec-h">Where are your secrets hiding?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have at least one exposed credential. A Stripe key in an env var. An AWS key in a .env file. A database password in user data. Find yours before someone else does.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.35)">Get your free secrets audit →</a>
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboVault</span></div>
@@ -345,8 +549,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -355,6 +558,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -415,6 +619,7 @@ document.addEventListener('click',()=>{
     if(btn)btn.setAttribute('aria-expanded','false');
   });
 });
+
 
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
@@ -507,6 +712,7 @@ document.addEventListener('click',()=>{
     requestAnimationFrame(draw);
   })();
 })();
+
 </script>
 </body>
 </html>
