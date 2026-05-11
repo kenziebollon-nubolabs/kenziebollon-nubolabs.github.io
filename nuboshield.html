@@ -212,11 +212,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -250,91 +245,286 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(155,92,255,0.14)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(155,92,255,0.14)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
-<section class="prod-hero" style="--pc:#9b5cff;--pc-glow:rgba(155,92,255,0.14);--pc-dim:rgba(155,92,255,0.10);--pc-border:rgba(155,92,255,0.52)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Cloud Security</div>
+<!-- HERO -->
+<section class="prod-hero" style="--pc:#9b5cff;--pc-glow:rgba(155,92,255,0.14);--pc-dim:rgba(155,92,255,0.10);--pc-border:rgba(155,92,255,0.22)">
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Cloud Security Auditing</div>
   <h1>Nubo<em>Shield</em></h1>
-  <p class="prod-desc">Cloud security auditing and misconfiguration detection. Find vulnerabilities, exposed IAM policies, and open attack surfaces — before attackers do.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🟣</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboShield Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboShield launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">50 security checks across 9 AWS services. Misconfigurations, exposed credentials, open attack surfaces, and compliance gaps — found before attackers do. Every finding prioritised CRITICAL to LOW with exact remediation steps.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.4)">Get a free security audit →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access only. We never touch your infrastructure.</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(155,92,255,0.12);border-bottom:1px solid rgba(155,92,255,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">50</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">security checks</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">9</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">AWS services</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#ef4444;letter-spacing:-1px;line-height:1">7</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">critical findings found</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">&lt;2m</div>
+        <div style="font-size:13px;color:var(--text-3);margin-top:4px">scan duration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE CHECK -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#9b5cff">What's coming</div>
-      <h2 class="sec-h">Everything NuboShield will do</h2>
+      <div class="sec-tag" style="--accent:#9b5cff">50 checks across 9 services</div>
+      <h2 class="sec-h">Every attack surface. Every misconfiguration.</h2>
+      <p class="sec-sub">NuboShield goes deeper than any other tool at this price point. Here's exactly what we check.</p>
     </div>
-    <div class="feat-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🔍</div>
-        <div class="feat-title">Misconfiguration scan</div>
-        <div class="feat-desc">Detects open security groups, public S3 buckets, and unencrypted resources across your entire cloud environment.</div>
+      <!-- IAM -->
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">👤</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">IAM</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Root account MFA & access keys</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Users without MFA</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AdministratorAccess directly attached</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Wildcard *:* policies</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Stale access keys (90+ days)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Inactive users & password policy</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">👤</div>
-        <div class="feat-title">IAM policy audit</div>
-        <div class="feat-desc">Finds over-privileged users, stale access keys, and service accounts with more permissions than they need.</div>
+      <!-- EC2/Network -->
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🌐</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">EC2 & Networking</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>SSH/RDP open to 0.0.0.0/0</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>DB ports exposed to internet</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>All traffic open security groups</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>VPC flow logs disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Unencrypted EBS volumes</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>IMDSv2 not enforced (SSRF risk)</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">🌐</div>
-        <div class="feat-title">Network exposure check</div>
-        <div class="feat-desc">Maps your public attack surface — every open port, exposed service, and unprotected endpoint.</div>
+      <!-- S3 -->
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🪣</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">S3 Storage</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Public access block disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Buckets without encryption</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No access logging</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>HTTPS not enforced (bucket policy)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Versioning & lifecycle rules</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Cross-region replication</div>
+        </div>
       </div>
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🔒</div>
-        <div class="feat-title">Encryption audit</div>
-        <div class="feat-desc">Verifies encryption at rest and in transit across all storage, databases, and data transfer services.</div>
+      <!-- RDS -->
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🗄️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">RDS Databases</div><div style="font-size:11px;color:var(--text-3)">6 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Publicly accessible databases</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>No encryption at rest</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Automated backups disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No Multi-AZ failover</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Deletion protection disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Public RDS snapshots</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">📋</div>
-        <div class="feat-title">Compliance mapping</div>
-        <div class="feat-desc">Maps findings to CIS Benchmarks, NIST, and common compliance frameworks so you know where you stand.</div>
+      <!-- CloudTrail + CloudWatch -->
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📋</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">CloudTrail & Alarms</div><div style="font-size:11px;color:var(--text-3)">7 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>CloudTrail not enabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Single-region trail</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Log validation disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for root account usage</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for IAM changes</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for SG changes</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-title">Continuous monitoring</div>
-        <div class="feat-desc">On retainer, re-scans weekly and alerts you the moment a new vulnerability or misconfiguration appears.</div>
+      <!-- KMS + Config + Secrets -->
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔑</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">KMS, Config & Secrets</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS Config not enabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>GuardDuty not enabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>KMS key rotation disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Keys pending deletion in use</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No Secrets Manager usage</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets not rotated (90+ days)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#9b5cff">Case study</div>
+      <h2 class="sec-h">50 findings. 7 CRITICAL. Under 2 minutes.</h2>
+      <p class="sec-sub">Here's exactly what NuboShield found on a live AWS account in a single scan.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Report card -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3),0 0 0 1px rgba(155,92,255,0.05)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(155,92,255,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboShield v1.0 — Security Report</span>
+          </div>
+          <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:10px;color:#ef4444;letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px;font-weight:600">⚠ Critical — 7 findings</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">IAM</span><span style="color:var(--text-3);flex:2">Root account — no MFA</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">SSH open to 0.0.0.0/0</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">RDP + all traffic open to internet</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">Database publicly accessible</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">CloudTrail</span><span style="color:var(--text-3);flex:2">Not enabled — no audit trail</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
+            <div style="font-size:10px;color:#f59e0b;letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px;font-weight:600">High — 14 · Medium — 17 · Low — 12</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">IAM</span><span style="color:var(--text-3);flex:2">Wildcard *:* policy in use</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">No encryption at rest</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Config</span><span style="color:var(--text-3);flex:2">AWS Config not enabled</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(155,92,255,0.08);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:13px;color:var(--text-2)">Total findings</div>
+                <div style="font-size:11px;color:var(--text-3);margin-top:2px">50 checks · 9 services · &lt;2 minutes</div>
+              </div>
+              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#9b5cff;font-variant-numeric:tabular-nums">50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats + CTA -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px">7</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">50</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">&lt;2m</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">scan duration</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">9</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">services audited</div>
+          </div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7">Every finding includes the exact resource ID, a plain-English description of the risk, and step-by-step remediation instructions. No vague warnings — just clear, actionable fixes.</p>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s3)">
+          <p style="font-size:13px;color:var(--text-2);line-height:1.6"><strong style="color:#ef4444">CloudTrail was disabled</strong> on this account — meaning every API call, every login, every infrastructure change was happening with zero audit trail. Any breach would be completely untraceable.</p>
+        </div>
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.35)">Get your free security audit →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#9b5cff">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 50-check scan with prioritised report and remediation steps.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£600</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>50 checks across 9 services</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>CRITICAL / HIGH / MEDIUM / LOW severity</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Exact remediation steps per finding</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Read-only access only</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(155,92,255,0.07),var(--bg2));border:1px solid rgba(155,92,255,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#9b5cff;color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Continuous monitoring so new misconfigurations are caught immediately.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Weekly automated rescans</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>New finding alerts within 24hrs</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Fix implementation included</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Monthly security posture report</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Priority response</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#9b5cff;color:#fff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.4)">Get started</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
+<!-- FINAL CTA -->
 <section class="sec sec-alt" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <h2 class="sec-h">How exposed is your infrastructure?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Most startups have at least one CRITICAL finding. Get your free audit and find out where you stand.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.35)">Get your free security audit →</a>
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboShield</span></div>
@@ -345,8 +535,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -355,6 +544,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -415,6 +605,7 @@ document.addEventListener('click',()=>{
     if(btn)btn.setAttribute('aria-expanded','false');
   });
 });
+
 
 
 
@@ -563,6 +754,7 @@ document.addEventListener('click',()=>{
     requestAnimationFrame(draw);
   })();
 })();
+
 </script>
 </body>
 </html>
