@@ -215,11 +215,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -235,8 +230,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
             <a href="nubogreen.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
@@ -253,91 +248,306 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(34,197,94,0.13)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(34,197,94,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
+<!-- HERO -->
 <section class="prod-hero" style="--pc:#22c55e;--pc-glow:rgba(34,197,94,0.13);--pc-dim:rgba(34,197,94,0.09);--pc-border:rgba(34,197,94,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Carbon & ESG</div>
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Cloud Carbon & ESG Reporting</div>
   <h1>Nubo<em>Green</em></h1>
-  <p class="prod-desc">Cloud infrastructure has a carbon footprint. ESG reporting is becoming mandatory. NuboGreen measures, reports, and reduces the environmental impact of your cloud — an untapped market with growing demand.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🌿</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboGreen Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboGreen launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">The only cloud carbon audit built specifically for UK startups and SMBs. GHG Protocol aligned. Scope 2 & 3 reporting. Board-ready ESG disclosure statements. Know your cloud's carbon footprint — and exactly how to reduce it.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.4)">Get your free carbon audit →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. GHG Protocol aligned. Suitable for ESG disclosures.</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(34,197,94,0.12);border-bottom:1px solid rgba(34,197,94,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">12</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">services measured</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">3</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">GHG scopes</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">96%</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">max reduction found</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">20</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">AWS regions compared</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">full audit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY THIS MATTERS -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#22c55e">What's coming</div>
-      <h2 class="sec-h">Everything NuboGreen will do</h2>
+      <div class="sec-tag" style="--accent:#22c55e">Why NuboGreen</div>
+      <h2 class="sec-h">ESG reporting is becoming mandatory. Most startups aren't ready.</h2>
+      <p class="sec-sub">UK SECR reporting, enterprise vendor questionnaires, investor ESG due diligence — they all need cloud carbon data. NuboGreen gives you the numbers, the report, and the roadmap.</p>
     </div>
-    <div class="feat-grid">
-
-      <div class="feat-card r r1">
-        <div class="feat-icon">🌍</div>
-        <div class="feat-title">Carbon footprint audit</div>
-        <div class="feat-desc">Calculates the exact carbon emissions of your cloud infrastructure based on region, instance type, and usage patterns.</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+        <div style="font-size:28px;margin-bottom:var(--s2)">📋</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">UK SECR Compliance</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Streamlined Energy and Carbon Reporting is mandatory for large UK companies — and increasingly expected by enterprise clients during supplier vetting. NuboGreen produces SECR-ready data.</p>
       </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">📊</div>
-        <div class="feat-title">ESG reporting</div>
-        <div class="feat-desc">Generates board-ready ESG reports showing your cloud carbon data in the format required by UK and EU frameworks.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+        <div style="font-size:28px;margin-bottom:var(--s2)">🏆</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Enterprise Vendor Questionnaires</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Enterprise clients increasingly require suppliers to disclose carbon data. NuboGreen gives you the exact numbers and language needed to answer ESG sections of RFPs and vendor questionnaires.</p>
       </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">📉</div>
-        <div class="feat-title">Reduction roadmap</div>
-        <div class="feat-desc">Identifies the highest-impact changes — region migrations, right-sizing, scheduling — to reduce emissions and costs simultaneously.</div>
-      </div>
-
-      <div class="feat-card r r1">
-        <div class="feat-icon">🏆</div>
-        <div class="feat-title">Green certifications</div>
-        <div class="feat-desc">Helps you achieve cloud provider sustainability certifications and carbon neutral status for your infrastructure.</div>
-      </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">📡</div>
-        <div class="feat-title">Continuous tracking</div>
-        <div class="feat-desc">Monthly carbon reports showing trends, improvements, and your trajectory toward net-zero cloud operations.</div>
-      </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">💰</div>
-        <div class="feat-title">Cost and carbon together</div>
-        <div class="feat-desc">The most carbon-efficient infrastructure is often the most cost-efficient too. NuboGreen and NuboLens work hand-in-hand.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+        <div style="font-size:28px;margin-bottom:var(--s2)">💚</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Investor ESG Due Diligence</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">ESG metrics are increasingly part of investor due diligence, particularly for Series A and beyond. NuboGreen gives you a defensible, methodology-backed carbon number.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<section class="sec sec-alt" style="text-align:center">
+<!-- WHAT WE MEASURE -->
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <div class="sec-tag" style="--accent:#22c55e">What we measure</div>
+      <h2 class="sec-h">Every watt. Every service. Every region.</h2>
+      <p class="sec-sub">NuboGreen uses actual AWS CloudWatch metrics — not estimates — to calculate real energy consumption per service.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin-top:var(--s8)">
+
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Compute</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EC2 — TDP × CPU utilisation</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Lambda — GB-seconds × arch</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EKS control plane</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Graviton vs x86 comparison</div>
+        </div>
+      </div>
+
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Databases</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>RDS — instance TDP + storage</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Multi-AZ power doubling</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>ElastiCache clusters</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Redshift + OpenSearch</div>
+        </div>
+      </div>
+
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Storage & Network</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>S3 — per GB stored</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EBS volumes + snapshots</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>CloudFront data transfer</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>NAT Gateway + API Gateway</div>
+        </div>
+      </div>
+
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">ESG Analysis</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>20 region comparison</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Net zero trajectory</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Carbon per £ spent</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Ranked reduction roadmap</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GHG Protocol callout -->
+    <div class="r" style="margin-top:var(--s4);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s2)">
+      <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 1</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Direct emissions. Cloud is zero — no owned vehicles or facilities.</div>
+        <div style="font-size:24px;font-weight:800;color:#34d399;margin-top:var(--s2)">0 kgCO₂e</div>
+      </div>
+      <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 2</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Purchased electricity. Your compute, storage, and networking power draw.</div>
+        <div style="font-size:14px;color:#22c55e;margin-top:var(--s2);font-weight:500">Measured precisely ✓</div>
+      </div>
+      <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 3</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Upstream value chain. AWS hardware manufacturing and supply chain.</div>
+        <div style="font-size:14px;color:#22c55e;margin-top:var(--s2);font-weight:500">Estimated per GHG Protocol ✓</div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- REAL REPORT SAMPLE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#22c55e">Sample report</div>
+      <h2 class="sec-h">This is what you get.</h2>
+      <p class="sec-sub">A real NuboGreen audit on a live AWS account in eu-west-2 (London).</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Report card -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(34,197,94,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboGreen v2.0 — ESG Report</span>
+          </div>
+          <div style="padding:var(--s3);font-family:monospace;font-size:12px;color:var(--text-2)">
+            <div style="color:#22c55e;margin-bottom:var(--s2)">GHG Protocol Classification</div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>Scope 1 (direct)</span><span style="color:#34d399">0.000 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>Scope 2 (electricity)</span><span style="color:#22c55e">2.516 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(34,197,94,0.3)"><span>Scope 3 (upstream)</span><span style="color:#22c55e">0.530 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:bold"><span style="color:var(--text-1)">Total</span><span style="color:#22c55e;font-size:14px">3.045 kgCO₂e/mo</span></div>
+
+            <div style="color:#22c55e;margin:var(--s2) 0 var(--s1)">Breakdown by service</div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>RDS</span><span>2.164 (86.0%) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>EC2</span><span>0.350 (13.9%) ▓▓</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>EBS</span><span>0.002  (0.1%) ▓</span></div>
+
+            <div style="color:#22c55e;margin:var(--s2) 0 var(--s1)">Real-world equivalents (annual)</div>
+            <div style="padding:3px 0">🚗 139 km driven (petrol car)</div>
+            <div style="padding:3px 0">✈️  0.12 London → New York flights</div>
+            <div style="padding:3px 0">🌳 1 tree needed to offset</div>
+            <div style="padding:3px 0">📱 3,552 smartphone charges</div>
+
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r1)">
+              <div style="display:flex;justify-content:space-between">
+                <span style="color:var(--text-2)">Sustainability score</span>
+                <span style="color:#22c55e;font-weight:bold">67/100 🟡</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:4px">
+                <span style="color:var(--text-2)">Annual total</span>
+                <span style="color:#22c55e;font-weight:bold">0.0365 tCO₂e/yr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reduction roadmap + ESG statement -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s3)">Ranked reduction roadmap</div>
+          <div style="display:flex;flex-direction:column;gap:var(--s1)">
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">1</span>
+              <span style="flex:1;color:var(--text-2)">Migrate to eu-north-1 (Stockholm)</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-2.43 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">2</span>
+              <span style="flex:1;color:var(--text-2)">Stop idle RDS database</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-2.16 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">3</span>
+              <span style="flex:1;color:var(--text-2)">Stop 2 idle EC2 instances</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-0.35 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">4</span>
+              <span style="flex:1;color:var(--text-2)">Delete unattached EBS volumes</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-0.001 kgCO₂/mo</span>
+            </div>
+          </div>
+          <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r1);display:flex;justify-content:space-between;font-size:12px">
+            <span style="color:var(--text-2)">Total addressable saving</span>
+            <span style="color:#22c55e;font-weight:700">4.94 kgCO₂/mo — 96% reduction</span>
+          </div>
+        </div>
+
+        <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#22c55e;margin-bottom:var(--s2)">ESG Disclosure Statement (excerpt)</div>
+          <p style="font-size:12px;color:var(--text-2);line-height:1.7;font-style:italic">"This report covers the AWS cloud infrastructure carbon footprint for the period ending 2026-05-11. Calculated using the GHG Protocol location-based method, ISO 14064-1 boundary definitions, and AWS published carbon intensity data. This report is suitable for inclusion in ESG disclosures, UK SECR reporting, and sustainability questionnaires."</p>
+          <div style="margin-top:var(--s2);font-size:11px;color:var(--text-3)">Full statement generated automatically in every report.</div>
+        </div>
+
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.35);color:#0a1a0a">Get your free carbon audit →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#22c55e">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full carbon audit with GHG Protocol report and ESG disclosure statement.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>12 services measured</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>GHG Protocol Scope 1, 2 & 3</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>20-region carbon comparison</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>ESG disclosure statement</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Ranked reduction roadmap</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(34,197,94,0.07),var(--bg2));border:1px solid rgba(34,197,94,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#22c55e;color:#0a1a0a;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly carbon tracking so you can show year-on-year improvement.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£350</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Monthly carbon report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Year-on-year trend tracking</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Net zero trajectory report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Board-ready ESG pack quarterly</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Implementation support included</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#22c55e;color:#0a1a0a;font-weight:700">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec" style="text-align:center">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="sec-h">What's your cloud's carbon footprint?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have no idea. With ESG reporting becoming mandatory and enterprise clients asking the question — you need an answer. We'll have one for you in 48 hours.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.35);color:#0a1a0a;font-weight:700">Get your free carbon audit →</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboGreen</span></div>
@@ -348,8 +558,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -358,6 +567,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -418,6 +628,7 @@ document.addEventListener('click',()=>{
     if(btn)btn.setAttribute('aria-expanded','false');
   });
 });
+
 
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
@@ -496,6 +707,7 @@ document.addEventListener('click',()=>{
     requestAnimationFrame(draw);
   })();
 })();
+
 </script>
 </body>
 </html>
