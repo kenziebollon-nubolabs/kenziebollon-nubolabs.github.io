@@ -782,12 +782,11 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   <div class="wrap">
     <div class="r">
       <div class="sec-tag">Case study</div>
-      <h2 class="sec-h">13 findings. £655/year. Under 2 minutes.</h2>
+      <h2 class="sec-h">27 findings. £1,708/year. Under 2 minutes.</h2>
       <p class="sec-sub">We ran NuboLens against a live AWS environment. Here's exactly what we found.</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
 
-      <!-- Findings table -->
       <div class="r r2">
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.25)">
           <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)">
@@ -797,42 +796,40 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboLens v2.0 — Audit Report</span>
           </div>
           <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
-            <!-- HIGH severity -->
-            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px">High severity</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2 (×2)</span><span style="color:var(--text-3);flex:2">Idle instances — CPU &lt;2%</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£16.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EBS (×4)</span><span style="color:var(--text-3);flex:2">Unattached volumes</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£16.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">100% error rate — broken function</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£0.00</span></div>
-            <!-- MEDIUM severity -->
-            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px">Medium severity</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">Underutilised — CPU 5.1%</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£4.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">Stopped instance — EBS still billing</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£4.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Elastic IP (×3)</span><span style="color:var(--text-3);flex:2">Unassociated addresses</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£9.60</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">No lifecycle rules</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£5.00</span></div>
-            <!-- Total -->
+            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px">High severity — 14 findings</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2 (×4)</span><span style="color:var(--text-3);flex:2">Idle instances — CPU &lt;2%</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£32.00</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EBS (×6)</span><span style="color:var(--text-3);flex:2">Unattached volumes (630GB)</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£50.40</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">Idle DB + backups disabled</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£15.00</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda (×2)</span><span style="color:var(--text-3);flex:2">100% error rate — broken functions</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">—</span></div>
+            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px">Medium severity — 11 findings</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2 (×3)</span><span style="color:var(--text-3);flex:2">Underutilised + stopped w/ EBS</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£12.00</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Elastic IP (×5)</span><span style="color:var(--text-3);flex:2">Unassociated addresses</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£16.00</span></div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height;6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3 (×3)</span><span style="color:var(--text-3);flex:2">No lifecycle rules</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£15.00</span></div>
+            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px">Low severity — 2 findings</div>
+            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:var(--text-3);flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda (×2)</span><span style="color:var(--text-3);flex:2">Unused functions — 0 invocations</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£2.00</span></div>
             <div style="margin-top:var(--s2);padding:var(--s2);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
               <div>
                 <div style="font-size:13px;color:var(--text-2)">Total monthly waste found</div>
-                <div style="font-size:11px;color:var(--text-3);margin-top:2px">7 HIGH · 6 MEDIUM · 13 total findings</div>
+                <div style="font-size:11px;color:var(--text-3);margin-top:2px">27 findings · 14 HIGH · 11 MEDIUM · 2 LOW</div>
               </div>
-              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--accent);font-variant-numeric:tabular-nums">£54.60</span>
+              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--accent);font-variant-numeric:tabular-nums">£142.40</span>
             </div>
             <div style="display:flex;justify-content:space-between;padding:var(--s1) var(--s1) 0">
               <span style="font-size:11px;color:var(--text-3)">Scan duration: &lt;2 minutes</span>
-              <span style="font-size:11px;color:var(--text-3)">Annual saving: <span style="color:#34d399;font-weight:600">£655.20</span></span>
+              <span style="font-size:11px;color:var(--text-3)">Annual saving: <span style="color:#34d399;font-weight:600">£1,708.80</span></span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Stats + CTA -->
       <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--accent);letter-spacing:-1px;font-variant-numeric:tabular-nums">13</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--accent);letter-spacing:-1px;font-variant-numeric:tabular-nums">27</div>
             <div style="font-size:12px;color:var(--text-3);margin-top:4px">findings</div>
           </div>
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#34d399;letter-spacing:-1px;font-variant-numeric:tabular-nums">£655</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#34d399;letter-spacing:-2px;font-variant-numeric:tabular-nums">£1,708</div>
             <div style="font-size:12px;color:var(--text-3);margin-top:4px">saved per year</div>
           </div>
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
@@ -845,7 +842,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           </div>
         </div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7">This was a minimal environment. Real startup accounts with months of accumulated resources typically yield <strong style="color:var(--text-1)">£500–£2,000/month</strong> in savings — and that's before we look at rightsizing, reserved instance opportunities, or application-level inefficiencies.</p>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7">Checks cover EC2, EBS, S3, RDS, Lambda, ELB, IAM and CloudWatch — cost waste, security risks, and application health in a single scan. Every finding is prioritised HIGH, MEDIUM, or LOW so you know exactly where to start.</p>
         </div>
         <a href="#audit" class="btn btn-lg" style="justify-content:center;text-align:center">Get your free audit →</a>
       </div>
