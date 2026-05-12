@@ -212,11 +212,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -232,11 +227,11 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
             <a href="nubopredict.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
             <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
@@ -250,91 +245,312 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
+<!-- HERO -->
 <section class="prod-hero" style="--pc:#a78bfa;--pc-glow:rgba(167,139,250,0.13);--pc-dim:rgba(167,139,250,0.09);--pc-border:rgba(167,139,250,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>AI Cost Forecasting</div>
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>AI-Powered Spend Forecasting</div>
   <h1>Nubo<em>Predict</em></h1>
-  <p class="prod-desc">Stop being surprised by your cloud bill. NuboPredict uses AI to analyse your spend patterns, growth trajectory, and usage data to forecast next month's costs — before they arrive.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🔮</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboPredict Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboPredict launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">Stop reading AWS Cost Explorer graphs yourself. NuboPredict reads them for you — 12-month forecasts with confidence intervals, statistical anomaly detection, RI recommendations, and Claude-powered plain-English insights your CFO can actually read.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.4)">Get a free spend forecast →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. AI-powered insights. Board-ready output.</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(167,139,250,0.12);border-bottom:1px solid rgba(167,139,250,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">10</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">analysis modules</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">12mo</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">forecast horizon</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">80%</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">confidence intervals</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">AI</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">powered by Claude</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">full analysis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#a78bfa">What's coming</div>
-      <h2 class="sec-h">Everything NuboPredict will do</h2>
+      <div class="sec-tag" style="--accent:#a78bfa">10 analysis modules</div>
+      <h2 class="sec-h">Every dimension of your cloud spend. Explained in plain English.</h2>
+      <p class="sec-sub">NuboPredict doesn't just show you graphs — it tells you what changed, why, and what to do about it.</p>
     </div>
-    <div class="feat-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🤖</div>
-        <div class="feat-title">AI-powered forecasting</div>
-        <div class="feat-desc">Machine learning models trained on your specific usage patterns to predict spend with up to 95% accuracy.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📈</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Forecasting</div><div style="font-size:11px;color:var(--text-3)">Linear regression + confidence</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>3/6/12 month forecast per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>80% confidence intervals</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Monthly growth rate per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Fast-growing service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Annual spend projection</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">⚠️</div>
-        <div class="feat-title">Anomaly detection</div>
-        <div class="feat-desc">Identifies unusual spend patterns before they become problems — a new service, a misconfigured auto-scaler, a runaway job.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔍</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Anomaly Detection</div><div style="font-size:11px;color:var(--text-3)">Statistical z-score analysis</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Daily spend z-score analysis</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Spike and dip detection (2σ+)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>New service detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Disappeared service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Biggest MoM service movers</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">📈</div>
-        <div class="feat-title">Growth modelling</div>
-        <div class="feat-desc">Models your spend trajectory at different growth rates so you can plan infrastructure budgets months in advance.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">💰</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">RI & Savings Plans</div><div style="font-size:11px;color:var(--text-3)">Purchase recommendations</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>RI purchase recommendations</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Break-even analysis per instance</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Compute Savings Plan opportunity</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Current RI utilisation %</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Wasted reserved capacity</div>
+        </div>
       </div>
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🎯</div>
-        <div class="feat-title">Budget alerts</div>
-        <div class="feat-desc">Set budget thresholds and get warned when you're on track to exceed them — with time to act.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🏷️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Tag Attribution</div><div style="font-size:11px;color:var(--text-3)">Cost by team & environment</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost by Environment/Team/Project</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Untagged spend detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Department chargeback report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost per feature/service tag</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Owner attribution</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">📋</div>
-        <div class="feat-title">Monthly forecast reports</div>
-        <div class="feat-desc">Clear reports showing next month's predicted bill, broken down by service, with confidence intervals.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📊</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Budget Intelligence</div><div style="font-size:11px;color:var(--text-3)">Data-driven thresholds</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Recommended 80%/100% thresholds</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Days until budget breach</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Month-to-date burn rate</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Projected month-end spend</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>EC2 rightsizing recommendations</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">🔗</div>
-        <div class="feat-title">NuboLens integration</div>
-        <div class="feat-desc">Works alongside NuboLens — forecasting what your bill would be without optimisations vs with them applied.</div>
+      <div class="r r3" style="background:linear-gradient(135deg,rgba(167,139,250,0.08),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a78bfa,#818cf8,#a78bfa)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🤖</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#a78bfa">Claude AI Insights</div><div style="font-size:11px;color:var(--text-3)">Powered by Anthropic</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Executive summary (board-ready)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>"What changed this month" narrative</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>CFO-ready monthly report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Top 3 concerns + opportunities</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>90-day outlook with confidence</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE OUTPUT -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#a78bfa">Sample output</div>
+      <h2 class="sec-h">This is what your CFO gets.</h2>
+      <p class="sec-sub">Real NuboPredict output — forecasts, anomalies, RI recommendations, and AI-generated narrative in one report.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Report terminal -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(167,139,250,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboPredict v1.0 — Spend Report</span>
+          </div>
+          <div style="padding:var(--s3);font-family:monospace;font-size:11px;color:var(--text-2)">
+
+            <div style="color:#a78bfa;margin-bottom:var(--s2)">12-Month Spend History</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Total</span><span style="color:var(--text-3)">MoM%</span><span style="color:var(--text-3)">Top service</span>
+              <span>2025-06</span><span style="color:#34d399">£142.30</span><span>—</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-07</span><span style="color:#34d399">£156.80</span><span style="color:#f59e0b">+10.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-08</span><span style="color:#34d399">£168.40</span><span style="color:#f59e0b">+7.4%</span><span style="color:var(--text-3)">Amazon RDS</span>
+              <span>2025-09</span><span style="color:#34d399">£171.20</span><span style="color:#f59e0b">+1.7%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-10</span><span style="color:#34d399">£189.60</span><span style="color:#ef4444">+10.7%</span><span style="color:var(--text-3)">AWS Lambda</span>
+              <span>2025-11</span><span style="color:#34d399">£201.40</span><span style="color:#ef4444">+6.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-12</span><span style="color:#34d399">£224.80</span><span style="color:#ef4444">+11.6%</span><span style="color:var(--text-3)">Amazon EC2</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">6-Month Forecast (80% confidence)</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Forecast</span><span style="color:var(--text-3)">Low</span><span style="color:var(--text-3)">High</span>
+              <span>2026-01</span><span style="color:#a78bfa;font-weight:bold">£238.40</span><span style="color:var(--text-3)">£218.20</span><span style="color:var(--text-3)">£258.60</span>
+              <span>2026-02</span><span style="color:#a78bfa;font-weight:bold">£252.10</span><span style="color:var(--text-3)">£228.40</span><span style="color:var(--text-3)">£275.80</span>
+              <span>2026-03</span><span style="color:#a78bfa;font-weight:bold">£265.90</span><span style="color:var(--text-3)">£238.60</span><span style="color:var(--text-3)">£293.20</span>
+              <span>2026-04</span><span style="color:#a78bfa;font-weight:bold">£279.70</span><span style="color:var(--text-3)">£248.80</span><span style="color:var(--text-3)">£310.60</span>
+              <span>2026-05</span><span style="color:#a78bfa;font-weight:bold">£293.50</span><span style="color:var(--text-3)">£259.00</span><span style="color:var(--text-3)">£328.00</span>
+              <span>2026-06</span><span style="color:#a78bfa;font-weight:bold">£307.30</span><span style="color:var(--text-3)">£269.20</span><span style="color:var(--text-3)">£345.40</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">Anomalies detected (last 30 days)</div>
+            <div style="color:#ef4444;padding:3px 0">🔴 2025-12-14  £48.20  z=+3.2σ  SPIKE — investigate</div>
+            <div style="color:#60a5fa;padding:3px 0">🔵 2025-12-22  £8.40   z=-2.1σ  DIP — low activity day</div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">RI Recommendations</div>
+            <div style="padding:3px 0">m5.large ×2  On-demand £140/mo → RI £89/mo  saves <span style="color:#34d399">£612/yr</span></div>
+            <div style="padding:3px 0">t3.medium ×3  On-demand £90/mo → RI £58/mo  saves <span style="color:#34d399">£384/yr</span></div>
+
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r1)">
+              <div style="color:#a78bfa;font-weight:bold;margin-bottom:4px">🤖 Claude AI — Executive Summary</div>
+              <div style="color:var(--text-2);line-height:1.6;font-size:11px">Your AWS spend has grown 7.8%/month over the last 6 months, driven primarily by EC2 and Lambda. At current trajectory your annual bill will reach <span style="color:#a78bfa">£3,240</span> by December — 58% above today. Two Reserved Instance purchases would immediately save <span style="color:#34d399">£996/year</span> with a 4-month break-even. A spend spike on Dec 14th (3.2σ above baseline) warrants investigation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right stats + CFO report -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">7.8%</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">monthly growth rate</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#34d399;letter-spacing:-1px">£996</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">RI savings found/yr</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#ef4444;letter-spacing:-1px">2</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">anomalies detected</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">£3.2k</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">12mo forecast</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#a78bfa;margin-bottom:var(--s2)">🤖 CFO-Ready Monthly Report</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7">
+            <strong style="color:var(--text-1)">Current Status</strong><br>
+            • AWS spend: £224.80/mo (+11.6% vs last month)<br>
+            • Forecast: £307/mo in 6 months (£3,240/yr)<br><br>
+            <strong style="color:var(--text-1)">Key Changes</strong><br>
+            • Lambda +34% — new feature deployment Dec 12th<br>
+            • EC2 +8% — two additional instances launched<br><br>
+            <strong style="color:var(--text-1)">Action Required</strong><br>
+            • Purchase 2× m5.large RIs — saves £612/yr, 4mo break-even<br>
+            • Investigate Dec 14th spike (3.2σ anomaly, £48.20)<br>
+            • Set budget alert at £270 (80%) and £340 (100%)
+          </div>
+        </div>
+
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#a78bfa">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Report</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full forecast analysis with AI insights and CFO-ready report.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£400</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>12-month historical analysis</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>3/6/12 month forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI & Savings Plan recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>AI executive summary</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>CFO-ready monthly report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(167,139,250,0.07),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#a78bfa;color:#fff;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly forecast updates so you always know what's coming.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£300</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Everything in one-off report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly updated forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Anomaly alerts within 24 hours</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly CFO report delivered</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI purchase timing recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Forecast vs actual tracking</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#a78bfa;color:#fff">Get started</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
+<!-- FINAL CTA -->
 <section class="sec sec-alt" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <h2 class="sec-h">Where will your AWS bill be in 6 months?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have no idea. NuboPredict will tell you — with confidence intervals, anomaly detection, RI recommendations, and a CFO-ready report your board can actually read.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboPredict</span></div>
@@ -345,8 +561,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -355,6 +570,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -415,6 +631,7 @@ document.addEventListener('click',()=>{
     if(btn)btn.setAttribute('aria-expanded','false');
   });
 });
+
 
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
@@ -525,6 +742,7 @@ document.addEventListener('click',()=>{
     requestAnimationFrame(draw);
   })();
 })();
+
 </script>
 </body>
 </html>
