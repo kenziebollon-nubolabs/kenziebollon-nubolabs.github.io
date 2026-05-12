@@ -212,11 +212,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -232,11 +227,11 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
             <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
             <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
@@ -250,91 +245,298 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(0,200,150,0.13)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(0,200,150,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
+<!-- HERO -->
 <section class="prod-hero" style="--pc:#00c896;--pc-glow:rgba(0,200,150,0.13);--pc-dim:rgba(0,200,150,0.09);--pc-border:rgba(0,200,150,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Managed Monitoring</div>
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Monitoring & Observability Audit</div>
   <h1>Nubo<em>Watch</em></h1>
-  <p class="prod-desc">Real-time visibility into every corner of your infrastructure. We set up and manage Prometheus, Grafana, and alerting — so your team focuses on building, not babysitting dashboards.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🟢</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboWatch Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboWatch launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">116 checks across 18 categories. Finds every gap in your monitoring setup — missing alarms, broken alert routing, zero distributed tracing, no synthetic monitoring. A per-category observability score so you know exactly where you stand.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#00c896;box-shadow:0 0 var(--s4) rgba(0,200,150,0.4);color:#001a12">Get a free monitoring audit →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. Per-category scores. Exact remediation steps.</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(0,200,150,0.12);border-bottom:1px solid rgba(0,200,150,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px;line-height:1">116</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">checks run</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px;line-height:1">18</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">categories</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;line-height:1">35</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">findings on real account</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;line-height:1">16</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">out of 100 scored</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">full audit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE CHECK -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#00c896">What's coming</div>
-      <h2 class="sec-h">Everything NuboWatch will do</h2>
+      <div class="sec-tag" style="--accent:#00c896">18 categories. 116 checks.</div>
+      <h2 class="sec-h">Every monitoring gap. Every blind spot.</h2>
+      <p class="sec-sub">Most startups have alarms that fire into the void, dashboards that nobody checks, and zero synthetic monitoring. NuboWatch finds every gap and scores every category.</p>
     </div>
-    <div class="feat-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">📊</div>
-        <div class="feat-title">Custom dashboards</div>
-        <div class="feat-desc">Beautiful Grafana dashboards showing CPU, memory, latency, error rates, and business metrics — all in one place.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔔</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">CloudWatch Alarms</div><div style="font-size:11px;color:var(--text-3)">15 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Zero alarms configured</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Alarms in INSUFFICIENT_DATA state</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Alarms with no actions (silent)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Permanently alarming (fatigue)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Broken SNS alarm actions</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>No anomaly detection alarms</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">🔔</div>
-        <div class="feat-title">Intelligent alerting</div>
-        <div class="feat-desc">Smart alerts that notify the right people via email or Slack when something actually needs attention — not noise.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📊</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">EC2, RDS & Lambda</div><div style="font-size:11px;color:var(--text-3)">26 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Missing CPU & status check alarms</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>RDS storage & connection alarms</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Lambda error & throttle alarms</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No CloudWatch agent (no memory/disk)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>RDS Enhanced Monitoring disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Lambda DLQ not configured</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">📈</div>
-        <div class="feat-title">Performance metrics</div>
-        <div class="feat-desc">Track application performance, database query times, API response rates, and infrastructure health continuously.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📋</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Logs & Dashboards</div><div style="font-size:11px;color:var(--text-3)">13 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No metric filters on logs</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No error/exception pattern filters</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No operational dashboard</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Log groups with no retention</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Stale or empty dashboards</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>No saved Logs Insights queries</div>
+        </div>
       </div>
 
-      <div class="feat-card r r1">
-        <div class="feat-icon">🕐</div>
-        <div class="feat-title">Uptime monitoring</div>
-        <div class="feat-desc">External uptime checks from multiple locations. Know about downtime before your customers do.</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🌐</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Uptime & Tracing</div><div style="font-size:11px;color:var(--text-3)">14 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No Route53 health checks</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No synthetic canaries</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>X-Ray tracing not enabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Failed health checks</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>API Gateway tracing disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>No X-Ray groups or insights</div>
+        </div>
       </div>
 
-      <div class="feat-card r r2">
-        <div class="feat-icon">📋</div>
-        <div class="feat-title">Monthly health reports</div>
-        <div class="feat-desc">Clear monthly reports showing uptime, incident summary, and performance trends — designed for non-technical stakeholders.</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔒</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Security & Network</div><div style="font-size:11px;color:var(--text-3)">17 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>CloudTrail not logging</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No root account usage alarm</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>VPC flow logs disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No IAM / SG change alarms</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>GuardDuty findings unactioned</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No VPN tunnel monitoring</div>
+        </div>
       </div>
 
-      <div class="feat-card r r3">
-        <div class="feat-icon">🔧</div>
-        <div class="feat-title">Fully managed</div>
-        <div class="feat-desc">We handle the setup, maintenance, and upgrades. You get the visibility without the overhead of running it yourself.</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00c896,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚙️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">SSM, Billing & Advisory</div><div style="font-size:11px;color:var(--text-3)">20 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No AWS Budgets configured</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No billing alarm</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No SSM maintenance windows</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No EventBridge rules</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>No SLO/SLI alarms defined</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>No incident response runbooks</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY — SCORE TABLE -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#00c896">Case study</div>
+      <h2 class="sec-h">35 findings. 16/100 observability score. Real account.</h2>
+      <p class="sec-sub">Every category scored. Every gap prioritised. Here's exactly what NuboWatch found.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Score table -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(0,200,150,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboWatch v1.0 — Category Scores</span>
+          </div>
+          <div style="padding:var(--s3);font-family:monospace;font-size:12px">
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:4px var(--s2);margin-bottom:var(--s1)">
+              <span style="color:var(--text-3)">Category</span>
+              <span style="color:var(--text-3);text-align:right">Score</span>
+              <span style="color:var(--text-3)">Bar</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr auto auto;gap:5px var(--s2)">
+              <span style="color:var(--text-2)">Alarms</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">Security</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">SNS</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">Synthetics</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">X-Ray</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">Network</span><span style="color:#ef4444;text-align:right;font-weight:700">0%</span><span style="color:#ef4444">░░░░░░░░░░</span>
+              <span style="color:var(--text-2)">Logs</span><span style="color:#f59e0b;text-align:right;font-weight:700">12%</span><span style="color:#f59e0b">█░░░░░░░░░</span>
+              <span style="color:var(--text-2)">SSM</span><span style="color:#f59e0b;text-align:right;font-weight:700">20%</span><span style="color:#f59e0b">██░░░░░░░░</span>
+              <span style="color:var(--text-2)">Dashboards</span><span style="color:#f59e0b;text-align:right;font-weight:700">40%</span><span style="color:#f59e0b">████░░░░░░</span>
+              <span style="color:var(--text-2)">EventBridge</span><span style="color:#f59e0b;text-align:right;font-weight:700">50%</span><span style="color:#f59e0b">█████░░░░░</span>
+              <span style="color:var(--text-2)">Advisory</span><span style="color:#00c896;text-align:right;font-weight:700">50%</span><span style="color:#00c896">█████░░░░░</span>
+            </div>
+            <div style="margin-top:var(--s3);padding:var(--s2);background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r1);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-size:13px;color:var(--text-2)">Overall observability score</div>
+                <div style="font-size:11px;color:var(--text-3);margin-top:2px">3 CRITICAL · 10 HIGH · 5 MEDIUM · 17 ADVISORY</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#ef4444">16/100</div>
+                <div style="font-size:11px;color:#ef4444">🔴 Poor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px">3</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical gaps</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px">35</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px">18</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">categories scored</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#00c896;letter-spacing:-1px">&lt;5m</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">full audit</div>
+          </div>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">Zero alarms were configured.</strong> Not a single CloudWatch alarm — meaning CPU spikes, database failures, Lambda errors, and billing anomalies were all happening completely silently with nobody notified.</p>
+        </div>
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">CloudTrail was disabled.</strong> Every API call, every infrastructure change, every login — happening with zero audit trail. A breach would be completely untraceable.</p>
+        </div>
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#00c896;box-shadow:0 0 var(--s4) rgba(0,200,150,0.35);color:#001a12;font-weight:700">Get your free monitoring audit →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#00c896">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 116-check audit with per-category scores and remediation roadmap.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>116 checks across 18 categories</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Per-category observability score</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>CRITICAL / HIGH / MEDIUM / ADVISORY</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Prioritised remediation roadmap</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(0,200,150,0.07),var(--bg2));border:1px solid rgba(0,200,150,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#00c896;color:#001a12;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly rescans so your observability score improves over time.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£400</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Monthly rescan + score tracking</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>New gap alerts within 24 hours</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Alarm setup & implementation</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>On-call routing configuration</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#00c896;font-weight:600;flex-shrink:0">✓</span>Monthly observability score report</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#00c896;color:#001a12;font-weight:700">Get started</a>
       </div>
     </div>
   </div>
 </section>
 
-
-
+<!-- FINAL CTA -->
 <section class="sec sec-alt" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <h2 class="sec-h">What's your observability score?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups score under 30. Zero alarms. No synthetic monitoring. CloudTrail disabled. Find out exactly where your gaps are — per category, per service, per finding.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#00c896;box-shadow:0 0 var(--s4) rgba(0,200,150,0.35);color:#001a12;font-weight:700">Get your free monitoring audit →</a>
     </div>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboWatch</span></div>
@@ -345,8 +547,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -355,6 +556,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -415,6 +617,7 @@ document.addEventListener('click',()=>{
     if(btn)btn.setAttribute('aria-expanded','false');
   });
 });
+
 
 
 
@@ -551,6 +754,7 @@ document.addEventListener('click',()=>{
     requestAnimationFrame(draw);
   })();
 })();
+
 </script>
 </body>
 </html>
