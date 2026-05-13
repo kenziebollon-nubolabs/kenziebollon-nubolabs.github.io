@@ -30,7 +30,7 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
+html{background:#070b12}body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 /* cursor — default on interactive, custom elsewhere */
 
 canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
@@ -138,13 +138,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 
 
 .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:float 14s ease-in-out infinite}
-.orb1{width:600px;height:500px;top:-150px;left:50%;transform:translateX(-50%);
-  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.09)),transparent 70%)}
+.orb1{width:700px;height:600px;top:-200px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,var(--pc-glow,rgba(0,200,150,0.15)),transparent 70%)}
 .orb2{width:400px;height:400px;bottom:10%;right:-100px;
   background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.05)),transparent 70%);
   animation-duration:20s;animation-delay:-8s}
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(0,200,150,0.12) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
 .prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
@@ -211,7 +211,121 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .dot-grid{display:none}
   .orb,.orb1,.orb2{display:none}
 }
+</style><style>
+/* ── NuboWatch animated background — CSS only, zero canvas ── */
+@keyframes orb-float-1 {
+  0%,100% { transform:translateX(-50%) translateY(0px) scale(1); opacity:0.7; }
+  33%      { transform:translateX(-48%) translateY(-30px) scale(1.05); opacity:0.9; }
+  66%      { transform:translateX(-52%) translateY(20px) scale(0.97); opacity:0.75; }
+}
+@keyframes orb-float-2 {
+  0%,100% { transform:translateY(0px) scale(1); opacity:0.5; }
+  50%      { transform:translateY(-40px) scale(1.08); opacity:0.7; }
+}
+@keyframes orb-float-3 {
+  0%,100% { transform:translateY(0px) translateX(0px); opacity:0.4; }
+  40%      { transform:translateY(30px) translateX(-20px); opacity:0.6; }
+  80%      { transform:translateY(-20px) translateX(15px); opacity:0.35; }
+}
+@keyframes grid-pulse {
+  0%,100% { opacity:0.25; }
+  50%      { opacity:0.45; }
+}
+@keyframes scanline {
+  0%   { transform:translateY(-100vh); opacity:0; }
+  5%   { opacity:1; }
+  95%  { opacity:1; }
+  100% { transform:translateY(100vh); opacity:0; }
+}
+@keyframes particle-drift {
+  0%   { transform:translate(0,0) scale(1); opacity:0.6; }
+  25%  { transform:translate(40px,-60px) scale(0.8); opacity:0.8; }
+  50%  { transform:translate(80px,20px) scale(1.1); opacity:0.4; }
+  75%  { transform:translate(30px,80px) scale(0.9); opacity:0.7; }
+  100% { transform:translate(0,0) scale(1); opacity:0.6; }
+}
+@keyframes particle-drift-2 {
+  0%   { transform:translate(0,0); opacity:0.4; }
+  33%  { transform:translate(-60px,40px); opacity:0.7; }
+  66%  { transform:translate(30px,-50px); opacity:0.3; }
+  100% { transform:translate(0,0); opacity:0.4; }
+}
+@keyframes particle-drift-3 {
+  0%   { transform:translate(0,0) scale(1); opacity:0.5; }
+  50%  { transform:translate(-40px,-80px) scale(1.3); opacity:0.8; }
+  100% { transform:translate(0,0) scale(1); opacity:0.5; }
+}
+
+html { background:#070b12; }
+
+/* Animated dot grid */
+.dot-grid {
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(0,200,150,0.15) 1px, transparent 1px);
+  background-size:32px 32px;
+  animation:grid-pulse 6s ease-in-out infinite;
+}
+
+/* Main top orb — large slow float */
+.orb.orb1 {
+  width:800px;height:700px;
+  top:-250px;left:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(0,200,150,0.14) 0%, rgba(0,200,150,0.05) 40%, transparent 70%);
+  animation:orb-float-1 14s ease-in-out infinite;
+}
+/* Second orb — bottom left */
+.orb.orb2 {
+  width:500px;height:500px;
+  bottom:-100px;left:-100px;
+  background:radial-gradient(circle, rgba(0,200,150,0.09) 0%, transparent 70%);
+  animation:orb-float-2 18s ease-in-out infinite;
+}
+
+/* Floating particle dots — pure CSS */
+.bg-particles {
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+.bg-particles span {
+  position:absolute;
+  border-radius:50%;
+  background:rgba(0,200,150,0.4);
+}
+.bg-particles span:nth-child(1)  { width:3px;height:3px;top:15%;left:20%;  animation:particle-drift   20s ease-in-out infinite; }
+.bg-particles span:nth-child(2)  { width:2px;height:2px;top:35%;left:75%;  animation:particle-drift-2 25s ease-in-out infinite; }
+.bg-particles span:nth-child(3)  { width:4px;height:4px;top:65%;left:10%;  animation:particle-drift-3 18s ease-in-out infinite; }
+.bg-particles span:nth-child(4)  { width:2px;height:2px;top:80%;left:60%;  animation:particle-drift   22s ease-in-out infinite 3s; }
+.bg-particles span:nth-child(5)  { width:3px;height:3px;top:25%;left:90%;  animation:particle-drift-2 16s ease-in-out infinite 5s; }
+.bg-particles span:nth-child(6)  { width:2px;height:2px;top:50%;left:45%;  animation:particle-drift-3 28s ease-in-out infinite 2s; }
+.bg-particles span:nth-child(7)  { width:4px;height:4px;top:10%;left:55%;  animation:particle-drift   24s ease-in-out infinite 7s; }
+.bg-particles span:nth-child(8)  { width:2px;height:2px;top:70%;left:30%;  animation:particle-drift-2 19s ease-in-out infinite 4s; }
+.bg-particles span:nth-child(9)  { width:3px;height:3px;top:45%;left:85%;  animation:particle-drift-3 21s ease-in-out infinite 1s; }
+.bg-particles span:nth-child(10) { width:2px;height:2px;top:90%;left:15%;  animation:particle-drift   17s ease-in-out infinite 6s; }
+.bg-particles span:nth-child(11) { width:3px;height:3px;top:5%; left:35%;  animation:particle-drift-2 23s ease-in-out infinite 8s; }
+.bg-particles span:nth-child(12) { width:2px;height:2px;top:55%;left:70%;  animation:particle-drift-3 15s ease-in-out infinite 3s; }
+
+/* Subtle scanline sweep */
+.scanline {
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg, transparent, rgba(0,200,150,0.15), transparent);
+  animation:scanline 12s linear infinite;
+}
+
+/* Third accent orb — right side */
+.orb3 {
+  position:fixed;
+  width:400px;height:400px;
+  top:40%;right:-150px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+  background:radial-gradient(circle, rgba(0,200,150,0.07) 0%, transparent 70%);
+  animation:orb-float-3 22s ease-in-out infinite;
+}
 </style>
+
+
+
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -233,7 +347,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
             <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
             <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
-            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
           </div>
         </div>
@@ -246,13 +360,20 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </nav>
 
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<canvas id="bg-canvas" aria-hidden="true" style="display:none"></canvas>
 <div id="cur" aria-hidden="true"></div>
 <div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
+<canvas id="cvs" aria-hidden="true" style="display:none"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(0,200,150,0.13)"></div>
 <div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(0,200,150,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+<div class="orb3" aria-hidden="true"></div>
+<div class="bg-particles" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
 
 <!-- HERO -->
 <section class="prod-hero" style="--pc:#00c896;--pc-glow:rgba(0,200,150,0.13);--pc-dim:rgba(0,200,150,0.09);--pc-border:rgba(0,200,150,0.20)">
@@ -611,31 +732,12 @@ const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
 if(window.matchMedia('(pointer:fine)').matches){
   let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-  (function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(tick);})();
-  // expand on cards, shrink on form elements
-  document.querySelectorAll('.card,.card-area,[data-cursor="expand"]').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{curR.style.width='48px';curR.style.height='48px';curR.style.borderColor='rgba(26,143,255,0.6)';});
-    el.addEventListener('mouseleave',()=>{curR.style.width='32px';curR.style.height='32px';curR.style.borderColor='rgba(26,143,255,0.35)';});
-  });
+  function animCursor(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animCursor);}
+  animCursor();
+  document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('hover');curR.classList.add('hover');});el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');curR.classList.remove('hover');});});
 }
 
-// Particles
-const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
-let W,H;
-const resize=()=>{W=cvs.width=innerWidth;H=cvs.height=innerHeight;};
-resize();addEventListener('resize',resize);
-const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.1+.3,a:Math.random()*.35+.07}));
-(function draw(){
-  ctx.clearRect(0,0,W,H);
-  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(26,143,255,${p.a})`;ctx.fill();});
-  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
-    const a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-      ctx.strokeStyle=`rgba(26,143,255,${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}}
-  requestAnimationFrame(draw);
-})();
+
 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
@@ -671,137 +773,8 @@ document.addEventListener('click',()=>{
 
 
 
-;(function(){
-  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
-  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
-  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  // Generate buildings
-  function makeBuildings(){
-    const buildings=[];
-    let x=0;
-    while(x<BW+80){
-      const w=30+Math.random()*60;
-      const h=80+Math.random()*BH*0.55;
-      const floors=Math.floor(h/18);
-      const cols=Math.floor(w/14);
-      const windows=[];
-      for(let f=0;f<floors;f++){
-        for(let col=0;col<cols;col++){
-          windows.push({
-            on:Math.random()>0.35,
-            flicker:Math.random()*Math.PI*2,
-            speed:0.01+Math.random()*0.008,
-            color:Math.random()>0.3?'#00c896':Math.random()>0.5?'#1a8fff':'#f59e0b',
-          });
-        }
-      }
-      buildings.push({x,w,h,floors,cols,windows});
-      x+=w+4+Math.random()*8;
-    }
-    return buildings;
-  }
 
-  let buildings=makeBuildings();
-  let t=0;
-
-  // Floating metric labels drifting up
-  const labels=[
-    {txt:'CPU 47%',    x:BW*.15,y:BH*.4, vy:-.18,a:.25,color:'#00c896'},
-    {txt:'99.97% up',  x:BW*.4, y:BH*.55,vy:-.14,a:.2, color:'#1a8fff'},
-    {txt:'42ms',       x:BW*.65,y:BH*.45,vy:-.2, a:.22,color:'#00c896'},
-    {txt:'0 alerts',   x:BW*.82,y:BH*.6, vy:-.16,a:.2, color:'#34d399'},
-  ];
-
-  (function draw(){
-    t+=0.012;
-    xx.clearRect(0,0,BW,BH);
-
-    // Sky gradient
-    const sky=xx.createLinearGradient(0,0,0,BH);
-    sky.addColorStop(0,'rgba(7,11,18,0)');
-    sky.addColorStop(1,'rgba(0,200,150,0.04)');
-    xx.fillStyle=sky;xx.fillRect(0,0,BW,BH);
-
-    // Ground glow
-    const glow=xx.createLinearGradient(0,BH*0.7,0,BH);
-    glow.addColorStop(0,'rgba(0,200,150,0)');
-    glow.addColorStop(1,'rgba(0,200,150,0.06)');
-    xx.fillStyle=glow;xx.fillRect(0,BH*0.7,BW,BH*0.3);
-
-    buildings.forEach(b=>{
-      const bx=b.x;
-      const by=BH-b.h;
-
-      // Building silhouette
-      xx.fillStyle='rgba(10,15,25,0.95)';
-      xx.fillRect(bx,by,b.w,b.h);
-
-      // Building edge highlight
-      xx.strokeStyle='rgba(0,200,150,0.08)';
-      xx.lineWidth=1;
-      xx.strokeRect(bx,by,b.w,b.h);
-
-      // Windows
-      b.windows.forEach((win,i)=>{
-        const col=i%b.cols;
-        const row=Math.floor(i/b.cols);
-        const wx=bx+col*14+5;
-        const wy=by+row*18+6;
-        const ww=8,wh=10;
-
-        // Randomly toggle windows
-        if(Math.random()<0.001) win.on=!win.on;
-
-        if(win.on){
-          const flicker=0.7+0.3*Math.sin(t*win.speed*80+win.flicker);
-          xx.fillStyle=win.color+Math.round(flicker*180).toString(16).padStart(2,'0');
-          xx.fillRect(wx,wy,ww,wh);
-          // Window glow
-          xx.shadowColor=win.color;
-          xx.shadowBlur=6;
-          xx.fillRect(wx,wy,ww,wh);
-          xx.shadowBlur=0;
-        } else {
-          xx.fillStyle='rgba(255,255,255,0.03)';
-          xx.fillRect(wx,wy,ww,wh);
-        }
-      });
-
-      // Roof antenna on tall buildings
-      if(b.h>BH*0.4){
-        xx.beginPath();
-        xx.moveTo(bx+b.w/2,by);
-        xx.lineTo(bx+b.w/2,by-20);
-        xx.strokeStyle='rgba(0,200,150,0.3)';
-        xx.lineWidth=1;xx.stroke();
-        // Blinking light
-        const blink=Math.sin(t*3+b.x)>0.5;
-        if(blink){
-          xx.beginPath();xx.arc(bx+b.w/2,by-22,2.5,0,Math.PI*2);
-          xx.fillStyle='rgba(239,68,68,0.7)';xx.fill();
-        }
-      }
-    });
-
-    // Floating metric labels
-    labels.forEach(l=>{
-      l.y+=l.vy;
-      if(l.y<-20) l.y=BH+20;
-      xx.font='bold 12px monospace';
-      xx.fillStyle=l.color+Math.round(l.a*255).toString(16).padStart(2,'0');
-      xx.fillText(l.txt,l.x,l.y);
-    });
-
-    // Scanline overlay — very subtle
-    for(let y=0;y<BH;y+=4){
-      xx.fillStyle='rgba(0,0,0,0.03)';
-      xx.fillRect(0,y,BW,1);
-    }
-
-    requestAnimationFrame(draw);
-  })();
-})();
 
 </script>
 </body>
