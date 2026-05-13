@@ -9,7 +9,14 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
   <title>Sample Reports — Nubo Labs</title>
   <meta name="description" content="See exactly what you get. Professional audit reports with framework mappings, attack paths, and clear remediation steps."/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  <!-- CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'"/>
+
   <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
@@ -17,25 +24,34 @@ html{scroll-behavior:smooth}
   --border:rgba(255,255,255,0.06);--border-md:rgba(255,255,255,0.11);
   --text-1:#eef2f8;--text-2:#8e9db4;--text-3:#4e5f72;
   --accent:#1a8fff;--accent-dim:rgba(26,143,255,0.11);
+  --accent-glow:rgba(26,143,255,0.22);--accent-hover:#3d9fff;
+  --green:#34d399;--red:#ef4444;--amber:#f59e0b;
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;
-  --s6:48px;--s8:64px;--s10:80px;--s12:96px;
+  --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
-.wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4)}
-
-/* CANVAS BACKGROUND */
-#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
-@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(26,143,255,0.3)}50%{box-shadow:0 0 40px rgba(26,143,255,0.6)}}
-@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+/* cursor */
+body{cursor:auto}
+canvas,section,main,.hero,.card-area{cursor:none}
+body.has-custom-cursor{cursor:none}
+a,button,input,select,textarea,label{cursor:pointer!important}
+input,select,textarea{cursor:text!important}
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+  border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+#cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
+  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,border-color .2s;display:none}
+@media(pointer:fine){#cur,#cur-r{display:block}}
+/* canvas */
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+/* layout */
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4);position:relative;z-index:2}
 /* NAV */
 nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
-  background:rgba(7,11,18,0.92);backdrop-filter:blur(24px);
+  background:rgba(7,11,18,0.82);backdrop-filter:blur(24px);
   border-bottom:1px solid var(--border)}
 .nav-wrap{max-width:1120px;margin:0 auto;padding:0 var(--s4);height:100%;
   display:flex;align-items:center;justify-content:space-between}
@@ -44,192 +60,277 @@ nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
   border-radius:var(--r1);display:grid;place-items:center;font-size:16px}
 .nav-logo-name{font-family:'Syne',sans-serif;font-weight:700;font-size:18px}
 .nav-logo-name em{font-style:normal;color:var(--accent)}
+.nav-centre{display:flex;align-items:center;gap:var(--s1)}
+.nav-link{color:var(--text-2);text-decoration:none;font-size:14px;padding:var(--s1) var(--s2);
+  border-radius:var(--r1);transition:color .15s,background .15s;
+  background:none;border:none;font-family:'Inter',sans-serif}
+.nav-link:hover,.nav-link:focus{color:var(--text-1);background:rgba(255,255,255,0.04);outline:none}
+.nav-dd{position:relative}
+.nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  padding-top:10px;width:215px;opacity:0;pointer-events:none;
+  transition:opacity .15s;z-index:200}
+.nav-dd:hover .nav-dd-menu,.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:all}
+.nav-dd-inner{background:var(--bg2);border:1px solid var(--border-md);
+  border-radius:var(--r3);padding:var(--s1);
+  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.55)}
+.nav-dd-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s1) var(--s2);
+  border-radius:var(--r1);text-decoration:none;color:var(--text-1);
+  font-size:14px;transition:background .15s}
+.nav-dd-item:hover,.nav-dd-item:focus{background:rgba(255,255,255,0.05);outline:none}
+.nav-dd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.nav-dd-live{margin-left:auto;font-size:10px;color:var(--green);
+  background:rgba(52,211,153,0.1);padding:2px var(--s1);border-radius:100px}
+.nav-dd-soon{margin-left:auto;font-size:10px;color:var(--text-3);
+  background:rgba(255,255,255,0.05);padding:2px var(--s1);border-radius:100px}
+.btn{display:inline-flex;align-items:center;gap:var(--s1);background:var(--accent);
+  color:#fff;text-decoration:none;font-size:14px;font-weight:500;
+  padding:var(--s1) var(--s3);border-radius:var(--r2);border:none;
+  font-family:'Inter',sans-serif;
+  box-shadow:0 0 0 1px rgba(26,143,255,0.3),0 0 var(--s4) var(--accent-glow);
+  transition:background .15s,transform .1s,box-shadow .15s;white-space:nowrap}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);
+  box-shadow:0 0 0 1px rgba(26,143,255,0.5),0 0 var(--s6) rgba(26,143,255,0.3)}
+.btn-lg{font-size:16px;padding:var(--s2) var(--s5)}
+/* sections */
+.sec{padding:var(--s16) 0;position:relative;z-index:2}
+.sec-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-tag{display:inline-flex;align-items:center;gap:var(--s1);color:var(--accent);
+  font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:var(--s2)}
+.sec-tag::before{content:'';width:var(--s3);height:1px;background:var(--accent)}
+.sec-h{font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-1.5px;
+  margin-bottom:var(--s2);color:var(--text-1)}
+.sec-sub{font-size:18px;color:var(--text-2);font-weight:300;line-height:1.7;max-width:520px}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:relative;z-index:2}
+.footer-inner{max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
+.f-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:16px}
+.f-logo em{font-style:normal;color:var(--accent)}
+.f-links{display:flex;gap:var(--s4);flex-wrap:wrap}
+.f-links a{color:var(--text-3);text-decoration:none;font-size:14px;transition:color .15s}
+.f-links a:hover{color:var(--text-2)}
+.f-copy{font-size:13px;color:var(--text-3)}
+/* REVEAL */
+.r{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.r.on{opacity:1;transform:translateY(0)}
+.r2{transition-delay:.1s}.r3{transition-delay:.2s}.r4{transition-delay:.3s}
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:640px){.nav-centre{display:none}}
 
-/* HERO */
-.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:calc(var(--s8)+var(--s6)) var(--s4) var(--s8);position:relative;z-index:2}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,6vw,72px);
-  line-height:1.1;letter-spacing:-2px;margin-bottom:var(--s3);
-  background:linear-gradient(120deg,#fff 0%,#1a8fff 50%,#fff 100%);
-  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;animation:shimmer 4s linear infinite,fadeUp .8s ease-out}
-.hero p{font-size:18px;color:var(--text-2);max-width:680px;margin:0 auto;
-  opacity:0;animation:fadeUp .8s .2s ease-out forwards}
+/* ── Orb background ── */
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 12s ease-in-out infinite}
+.orb1{width:600px;height:600px;top:-200px;left:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%);animation-duration:14s}
+.orb2{width:500px;height:500px;top:40%;right:-150px;background:radial-gradient(circle,rgba(26,143,255,0.05),transparent 70%);animation-duration:18s;animation-delay:-6s}
+.orb3{width:400px;height:400px;bottom:10%;left:20%;background:radial-gradient(circle,rgba(26,143,255,0.04),transparent 70%);animation-duration:22s;animation-delay:-10s}
+/* dot grid */
+.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(26,143,255,0.12) 1px,transparent 1px);
+  background-size:32px 32px;opacity:.35}
 
-/* SAMPLES GRID */
-.samples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--s4);
-  padding:var(--s8) 0;position:relative;z-index:2}
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  padding:calc(var(--s8) + var(--s10)) var(--s4) var(--s10);
+  position:relative;z-index:2;overflow:hidden}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(44px,7.5vw,96px);line-height:1.01;letter-spacing:-3.5px;
+  margin-bottom:var(--s3);color:var(--text-1);
+  opacity:0;animation:up .6s .2s forwards}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
+  max-width:580px;line-height:1.7;margin-bottom:var(--s5);
+  opacity:0;animation:up .6s .35s forwards}
+
+/* SAMPLE CARDS */
+.sample-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--s4);margin-top:var(--s8)}
 .sample-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);transition:all .3s cubic-bezier(0.4,0,0.2,1);
-  opacity:0;animation:fadeUp .6s ease-out forwards;position:relative;overflow:hidden}
-.sample-card:nth-child(1){animation-delay:.3s}
-.sample-card:nth-child(2){animation-delay:.4s}
-.sample-card:nth-child(3){animation-delay:.5s}
-.sample-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(26,143,255,0.08) 0%,transparent 60%);
-  opacity:0;transition:opacity .3s;pointer-events:none}
-.sample-card:hover{border-color:rgba(26,143,255,0.4);transform:translateY(-4px) scale(1.02);
-  box-shadow:0 20px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(26,143,255,0.2)}
-.sample-card:hover::before{opacity:1}
+  padding:var(--s4);transition:all .3s cubic-bezier(0.4,0,0.2,1);position:relative}
+.sample-card:hover{border-color:rgba(26,143,255,0.3);transform:translateY(-4px);
+  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.4)}
 .sample-header{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
 .sample-icon{width:var(--s5);height:var(--s5);border-radius:var(--r2);
-  display:grid;place-items:center;font-size:20px;flex-shrink:0;
-  transition:transform .3s}
-.sample-card:hover .sample-icon{transform:scale(1.1) rotate(5deg);animation:float 2s ease-in-out infinite}
+  display:grid;place-items:center;font-size:20px;flex-shrink:0}
 .sample-title{font-family:'Syne',sans-serif;font-weight:700;font-size:20px}
 .sample-subtitle{font-size:13px;color:var(--text-3);margin-bottom:var(--s3)}
 .sample-features{list-style:none;margin-bottom:var(--s4)}
 .sample-features li{font-size:14px;color:var(--text-2);padding:var(--s1) 0;
-  display:flex;align-items:center;gap:var(--s2);opacity:0;
-  animation:fadeUp .4s ease-out forwards}
-.sample-card:hover .sample-features li:nth-child(1){animation-delay:.05s}
-.sample-card:hover .sample-features li:nth-child(2){animation-delay:.1s}
-.sample-card:hover .sample-features li:nth-child(3){animation-delay:.15s}
-.sample-card:hover .sample-features li:nth-child(4){animation-delay:.2s}
-.sample-card:hover .sample-features li:nth-child(5){animation-delay:.25s}
-.sample-features li::before{content:'✓';color:#34d399;font-weight:700;
-  transition:transform .2s}
-.sample-card:hover .sample-features li::before{transform:scale(1.2)}
+  display:flex;align-items:center;gap:var(--s2)}
+.sample-features li::before{content:'✓';color:var(--green);font-weight:700}
 .sample-btn{display:inline-flex;align-items:center;gap:var(--s2);
   padding:var(--s2) var(--s3);background:rgba(26,143,255,0.12);color:var(--accent);
   border:1px solid rgba(26,143,255,0.3);border-radius:var(--r2);text-decoration:none;
-  font-weight:500;font-size:14px;transition:all .3s;position:relative;overflow:hidden}
-.sample-btn::before{content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(26,143,255,0.3),transparent);
-  transform:translateX(-100%);transition:transform .5s}
-.sample-btn:hover::before{transform:translateX(100%)}
-.sample-btn:hover{background:var(--accent);color:var(--bg);transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(26,143,255,0.4)}
-.sample-btn svg{transition:transform .3s}
-.sample-btn:hover svg{transform:translateY(2px)}
+  font-weight:500;font-size:14px;transition:all .2s}
+.sample-btn:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
 .sample-meta{margin-top:var(--s2);font-size:12px;color:var(--text-3)}
+.sample-card.coming-soon{opacity:0.6}
+.sample-coming{padding:var(--s2) var(--s3);background:var(--bg3);border:1px solid var(--border);
+  border-radius:var(--r2);text-align:center;font-size:14px;color:var(--text-3)}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:var(--s5) 0;margin-top:var(--s12)}
-.footer-content{display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:var(--s3)}
-.footer-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:16px}
-.footer-logo em{font-style:normal;color:var(--accent)}
-.footer-links{display:flex;gap:var(--s3);font-size:14px}
-.footer-links a{color:var(--text-2);text-decoration:none;transition:color .2s}
-.footer-links a:hover{color:var(--text-1)}
-</style>
+  </style>
 </head>
-<body>
+<body class="has-custom-cursor">
 
-<nav>
+<div id="cur"></div>
+<div id="cur-r"></div>
+<canvas id="cvs"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+<div class="dot-grid" aria-hidden="true"></div>
+
+<nav aria-label="Main navigation">
   <div class="nav-wrap">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">☁</div>
-      <div class="nav-logo-name">Nubo<em>Labs</em></div>
+    <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
+      <div class="nav-logo-mark" aria-hidden="true">☁</div>
+      <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
+    <div class="nav-centre" role="navigation">
+      <div class="nav-dd">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
+          Products
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="nav-dd-menu" role="menu">
+          <div class="nav-dd-inner">
+            <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
+            <a href="#" class="nav-dd-item" role="menuitem" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#how" class="nav-link">How it works</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="index.html#about" class="nav-link">About</a>
+    </div>
+    <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
 
-<canvas id="cvs"></canvas>
-
 <section class="hero">
-  <h1>See What You Get</h1>
-  <p>Professional audit reports your team will actually read. Download real examples with anonymized data.</p>
+  <h1>See What You <em>Get</em></h1>
+  <p class="hero-sub">Professional audit reports your team will actually read. Download real examples with anonymized data.</p>
 </section>
 
-<div class="wrap">
-  <div class="samples-grid">
-    
-    <!-- NuboComply Sample -->
-    <div class="sample-card">
-      <div class="sample-header">
-        <div class="sample-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">📋</div>
-        <div class="sample-title">NuboComply</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sample-grid">
+      
+      <!-- NuboComply Sample -->
+      <div class="sample-card r">
+        <div class="sample-header">
+          <div class="sample-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">📋</div>
+          <div class="sample-title">NuboComply</div>
+        </div>
+        <div class="sample-subtitle">Multi-Framework Compliance Audit</div>
+        <ul class="sample-features">
+          <li>147 controls across 9 frameworks</li>
+          <li>Framework readiness scorecard</li>
+          <li>Category breakdown by domain</li>
+          <li>Attack path analysis</li>
+          <li>Prioritized remediation roadmap</li>
+        </ul>
+        <a href="samples/nubocomply-sample-report.pdf" download="NuboComply-Sample-Report.pdf" type="application/pdf" class="sample-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download Sample PDF
+        </a>
+        <div class="sample-meta">Acme Technologies Ltd • 12 pages • 1.2 MB</div>
       </div>
-      <div class="sample-subtitle">Multi-Framework Compliance Audit</div>
-      <ul class="sample-features">
-        <li>147 controls across 9 frameworks</li>
-        <li>Framework readiness scorecard</li>
-        <li>Category breakdown by domain</li>
-        <li>Attack path analysis</li>
-        <li>Prioritized remediation roadmap</li>
-      </ul>
-      <a href="samples/nubocomply-sample-report.pdf" download class="sample-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-        </svg>
-        Download Sample PDF
-      </a>
-      <div class="sample-meta">Acme Technologies Ltd • 12 pages • 1.2 MB</div>
-    </div>
 
-    <!-- NuboShield Sample (Coming Soon) -->
-    <div class="sample-card" style="opacity:0.6">
-      <div class="sample-header">
-        <div class="sample-icon" style="background:rgba(155,92,255,0.15);color:#9b5cff">🛡️</div>
-        <div class="sample-title">NuboShield</div>
+      <!-- NuboShield Sample (Coming Soon) -->
+      <div class="sample-card coming-soon r r2">
+        <div class="sample-header">
+          <div class="sample-icon" style="background:rgba(155,92,255,0.15);color:#9b5cff">🛡️</div>
+          <div class="sample-title">NuboShield</div>
+        </div>
+        <div class="sample-subtitle">Security Posture Audit</div>
+        <ul class="sample-features">
+          <li>50+ security checks</li>
+          <li>Attack surface analysis</li>
+          <li>Severity-based findings</li>
+          <li>One-click remediation</li>
+        </ul>
+        <div class="sample-coming">Coming Soon</div>
+        <div class="sample-meta">Sample report under development</div>
       </div>
-      <div class="sample-subtitle">Security Posture Audit</div>
-      <ul class="sample-features">
-        <li>50+ security checks</li>
-        <li>Attack surface analysis</li>
-        <li>Severity-based findings</li>
-        <li>One-click remediation</li>
-      </ul>
-      <div style="padding:var(--s2) var(--s3);background:var(--bg3);border:1px solid var(--border);
-        border-radius:var(--r2);text-align:center;font-size:14px;color:var(--text-3)">
-        Coming Soon
-      </div>
-      <div class="sample-meta">Sample report under development</div>
-    </div>
 
-    <!-- NuboGreen Sample (Coming Soon) -->
-    <div class="sample-card" style="opacity:0.6">
-      <div class="sample-header">
-        <div class="sample-icon" style="background:rgba(34,197,94,0.15);color:#22c55e">🌱</div>
-        <div class="sample-title">NuboGreen</div>
+      <!-- NuboGreen Sample (Coming Soon) -->
+      <div class="sample-card coming-soon r r3">
+        <div class="sample-header">
+          <div class="sample-icon" style="background:rgba(34,197,94,0.15);color:#22c55e">🌱</div>
+          <div class="sample-title">NuboGreen</div>
+        </div>
+        <div class="sample-subtitle">Carbon & ESG Audit</div>
+        <ul class="sample-features">
+          <li>Scope 2 & 3 emissions</li>
+          <li>GHG Protocol methodology</li>
+          <li>Carbon reduction opportunities</li>
+          <li>ESG reporting ready</li>
+        </ul>
+        <div class="sample-coming">Coming Soon</div>
+        <div class="sample-meta">Sample report under development</div>
       </div>
-      <div class="sample-subtitle">Carbon & ESG Audit</div>
-      <ul class="sample-features">
-        <li>Scope 2 & 3 emissions</li>
-        <li>GHG Protocol methodology</li>
-        <li>Carbon reduction opportunities</li>
-        <li>ESG reporting ready</li>
-      </ul>
-      <div style="padding:var(--s2) var(--s3);background:var(--bg3);border:1px solid var(--border);
-        border-radius:var(--r2);text-align:center;font-size:14px;color:var(--text-3)">
-        Coming Soon
-      </div>
-      <div class="sample-meta">Sample report under development</div>
-    </div>
 
+    </div>
   </div>
-</div>
+</section>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-content">
-      <div class="footer-logo">Nubo<em>Labs</em></div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#products">Products</a>
-        <a href="terms.html">Terms</a>
-        <a href="privacy.html">Privacy</a>
-      </div>
+  <div class="footer-inner">
+    <div class="f-logo">Nubo<em>Labs</em></div>
+    <div class="f-links">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#audit">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--s3)">
+      <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
+      <span class="f-copy">© 2026 Nubo Labs Ltd</span>
     </div>
   </div>
 </footer>
 
 <script>
-// Animated particle background
+// Custom cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+function followCursor(){curR.style.left=mx+'px';curR.style.top=my+'px';requestAnimationFrame(followCursor)}
+followCursor();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';curR.style.width='48px';curR.style.height='48px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='32px';curR.style.height='32px'})
+});
+
+// Canvas particles
 const c=document.getElementById('cvs'),ctx=c.getContext('2d');
 let w=c.width=innerWidth,h=c.height=innerHeight;
 const particles=[];
-const particleCount=80;
-const connectionDist=150;
+const particleCount=60;
+const connectionDist=120;
 
 class Particle{
   constructor(){
     this.x=Math.random()*w;
     this.y=Math.random()*h;
-    this.vx=(Math.random()-.5)*.3;
-    this.vy=(Math.random()-.5)*.3;
-    this.r=Math.random()*2+.5;
+    this.vx=(Math.random()-.5)*.4;
+    this.vy=(Math.random()-.5)*.4;
+    this.r=Math.random()*1.5+.5;
   }
   update(){
     this.x+=this.vx;
@@ -240,7 +341,7 @@ class Particle{
   draw(){
     ctx.beginPath();
     ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(26,143,255,0.6)';
+    ctx.fillStyle='rgba(26,143,255,0.5)';
     ctx.fill();
   }
 }
@@ -258,7 +359,7 @@ function animate(){
         ctx.beginPath();
         ctx.moveTo(p.x,p.y);
         ctx.lineTo(p2.x,p2.y);
-        ctx.strokeStyle=`rgba(26,143,255,${.15*(1-dist/connectionDist)})`;
+        ctx.strokeStyle=`rgba(26,143,255,${.12*(1-dist/connectionDist)})`;
         ctx.lineWidth=.5;
         ctx.stroke();
       }
@@ -270,15 +371,14 @@ animate();
 
 addEventListener('resize',()=>{w=c.width=innerWidth;h=c.height=innerHeight});
 
-// Mouse tracking for card glow effect
-document.querySelectorAll('.sample-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const rect=card.getBoundingClientRect();
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-    card.style.setProperty('--mx',`${x}px`);
-    card.style.setProperty('--my',`${y}px`);
-  });
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.15});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+
+// Dropdown toggle for mobile
+document.querySelectorAll('.nav-dd').forEach(dd=>{
+  const btn=dd.querySelector('.nav-link');
+  btn?.addEventListener('click',()=>dd.classList.toggle('open'))
 });
 </script>
 
