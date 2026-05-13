@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>NuboPipe — Nubo Labs</title>
-  <meta name="description" content="Broken builds, slow deployments, manual releases. NuboPipe designs and implements CI/CD pipelines that make deploying fast, reliable, and automatic — so your team ships features, not fixes."/>
+  <title>NuboVault — Nubo Labs</title>
+  <meta name="description" content="Hardcoded API keys in repos. Passwords in Slack. Credentials in .env files. NuboVault finds every exposed secret and implements proper vaulting so it never happens again."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -35,11 +35,11 @@ body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;fon
 
 canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#ff3c5a;
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#f43f5e;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
   transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid #ff3c5a80;border-radius:50%;
+  border:1px solid #f43f5e80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
 @media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
@@ -212,11 +212,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   .orb,.orb1,.orb2{display:none}
 }
 </style>
-</head>
-<body>
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -232,13 +227,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="nav-dd-menu" role="menu">
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-soon">Soon</span></a>
-            <a href="nubopipe.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-soon">Soon</span></a>
+            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-soon">Soon</span></a>
+            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
+            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
           </div>
         </div>
@@ -250,103 +245,387 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <a href="index.html#audit" class="btn">Get started →</a>
   </div>
 </nav>
+
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(255,60,90,0.13)"></div>
-<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(255,60,90,0.13)"></div>
+<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(255,60,90,0.10)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
+<!-- HERO -->
 <section class="prod-hero" style="--pc:#ff3c5a;--pc-glow:rgba(255,60,90,0.13);--pc-dim:rgba(255,60,90,0.09);--pc-border:rgba(255,60,90,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>CI/CD Pipelines</div>
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>CI/CD Pipeline Security Audit</div>
   <h1>Nubo<em>Pipe</em></h1>
-  <p class="prod-desc">Broken builds, slow deployments, manual releases. NuboPipe designs and implements CI/CD pipelines that make deploying fast, reliable, and automatic — so your team ships features, not fixes.</p>
-  <div class="coming-badge">
-    <div class="coming-badge-icon" aria-hidden="true">🔴</div>
-    <div>
-      <h3>Coming soon</h3>
-      <p>We're building this right now. Be first to know.</p>
-    </div>
-  </div>
-  
-  <form class="notify-form" action="https://formsubmit.co/ENCRYPTED_EMAIL" method="POST" aria-label="Launch notification">
-    <input type="hidden" name="_subject" value="NuboPipe Launch Notification"/>
-    <input type="hidden" name="_autoresponse" value="You're on the list! We'll email you the moment NuboPipe launches. — Nubo Labs"/>
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="email" name="email" class="notify-input" placeholder="your@company.com" required aria-label="Email for launch notification"/>
-    <button type="submit" class="notify-btn">Notify me →</button>
-  </form>
-
+  <p class="prod-desc">150 checks across 15 categories. Fingerprints your entire CI/CD stack automatically — AWS CodeBuild, Jenkins, GitHub Actions, GitLab CI, Terraform — then audits every layer. Secrets in build env vars, admin pipeline roles, exposed Jenkins ports, mutable container images, no approval gates. Most pipelines score under 30/100.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#ff3c5a;box-shadow:0 0 var(--s4) rgba(255,60,90,0.4)">Get a free pipeline audit →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Auto-detects your CI/CD stack · Read-only access · Works with any pipeline tool</p>
 </section>
 
-<section class="sec sec-alt" style="padding-top:var(--s10)">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(255,60,90,0.12);border-bottom:1px solid rgba(255,60,90,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
+      <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px;line-height:1">150</div><div style="font-size:12px;color:var(--text-3);margin-top:4px">checks</div></div>
+      <div style="text-align:center;border-left:1px solid var(--border)"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px;line-height:1">15</div><div style="font-size:12px;color:var(--text-3);margin-top:4px">categories</div></div>
+      <div style="text-align:center;border-left:1px solid var(--border)"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;line-height:1">16</div><div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div></div>
+      <div style="text-align:center;border-left:1px solid var(--border)"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;line-height:1">28</div><div style="font-size:12px;color:var(--text-3);margin-top:4px">avg score/100</div></div>
+      <div style="text-align:center;border-left:1px solid var(--border)"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px;line-height:1">any</div><div style="font-size:12px;color:var(--text-3);margin-top:4px">pipeline tool</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOL DETECTION -->
+<section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#ff3c5a">What's coming</div>
-      <h2 class="sec-h">Everything NuboPipe will do</h2>
+      <div class="sec-tag" style="--accent:#ff3c5a">Auto-detection</div>
+      <h2 class="sec-h">Tells you what CI/CD tools you're running before you say a word.</h2>
+      <p class="sec-sub">NuboPipe fingerprints your entire pipeline stack from AWS — IAM roles, OIDC providers, EC2 tags, S3 bucket names, CloudTrail user agents. No config required.</p>
     </div>
-    <div class="feat-grid">
-
-      <div class="feat-card r r1">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-title">Fast setup</div>
-        <div class="feat-desc">A complete CI/CD pipeline from scratch in days, not weeks — covering build, test, staging, and production deployment.</div>
+    <div style="background:var(--bg3);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r3);overflow:hidden;margin-top:var(--s8);max-width:680px" class="r r2">
+      <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(255,60,90,0.04)">
+        <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+        <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+        <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboPipe v1.0 — Tool Detection</span>
       </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">🔀</div>
-        <div class="feat-title">GitHub & GitLab</div>
-        <div class="feat-desc">Native support for GitHub Actions and GitLab CI — the two platforms your team is most likely already using.</div>
-      </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">🧪</div>
-        <div class="feat-title">Automated testing gates</div>
-        <div class="feat-desc">Quality gates that automatically run your test suite and block deployments when tests fail. No more broken production deploys.</div>
-      </div>
-
-      <div class="feat-card r r1">
-        <div class="feat-icon">🚀</div>
-        <div class="feat-title">Deployment strategies</div>
-        <div class="feat-desc">Blue-green, canary, and rolling deployment strategies so you can release with confidence and roll back in seconds.</div>
-      </div>
-
-      <div class="feat-card r r2">
-        <div class="feat-icon">📊</div>
-        <div class="feat-title">Pipeline monitoring</div>
-        <div class="feat-desc">Visibility into build times, failure rates, and deployment frequency — the DORA metrics that show how your team is performing.</div>
-      </div>
-
-      <div class="feat-card r r3">
-        <div class="feat-icon">🔧</div>
-        <div class="feat-title">Ongoing optimisation</div>
-        <div class="feat-desc">Monthly review of pipeline performance with recommendations to keep build times fast as your codebase grows.</div>
+      <div style="padding:var(--s3);font-family:monospace;font-size:12px">
+        <div style="color:#ff3c5a;margin-bottom:var(--s2);font-weight:bold">1/15  Tool Detection — Fingerprinting CI/CD stack</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">AWS CodeBuild</span> <span style="color:var(--text-3)">→ IAM role: nubopipe-demo-codebuild-role · 3 projects</span></div>
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">GitHub Actions</span> <span style="color:var(--text-3)">→ IAM role: nubopipe-demo-github-role</span></div>
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">Jenkins</span> <span style="color:var(--text-3)">→ EC2: i-003dfae84578f69a0 (nubopipe-demo-jenkins-master) · S3: jenkins-artifacts</span></div>
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">AWS CodePipeline</span> <span style="color:var(--text-3)">→ S3: nubopipe-demo-pipeline-artifacts</span></div>
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">AWS CodeDeploy</span> <span style="color:var(--text-3)">→ IAM role: nubopipe-demo-codedeploy-role</span></div>
+          <div><span style="color:#34d399">●</span> <span style="color:var(--text-1);font-weight:bold">Service Accounts</span> <span style="color:var(--text-3)">→ IAM users: nubolabs-deploy · nubopipe-demo-ci-user</span></div>
+        </div>
+        <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(255,60,90,0.06);border:1px solid rgba(255,60,90,0.15);border-radius:var(--r1);font-size:11px;color:var(--text-2)">
+          No config required — detected from IAM roles, OIDC providers, EC2 tags, S3 names, CloudTrail
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<section class="sec sec-alt" style="text-align:center">
+<!-- WHAT WE CHECK -->
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Stay updated</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Follow Nubo Labs on LinkedIn for launch updates and early access.</p>
-      <a href="https://www.linkedin.com/company/nubo-labs/" class="btn btn-lg" target="_blank" rel="noopener">Follow on LinkedIn →</a>
+      <div class="sec-tag" style="--accent:#ff3c5a">15 categories · 150 checks</div>
+      <h2 class="sec-h">Every layer of your pipeline. Every tool you use.</h2>
+      <p class="sec-sub">From CodeBuild env vars to Jenkins ports to Terraform state files to GitHub workflow permissions — NuboPipe covers the entire attack surface.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
+
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔑</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">IAM & Credentials</div><div style="font-size:11px;color:var(--text-3)">12 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No OIDC — static long-lived keys in CI</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Pipeline roles with AdministratorAccess</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>IAM privilege escalation via pipeline</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>OIDC missing sub/repo condition</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Console deploys bypassing pipeline</div>
+        </div>
+      </div>
+
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🏗️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">AWS CodeBuild</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Plaintext secrets in env vars</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Build logs disabled — no audit trail</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Admin service role on build projects</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Privileged mode (root container)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Deprecated images / shell injection</div>
+        </div>
+      </div>
+
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔒</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Secrets Sprawl</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Plaintext SSM parameters (8 found)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Credentials in Lambda env vars</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>.env / tfstate / id_rsa in S3</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Secrets in EC2 user data</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Secrets Manager rotation disabled</div>
+        </div>
+      </div>
+
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🐳</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">ECR & Containers</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Scan on push disabled</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Critical CVEs in deployed images</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Mutable tags — silent overwrites</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>No lifecycle policy</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#94a3b8;font-size:10px;margin-top:3px">●</span>AES256 not KMS CMK</div>
+        </div>
+      </div>
+
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔧</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Jenkins Detection</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Port 8080/8443 open to internet</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No IAM instance profile</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Secrets in EC2 user data</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Running in default VPC</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Unencrypted artifact buckets</div>
+        </div>
+      </div>
+
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ff3c5a,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚙️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">GitHub · GitLab · Terraform</div><div style="font-size:11px;color:var(--text-3)">33 checks (token required)</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>No branch protection on main</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Open secret scanning alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#ef4444;font-size:10px;margin-top:3px">●</span>Terraform state unversioned/unencrypted</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Workflow write-all permissions</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#f59e0b;font-size:10px;margin-top:3px">●</span>Unpinned actions / no CODEOWNERS</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<!-- CASE STUDY -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#ff3c5a">Case study</div>
+      <h2 class="sec-h">67 findings. 16 critical. 28/100. Real account.</h2>
+      <p class="sec-sub">Auto-detected Jenkins, GitHub Actions, and CodeBuild. Found critical secrets, admin pipeline roles, and an exposed Jenkins server — all without any configuration.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Terminal -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(255,60,90,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboPipe v1.0 — Category Scores</span>
+          </div>
+          <div style="padding:var(--s3)">
+            <table style="width:100%;border-collapse:collapse;font-size:11px">
+              <thead>
+                <tr style="color:var(--text-3)">
+                  <th style="text-align:left;padding:3px 4px;font-weight:400">Category</th>
+                  <th style="text-align:right;padding:3px 4px;font-weight:400;width:40px">Pass</th>
+                  <th style="text-align:right;padding:3px 4px;font-weight:400;width:40px">Fail</th>
+                  <th style="text-align:right;padding:3px 8px;font-weight:400;width:100px">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">CodeBuild</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">1</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">29</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#ef4444"></span><span style="color:#1a2030">██████████</span> <span style="color:#ef4444;font-weight:700">3%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Secrets</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">1</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">4</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#ef4444">██</span><span style="color:#1a2030">████████</span> <span style="color:#ef4444;font-weight:700">20%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Jenkins</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">2</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">5</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">████</span><span style="color:#1a2030">██████</span> <span style="color:#f59e0b;font-weight:700">40%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Network</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">1</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">2</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#ef4444">███</span><span style="color:#1a2030">███████</span> <span style="color:#ef4444;font-weight:700">33%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Monitoring</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">0</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">4</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#ef4444"></span><span style="color:#1a2030">██████████</span> <span style="color:#ef4444;font-weight:700">0%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">ECR</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">7</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">11</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">███</span><span style="color:#1a2030">███████</span> <span style="color:#f59e0b;font-weight:700">38%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">IAM</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">4</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">4</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">█████</span><span style="color:#1a2030">█████</span> <span style="color:#f59e0b;font-weight:700">50%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Terraform</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">3</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">3</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">█████</span><span style="color:#1a2030">█████</span> <span style="color:#f59e0b;font-weight:700">50%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">SupplyChain</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">2</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">2</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">████</span><span style="color:#1a2030">██████</span> <span style="color:#f59e0b;font-weight:700">40%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Advisory</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">2</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">3</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#f59e0b">████</span><span style="color:#1a2030">██████</span> <span style="color:#f59e0b;font-weight:700">40%</span></td>
+                </tr>
+                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
+                  <td style="padding:4px;color:var(--text-2)">Detection</td>
+                  <td style="padding:4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">1</td>
+                  <td style="padding:4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">0</td>
+                  <td style="padding:4px 8px;text-align:right;white-space:nowrap;font-family:monospace"><span style="color:#34d399">██████████</span><span style="color:#1a2030"></span> <span style="color:#34d399;font-weight:700">100%</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r1)">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div><div style="color:var(--text-2);font-size:12px;font-family:monospace">Pipeline security score</div><div style="color:var(--text-3);font-size:10px;margin-top:2px">16 CRITICAL · 19 HIGH · 14 MEDIUM · 18 ADVISORY</div></div>
+                <div style="text-align:right"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:#ef4444">28/100</div><div style="font-size:10px;color:#ef4444">🔴 Poor</div></div>
+              </div>
+            </div>
+
+            <div style="margin-top:var(--s2);color:#ff3c5a;font-family:monospace;font-size:11px;font-weight:bold;margin-bottom:6px">Top critical findings</div>
+            <div style="display:flex;flex-direction:column;gap:3px;font-family:monospace;font-size:10px">
+              <div style="padding:3px 4px;background:rgba(239,68,68,0.06);border-radius:3px"><span style="color:#ef4444">CRIT</span> <span style="color:var(--text-2)">CodeBuild role = AdministratorAccess (3 projects)</span></div>
+              <div style="padding:3px 4px;background:rgba(239,68,68,0.06);border-radius:3px"><span style="color:#ef4444">CRIT</span> <span style="color:var(--text-2)">11 plaintext secrets (SSM + Lambda + S3)</span></div>
+              <div style="padding:3px 4px;background:rgba(239,68,68,0.06);border-radius:3px"><span style="color:#ef4444">CRIT</span> <span style="color:var(--text-2)">Jenkins port 8080/22/8443 open to 0.0.0.0/0</span></div>
+              <div style="padding:3px 4px;background:rgba(239,68,68,0.06);border-radius:3px"><span style="color:#ef4444">CRIT</span> <span style="color:var(--text-2)">Pipeline can modify IAM — privilege escalation</span></div>
+              <div style="padding:3px 4px;background:rgba(239,68,68,0.06);border-radius:3px"><span style="color:#ef4444">CRIT</span> <span style="color:var(--text-2)">CloudTrail disabled — no audit trail</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px">16</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px">67</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px">7</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">tools detected</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ff3c5a;letter-spacing:-1px">0</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">config needed</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,60,90,0.05);border:1px solid rgba(255,60,90,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#ff3c5a;margin-bottom:var(--s2)">The attack path</div>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">Step 1:</strong> Attacker finds Jenkins on port 8080 (public internet).<br><strong style="color:#ef4444">Step 2:</strong> No auth — Jenkins console open. Reads build env vars with AWS keys.<br><strong style="color:#ef4444">Step 3:</strong> CodeBuild role has AdministratorAccess — full account takeover.<br><strong style="color:#ef4444">Step 4:</strong> CloudTrail disabled — breach completely untraceable.</p>
+        </div>
+
+        <div style="background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#34d399;margin-bottom:var(--s2)">Works with any pipeline tool</div>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.7">NuboPipe audits AWS-side regardless of your pipeline tool. Provide a GitHub or GitLab token for 33 additional checks — branch protection, secret scanning, Dependabot, workflow permissions, CODEOWNERS.</p>
+        </div>
+
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#ff3c5a;box-shadow:0 0 var(--s4) rgba(255,60,90,0.35)">Get your free pipeline audit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#ff3c5a">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full pipeline audit — AWS, Jenkins, GitHub, GitLab, Terraform.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px">£500</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>150 checks across 15 categories</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Auto-detects your CI/CD stack</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>GitHub + GitLab API checks</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Attack path narrative</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(255,60,90,0.07),var(--bg2));border:1px solid rgba(255,60,90,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#ff3c5a;color:#fff;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly rescans — catch new vulnerabilities as your pipeline evolves.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px">£400</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Monthly rescan as stack evolves</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>New vulnerability alerts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Remediation implementation</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>OIDC migration support</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#ff3c5a;font-weight:600;flex-shrink:0">✓</span>Pipeline hardening roadmap</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:700;background:#ff3c5a;color:#fff">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="sec-h">Is your pipeline the weakest link?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most pipelines have admin credentials in plaintext, no approval gates, and exposed build servers. NuboPipe finds every gap — across every tool you use.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#ff3c5a;box-shadow:0 0 var(--s4) rgba(255,60,90,0.35)">Get your free pipeline audit →</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
     <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboPipe</span></div>
     <div class="f-links">
-      <a href="index.html#products">Products</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#audit">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="index.html#products">Products</a><a href="index.html#pricing">Pricing</a>
+      <a href="index.html#about">About</a><a href="index.html#audit">Contact</a>
+      <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -355,6 +634,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
+
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -416,32 +696,52 @@ document.addEventListener('click',()=>{
   });
 });
 
+
+
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
   let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
   window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  // Pipeline stages
-  const stages=[
-    {name:'Source',x:.1,y:.5,color:'rgba(255,60,90,1)'},
-    {name:'Build',x:.28,y:.35,color:'rgba(255,60,90,1)'},
-    {name:'Test',x:.28,y:.65,color:'rgba(255,60,90,1)'},
-    {name:'Stage',x:.5,y:.5,color:'rgba(245,158,11,1)'},
-    {name:'Scan',x:.68,y:.35,color:'rgba(245,158,11,1)'},
-    {name:'Approve',x:.68,y:.65,color:'rgba(52,211,153,1)'},
-    {name:'Deploy',x:.85,y:.5,color:'rgba(52,211,153,1)'},
-    {name:'Live',x:.95,y:.5,color:'rgba(52,211,153,1)'},
-  ];
+  function drawLock(ctx,x,y,s,locked,a){
+    ctx.save();ctx.globalAlpha=a;
+    const col=locked?'rgba(244,63,94,1)':'rgba(52,211,153,1)';
+    ctx.strokeStyle=col;ctx.lineWidth=1.5;
+    // body
+    ctx.beginPath();ctx.roundRect(x-s*.4,y,s*.8,s*.7,s*.1);ctx.stroke();
+    // shackle
+    ctx.beginPath();
+    if(locked){
+      ctx.arc(x,y+s*.05,s*.25,Math.PI,0);
+    } else {
+      ctx.arc(x+s*.15,y-s*.1,s*.25,Math.PI+.3,0);
+    }
+    ctx.stroke();
+    // keyhole
+    ctx.beginPath();ctx.arc(x,y+s*.35,s*.1,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x,y+s*.45);ctx.lineTo(x,y+s*.6);ctx.stroke();
+    ctx.restore();
+  }
 
-  const connections=[
-    [0,1],[0,2],[1,3],[2,3],[3,4],[3,5],[4,6],[5,6],[6,7]
-  ];
+  const locks=Array.from({length:6},(_,i)=>({
+    x:(i+.5)*(BW/6),y:BH*.2+Math.sin(i*1.2)*BH*.3,
+    s:30+Math.random()*40,
+    phase:i*1.04,
+    speed:.008+Math.random()*.004,
+    unlockAt:Math.random()*Math.PI*2,
+  }));
 
-  // Signals travelling along connections
-  const signals=connections.map(([from,to])=>({
-    from,to,progress:Math.random(),
-    speed:.004+Math.random()*.003,
-    color:stages[to].color,
+  // Floating credential text
+  const creds=[
+    'API_KEY=●●●●●●●●',
+    'DB_PASS=●●●●●●●●',
+    'SECRET_TOKEN=●●●●',
+    'AWS_SECRET=●●●●●●',
+    '●●●●●●●●●●●●●●●●',
+  ];
+  const floats=creds.map((txt,i)=>({
+    txt,x:BW*.1+i*(BW*.18),y:BH*.6+i*40,
+    vy:-.3,a:.2+i*.05
   }));
 
   let t=0;
@@ -449,87 +749,48 @@ document.addEventListener('click',()=>{
     t+=.012;
     xx.clearRect(0,0,BW,BH);
 
-    // Circuit board background traces
-    for(let i=0;i<8;i++){
-      const x=Math.random()*BW;
-      xx.beginPath();
-      xx.moveTo(x,0);
-      // Random right-angle traces
-      const y1=Math.random()*BH;
-      const x2=x+(-1+Math.floor(Math.random()*3))*80;
-      xx.lineTo(x,y1);xx.lineTo(x2,y1);
-      xx.strokeStyle='rgba(255,60,90,0.04)';xx.lineWidth=1;xx.stroke();
+    // Background grid lines
+    for(let i=0;i<BW;i+=80){
+      xx.beginPath();xx.moveTo(i,0);xx.lineTo(i,BH);
+      xx.strokeStyle='rgba(244,63,94,0.04)';xx.lineWidth=1;xx.stroke();
+    }
+    for(let i=0;i<BH;i+=80){
+      xx.beginPath();xx.moveTo(0,i);xx.lineTo(BW,i);
+      xx.strokeStyle='rgba(244,63,94,0.04)';xx.lineWidth=1;xx.stroke();
     }
 
-    // Draw connections
-    connections.forEach(([fi,ti])=>{
-      const fs=stages[fi],ts=stages[ti];
-      xx.beginPath();
-      xx.moveTo(fs.x*BW,fs.y*BH);
-      // Right-angle routing
-      const mx=(fs.x+ts.x)/2*BW;
-      xx.lineTo(mx,fs.y*BH);
-      xx.lineTo(mx,ts.y*BH);
-      xx.lineTo(ts.x*BW,ts.y*BH);
-      xx.strokeStyle='rgba(255,60,90,0.15)';xx.lineWidth=1.5;xx.stroke();
+    // Floating credentials
+    floats.forEach((f,i)=>{
+      f.y+=f.vy;if(f.y<-20)f.y=BH+20;
+      xx.font='13px monospace';
+      xx.fillStyle=`rgba(244,63,94,${f.a+.05*Math.sin(t+i)})`;
+      xx.fillText(f.txt,f.x,f.y);
+      // "secured" version beside
+      xx.fillStyle=`rgba(52,211,153,${(f.a+.05*Math.sin(t+i))*.8})`;
+      xx.fillText('🔒',f.x+180,f.y);
     });
 
-    // Animate signals
-    signals.forEach(sig=>{
-      sig.progress+=sig.speed;
-      if(sig.progress>1)sig.progress=0;
-
-      const fs=stages[sig.from],ts=stages[sig.to];
-      const mx=(fs.x+ts.x)/2*BW;
-
-      // Calculate position along the right-angle path
-      let px,py;
-      const p=sig.progress;
-      // Path has 3 segments: horizontal, vertical, horizontal
-      const seg1=Math.abs(mx-fs.x*BW),seg2=Math.abs(ts.y-fs.y)*BH,seg3=Math.abs(ts.x*BW-mx);
-      const total=seg1+seg2+seg3;
-      const dist=p*total;
-      if(dist<seg1){
-        px=fs.x*BW+(mx-fs.x*BW)*(dist/seg1);py=fs.y*BH;
-      } else if(dist<seg1+seg2){
-        px=mx;py=fs.y*BH+(ts.y-fs.y)*BH*((dist-seg1)/seg2);
-      } else {
-        px=mx+(ts.x*BW-mx)*((dist-seg1-seg2)/seg3);py=ts.y*BH;
+    // Locks
+    locks.forEach((lk,i)=>{
+      lk.phase+=lk.speed;
+      const ly=lk.y+Math.sin(lk.phase)*30;
+      const locked=Math.sin(lk.phase+lk.unlockAt)<0;
+      const alpha=.3+.15*Math.sin(lk.phase);
+      drawLock(xx,lk.x,ly,lk.s,locked,alpha);
+      // Glow when unlocking
+      if(!locked){
+        const grd=xx.createRadialGradient(lk.x,ly+lk.s*.3,0,lk.x,ly+lk.s*.3,lk.s);
+        grd.addColorStop(0,'rgba(52,211,153,0.15)');
+        grd.addColorStop(1,'rgba(52,211,153,0)');
+        xx.fillStyle=grd;xx.fillRect(lk.x-lk.s,ly,lk.s*2,lk.s);
       }
-
-      // Draw signal dot with glow
-      xx.beginPath();xx.arc(px,py,4,0,Math.PI*2);
-      xx.fillStyle=sig.color.replace('1)','.7)');xx.fill();
-      const grd=xx.createRadialGradient(px,py,0,px,py,12);
-      grd.addColorStop(0,sig.color.replace('1)','.3)'));
-      grd.addColorStop(1,sig.color.replace('1)','0)'));
-      xx.fillStyle=grd;xx.fillRect(px-12,py-12,24,24);
-    });
-
-    // Draw stage nodes
-    stages.forEach((st,i)=>{
-      const sx=st.x*BW,sy=st.y*BH;
-      const pulse=.3+.12*Math.sin(t*2+i);
-
-      xx.beginPath();xx.arc(sx,sy,18,0,Math.PI*2);
-      xx.fillStyle=st.color.replace('1)',`${pulse*.15})`);xx.fill();
-      xx.strokeStyle=st.color.replace('1)',`${pulse})`);xx.lineWidth=1.5;xx.stroke();
-
-      // Outer ring pulse
-      xx.beginPath();xx.arc(sx,sy,22+4*Math.sin(t+i),0,Math.PI*2);
-      xx.strokeStyle=st.color.replace('1)',`${pulse*.3})`);xx.lineWidth=1;xx.stroke();
-
-      // Label
-      xx.font='10px Inter,sans-serif';
-      xx.fillStyle=st.color.replace('1)','.4)');
-      xx.textAlign='center';
-      xx.fillText(st.name,sx,sy+32);
-      xx.textAlign='left';
     });
 
     requestAnimationFrame(draw);
   })();
 })();
+
+
 </script>
 </body>
 </html>
