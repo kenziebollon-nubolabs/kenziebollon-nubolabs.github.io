@@ -147,7 +147,9 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 /* SAMPLE CARDS */
 .sample-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--s4);margin-top:var(--s8)}
 .sample-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);transition:all .3s cubic-bezier(0.4,0,0.2,1);position:relative}
+  padding:var(--s4);transition:all .3s cubic-bezier(0.4,0,0.2,1);position:relative;
+  display:flex;flex-direction:column}
+.sample-features{flex:1}
 .sample-card:hover{border-color:rgba(26,143,255,0.3);transform:translateY(-4px);
   box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.4)}
 .sample-header{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
@@ -244,41 +246,51 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           </svg>
           Download Sample PDF
         </a>
-        <div class="sample-meta">Acme Technologies Ltd • 12 pages • 1.2 MB</div>
+        <div class="sample-meta">Acme Technologies Ltd • 13 pages • PDF</div>
       </div>
 
-      <!-- NuboShield Sample (Coming Soon) -->
-      <div class="sample-card coming-soon r r2">
+      <!-- NuboShield Sample -->
+      <div class="sample-card r r2">
         <div class="sample-header">
           <div class="sample-icon" style="background:rgba(155,92,255,0.15);color:#9b5cff">🛡️</div>
           <div class="sample-title">NuboShield</div>
         </div>
         <div class="sample-subtitle">Security Posture Audit</div>
         <ul class="sample-features">
-          <li>50+ security checks</li>
-          <li>Attack surface analysis</li>
-          <li>Severity-based findings</li>
-          <li>One-click remediation</li>
+          <li>50+ security checks across IAM, network, storage</li>
+          <li>Attack path analysis — step by step</li>
+          <li>Severity-based findings with full explanations</li>
+          <li>Remediation roadmap with effort estimates</li>
         </ul>
-        <div class="sample-coming">Coming Soon</div>
-        <div class="sample-meta">Sample report under development</div>
+        <a href="samples/nuboshield-sample-report.pptx" download="NuboShield-Sample-Report.pptx" class="sample-btn" style="background:rgba(155,92,255,0.12);color:#9b5cff;border-color:rgba(155,92,255,0.3)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download Sample Deck
+        </a>
+        <div class="sample-meta">Acme Technologies Ltd • 20 slides • PowerPoint</div>
       </div>
 
-      <!-- NuboGreen Sample (Coming Soon) -->
-      <div class="sample-card coming-soon r r3">
+      <!-- NuboGreen Sample -->
+      <div class="sample-card r r3">
         <div class="sample-header">
           <div class="sample-icon" style="background:rgba(34,197,94,0.15);color:#22c55e">🌱</div>
           <div class="sample-title">NuboGreen</div>
         </div>
         <div class="sample-subtitle">Carbon & ESG Audit</div>
         <ul class="sample-features">
-          <li>Scope 2 & 3 emissions</li>
-          <li>GHG Protocol methodology</li>
-          <li>Carbon reduction opportunities</li>
-          <li>ESG reporting ready</li>
+          <li>Scope 2 & 3 emissions breakdown</li>
+          <li>GHG Protocol — location-based method</li>
+          <li>Carbon reduction opportunities ranked</li>
+          <li>Real-world equivalents & ESG ready</li>
         </ul>
-        <div class="sample-coming">Coming Soon</div>
-        <div class="sample-meta">Sample report under development</div>
+        <a href="samples/nubogreen-sample-report.pdf" download="NuboGreen-Sample-Report.pdf" type="application/pdf" class="sample-btn" style="background:rgba(34,197,94,0.12);color:#22c55e;border-color:rgba(34,197,94,0.3)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download Sample PDF
+        </a>
+        <div class="sample-meta">Acme Technologies Ltd • 10 pages • PDF</div>
       </div>
 
     </div>
