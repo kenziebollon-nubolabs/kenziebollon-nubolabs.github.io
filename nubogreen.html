@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>NuboComply — Nubo Labs</title>
-  <meta name="description" content="SOC2 and ISO27001 readiness without the £20,000 consultant bill. Automated gap analysis, clear remediation steps, and ongoing compliance monitoring so you can land enterprise clients."/>
+  <title>NuboGreen — Nubo Labs</title>
+  <meta name="description" content="Cloud infrastructure has a carbon footprint. ESG reporting is becoming mandatory. NuboGreen measures, reports, and reduces the environmental impact of your cloud — an untapped market with growing demand."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -35,11 +35,11 @@ body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;fon
 
 canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#f59e0b;
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#22c55e;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
   transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid #f59e0b80;border-radius:50%;
+  border:1px solid #22c55e80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
 @media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
@@ -146,7 +146,10 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
   background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;
+  justify-content:center;text-align:center;
+  padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);
+  position:relative;z-index:2;overflow:hidden}
 .prod-label{display:inline-flex;align-items:center;gap:var(--s1);
   background:var(--pc-dim,var(--accent-dim));
   border:1px solid var(--pc-border,rgba(26,143,255,0.18));
@@ -187,7 +190,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   box-shadow:0 0 var(--s4) var(--pc-glow,var(--accent-glow));
   transition:opacity .15s,transform .1s}
 .notify-btn:hover{opacity:.9;transform:translateY(-1px)}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
+.feat-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
 .feat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
   padding:var(--s4);transition:border-color .2s,transform .2s}
 .feat-card:hover{border-color:rgba(255,255,255,0.09);transform:translateY(-2px)}
@@ -230,8 +233,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
             <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
-            <a href="nubocomply.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
+            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
+            <a href="nubogreen.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
             <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
             <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
@@ -250,18 +253,18 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 <div id="cur" aria-hidden="true"></div>
 <div id="cur-r" aria-hidden="true"></div>
 <canvas id="cvs" aria-hidden="true"></canvas>
-<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(245,158,11,0.13)"></div>
-<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(245,158,11,0.13)"></div>
+<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(34,197,94,0.13)"></div>
+<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(34,197,94,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
 <!-- HERO -->
-<section class="prod-hero" style="--pc:#f59e0b;--pc-glow:rgba(245,158,11,0.13);--pc-dim:rgba(245,158,11,0.09);--pc-border:rgba(245,158,11,0.20)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Multi-Framework Compliance Audit</div>
-  <h1>Nubo<em>Comply</em></h1>
-  <p class="prod-desc">147 controls mapped simultaneously across SOC2, ISO 27001, CIS AWS, GDPR, UK Cyber Essentials, NCSC, NIST CSF, PCI DSS, and AWS Well-Architected. Every failing control shows every framework it violates. Fix one thing — close gaps across nine frameworks at once.</p>
+<section class="prod-hero" style="--pc:#22c55e;--pc-glow:rgba(34,197,94,0.13);--pc-dim:rgba(34,197,94,0.09);--pc-border:rgba(34,197,94,0.20)">
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Cloud Carbon & ESG Reporting</div>
+  <h1>Nubo<em>Green</em></h1>
+  <p class="prod-desc">The only cloud carbon audit built specifically for UK startups and SMBs. GHG Protocol aligned. Scope 2 & 3 reporting. Board-ready ESG disclosure statements. Know your cloud's carbon footprint — and exactly how to reduce it.</p>
   <div style="display:flex;gap:var(--s2);align-items:center;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .6s .5s forwards">
-    <a href="index.html#audit" class="btn btn-lg" style="background:#f59e0b;box-shadow:0 0 var(--s4) rgba(245,158,11,0.4);color:#1a0e00">Get a free compliance audit →</a>
-    <a href="samples.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(245,158,11,0.08);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);border-radius:10px;text-decoration:none;font-weight:500;font-size:15px;transition:all .2s">
+    <a href="index.html#audit" class="btn btn-lg" style="background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.4);color:#0a1a0a">Get your free carbon audit →</a>
+    <a href="samples.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(34,197,94,0.08);color:#22c55e;border:1px solid rgba(34,197,94,0.3);border-radius:10px;text-decoration:none;font-weight:500;font-size:15px;transition:all .2s">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
@@ -269,363 +272,233 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       See Sample Report
     </a>
   </div>
-  <p style="margin-top:var(--s3);font-size:13px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Technical gap analysis only · Not a certification · Requires licensed auditor for certification</p>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. GHG Protocol aligned. Suitable for ESG disclosures.</p>
 </section>
 
 <!-- STATS BAR -->
-<div style="background:var(--bg2);border-top:1px solid rgba(245,158,11,0.12);border-bottom:1px solid rgba(245,158,11,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+<div style="background:var(--bg2);border-top:1px solid rgba(34,197,94,0.12);border-bottom:1px solid rgba(34,197,94,0.12);padding:var(--s5) 0;position:relative;z-index:2">
   <div class="wrap">
     <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
       <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f59e0b;letter-spacing:-1px;line-height:1">147</div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:4px">controls assessed</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">12</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">services measured</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f59e0b;letter-spacing:-1px;line-height:1">9</div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:4px">frameworks</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">3</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">GHG scopes</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;line-height:1">26</div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:4px">avg score/100</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">96%</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">max reduction found</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#34d399;letter-spacing:-1px;line-height:1">32</div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:4px">evidence items</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">20</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">AWS regions compared</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f59e0b;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#22c55e;letter-spacing:-1px;line-height:1">&lt;5m</div>
         <div style="font-size:12px;color:var(--text-3);margin-top:4px">full audit</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- WHY THIS EXISTS -->
+<!-- WHY THIS MATTERS -->
 <section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f59e0b">Why NuboComply</div>
-      <h2 class="sec-h">Your auditor charges £500/day to find what NuboComply finds in 5 minutes.</h2>
-      <p class="sec-sub">SOC2 certification typically costs £15,000–£40,000 and takes 6 months. Most of that time is spent finding gaps you could have found yourself. NuboComply finds them first.</p>
+      <div class="sec-tag" style="--accent:#22c55e">Why NuboGreen</div>
+      <h2 class="sec-h">ESG reporting is becoming mandatory. Most startups aren't ready.</h2>
+      <p class="sec-sub">UK SECR reporting, enterprise vendor questionnaires, investor ESG due diligence — they all need cloud carbon data. NuboGreen gives you the numbers, the report, and the roadmap.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
       <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-        <div style="font-size:28px;margin-bottom:var(--s2)">🏆</div>
-        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Pre-audit readiness</h4>
-        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Know your technical gaps before your auditor bills you to find them. Most clients fix 60–80% of technical findings before their audit even starts — dramatically reducing audit fees and timelines.</p>
+        <div style="font-size:28px;margin-bottom:var(--s2)">📋</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">UK SECR Compliance</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Streamlined Energy and Carbon Reporting is mandatory for large UK companies — and increasingly expected by enterprise clients during supplier vetting. NuboGreen produces SECR-ready data.</p>
       </div>
       <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-        <div style="font-size:28px;margin-bottom:var(--s2)">🔄</div>
-        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Continuous compliance</h4>
-        <p style="font-size:14px;color:var(--text-2);line-height:1.65">You pass SOC2 in January. By March, three new deployments have broken six controls. NuboComply runs monthly so drift is caught immediately — not at next year's audit.</p>
+        <div style="font-size:28px;margin-bottom:var(--s2)">🏆</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Enterprise Vendor Questionnaires</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Enterprise clients increasingly require suppliers to disclose carbon data. NuboGreen gives you the exact numbers and language needed to answer ESG sections of RFPs and vendor questionnaires.</p>
       </div>
       <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-        <div style="font-size:28px;margin-bottom:var(--s2)">📋</div>
-        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Enterprise questionnaires</h4>
-        <p style="font-size:14px;color:var(--text-2);line-height:1.65">Enterprise procurement teams send 200-question security questionnaires. NuboComply gives you the exact control evidence to answer them — with auditor-ready proof for every passing control.</p>
+        <div style="font-size:28px;margin-bottom:var(--s2)">💚</div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">Investor ESG Due Diligence</h4>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.65">ESG metrics are increasingly part of investor due diligence, particularly for Series A and beyond. NuboGreen gives you a defensible, methodology-backed carbon number.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 9 FRAMEWORKS -->
+<!-- WHAT WE MEASURE -->
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f59e0b">9 frameworks</div>
-      <h2 class="sec-h">Every framework your enterprise clients care about.</h2>
-      <p class="sec-sub">Every control is mapped simultaneously. One finding, nine frameworks checked at once.</p>
+      <div class="sec-tag" style="--accent:#22c55e">What we measure</div>
+      <h2 class="sec-h">Every watt. Every service. Every region.</h2>
+      <p class="sec-sub">NuboGreen uses actual AWS CloudWatch metrics — not estimates — to calculate real energy consumption per service.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin-top:var(--s8)">
 
-      <div class="r" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">SOC2 Type II</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">5 Trust Service Criteria</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The standard US enterprise clients require. CC6–CC9 security controls, availability, confidentiality, processing integrity. Required for SaaS companies selling to US enterprise.</p>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Compute</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EC2 — TDP × CPU utilisation</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Lambda — GB-seconds × arch</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EKS control plane</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Graviton vs x86 comparison</div>
+        </div>
       </div>
 
-      <div class="r r2" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">ISO 27001:2022</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">93 controls across 4 domains</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The international standard, dominant in UK and European enterprise procurement. Increasingly required for UK public sector and government contracts.</p>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Databases</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>RDS — instance TDP + storage</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Multi-AZ power doubling</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>ElastiCache clusters</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Redshift + OpenSearch</div>
+        </div>
       </div>
 
-      <div class="r r3" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">CIS AWS v2.0</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">67 benchmark checks</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The definitive AWS security benchmark. IAM, storage, logging, monitoring, networking — all 67 checks. The technical foundation that underpins most cloud compliance frameworks.</p>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">Storage & Network</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>S3 — per GB stored</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>EBS volumes + snapshots</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>CloudFront data transfer</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>NAT Gateway + API Gateway</div>
+        </div>
       </div>
 
-      <div class="r" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">GDPR Article 32</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">Technical security measures</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The technical measures required for GDPR compliance. Encryption at rest and in transit, access controls, availability, integrity. Mandatory for any company processing EU/UK personal data.</p>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#22c55e,transparent)"></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;margin-bottom:var(--s2)">ESG Analysis</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>20 region comparison</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Net zero trajectory</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Carbon per £ spent</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#22c55e;font-size:10px">●</span>Ranked reduction roadmap</div>
+        </div>
       </div>
 
-      <div class="r r2" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">UK Cyber Essentials</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">5 control domains</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">UK government scheme. Required for all government contracts. NuboComply covers all 5 Cyber Essentials domains — boundary firewalls, secure configuration, access control, malware protection, patch management.</p>
-      </div>
+    </div>
 
-      <div class="r r3" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">NCSC Cloud Security</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">14 principles</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The UK National Cyber Security Centre's 14 cloud security principles. Essential for G-Cloud, Crown Commercial Service supplier status, and UK public sector contracts.</p>
+    <!-- GHG Protocol callout -->
+    <div class="r" style="margin-top:var(--s4);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s2)">
+      <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 1</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Direct emissions. Cloud is zero — no owned vehicles or facilities.</div>
+        <div style="font-size:24px;font-weight:800;color:#34d399;margin-top:var(--s2)">0 kgCO₂e</div>
       </div>
-
-      <div class="r" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">NIST CSF 2.0</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">Protect · Detect · Respond</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">The US framework increasingly used in UK enterprise procurement, especially for companies with US customers or investors. NuboComply covers the technical Protect, Detect, and Respond functions.</p>
+      <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 2</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Purchased electricity. Your compute, storage, and networking power draw.</div>
+        <div style="font-size:14px;color:#22c55e;margin-top:var(--s2);font-weight:500">Measured precisely ✓</div>
       </div>
-
-      <div class="r r2" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">PCI DSS v4.0</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">Technical requirements 1, 2, 3, 6–8, 10, 11</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">Mandatory for any company handling card payments. Network security, encryption, access control, logging, testing. NuboComply covers the AWS-specific technical requirements.</p>
+      <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4);text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#22c55e;margin-bottom:var(--s1)">Scope 3</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.6">Upstream value chain. AWS hardware manufacturing and supply chain.</div>
+        <div style="font-size:14px;color:#22c55e;margin-top:var(--s2);font-weight:500">Estimated per GHG Protocol ✓</div>
       </div>
-
-      <div class="r r3" style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#f59e0b"></div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#f59e0b;margin-bottom:var(--s1)">AWS Well-Architected</div>
-        <div style="font-size:12px;color:var(--text-3);margin-bottom:var(--s2)">Security Pillar — all 9 areas</div>
-        <p style="font-size:13px;color:var(--text-2);line-height:1.6">AWS's own security best practice framework. Identity, detection, infrastructure protection, data protection, incident response. The language AWS solution architects and enterprise teams speak.</p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- CASE STUDY — THE SCORECARD -->
+<!-- REAL REPORT SAMPLE -->
 <section class="sec">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f59e0b">Case study</div>
-      <h2 class="sec-h">147 controls. 89 failures. 9 frameworks. Real account.</h2>
-      <p class="sec-sub">Every control mapped simultaneously. Here's exactly what NuboComply produced on a live AWS account.</p>
+      <div class="sec-tag" style="--accent:#22c55e">Sample report</div>
+      <h2 class="sec-h">This is what you get.</h2>
+      <p class="sec-sub">A real NuboGreen audit on a live AWS account in eu-west-2 (London).</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
 
-      <!-- Scorecard terminal -->
+      <!-- Report card -->
       <div class="r r2">
-        <div style="background:var(--bg3);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
-          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(245,158,11,0.04)">
+        <div style="background:var(--bg3);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(34,197,94,0.04)">
             <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
             <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
             <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
-            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboComply v1.0 — Framework Scorecard</span>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboGreen v2.0 — ESG Report</span>
           </div>
-          <div style="padding:var(--s3);font-family:monospace;font-size:11px">
-            <table style="width:100%;border-collapse:collapse;font-size:11px">
-              <thead>
-                <tr style="color:var(--text-3)">
-                  <th style="text-align:left;padding:3px 4px;font-weight:400">Framework</th>
-                  <th style="text-align:right;padding:3px 4px;font-weight:400;width:36px">Pass</th>
-                  <th style="text-align:right;padding:3px 4px;font-weight:400;width:36px">Fail</th>
-                  <th style="text-align:right;padding:3px 8px;font-weight:400;width:90px">Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">SOC2 Type II</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">32</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">89</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">26%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">ISO 27001:2022</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">32</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">89</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">26%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">CIS AWS v2.0</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">28</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">65</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">███</span><span style="color:#2a2a2a">███████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">30%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">GDPR Art.32</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">29</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">81</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">26%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">UK Cyber Ess.</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">25</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">18</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#f59e0b">█████</span><span style="color:#2a2a2a">█████</span> <span style="color:#f59e0b;font-weight:700;font-variant-numeric:tabular-nums">58%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">NCSC CSP</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">30</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">87</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">25%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">NIST CSF 2.0</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">32</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">89</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">26%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">PCI DSS v4.0</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">30</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">78</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">27%</span></td>
-                </tr>
-                <tr style="border-top:1px solid rgba(255,255,255,0.04)">
-                  <td style="padding:4px 4px;color:var(--text-2)">AWS Well-Arch</td>
-                  <td style="padding:4px 4px;text-align:right;color:#34d399;font-variant-numeric:tabular-nums">32</td>
-                  <td style="padding:4px 4px;text-align:right;color:#ef4444;font-variant-numeric:tabular-nums">89</td>
-                  <td style="padding:4px 8px;text-align:right;white-space:nowrap"><span style="color:#ef4444">██</span><span style="color:#2a2a2a">████████</span> <span style="color:#ef4444;font-weight:700;font-variant-numeric:tabular-nums">26%</span></td>
-                </tr>
-              </tbody>
-            </table>
-            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r1)">
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <div>
-                  <div style="color:var(--text-2);font-size:12px">Technical controls score</div>
-                  <div style="color:var(--text-3);font-size:10px;margin-top:2px">147 controls · 89 fail · 32 pass · 24 manual</div>
-                </div>
-                <div style="text-align:right">
-                  <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:24px;color:#ef4444">26/100</div>
-                  <div style="font-size:10px;color:#ef4444">🔴 Poor</div>
-                </div>
-              </div>
-            </div>
+          <div style="padding:var(--s3);font-family:monospace;font-size:12px;color:var(--text-2)">
+            <div style="color:#22c55e;margin-bottom:var(--s2)">GHG Protocol Classification</div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>Scope 1 (direct)</span><span style="color:#34d399">0.000 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span>Scope 2 (electricity)</span><span style="color:#22c55e">2.516 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(34,197,94,0.3)"><span>Scope 3 (upstream)</span><span style="color:#22c55e">0.530 kgCO₂e/mo</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:bold"><span style="color:var(--text-1)">Total</span><span style="color:#22c55e;font-size:14px">3.045 kgCO₂e/mo</span></div>
 
-            <div style="color:#f59e0b;margin:var(--s2) 0 var(--s1);font-weight:bold">Cross-framework impact (top 5 failures)</div>
-            <div style="display:flex;flex-direction:column;gap:4px">
-              <div style="padding:4px;background:rgba(239,68,68,0.06);border-radius:var(--r1)">
-                <span style="color:#ef4444">IAM-1.2</span><span style="color:var(--text-3)"> Root MFA disabled → </span><span style="color:var(--text-2)">ALL 9 frameworks</span>
-              </div>
-              <div style="padding:4px;background:rgba(239,68,68,0.06);border-radius:var(--r1)">
-                <span style="color:#ef4444">NET-2.1</span><span style="color:var(--text-3)"> SSH open 0.0.0.0/0 → </span><span style="color:var(--text-2)">ALL 9 frameworks</span>
-              </div>
-              <div style="padding:4px;background:rgba(239,68,68,0.06);border-radius:var(--r1)">
-                <span style="color:#ef4444">LOG-4.1</span><span style="color:var(--text-3)"> CloudTrail disabled → </span><span style="color:var(--text-2)">ALL 9 frameworks</span>
-              </div>
-              <div style="padding:4px;background:rgba(239,68,68,0.06);border-radius:var(--r1)">
-                <span style="color:#ef4444">NET-2.8</span><span style="color:var(--text-3)"> EBS unencrypted → </span><span style="color:var(--text-2)">ALL 9 frameworks</span>
-              </div>
-              <div style="padding:4px;background:rgba(239,68,68,0.06);border-radius:var(--r1)">
-                <span style="color:#ef4444">RDS-3.9</span><span style="color:var(--text-3)"> RDS unencrypted → </span><span style="color:var(--text-2)">ALL 9 frameworks</span>
-              </div>
-            </div>
+            <div style="color:#22c55e;margin:var(--s2) 0 var(--s1)">Breakdown by service</div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>RDS</span><span>2.164 (86.0%) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>EC2</span><span>0.350 (13.9%) ▓▓</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span>EBS</span><span>0.002  (0.1%) ▓</span></div>
 
-            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:var(--r1)">
-              <div style="color:#34d399;font-weight:bold;margin-bottom:4px">Evidence pack: 32 passing controls</div>
-              <div style="color:var(--text-3);font-size:10px">Every passing control includes evidence — ARN, configuration value, timestamp — ready to hand to your auditor as proof.</div>
+            <div style="color:#22c55e;margin:var(--s2) 0 var(--s1)">Real-world equivalents (annual)</div>
+            <div style="padding:3px 0">🚗 139 km driven (petrol car)</div>
+            <div style="padding:3px 0">✈️  0.12 London → New York flights</div>
+            <div style="padding:3px 0">🌳 1 tree needed to offset</div>
+            <div style="padding:3px 0">📱 3,552 smartphone charges</div>
+
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r1)">
+              <div style="display:flex;justify-content:space-between">
+                <span style="color:var(--text-2)">Sustainability score</span>
+                <span style="color:#22c55e;font-weight:bold">67/100 🟡</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:4px">
+                <span style="color:var(--text-2)">Annual total</span>
+                <span style="color:#22c55e;font-weight:bold">0.0365 tCO₂e/yr</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right column -->
+      <!-- Reduction roadmap + ESG statement -->
       <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
-          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;font-variant-numeric:tabular-nums">89</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">controls failing</div>
+
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s3)">Ranked reduction roadmap</div>
+          <div style="display:flex;flex-direction:column;gap:var(--s1)">
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">1</span>
+              <span style="flex:1;color:var(--text-2)">Migrate to eu-north-1 (Stockholm)</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-2.43 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">2</span>
+              <span style="flex:1;color:var(--text-2)">Stop idle RDS database</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-2.16 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">3</span>
+              <span style="flex:1;color:var(--text-2)">Stop 2 idle EC2 instances</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-0.35 kgCO₂/mo</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--s2);font-size:12px;padding:var(--s1);background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:var(--r1)">
+              <span style="font-family:'Syne',sans-serif;font-weight:700;color:#22c55e;width:20px">4</span>
+              <span style="flex:1;color:var(--text-2)">Delete unattached EBS volumes</span>
+              <span style="color:#22c55e;font-weight:600;font-variant-numeric:tabular-nums">-0.001 kgCO₂/mo</span>
+            </div>
           </div>
-          <div style="background:var(--bg2);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f59e0b;letter-spacing:-1px;font-variant-numeric:tabular-nums">147</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total controls</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#34d399;letter-spacing:-1px;font-variant-numeric:tabular-nums">32</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">evidence items</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f59e0b;letter-spacing:-1px;font-variant-numeric:tabular-nums">24</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">manual checks</div>
+          <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r1);display:flex;justify-content:space-between;font-size:12px">
+            <span style="color:var(--text-2)">Total addressable saving</span>
+            <span style="color:#22c55e;font-weight:700">4.94 kgCO₂/mo — 96% reduction</span>
           </div>
         </div>
 
-        <!-- Cross-framework power callout -->
-        <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r3);padding:var(--s4)">
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#f59e0b;margin-bottom:var(--s2)">The cross-framework multiplier</div>
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7">Fixing <strong style="color:var(--text-1)">CloudTrail (LOG-4.1)</strong> closes gaps in <strong style="color:var(--text-1)">SOC2 CC7.1, ISO27001 A.8.15, CIS 3.1, GDPR Art.32(1)(d), Cyber Essentials, NCSC P13, NIST DE.CM-3, PCI Req10.1, and AWS Well-Architected SEC04</strong> — all nine frameworks — in a single fix.</p>
+        <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#22c55e;margin-bottom:var(--s2)">ESG Disclosure Statement (excerpt)</div>
+          <p style="font-size:12px;color:var(--text-2);line-height:1.7;font-style:italic">"This report covers the AWS cloud infrastructure carbon footprint for the period ending 2026-05-11. Calculated using the GHG Protocol location-based method, ISO 14064-1 boundary definitions, and AWS published carbon intensity data. This report is suitable for inclusion in ESG disclosures, UK SECR reporting, and sustainability questionnaires."</p>
+          <div style="margin-top:var(--s2);font-size:11px;color:var(--text-3)">Full statement generated automatically in every report.</div>
         </div>
 
-        <!-- Manual checks callout -->
-        <div style="background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.15);border-radius:var(--r3);padding:var(--s4)">
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#34d399;margin-bottom:var(--s2)">Explicit manual check list</div>
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7">NuboComply is honest about what it can't automate — incident response plan, vendor risk assessments, security training, DPAs. Every manual check includes exactly what document or evidence your auditor will expect.</p>
-        </div>
-
-        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#f59e0b;box-shadow:0 0 var(--s4) rgba(245,158,11,0.35);color:#1a0e00;font-weight:700">Get your free compliance audit →</a>
-        <p style="font-size:12px;color:var(--text-3);text-align:center;line-height:1.6">Technical gap analysis only · Certification requires a licensed auditor · NuboComply does not provide legal advice</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT'S INCLUDED -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag" style="--accent:#f59e0b">What you get</div>
-      <h2 class="sec-h">Everything you need to go into your audit prepared.</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);margin-top:var(--s8)">
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r">
-        <div style="font-size:24px;flex-shrink:0">📊</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Per-framework scorecard</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">Every framework scored 0–100 with pass/fail/partial breakdown. Know your SOC2 score, ISO27001 score, and CIS score separately — and exactly what's dragging each one down.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r r2">
-        <div style="font-size:24px;flex-shrink:0">🔗</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Cross-framework impact matrix</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">Every failing control ranked by how many frameworks it violates. The top findings affect all 9 simultaneously — fix the highest-impact gaps first, close the most compliance debt fastest.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r r3">
-        <div style="font-size:24px;flex-shrink:0">📁</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Auditor-ready evidence pack</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">Every passing control includes the actual evidence — resource ARN, configuration value, timestamp, and framework mapping. Hand it directly to your auditor. No more scrambling to prove you had controls in place.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r">
-        <div style="font-size:24px;flex-shrink:0">✎</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Explicit manual check list</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">24 controls that can't be automated — incident response plan, vendor risk assessments, DPAs, security training. Each one includes exactly what document or evidence your auditor will expect to see.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r r2">
-        <div style="font-size:24px;flex-shrink:0">🎯</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Prioritised remediation roadmap</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">Every failing control includes the exact remediation step. Critical failures separated from High, Medium, and Advisory. Start with the controls that close the most frameworks simultaneously.</p>
-        </div>
-      </div>
-
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);display:flex;gap:var(--s3)" class="r r3">
-        <div style="font-size:24px;flex-shrink:0">⚠️</div>
-        <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:var(--s1)">Honest disclaimer, always</div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6">NuboComply is explicit: this is a technical gap analysis, not a certification. Achieving SOC2 or ISO27001 requires a licensed auditor. We tell you where to focus — your auditor confirms you got there.</p>
-        </div>
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.35);color:#0a1a0a">Get your free carbon audit →</a>
       </div>
 
     </div>
@@ -633,62 +506,60 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 </section>
 
 <!-- PRICING -->
-<section class="sec">
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f59e0b">Pricing</div>
-      <h2 class="sec-h">A fraction of what your auditor charges.</h2>
-      <p class="sec-sub">SOC2 auditors charge £500–£800/day. NuboComply runs in 5 minutes.</p>
+      <div class="sec-tag" style="--accent:#22c55e">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
       <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
         <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 147-control audit across all 9 frameworks with evidence pack.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£600</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full carbon audit with GHG Protocol report and ESG disclosure statement.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>147 controls across 9 frameworks</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Per-framework readiness scorecard</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Cross-framework impact matrix</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Auditor-ready evidence pack</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Manual verification checklist</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>12 services measured</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>GHG Protocol Scope 1, 2 & 3</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>20-region carbon comparison</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>ESG disclosure statement</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Ranked reduction roadmap</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
         </ul>
         <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
       </div>
-      <div style="background:linear-gradient(160deg,rgba(245,158,11,0.07),var(--bg2));border:1px solid rgba(245,158,11,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
-        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#f59e0b;color:#1a0e00;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+      <div style="background:linear-gradient(160deg,rgba(34,197,94,0.07),var(--bg2));border:1px solid rgba(34,197,94,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#22c55e;color:#0a1a0a;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
         <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly rescans so compliance drift is caught before your auditor finds it.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly carbon tracking so you can show year-on-year improvement.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£350</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Monthly rescan + score tracking</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Compliance drift alerts</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Remediation implementation included</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Updated evidence pack monthly</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f59e0b;font-weight:600;flex-shrink:0">✓</span>Audit preparation support</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Monthly carbon report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Year-on-year trend tracking</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Net zero trajectory report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Board-ready ESG pack quarterly</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#22c55e;font-weight:600;flex-shrink:0">✓</span>Implementation support included</li>
         </ul>
-        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:600;background:#f59e0b;color:#1a0e00">Get started</a>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#22c55e;color:#0a1a0a;font-weight:700">Get started</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="sec sec-alt" style="text-align:center">
+<section class="sec" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">What's your compliance score?</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:540px;margin:0 auto var(--s4);line-height:1.7">Most startups score under 30/100. Know your gaps across all 9 frameworks before your auditor — or your enterprise client — finds them first.</p>
-      <a href="index.html#audit" class="btn btn-lg" style="background:#f59e0b;box-shadow:0 0 var(--s4) rgba(245,158,11,0.35);color:#1a0e00;font-weight:700">Get your free compliance audit →</a>
-      <p style="margin-top:var(--s3);font-size:12px;color:var(--text-3)">Technical gap analysis only · Not a certification · Certification requires a licensed auditor</p>
+      <h2 class="sec-h">What's your cloud's carbon footprint?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have no idea. With ESG reporting becoming mandatory and enterprise clients asking the question — you need an answer. We'll have one for you in 48 hours.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#22c55e;box-shadow:0 0 var(--s4) rgba(34,197,94,0.35);color:#0a1a0a;font-weight:700">Get your free carbon audit →</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboComply</span></div>
+    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboGreen</span></div>
     <div class="f-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#pricing">Pricing</a>
@@ -768,85 +639,83 @@ document.addEventListener('click',()=>{
 });
 
 
-
 ;(function(){
   const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
   let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
   window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  const checks=[
-    'Access Controls','Encryption at Rest','Audit Logging',
-    'Incident Response','Vendor Management','Risk Assessment',
-    'Change Management','Business Continuity','Data Retention',
-    'Penetration Testing','Security Training','Vulnerability Mgmt'
-  ];
-  const total=checks.length;
-  let progress=0,t=0;
+  function drawLeaf(ctx,x,y,s,rot,a){
+    ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(rot);
+    ctx.fillStyle='rgba(34,197,94,1)';ctx.strokeStyle='rgba(34,197,94,1)';
+    ctx.lineWidth=.8;
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(s*.5,-s*.5, s,-s*.5, s*.8,-s);
+    ctx.bezierCurveTo(s*1.2,-s*.3, s*.5,s*.3, 0,0);
+    ctx.fill();ctx.stroke();
+    ctx.restore();
+  }
 
-  // Floating check items
-  const items=checks.map((c,i)=>({
-    txt:c,
-    x:BW*.6+Math.sin(i*2.1)*BW*.15,
-    y:BH*.15+i*(BH*.06),
-    done:false,
-    showAt:i*400,
+  const leaves=Array.from({length:25},(_,i)=>({
+    x:Math.random()*BW,y:BH+Math.random()*200,
+    s:8+Math.random()*18,
+    rot:Math.random()*Math.PI*2,
+    vx:(Math.random()-.5)*.4,
+    vy:-.6-Math.random()*.5,
+    vrot:.01+Math.random()*.02,
+    a:.2+Math.random()*.35,
   }));
 
+  // CO2 molecules
+  const molecules=Array.from({length:8},()=>({
+    x:Math.random()*BW,y:Math.random()*BH,
+    vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+    a:.15+Math.random()*.1,
+  }));
+
+  let t=0,co2=2.4;
   (function draw(){
-    t++;progress=Math.min(total,(t/800)*total%(total+1));
+    t+=.008;co2=2.4+.1*Math.sin(t*.5);
     xx.clearRect(0,0,BW,BH);
 
-    // Central radial progress wheel
-    const cx=BW*.25,cy=BH*.5,r=Math.min(BW,BH)*.18;
+    // Subtle grid
+    for(let x=0;x<BW;x+=120){for(let y=0;y<BH;y+=120){
+      xx.beginPath();xx.arc(x,y,1,0,Math.PI*2);
+      xx.fillStyle='rgba(34,197,94,0.08)';xx.fill();
+    }}
 
-    // Background ring
-    xx.beginPath();xx.arc(cx,cy,r,0,Math.PI*2);
-    xx.strokeStyle='rgba(245,158,11,0.1)';xx.lineWidth=8;xx.stroke();
-
-    // Progress arc
-    const prog=progress/total;
-    xx.beginPath();xx.arc(cx,cy,r,-Math.PI*.5,-Math.PI*.5+prog*Math.PI*2);
-    xx.strokeStyle='rgba(245,158,11,0.55)';xx.lineWidth=8;
-    xx.lineCap='round';xx.stroke();xx.lineCap='butt';
-
-    // Percentage text
-    xx.font=`bold ${r*.5}px Syne,sans-serif`;
-    xx.fillStyle='rgba(245,158,11,0.35)';
-    xx.textAlign='center';
-    xx.fillText(Math.round(prog*100)+'%',cx,cy+r*.18);
-    xx.font=`${r*.18}px Inter,sans-serif`;
-    xx.fillStyle='rgba(245,158,11,0.25)';
-    xx.fillText('compliant',cx,cy+r*.45);
-    xx.textAlign='left';
-
-    // Spokes
-    for(let i=0;i<total;i++){
-      const ang=-Math.PI*.5+(i/total)*Math.PI*2;
-      const done=i<progress;
-      xx.beginPath();
-      xx.moveTo(cx+Math.cos(ang)*(r*.85),cy+Math.sin(ang)*(r*.85));
-      xx.lineTo(cx+Math.cos(ang)*(r+20),cy+Math.sin(ang)*(r+20));
-      xx.strokeStyle=done?'rgba(52,211,153,0.5)':'rgba(245,158,11,0.15)';
-      xx.lineWidth=done?2:1;xx.stroke();
-      // Dot at end
-      xx.beginPath();xx.arc(cx+Math.cos(ang)*(r+24),cy+Math.sin(ang)*(r+24),4,0,Math.PI*2);
-      xx.fillStyle=done?'rgba(52,211,153,0.6)':'rgba(245,158,11,0.2)';xx.fill();
-    }
-
-    // Checklist items on the right
-    items.forEach((item,i)=>{
-      if(t<item.showAt)return;
-      const done=i<progress;
-      const aa=Math.min(1,(t-item.showAt)/30);
-      xx.font='12px Inter,sans-serif';
-      xx.fillStyle=done?`rgba(52,211,153,${aa*.5})`:`rgba(245,158,11,${aa*.3})`;
-      xx.fillText((done?'✓ ':'○ ')+item.txt,item.x,item.y);
+    // Rising leaves
+    leaves.forEach(l=>{
+      l.x+=l.vx+.3*Math.sin(t+l.y*.01);
+      l.y+=l.vy;l.rot+=l.vrot;
+      if(l.y<-50){l.y=BH+50;l.x=Math.random()*BW;}
+      drawLeaf(xx,l.x,l.y,l.s,l.rot,l.a);
     });
+
+    // CO2 molecules (crossing out = saved)
+    molecules.forEach(m=>{
+      m.x+=m.vx;m.y+=m.vy;
+      if(m.x<0)m.x=BW;if(m.x>BW)m.x=0;
+      if(m.y<0)m.y=BH;if(m.y>BH)m.y=0;
+      xx.font='14px monospace';
+      xx.fillStyle=`rgba(34,197,94,${m.a})`;
+      xx.fillText('CO₂',m.x,m.y);
+      // Strikethrough
+      xx.beginPath();xx.moveTo(m.x-2,m.y-5);xx.lineTo(m.x+32,m.y-5);
+      xx.strokeStyle=`rgba(34,197,94,${m.a*1.5})`;xx.lineWidth=1.5;xx.stroke();
+    });
+
+    // Stat display
+    xx.font='bold 18px Syne,sans-serif';
+    xx.fillStyle='rgba(34,197,94,0.3)';
+    xx.fillText(`${co2.toFixed(2)}t CO₂ saved`,BW*.62,BH*.35);
+    xx.font='14px Inter,sans-serif';
+    xx.fillStyle='rgba(34,197,94,0.2)';
+    xx.fillText(`-${(34+2*Math.sin(t)).toFixed(0)}% cloud emissions`,BW*.62,BH*.35+28);
 
     requestAnimationFrame(draw);
   })();
 })();
-
 
 </script>
 </body>

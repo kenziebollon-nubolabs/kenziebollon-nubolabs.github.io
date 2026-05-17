@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>Sample Reports — Nubo Labs</title>
-  <meta name="description" content="See exactly what you get. Professional audit reports with framework mappings, attack paths, and clear remediation steps."/>
+  <title>NuboPredict — Nubo Labs</title>
+  <meta name="description" content="Stop being surprised by your cloud bill. NuboPredict uses AI to analyse your spend patterns, growth trajectory, and usage data to forecast next month's costs — before they arrive."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -30,21 +30,19 @@ html{scroll-behavior:smooth}
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
-/* cursor */
-body{cursor:auto}
-canvas,section,main,.hero,.card-area{cursor:none}
-body.has-custom-cursor{cursor:none}
-a,button,input,select,textarea,label{cursor:pointer!important}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
+/* cursor — default on interactive, custom elsewhere */
+
+canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#a78bfa;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
+  transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
+  border:1px solid #a78bfa80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){#cur,#cur-r{display:block}}
+@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -65,11 +63,13 @@ nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
   border-radius:var(--r1);transition:color .15s,background .15s;
   background:none;border:none;font-family:'Inter',sans-serif}
 .nav-link:hover,.nav-link:focus{color:var(--text-1);background:rgba(255,255,255,0.04);outline:none}
+/* dropdown — works on hover AND click/tap/keyboard */
 .nav-dd{position:relative}
 .nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);
   padding-top:10px;width:215px;opacity:0;pointer-events:none;
   transition:opacity .15s;z-index:200}
-.nav-dd:hover .nav-dd-menu,.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:all}
+.nav-dd:hover .nav-dd-menu,
+.nav-dd.open .nav-dd-menu{opacity:1;pointer-events:all}
 .nav-dd-inner{background:var(--bg2);border:1px solid var(--border-md);
   border-radius:var(--r3);padding:var(--s1);
   box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.55)}
@@ -78,10 +78,15 @@ nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
   font-size:14px;transition:background .15s}
 .nav-dd-item:hover,.nav-dd-item:focus{background:rgba(255,255,255,0.05);outline:none}
 .nav-dd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.nav-dd-live{margin-left:auto;font-size:10px;color:var(--green);
-  background:rgba(52,211,153,0.1);padding:2px var(--s1);border-radius:100px}
 .nav-dd-soon{margin-left:auto;font-size:10px;color:var(--text-3);
   background:rgba(255,255,255,0.05);padding:2px var(--s1);border-radius:100px}
+.nav-dd-live{margin-left:auto;font-size:10px;color:var(--green);
+  background:rgba(52,211,153,0.1);padding:2px var(--s1);border-radius:100px}
+.nav-back{color:var(--text-2);text-decoration:none;font-size:14px;
+  padding:var(--s1) var(--s2);border-radius:var(--r1);border:1px solid var(--border);
+  transition:color .15s,border-color .15s}
+.nav-back:hover{color:var(--text-1);border-color:var(--border-md)}
+/* THE ONE CTA BUTTON */
 .btn{display:inline-flex;align-items:center;gap:var(--s1);background:var(--accent);
   color:#fff;text-decoration:none;font-size:14px;font-weight:500;
   padding:var(--s1) var(--s3);border-radius:var(--r2);border:none;
@@ -91,6 +96,10 @@ nav{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--s8);
 .btn:hover{background:var(--accent-hover);transform:translateY(-1px);
   box-shadow:0 0 0 1px rgba(26,143,255,0.5),0 0 var(--s6) rgba(26,143,255,0.3)}
 .btn-lg{font-size:16px;padding:var(--s2) var(--s5)}
+.btn-outline{background:transparent;color:var(--accent);
+  border:1px solid rgba(26,143,255,0.35);
+  box-shadow:none}
+.btn-outline:hover{background:var(--accent-dim);transform:translateY(-1px);box-shadow:none}
 /* sections */
 .sec{padding:var(--s16) 0;position:relative;z-index:2}
 .sec-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -117,72 +126,92 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .r2{transition-delay:.1s}.r3{transition-delay:.2s}.r4{transition-delay:.3s}
 /* ANIMATIONS */
 @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes slide{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes pulse-glow{0%,100%{opacity:.4}50%{opacity:.9}}
+@keyframes draw{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes count-up{from{opacity:0}to{opacity:1}}
+/* RESPONSIVE */
 @media(max-width:640px){.nav-centre{display:none}}
 
-/* ── Orb background ── */
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 12s ease-in-out infinite}
-.orb1{width:600px;height:600px;top:-200px;left:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%);animation-duration:14s}
-.orb2{width:500px;height:500px;top:40%;right:-150px;background:radial-gradient(circle,rgba(26,143,255,0.05),transparent 70%);animation-duration:18s;animation-delay:-6s}
-.orb3{width:400px;height:400px;bottom:10%;left:20%;background:radial-gradient(circle,rgba(26,143,255,0.04),transparent 70%);animation-duration:22s;animation-delay:-10s}
-/* dot grid */
-.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(26,143,255,0.12) 1px,transparent 1px);
-  background-size:32px 32px;opacity:.35}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8) + var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(44px,7.5vw,96px);line-height:1.01;letter-spacing:-3.5px;
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:float 14s ease-in-out infinite}
+.orb1{width:600px;height:500px;top:-150px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.09)),transparent 70%)}
+.orb2{width:400px;height:400px;bottom:10%;right:-100px;
+  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.05)),transparent 70%);
+  animation-duration:20s;animation-delay:-8s}
+.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
+  background-size:32px 32px;opacity:.3}
+.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
+.prod-label{display:inline-flex;align-items:center;gap:var(--s1);
+  background:var(--pc-dim,var(--accent-dim));
+  border:1px solid var(--pc-border,rgba(26,143,255,0.18));
+  color:var(--pc,var(--accent));font-size:12px;font-weight:500;letter-spacing:.5px;
+  padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);
+  opacity:0;animation:up .5s .1s forwards}
+.prod-label-dot{width:5px;height:5px;background:var(--pc,var(--accent));border-radius:50%;animation:blink 2s infinite}
+.prod-hero h1{font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(48px,8vw,88px);line-height:1.01;letter-spacing:-3px;
   margin-bottom:var(--s3);color:var(--text-1);
   opacity:0;animation:up .6s .2s forwards}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
-  max-width:580px;line-height:1.7;margin-bottom:var(--s5);
+.prod-hero h1 em{font-style:normal;color:var(--pc,var(--accent))}
+.prod-desc{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
+  max-width:600px;line-height:1.7;margin-bottom:var(--s8);
   opacity:0;animation:up .6s .35s forwards}
+.coming-badge{display:inline-flex;align-items:center;gap:var(--s3);
+  background:var(--bg2);border:1px solid var(--pc-border,rgba(26,143,255,0.2));
+  border-radius:var(--r4);padding:var(--s3) var(--s6);margin-bottom:var(--s8);
+  opacity:0;animation:up .6s .5s forwards;
+  box-shadow:0 0 var(--s8) var(--pc-glow,var(--accent-glow))}
+.coming-badge-icon{font-size:36px;animation:float 3s ease-in-out infinite}
+.coming-badge h3{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px}
+.coming-badge p{font-size:14px;color:var(--text-3)}
+.notify-form{display:flex;gap:var(--s1);max-width:460px;width:100%;
+  opacity:0;animation:up .6s .65s forwards}
+.notify-input{flex:1;background:rgba(255,255,255,0.04);
+  border:1px solid var(--border-md);border-radius:var(--r2);
+  padding:var(--s2);color:var(--text-1);font-size:15px;
+  font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .15s,box-shadow .15s}
+.notify-input:focus{border-color:var(--pc-border,rgba(26,143,255,0.4));
+  box-shadow:0 0 0 3px var(--pc-dim,rgba(26,143,255,0.08))}
+.notify-input::placeholder{color:var(--text-3)}
+.notify-btn{background:var(--pc,var(--accent));color:#fff;border:none;
+  border-radius:var(--r2);padding:var(--s2) var(--s3);
+  font-size:14px;font-weight:500;font-family:'Inter',sans-serif;
+  white-space:nowrap;
+  box-shadow:0 0 var(--s4) var(--pc-glow,var(--accent-glow));
+  transition:opacity .15s,transform .1s}
+.notify-btn:hover{opacity:.9;transform:translateY(-1px)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
+.feat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
+  padding:var(--s4);transition:border-color .2s,transform .2s}
+.feat-card:hover{border-color:rgba(255,255,255,0.09);transform:translateY(-2px)}
+.feat-icon{font-size:28px;margin-bottom:var(--s2)}
+.feat-title{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
+.feat-desc{font-size:14px;color:var(--text-2);line-height:1.65}
+.feat-tags{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s8)}
+.feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
+/* background canvases */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
+@media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
 
-/* SAMPLE CARDS */
-.sample-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--s4);margin-top:var(--s8)}
-.sample-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);transition:all .3s cubic-bezier(0.4,0,0.2,1);position:relative;
-  display:flex;flex-direction:column}
-.sample-features{flex:1}
-.sample-card:hover{border-color:rgba(26,143,255,0.3);transform:translateY(-4px);
-  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.4)}
-.sample-header{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)}
-.sample-icon{width:var(--s5);height:var(--s5);border-radius:var(--r2);
-  display:grid;place-items:center;font-size:20px;flex-shrink:0}
-.sample-title{font-family:'Syne',sans-serif;font-weight:700;font-size:20px}
-.sample-subtitle{font-size:13px;color:var(--text-3);margin-bottom:var(--s3)}
-.sample-features{list-style:none;margin-bottom:var(--s4)}
-.sample-features li{font-size:14px;color:var(--text-2);padding:var(--s1) 0;
-  display:flex;align-items:center;gap:var(--s2)}
-.sample-features li::before{content:'✓';color:var(--green);font-weight:700}
-.sample-btn{display:inline-flex;align-items:center;gap:var(--s2);
-  padding:var(--s2) var(--s3);background:rgba(26,143,255,0.12);color:var(--accent);
-  border:1px solid rgba(26,143,255,0.3);border-radius:var(--r2);text-decoration:none;
-  font-weight:500;font-size:14px;transition:all .2s}
-.sample-btn:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
-.sample-meta{margin-top:var(--s2);font-size:12px;color:var(--text-3)}
-.sample-card.coming-soon{opacity:0.6}
-.sample-coming{padding:var(--s2) var(--s3);background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--r2);text-align:center;font-size:14px;color:var(--text-3)}
-
-  </style>
-</head>
-<body class="has-custom-cursor">
-
-<div id="cur"></div>
-<div id="cur-r"></div>
-<canvas id="cvs"></canvas>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-<div class="dot-grid" aria-hidden="true"></div>
-
+  
+@media(max-width:960px){
+  #bg-canvas{opacity:.3}
+  .dot-grid{opacity:.15}
+}
+@media(max-width:640px){
+  #bg-canvas{opacity:.2}
+  .dot-grid{display:none}
+  .orb,.orb1,.orb2{display:none}
+}
+</style>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
@@ -203,9 +232,9 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
             <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
-            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
             <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
-            <a href="#" class="nav-dd-item" role="menuitem" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
+            <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
           </div>
         </div>
       </div>
@@ -217,111 +246,314 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </nav>
 
-<section class="hero">
-  <h1>See What You <em>Get</em></h1>
-  <p class="hero-sub">Professional audit reports your team will actually read. Download real examples with anonymized data.</p>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
+<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
+<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
+<div class="dot-grid" aria-hidden="true"></div>
+
+<!-- HERO -->
+<section class="prod-hero" style="--pc:#a78bfa;--pc-glow:rgba(167,139,250,0.13);--pc-dim:rgba(167,139,250,0.09);--pc-border:rgba(167,139,250,0.20)">
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>AI-Powered Spend Forecasting</div>
+  <h1>Nubo<em>Predict</em></h1>
+  <p class="prod-desc">Stop reading AWS Cost Explorer graphs yourself. NuboPredict reads them for you — 12-month forecasts with confidence intervals, statistical anomaly detection, RI recommendations, and Claude-powered plain-English insights your CFO can actually read.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.4)">Get a free spend forecast →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. AI-powered insights. Board-ready output.</p>
 </section>
 
-<section class="sec">
+<!-- STATS BAR -->
+<div style="background:var(--bg2);border-top:1px solid rgba(167,139,250,0.12);border-bottom:1px solid rgba(167,139,250,0.12);padding:var(--s5) 0;position:relative;z-index:2">
   <div class="wrap">
-    <div class="sample-grid">
-      
-      <!-- NuboComply Sample -->
-      <div class="sample-card r">
-        <div class="sample-header">
-          <div class="sample-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b">📋</div>
-          <div class="sample-title">NuboComply</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
+      <div style="text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">10</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">analysis modules</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">12mo</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">forecast horizon</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">80%</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">confidence intervals</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">AI</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">powered by Claude</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">full analysis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section class="sec" style="padding-top:var(--s10)">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#a78bfa">10 analysis modules</div>
+      <h2 class="sec-h">Every dimension of your cloud spend. Explained in plain English.</h2>
+      <p class="sec-sub">NuboPredict doesn't just show you graphs — it tells you what changed, why, and what to do about it.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
+
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📈</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Forecasting</div><div style="font-size:11px;color:var(--text-3)">Linear regression + confidence</div></div>
         </div>
-        <div class="sample-subtitle">Multi-Framework Compliance Audit</div>
-        <ul class="sample-features">
-          <li>147 controls across 9 frameworks</li>
-          <li>Framework readiness scorecard</li>
-          <li>Category breakdown by domain</li>
-          <li>Attack path analysis</li>
-          <li>Prioritized remediation roadmap</li>
-        </ul>
-        <a href="samples/nubocomply-sample-report.pdf" download="NuboComply-Sample-Report.pdf" type="application/pdf" class="sample-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-          </svg>
-          Download Sample PDF
-        </a>
-        <div class="sample-meta">Acme Technologies Ltd • 13 pages • PDF</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>3/6/12 month forecast per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>80% confidence intervals</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Monthly growth rate per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Fast-growing service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Annual spend projection</div>
+        </div>
       </div>
 
-      <!-- NuboShield Sample -->
-      <div class="sample-card r r2">
-        <div class="sample-header">
-          <div class="sample-icon" style="background:rgba(155,92,255,0.15);color:#9b5cff">🛡️</div>
-          <div class="sample-title">NuboShield</div>
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔍</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Anomaly Detection</div><div style="font-size:11px;color:var(--text-3)">Statistical z-score analysis</div></div>
         </div>
-        <div class="sample-subtitle">Security Posture Audit</div>
-        <ul class="sample-features">
-          <li>50+ security checks across IAM, network, storage</li>
-          <li>Attack path analysis — step by step</li>
-          <li>Severity-based findings with full explanations</li>
-          <li>Remediation roadmap with effort estimates</li>
-        </ul>
-        <a href="samples/nuboshield-sample-report.pptx" download="NuboShield-Sample-Report.pptx" class="sample-btn" style="background:rgba(155,92,255,0.12);color:#9b5cff;border-color:rgba(155,92,255,0.3)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-          </svg>
-          Download Sample Deck
-        </a>
-        <div class="sample-meta">Acme Technologies Ltd • 20 slides • PowerPoint</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Daily spend z-score analysis</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Spike and dip detection (2σ+)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>New service detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Disappeared service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Biggest MoM service movers</div>
+        </div>
       </div>
 
-      <!-- NuboGreen Sample -->
-      <div class="sample-card r r3">
-        <div class="sample-header">
-          <div class="sample-icon" style="background:rgba(34,197,94,0.15);color:#22c55e">🌱</div>
-          <div class="sample-title">NuboGreen</div>
+      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">💰</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">RI & Savings Plans</div><div style="font-size:11px;color:var(--text-3)">Purchase recommendations</div></div>
         </div>
-        <div class="sample-subtitle">Carbon & ESG Audit</div>
-        <ul class="sample-features">
-          <li>Scope 2 & 3 emissions breakdown</li>
-          <li>GHG Protocol — location-based method</li>
-          <li>Carbon reduction opportunities ranked</li>
-          <li>Real-world equivalents & ESG ready</li>
-        </ul>
-        <a href="samples/nubogreen-sample-report.pdf" download="NuboGreen-Sample-Report.pdf" type="application/pdf" class="sample-btn" style="background:rgba(34,197,94,0.12);color:#22c55e;border-color:rgba(34,197,94,0.3)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-          </svg>
-          Download Sample PDF
-        </a>
-        <div class="sample-meta">Acme Technologies Ltd • 10 pages • PDF</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>RI purchase recommendations</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Break-even analysis per instance</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Compute Savings Plan opportunity</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Current RI utilisation %</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Wasted reserved capacity</div>
+        </div>
       </div>
 
-      <!-- NuboVault Sample -->
-      <div class="sample-card r r4">
-        <div class="sample-header">
-          <div class="sample-icon" style="background:rgba(244,63,94,0.15);color:#f43f5e">🔐</div>
-          <div class="sample-title">NuboVault</div>
+      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🏷️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Tag Attribution</div><div style="font-size:11px;color:var(--text-3)">Cost by team & environment</div></div>
         </div>
-        <div class="sample-subtitle">Secrets & Exposure Audit</div>
-        <ul class="sample-features">
-          <li>Exposed secrets across Lambda, S3, EC2</li>
-          <li>Plaintext credentials in env vars & user data</li>
-          <li>Terraform state & .env file exposure</li>
-          <li>Full remediation path per finding</li>
-        </ul>
-        <a href="samples/nubovault-sample-report.pptx" download="NuboVault-Sample-Report.pptx" class="sample-btn" style="background:rgba(244,63,94,0.12);color:#f43f5e;border-color:rgba(244,63,94,0.3)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-          </svg>
-          Download Sample Deck
-        </a>
-        <div class="sample-meta">Acme Technologies Ltd • 17 slides • PowerPoint</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost by Environment/Team/Project</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Untagged spend detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Department chargeback report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost per feature/service tag</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Owner attribution</div>
+        </div>
+      </div>
+
+      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📊</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Budget Intelligence</div><div style="font-size:11px;color:var(--text-3)">Data-driven thresholds</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Recommended 80%/100% thresholds</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Days until budget breach</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Month-to-date burn rate</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Projected month-end spend</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>EC2 rightsizing recommendations</div>
+        </div>
+      </div>
+
+      <div class="r r3" style="background:linear-gradient(135deg,rgba(167,139,250,0.08),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a78bfa,#818cf8,#a78bfa)"></div>
+        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🤖</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#a78bfa">Claude AI Insights</div><div style="font-size:11px;color:var(--text-3)">Powered by Anthropic</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Executive summary (board-ready)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>"What changed this month" narrative</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>CFO-ready monthly report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Top 3 concerns + opportunities</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>90-day outlook with confidence</div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
+<!-- SAMPLE OUTPUT -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#a78bfa">Sample output</div>
+      <h2 class="sec-h">This is what your CFO gets.</h2>
+      <p class="sec-sub">Real NuboPredict output — forecasts, anomalies, RI recommendations, and AI-generated narrative in one report.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+
+      <!-- Report terminal -->
+      <div class="r r2">
+        <div style="background:var(--bg3);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(167,139,250,0.04)">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboPredict v1.0 — Spend Report</span>
+          </div>
+          <div style="padding:var(--s3);font-family:monospace;font-size:11px;color:var(--text-2)">
+
+            <div style="color:#a78bfa;margin-bottom:var(--s2)">12-Month Spend History</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Total</span><span style="color:var(--text-3)">MoM%</span><span style="color:var(--text-3)">Top service</span>
+              <span>2025-06</span><span style="color:#34d399">£142.30</span><span>—</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-07</span><span style="color:#34d399">£156.80</span><span style="color:#f59e0b">+10.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-08</span><span style="color:#34d399">£168.40</span><span style="color:#f59e0b">+7.4%</span><span style="color:var(--text-3)">Amazon RDS</span>
+              <span>2025-09</span><span style="color:#34d399">£171.20</span><span style="color:#f59e0b">+1.7%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-10</span><span style="color:#34d399">£189.60</span><span style="color:#ef4444">+10.7%</span><span style="color:var(--text-3)">AWS Lambda</span>
+              <span>2025-11</span><span style="color:#34d399">£201.40</span><span style="color:#ef4444">+6.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-12</span><span style="color:#34d399">£224.80</span><span style="color:#ef4444">+11.6%</span><span style="color:var(--text-3)">Amazon EC2</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">6-Month Forecast (80% confidence)</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Forecast</span><span style="color:var(--text-3)">Low</span><span style="color:var(--text-3)">High</span>
+              <span>2026-01</span><span style="color:#a78bfa;font-weight:bold">£238.40</span><span style="color:var(--text-3)">£218.20</span><span style="color:var(--text-3)">£258.60</span>
+              <span>2026-02</span><span style="color:#a78bfa;font-weight:bold">£252.10</span><span style="color:var(--text-3)">£228.40</span><span style="color:var(--text-3)">£275.80</span>
+              <span>2026-03</span><span style="color:#a78bfa;font-weight:bold">£265.90</span><span style="color:var(--text-3)">£238.60</span><span style="color:var(--text-3)">£293.20</span>
+              <span>2026-04</span><span style="color:#a78bfa;font-weight:bold">£279.70</span><span style="color:var(--text-3)">£248.80</span><span style="color:var(--text-3)">£310.60</span>
+              <span>2026-05</span><span style="color:#a78bfa;font-weight:bold">£293.50</span><span style="color:var(--text-3)">£259.00</span><span style="color:var(--text-3)">£328.00</span>
+              <span>2026-06</span><span style="color:#a78bfa;font-weight:bold">£307.30</span><span style="color:var(--text-3)">£269.20</span><span style="color:var(--text-3)">£345.40</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">Anomalies detected (last 30 days)</div>
+            <div style="color:#ef4444;padding:3px 0">🔴 2025-12-14  £48.20  z=+3.2σ  SPIKE — investigate</div>
+            <div style="color:#60a5fa;padding:3px 0">🔵 2025-12-22  £8.40   z=-2.1σ  DIP — low activity day</div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">RI Recommendations</div>
+            <div style="padding:3px 0">m5.large ×2  On-demand £140/mo → RI £89/mo  saves <span style="color:#34d399">£612/yr</span></div>
+            <div style="padding:3px 0">t3.medium ×3  On-demand £90/mo → RI £58/mo  saves <span style="color:#34d399">£384/yr</span></div>
+
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r1)">
+              <div style="color:#a78bfa;font-weight:bold;margin-bottom:4px">🤖 Claude AI — Executive Summary</div>
+              <div style="color:var(--text-2);line-height:1.6;font-size:11px">Your AWS spend has grown 7.8%/month over the last 6 months, driven primarily by EC2 and Lambda. At current trajectory your annual bill will reach <span style="color:#a78bfa">£3,240</span> by December — 58% above today. Two Reserved Instance purchases would immediately save <span style="color:#34d399">£996/year</span> with a 4-month break-even. A spend spike on Dec 14th (3.2σ above baseline) warrants investigation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right stats + CFO report -->
+      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
+          <div style="background:var(--bg2);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">7.8%</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">monthly growth rate</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#34d399;letter-spacing:-1px">£996</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">RI savings found/yr</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#ef4444;letter-spacing:-1px">2</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">anomalies detected</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">£3.2k</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">12mo forecast</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#a78bfa;margin-bottom:var(--s2)">🤖 CFO-Ready Monthly Report</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7">
+            <strong style="color:var(--text-1)">Current Status</strong><br>
+            • AWS spend: £224.80/mo (+11.6% vs last month)<br>
+            • Forecast: £307/mo in 6 months (£3,240/yr)<br><br>
+            <strong style="color:var(--text-1)">Key Changes</strong><br>
+            • Lambda +34% — new feature deployment Dec 12th<br>
+            • EC2 +8% — two additional instances launched<br><br>
+            <strong style="color:var(--text-1)">Action Required</strong><br>
+            • Purchase 2× m5.large RIs — saves £612/yr, 4mo break-even<br>
+            • Investigate Dec 14th spike (3.2σ anomaly, £48.20)<br>
+            • Set budget alert at £270 (80%) and £340 (100%)
+          </div>
+        </div>
+
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="r">
+      <div class="sec-tag" style="--accent:#a78bfa">Pricing</div>
+      <h2 class="sec-h">Transparent pricing</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Report</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full forecast analysis with AI insights and CFO-ready report.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£400</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>12-month historical analysis</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>3/6/12 month forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI & Savings Plan recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>AI executive summary</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>CFO-ready monthly report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(167,139,250,0.07),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#a78bfa;color:#fff;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly forecast updates so you always know what's coming.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£300</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Everything in one-off report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly updated forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Anomaly alerts within 24 hours</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly CFO report delivered</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI purchase timing recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Forecast vs actual tracking</li>
+        </ul>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#a78bfa;color:#fff">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec sec-alt" style="text-align:center">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="sec-h">Where will your AWS bill be in 6 months?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have no idea. NuboPredict will tell you — with confidence intervals, anomaly detection, RI recommendations, and a CFO-ready report your board can actually read.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em></div>
+    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboPredict</span></div>
     <div class="f-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#pricing">Pricing</a>
@@ -329,8 +561,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="cookies.html">Cookies</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -338,83 +569,180 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     </div>
   </div>
 </footer>
-
 <script>
-// Custom cursor
+
+
+// Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
-let mx=0,my=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-function followCursor(){curR.style.left=mx+'px';curR.style.top=my+'px';requestAnimationFrame(followCursor)}
-followCursor();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';curR.style.width='48px';curR.style.height='48px'});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='32px';curR.style.height='32px'})
-});
-
-// Canvas particles
-const c=document.getElementById('cvs'),ctx=c.getContext('2d');
-let w=c.width=innerWidth,h=c.height=innerHeight;
-const particles=[];
-const particleCount=60;
-const connectionDist=120;
-
-class Particle{
-  constructor(){
-    this.x=Math.random()*w;
-    this.y=Math.random()*h;
-    this.vx=(Math.random()-.5)*.4;
-    this.vy=(Math.random()-.5)*.4;
-    this.r=Math.random()*1.5+.5;
-  }
-  update(){
-    this.x+=this.vx;
-    this.y+=this.vy;
-    if(this.x<0||this.x>w)this.vx*=-1;
-    if(this.y<0||this.y>h)this.vy*=-1;
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(26,143,255,0.5)';
-    ctx.fill();
-  }
-}
-
-for(let i=0;i<particleCount;i++)particles.push(new Particle());
-
-function animate(){
-  ctx.clearRect(0,0,w,h);
-  particles.forEach((p,i)=>{
-    p.update();
-    p.draw();
-    particles.slice(i+1).forEach(p2=>{
-      const dx=p.x-p2.x,dy=p.y-p2.y,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<connectionDist){
-        ctx.beginPath();
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(p2.x,p2.y);
-        ctx.strokeStyle=`rgba(26,143,255,${.12*(1-dist/connectionDist)})`;
-        ctx.lineWidth=.5;
-        ctx.stroke();
-      }
-    });
+if(window.matchMedia('(pointer:fine)').matches){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(tick);})();
+  // expand on cards, shrink on form elements
+  document.querySelectorAll('.card,.card-area,[data-cursor="expand"]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{curR.style.width='48px';curR.style.height='48px';curR.style.borderColor='rgba(26,143,255,0.6)';});
+    el.addEventListener('mouseleave',()=>{curR.style.width='32px';curR.style.height='32px';curR.style.borderColor='rgba(26,143,255,0.35)';});
   });
-  requestAnimationFrame(animate);
 }
-animate();
 
-addEventListener('resize',()=>{w=c.width=innerWidth;h=c.height=innerHeight});
+// Particles
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
+let W,H;
+const resize=()=>{W=cvs.width=innerWidth;H=cvs.height=innerHeight;};
+resize();addEventListener('resize',resize);
+const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.1+.3,a:Math.random()*.35+.07}));
+(function draw(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(26,143,255,${p.a})`;ctx.fill();});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=`rgba(26,143,255,${.09*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke();}}
+  requestAnimationFrame(draw);
+})();
 
-// Reveal on scroll
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('on')),{threshold:.15});
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
-// Dropdown toggle for mobile
-document.querySelectorAll('.nav-dd').forEach(dd=>{
-  const btn=dd.querySelector('.nav-link');
-  btn?.addEventListener('click',()=>dd.classList.toggle('open'))
-});
-</script>
 
+
+// Accessible dropdown — click/tap/keyboard + Escape + outside click
+document.querySelectorAll('.nav-dd').forEach(dd=>{
+  const btn=dd.querySelector('button,a');
+  if(!btn)return;
+  btn.setAttribute('aria-haspopup','true');
+  btn.setAttribute('aria-expanded','false');
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const open=dd.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  });
+  dd.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.focus();}
+  });
+});
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.nav-dd.open').forEach(dd=>{
+    dd.classList.remove('open');
+    const btn=dd.querySelector('button,a');
+    if(btn)btn.setAttribute('aria-expanded','false');
+  });
+});
+
+
+;(function(){
+  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
+  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
+  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
+
+  const HIST=24,FORE=12;
+  const all=HIST+FORE;
+  const padL=80,padR=60,padT=100,padB=80;
+  const chartW=BW-padL-padR,chartH=BH-padT-padB;
+
+  // Generate realistic spend data with growth
+  function getY(i){
+    const base=4000+i*120;
+    const noise=Math.sin(i*.7)*300+Math.sin(i*1.3)*150;
+    return base+noise;
+  }
+
+  let t=0,revealProgress=0;
+  (function draw(){
+    t+=.008;revealProgress=Math.min(1,revealProgress+.003);
+    xx.clearRect(0,0,BW,BH);
+
+    // Grid
+    for(let i=0;i<=4;i++){
+      const y=padT+chartH*(i/4);
+      xx.beginPath();xx.moveTo(padL,y);xx.lineTo(padL+chartW,y);
+      xx.strokeStyle='rgba(167,139,250,0.08)';xx.lineWidth=1;xx.stroke();
+      // Y axis labels
+      xx.font='11px Inter,sans-serif';
+      xx.fillStyle='rgba(167,139,250,0.3)';
+      xx.textAlign='right';
+      xx.fillText('£'+(8000-i*2000).toLocaleString(),padL-8,y+4);
+    }
+    xx.textAlign='left';
+
+    // Month labels
+    for(let i=0;i<all;i+=3){
+      const x=padL+(i/all)*chartW;
+      xx.font='10px Inter,sans-serif';
+      xx.fillStyle=i<HIST?'rgba(167,139,250,0.3)':'rgba(167,139,250,0.2)';
+      xx.textAlign='center';
+      xx.fillText(`M${i+1}`,x,padT+chartH+20);
+    }
+    xx.textAlign='left';
+
+    // Divider line between history and forecast
+    const divX=padL+(HIST/all)*chartW;
+    xx.beginPath();xx.moveTo(divX,padT-20);xx.lineTo(divX,padT+chartH+10);
+    xx.strokeStyle='rgba(167,139,250,0.2)';xx.lineWidth=1;xx.setLineDash([4,4]);xx.stroke();xx.setLineDash([]);
+    xx.font='10px Inter,sans-serif';xx.fillStyle='rgba(167,139,250,0.25)';xx.textAlign='center';
+    xx.fillText('forecast →',divX+40,padT-8);xx.fillText('← actual',divX-40,padT-8);
+    xx.textAlign='left';
+
+    // Confidence band (forecast)
+    const bandPts_upper=[],bandPts_lower=[];
+    for(let i=HIST;i<=all;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const uncertainty=(i-HIST)*80;
+      const maxY=8000,minY=2000,range=maxY-minY;
+      bandPts_upper.push([x,padT+chartH-((val+uncertainty-minY)/range)*chartH]);
+      bandPts_lower.push([x,padT+chartH-((val-uncertainty-minY)/range)*chartH]);
+    }
+    xx.beginPath();
+    bandPts_upper.forEach((p,i)=>i===0?xx.moveTo(p[0],p[1]):xx.lineTo(p[0],p[1]));
+    [...bandPts_lower].reverse().forEach(p=>xx.lineTo(p[0],p[1]));
+    xx.closePath();
+    xx.fillStyle='rgba(167,139,250,0.07)';xx.fill();
+
+    // Historical line
+    xx.beginPath();xx.lineWidth=2;xx.strokeStyle='rgba(167,139,250,0.55)';
+    for(let i=0;i<=HIST;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===0?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();
+
+    // Forecast line (dashed, animated)
+    xx.beginPath();xx.lineWidth=1.5;xx.strokeStyle='rgba(167,139,250,0.4)';
+    xx.setLineDash([6,4]);
+    const forePoints=Math.floor(FORE*revealProgress);
+    for(let i=HIST;i<=HIST+forePoints;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===HIST?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();xx.setLineDash([]);
+
+    // Moving dot on forecast head
+    if(forePoints>0){
+      const i=HIST+forePoints;
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const y=padT+chartH-((val-2000)/6000)*chartH;
+      xx.beginPath();xx.arc(x,y,5,0,Math.PI*2);
+      xx.fillStyle=`rgba(167,139,250,${.7+.2*Math.sin(t*3)})`;xx.fill();
+      const grd=xx.createRadialGradient(x,y,0,x,y,20);
+      grd.addColorStop(0,'rgba(167,139,250,0.3)');grd.addColorStop(1,'rgba(167,139,250,0)');
+      xx.fillStyle=grd;xx.fillRect(x-20,y-20,40,40);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+})();
+
+</script>
 </body>
 </html>
