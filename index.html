@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>Nubo Labs — Build fast. Spend less. Stay secure.</title>
-  <meta name="description" content="Nubo Labs builds cloud infrastructure tools and services helping startups take full control of their cloud — cost, security, monitoring, and beyond."/>
+  <title>Onboarding — Nubo Labs</title>
+  <meta name="description" content="How to set up read-only AWS or Azure credentials for your Nubo Labs audit."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -139,303 +139,28 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 @media(max-width:640px){.nav-centre{display:none}}
 
 
-/* ── Orb background ── */
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 12s ease-in-out infinite}
-.orb1{width:600px;height:600px;top:-200px;left:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%);animation-duration:14s}
-.orb2{width:500px;height:500px;top:40%;right:-150px;background:radial-gradient(circle,rgba(26,143,255,0.05),transparent 70%);animation-duration:18s;animation-delay:-6s}
-.orb3{width:400px;height:400px;bottom:10%;left:20%;background:radial-gradient(circle,rgba(26,143,255,0.04),transparent 70%);animation-duration:22s;animation-delay:-10s}
-/* dot grid */
-.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(26,143,255,0.12) 1px,transparent 1px);
-  background-size:32px 32px;opacity:.35}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:float 14s ease-in-out infinite}
+.orb1{width:500px;height:400px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(26,143,255,0.07),transparent 70%)}
+.ob-hero{padding:calc(var(--s8) + var(--s8)) var(--s4) var(--s8);text-align:center;position:relative;z-index:2}
+.ob-hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,5vw,56px);letter-spacing:-2px;margin-bottom:var(--s3)}
+.ob-hero p{font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto;line-height:1.7}
+.ob-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s10)}
+.ob-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)}
+.ob-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:22px;margin-bottom:var(--s2);display:flex;align-items:center;gap:var(--s2)}
+.ob-card-sub{font-size:14px;color:var(--text-2);margin-bottom:var(--s5);line-height:1.6}
+.ob-step{display:flex;gap:var(--s3);margin-bottom:var(--s4)}
+.ob-step:last-child{margin-bottom:0}
+.ob-step-num{width:28px;height:28px;background:var(--accent-dim);border:1px solid rgba(26,143,255,0.2);border-radius:50%;display:grid;place-items:center;font-size:12px;color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px}
+.ob-step h4{font-family:'Syne',sans-serif;font-weight:600;font-size:15px;margin-bottom:4px}
+.ob-step p{font-size:13px;color:var(--text-2);line-height:1.6}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:var(--s2) var(--s3);font-family:'Courier New',monospace;font-size:12px;color:#a78bfa;margin-top:var(--s1);word-break:break-all}
+.ob-trust{background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);border-radius:var(--r3);padding:var(--s4);margin-top:var(--s8);display:flex;gap:var(--s3);align-items:flex-start}
+.ob-trust-icon{font-size:24px;flex-shrink:0}
+.ob-trust h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
+.ob-trust p{font-size:14px;color:var(--text-2);line-height:1.6}
+@media(max-width:760px){.ob-grid{grid-template-columns:1fr}}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;
-  padding:calc(var(--s8) + var(--s10)) var(--s4) var(--s10);
-  position:relative;z-index:2;overflow:hidden}
-.hero-label{display:inline-flex;align-items:center;gap:var(--s1);
-  background:var(--accent-dim);border:1px solid rgba(26,143,255,0.18);
-  color:var(--accent);font-size:12px;font-weight:500;letter-spacing:.5px;
-  padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);
-  opacity:0;animation:up .5s .1s forwards}
-.hero-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;animation:blink 2s infinite}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(44px,7.5vw,96px);line-height:1.01;letter-spacing:-3.5px;
-  margin-bottom:var(--s3);color:var(--text-1);
-  opacity:0;animation:up .6s .2s forwards}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
-  max-width:580px;line-height:1.7;margin-bottom:var(--s5);
-  opacity:0;animation:up .6s .35s forwards}
-/* quick capture */
-.hero-capture{display:flex;gap:var(--s1);max-width:440px;width:100%;
-  opacity:0;animation:up .6s .5s forwards;margin-bottom:var(--s4)}
-.capture-input{flex:1;background:rgba(255,255,255,0.05);
-  border:1px solid var(--border-md);border-radius:var(--r2);
-  padding:var(--s2) var(--s2);color:var(--text-1);font-size:15px;
-  font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .15s,box-shadow .15s}
-.capture-input:focus{border-color:rgba(26,143,255,0.5);box-shadow:0 0 0 3px rgba(26,143,255,0.08)}
-.capture-input::placeholder{color:var(--text-3)}
-/* infra nodes */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ── STATS ── */
-.stats{position:relative;z-index:2;padding:var(--s6) 0;
-  background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);
-  max-width:1120px;margin:0 auto;padding:0 var(--s4)}
-.stat{text-align:center;padding:0 var(--s4);border-right:1px solid var(--border)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Syne',sans-serif;font-weight:800;font-size:40px;
-  color:var(--accent);letter-spacing:-1px;line-height:1;display:block;margin-bottom:var(--s1)}
-.stat-l{font-size:14px;color:var(--text-3)}
-
-/* ── PRODUCTS ── */
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin-top:var(--s8)}
-/* NuboLens spans 3 cols × 2 rows */
-.card-hero{display:flex;flex-direction:column}
-/* others span 3 cols */
-.card-half{}
-/* mini cards span 2 cols */
-.card-third{}
-.more-teaser{grid-column:1/-1;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--s2);padding:0;margin:0}
-.more-teaser p{color:var(--text-3);font-size:13px}
-.more-teaser a{color:var(--accent);text-decoration:none;font-size:13px;font-weight:500}
-
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);text-decoration:none;color:var(--text-1);
-  display:flex;flex-direction:column;gap:var(--s3);
-  position:relative;
-  transition:border-color .2s,transform .2s,box-shadow .2s}
-.card::before{content:'';position:absolute;top:0;left:var(--s4);right:var(--s4);height:1px;
-  background:linear-gradient(90deg,transparent,var(--c,var(--accent)),transparent);
-  opacity:0;transition:opacity .2s}
-.card:hover{border-color:rgba(255,255,255,0.1);transform:translateY(-3px);
-  box-shadow:0 var(--s3) var(--s8) rgba(0,0,0,0.28)}
-.card:hover::before{opacity:1}
-.card.dim{opacity:.65}
-.card-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px}
-.card-name em{font-style:normal;color:var(--c,var(--accent))}
-.card-hero .card-name{font-size:clamp(24px,3vw,36px)}
-.card-desc{font-size:14px;color:var(--text-2);line-height:1.65;flex:1}
-.card-hero .card-desc{font-size:16px}
-.card-footer{display:flex;align-items:center;justify-content:space-between;
-  padding-top:var(--s2);border-top:1px solid var(--border);margin-top:auto}
-.badge{font-size:11px;font-weight:500;padding:3px var(--s1);border-radius:100px}
-.badge-live{color:var(--green);background:rgba(52,211,153,0.1)}
-.badge-soon{color:var(--text-3);background:rgba(255,255,255,0.05)}
-.card-arrow{color:var(--text-3);font-size:20px;transition:transform .2s,color .2s}
-.card:hover .card-arrow{transform:translate(3px,-3px);color:var(--c,var(--accent))}
-.card-tags{display:flex;flex-wrap:wrap;gap:var(--s1)}
-.tag{font-size:12px;color:var(--accent);background:var(--accent-dim);
-  border:1px solid rgba(26,143,255,0.15);padding:3px var(--s1);border-radius:var(--r1)}
-
-/* mini mockup inside card-hero */
-.mini-mockup{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-top:auto}
-.mm-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
-.mm-dot{width:8px;height:8px;border-radius:50%}
-.mm-title{font-size:11px;color:var(--text-3);margin-left:auto}
-.mm-body{padding:var(--s2);display:flex;flex-direction:column;gap:6px}
-.mm-row{display:flex;align-items:center;gap:var(--s1);padding:6px var(--s1);
-  background:rgba(255,255,255,0.02);border:1px solid var(--border);
-  border-radius:var(--r1);font-size:12px;
-  opacity:0;animation:slide .3s ease forwards}
-.mm-row:nth-child(1){animation-delay:.1s}.mm-row:nth-child(2){animation-delay:.2s}
-.mm-row:nth-child(3){animation-delay:.3s}.mm-row:nth-child(4){animation-delay:.4s}
-.mm-status{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.mm-label{flex:1;color:var(--text-2)}
-.mm-val{color:var(--green);font-weight:500;font-size:11px}
-.mm-total{margin:6px 8px 8px;padding:8px 12px;background:var(--accent-dim);
-  border:1px solid rgba(26,143,255,0.18);border-radius:var(--r1);
-  display:flex;justify-content:space-between;align-items:center}
-.mm-total-l{font-size:12px;color:var(--text-2)}
-.mm-total-v{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;
-  color:var(--accent);letter-spacing:-0.5px}
-
-/* product mini graphics */
-.card-graphic{height:72px;border-radius:var(--r2);overflow:hidden;
-  position:relative;background:rgba(255,255,255,0.02);
-  border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
-
-/* ── HOW IT WORKS ── */
-.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s10);align-items:start;margin-top:var(--s8)}
-.steps{display:flex;flex-direction:column}
-.step{display:flex;gap:var(--s3);padding:var(--s4) 0;border-bottom:1px solid var(--border)}
-.step:last-child{border-bottom:none}
-.step-num{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:var(--accent);
-  width:var(--s4);flex-shrink:0;padding-top:2px;letter-spacing:1px}
-.step h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
-.step p{font-size:14px;color:var(--text-2);line-height:1.65}
-.depth-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
-  overflow:hidden;box-shadow:0 var(--s6) var(--s16) rgba(0,0,0,0.3),0 0 0 1px rgba(26,143,255,0.04)}
-.depth-card-header{padding:var(--s2) var(--s4);border-bottom:1px solid var(--border);
-  background:rgba(255,255,255,0.02);display:flex;align-items:center;gap:var(--s2)}
-.depth-card-title{font-size:12px;color:var(--text-3);margin-left:auto;letter-spacing:.3px}
-.depth-card-body{padding:var(--s4)}
-.depth-card-body .mm-row{border-radius:var(--r2);padding:var(--s2);margin-bottom:var(--s1);font-size:13px}
-.depth-total{margin-top:var(--s3);padding:var(--s3);background:var(--accent-dim);
-  border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);
-  display:flex;justify-content:space-between;align-items:center}
-.depth-total-l{font-size:14px;color:var(--text-2)}
-.depth-total-v{font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:var(--accent);letter-spacing:-1px;font-variant-numeric:tabular-nums}
-
-/* ── BUNDLE CALCULATOR ── */
-.calc-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
-  padding:var(--s8);margin-top:var(--s8)}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:start}
-.calc-products{display:flex;flex-direction:column;gap:var(--s2)}
-.calc-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s2) var(--s3);
-  background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r2);
-  transition:border-color .2s,background .2s}
-.calc-item.selected{border-color:rgba(26,143,255,0.3);background:rgba(26,143,255,0.05)}
-.calc-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
-.calc-item-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.calc-item-name{flex:1;font-size:14px;font-weight:500}
-.calc-item-price{font-size:13px;color:var(--text-3)}
-.calc-item-price.active{color:var(--accent);font-weight:500}
-.calc-result{position:sticky;top:var(--s10);background:var(--bg3);
-  border:1px solid rgba(26,143,255,0.2);border-radius:var(--r3);padding:var(--s5)}
-.calc-result-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:var(--s4)}
-.calc-result-lines{display:flex;flex-direction:column;gap:var(--s2);margin-bottom:var(--s4);
-  min-height:120px}
-.calc-line{display:flex;justify-content:space-between;font-size:14px;
-  color:var(--text-2);padding:var(--s1) 0;border-bottom:1px solid var(--border)}
-.calc-line:last-child{border-bottom:none}
-.calc-divider{height:1px;background:var(--border);margin:var(--s2) 0}
-.calc-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s2)}
-.calc-total-label{font-size:14px;color:var(--text-2)}
-.calc-total-val{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;font-variant-numeric:tabular-nums;
-  color:var(--accent);letter-spacing:-1.5px}
-.calc-saving{font-size:13px;color:var(--green);margin-bottom:var(--s4)}
-.calc-empty{color:var(--text-3);font-size:14px;font-style:italic;padding:var(--s4) 0;text-align:center}
-.calc-note{font-size:12px;color:var(--text-3);margin-top:var(--s2)}
-
-/* ── PRICING ── */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)}
-.p-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s5);position:relative;transition:transform .2s}
-.p-card:hover{transform:translateY(-3px)}
-.p-card.p-pop{border-color:rgba(26,143,255,0.22);
-  background:linear-gradient(160deg,rgba(26,143,255,0.05) 0%,var(--bg2) 60%);
-  box-shadow:0 0 0 1px rgba(26,143,255,0.08)}
-.p-pop-tag{position:absolute;top:var(--s3);right:var(--s3);background:var(--accent);
-  color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px}
-.p-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)}
-.p-desc{font-size:14px;color:var(--text-2);margin-bottom:var(--s4);line-height:1.6}
-.p-amount{font-family:'Syne',sans-serif;font-weight:800;font-size:56px;
-  letter-spacing:-2px;line-height:1;color:var(--text-1)}
-.p-period{font-size:14px;color:var(--text-3)}
-.p-list{list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)}
-.p-list li{display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2);line-height:1.5}
-.p-list li::before{content:'✓';color:var(--accent);font-weight:600;flex-shrink:0;margin-top:1px}
-.p-btn{display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);
-  border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);
-  color:var(--text-1);background:rgba(255,255,255,0.04);transition:background .15s,border-color .15s}
-.p-btn:hover{background:rgba(255,255,255,0.07);border-color:var(--border-md)}
-.p-btn-fill{background:var(--accent);border-color:transparent;color:#fff;box-shadow:0 0 var(--s4) var(--accent-glow)}
-.p-btn-fill:hover{background:var(--accent-hover);border-color:transparent}
-.pricing-note{font-size:14px;color:var(--text-3);margin-top:var(--s3)}
-.pricing-note a{color:var(--accent);text-decoration:none}
-
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s10);align-items:center}
-.about-quote-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r4);
-  padding:var(--s6);position:relative;
-  box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.2),0 0 0 1px rgba(26,143,255,0.04)}
-.about-quote-card::before{content:'"';position:absolute;top:var(--s3);left:var(--s4);
-  font-family:'Syne',sans-serif;font-size:80px;color:rgba(26,143,255,0.1);line-height:1}
-.about-quote{font-family:'Syne',sans-serif;font-weight:600;font-size:20px;
-  line-height:1.45;color:var(--text-1);position:relative;z-index:1;margin-bottom:var(--s4)}
-.about-attr{font-size:14px;color:var(--text-3)}
-.about-pills{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s5)}
-.pill{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
-
-/* ── FORM ── */
-.form-section{padding:var(--s16) 0 var(--s12);position:relative;z-index:2}
-.form-card{background:var(--bg2);border:1px solid rgba(26,143,255,0.14);border-radius:var(--r4);
-  overflow:hidden;box-shadow:0 0 0 1px rgba(26,143,255,0.05),0 var(--s6) var(--s16) rgba(0,0,0,0.3)}
-.form-card-top{padding:var(--s8);border-bottom:1px solid var(--border);
-  background:linear-gradient(180deg,rgba(26,143,255,0.05) 0%,transparent 100%)}
-.form-card-h{font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin-bottom:var(--s2)}
-.form-card-sub{font-size:18px;color:var(--text-2);font-weight:300;max-width:500px;line-height:1.6}
-.form-body{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);padding:var(--s8)}
-.form-col{display:flex;flex-direction:column;gap:var(--s3)}
-.form-g{display:flex;flex-direction:column;gap:var(--s1)}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
-.form-l{font-size:14px;color:var(--text-2);font-weight:500}
-.form-i,.form-s,.form-t{width:100%;background:rgba(255,255,255,0.03);
-  border:1px solid var(--border);border-radius:var(--r2);
-  padding:var(--s2);color:var(--text-1);font-size:14px;
-  font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .15s,box-shadow .15s}
-.form-i:focus,.form-s:focus,.form-t:focus{border-color:rgba(26,143,255,0.4);box-shadow:0 0 0 3px rgba(26,143,255,0.07)}
-.form-i::placeholder{color:var(--text-3)}
-.form-s{appearance:none}
-.form-t{resize:vertical;min-height:96px}
-.form-submit{width:100%;padding:var(--s2) var(--s3);border-radius:var(--r2);border:none;
-  background:var(--accent);color:#fff;font-size:16px;font-weight:500;
-  font-family:'Inter',sans-serif;box-shadow:0 0 var(--s4) var(--accent-glow);
-  transition:background .15s,box-shadow .15s,transform .1s}
-.form-submit:hover{background:var(--accent-hover);box-shadow:0 0 var(--s6) rgba(26,143,255,0.3);transform:translateY(-1px)}
-.trust-note{display:flex;align-items:center;gap:var(--s1);font-size:12px;color:var(--text-3);margin-top:var(--s2)}
-.benefits{display:flex;flex-direction:column;gap:var(--s3);justify-content:center}
-.benefit{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s3);
-  background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r3)}
-.benefit-icon{width:var(--s6);height:var(--s6);background:var(--accent-dim);
-  border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);
-  display:grid;place-items:center;font-size:20px;flex-shrink:0}
-.benefit h4{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:3px}
-.benefit p{font-size:14px;color:var(--text-2);line-height:1.55}
-
-@media(max-width:960px){
-  .products-grid{grid-template-columns:repeat(2,1fr)}
-  
-  
-  
-  .how-grid,.about-grid,.form-body,.calc-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .stat{border-right:none;border-bottom:1px solid var(--border);padding:var(--s3) 0}
-  .pricing-grid{grid-template-columns:1fr;max-width:400px}
-  
-}
-@media(max-width:640px){
-  .products-grid{grid-template-columns:1fr}
-  .card-hero,.card-half,
-  .form-row-2{grid-template-columns:1fr}
-  
-}
-
-  
-@media(max-width:640px){
-  #cvs{opacity:.25}
-  .dot-grid{display:none}
-  .orb{display:none}
-}
-@media(max-width:960px){
-  #cvs{opacity:.3}
-  .dot-grid{opacity:.15}
-}
-</style>
+  </style>
 </head>
 <body>
 <div id="cur" aria-hidden="true"></div>
@@ -447,522 +172,91 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <div class="nav-logo-mark" aria-hidden="true">☁</div>
       <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
-    <div class="nav-centre" role="navigation">
-      <div class="nav-dd">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
-          Products
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </button>
-        <div class="nav-dd-menu" role="menu">
-          <div class="nav-dd-inner">
-            <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
-            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
-            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
-            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
-            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
-            <a href="#" class="nav-dd-item" role="menuitem" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
-          </div>
-        </div>
-      </div>
-      <a href="index.html#how" class="nav-link">How it works</a>
-      <a href="index.html#pricing" class="nav-link">Pricing</a>
-      <a href="index.html#about" class="nav-link">About</a>
-    </div>
-    <a href="index.html#audit" class="btn">Get started →</a>
+    <a href="index.html" class="nav-back">← All products</a>
+    <a href="index.html#audit" class="btn">Get a free audit →</a>
   </div>
 </nav>
-<!-- Orbs + dot grid -->
 <div class="orb orb1" aria-hidden="true"></div>
-<div class="orb orb2" aria-hidden="true"></div>
-<div class="orb orb3" aria-hidden="true"></div>
-<div class="dot-grid" aria-hidden="true"></div>
-
-<!-- HERO -->
-<section class="hero" aria-label="Hero">
-  <div class="hero-label"><span class="hero-dot" aria-hidden="true"></span>Built and tested in live AWS environments</div>
-  <h1>Reduce AWS waste<br>before your finance<br><em>team notices.</em></h1>
-  <p class="hero-sub">Automated cloud audits, security insights, compliance readiness and infrastructure intelligence for modern engineering teams. Find what's broken, wasted, and exposed — in under 5 minutes.</p>
-  <div style="display:flex;gap:var(--s2);flex-wrap:wrap;justify-content:center;align-items:center;margin-top:var(--s4)">
-    <form class="hero-capture" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Quick audit request" style="margin:0">
-      <input type="hidden" name="_subject" value="Quick Audit Request"/>
-      <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
-      <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We'll be in touch within 24 hours to arrange your free cloud audit. — The Nubo Labs team"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="email" name="email" class="capture-input" placeholder="your@company.com" required aria-label="Your work email"/>
-      <button type="submit" class="btn">Get free audit →</button>
-    </form>
-    <a href="samples.html" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-1);box-shadow:none">View sample report →</a>
-  </div>
-  <div style="display:flex;gap:var(--s4);justify-content:center;margin-top:var(--s4);flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)">
-      <span style="color:var(--green)">✓</span> No agents or installs
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)">
-      <span style="color:var(--green)">✓</span> Read-only AWS access
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)">
-      <span style="color:var(--green)">✓</span> 48hr turnaround
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)">
-      <span style="color:var(--green)">✓</span> First audit free
-    </div>
-  </div>
-</section>
-
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-grid">
-    <div class="stat"><span class="stat-n">£1,708</span><div class="stat-l">Avg annual waste found</div></div>
-    <div class="stat"><span class="stat-n">150+</span><div class="stat-l">Security checks per audit</div></div>
-    <div class="stat"><span class="stat-n">48hr</span><div class="stat-l">Audit turnaround</div></div>
-    <div class="stat"><span class="stat-n">£0</span><div class="stat-l">First audit cost</div></div>
-  </div>
+<div class="ob-hero">
+  <div class="sec-tag" style="justify-content:center">Onboarding</div>
+  <h1>Preparing your cloud credentials</h1>
+  <p>We only ever need read-only access. Here's exactly how to set it up in AWS or Azure — takes less than 5 minutes.</p>
 </div>
-
-<!-- PRODUCTS -->
-<!-- TRUST BAR -->
-<div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:var(--s3) 0;position:relative;z-index:2">
+<section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div style="display:flex;align-items:center;justify-content:center;gap:var(--s6);flex-wrap:wrap">
-      <div style="font-size:11px;color:var(--text-3);letter-spacing:0.5px;text-transform:uppercase;font-weight:500">Tested against</div>
-      <div style="display:flex;gap:var(--s4);align-items:center;flex-wrap:wrap;justify-content:center">
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">☁ AWS</span>
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">◈ Terraform</span>
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">⬡ Kubernetes</span>
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">⊞ Azure</span>
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">⬢ Docker</span>
-        <span style="font-size:13px;color:var(--text-2);font-weight:500">◎ CI/CD</span>
+    <div class="ob-grid">
+
+      <!-- AWS -->
+      <div class="ob-card r">
+        <div class="ob-card-title">
+          <span style="font-size:24px">☁</span> AWS Setup
+        </div>
+        <div class="ob-card-sub">Create a read-only IAM user in your AWS account. This gives us visibility into your resources with zero ability to make changes.</div>
+
+        <div class="ob-step">
+          <div class="ob-step-num">1</div>
+          <div><h4>Open IAM in AWS Console</h4><p>Go to console.aws.amazon.com → Services → IAM → Users → Add User</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">2</div>
+          <div><h4>Name the user</h4><p>Call it something like <strong>nubolabs-readonly</strong> so it's easy to identify and revoke later.</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">3</div>
+          <div><h4>Attach permissions</h4><p>Select "Attach policies directly" and search for and attach:</p><div class="code-block">ReadOnlyAccess</div></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">4</div>
+          <div><h4>Create access keys</h4><p>Go to the user → Security credentials → Create access key → Select "Third-party service"</p></div>
+        </div>
+        <div class="ob-step">
+          <div class="ob-step-num">5</div>
+          <div><h4>Send us the credentials</h4><p>Email your Access Key ID and Secret Access Key to:<br><strong>kenziebollon@nubolabs.co.uk</strong></p><p style="color:var(--text-3);font-size:12px;margin-top:4px">We recommend using a secure method like 1Password Share. Never send via Slack or WhatsApp.</p></div>
+        </div>
       </div>
-      <div style="font-size:11px;color:var(--text-3)">Read-only access · No agents · SOC2-safe</div>
-    </div>
-  </div>
-</div>
 
-<section class="sec" id="products" style="padding-bottom:var(--s4)">
-  <div class="wrap">
-    <div class="r" style="margin-bottom:var(--s8)">
-      <div class="sec-tag">Products</div>
-      <h2 class="sec-h">Eight products. One platform.<br>Complete infrastructure control.</h2>
-      <p class="sec-sub">Every product is built on real checks run in live AWS environments — not theoretical best practices. Find waste, close security gaps, hit compliance, and understand your infrastructure..</p>
-    </div>
-    <div class="products-grid card-area">
+      <!-- Azure -->
+      <div class="ob-card r r2">
+        <div class="ob-card-title">
+          <span style="font-size:24px">🔷</span> Azure Setup
+        </div>
+        <div class="ob-card-sub">Create a service principal with Reader role in your Azure subscription. Read-only, zero ability to make changes.</div>
 
-      <!-- NuboLens -->
-      <a href="nuboslens.html" class="card r" style="--c:#1a8fff">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(26,143,255,0.15);border:1px solid rgba(26,143,255,0.25);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔵</div>
-          <div class="card-name">Nubo<em>Lens</em></div>
-          <span class="badge badge-live" style="margin-left:auto">● Live</span>
+        <div class="ob-step">
+          <div class="ob-step-num">1</div>
+          <div><h4>Open Azure Cloud Shell</h4><p>Go to portal.azure.com and click the Cloud Shell icon (top right) or use the Azure CLI locally.</p></div>
         </div>
-        <div class="card-desc">Cloud cost visibility and optimisation. We scan your AWS or Azure environment, identify waste, and deliver a clear savings report with actionable fixes.</div>
-        <div class="card-tags">
-          <span class="tag">AWS &amp; Azure</span><span class="tag">Idle resources</span><span class="tag">Cost alerts</span>
+        <div class="ob-step">
+          <div class="ob-step-num">2</div>
+          <div><h4>Create a service principal</h4><p>Run this command:</p><div class="code-block">az ad sp create-for-rbac --name "nubolabs-readonly" --role Reader --scopes /subscriptions/YOUR_SUBSCRIPTION_ID</div></div>
         </div>
-        <div style="border-radius:var(--r2);background:rgba(255,255,255,0.02);border:1px solid var(--border);display:flex;align-items:center;padding:var(--s2) var(--s2);gap:var(--s2);margin-top:auto">
-          <div style="display:flex;flex-direction:column;gap:4px;flex:1">
-            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-2)"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span>Idle EC2 (3)<span style="margin-left:auto;color:#34d399;font-weight:500">£210/mo</span></div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-2)"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span>Oversized RDS<span style="margin-left:auto;color:#34d399;font-weight:500">£380/mo</span></div>
-            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-2)"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span>Unattached EBS<span style="margin-left:auto;color:#34d399;font-weight:500">£95/mo</span></div>
-          </div>
-          <div style="text-align:right;flex-shrink:0">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--accent)">£1,137</div>
-            <div style="font-size:10px;color:var(--text-3)">found/mo</div>
-          </div>
+        <div class="ob-step">
+          <div class="ob-step-num">3</div>
+          <div><h4>Copy the output</h4><p>The command returns a JSON object with appId, password, and tenant. Copy all of it.</p></div>
         </div>
-        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £400/mo</span><span class="card-arrow">↗</span></div>
-      </a>
-
-<!-- NuboShield -->
-      <a href="nuboshield.html" class="card r r2" style="--c:#9b5cff">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟣</div>
-          <div class="card-name">Nubo<em style="color:#9b5cff">Shield</em></div>
+        <div class="ob-step">
+          <div class="ob-step-num">4</div>
+          <div><h4>Send us the credentials</h4><p>Email the JSON output to:<br><strong>kenziebollon@nubolabs.co.uk</strong></p><p style="color:var(--text-3);font-size:12px;margin-top:4px">Use a secure sharing method. We recommend 1Password Share or similar.</p></div>
         </div>
-        <div class="card-desc">50 security checks across 9 services. CRITICAL findings with exact remediation steps. Read-only access, under 2 minutes.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#ef4444">7</div><div style="font-size:10px;color:var(--text-3)">critical found</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#9b5cff">50</div><div style="font-size:10px;color:var(--text-3)">total checks</div></div>
+        <div class="ob-step">
+          <div class="ob-step-num">5</div>
+          <div><h4>Revoke after audit</h4><p>Once the audit is complete, delete the service principal:<br></p><div class="code-block">az ad sp delete --id YOUR_APP_ID</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#9b5cff">↗</span></div>
-      </a>
-
-      <!-- NuboVault -->
-      <a href="nubovault.html" class="card r r3" style="--c:#f43f5e">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔐</div>
-          <div class="card-name">Nubo<em style="color:#f43f5e">Vault</em></div>
-        </div>
-        <div class="card-desc">68 checks across 12 services. Hardcoded API keys, .env files in S3, credentials in user data — found before attackers do.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#ef4444;font-variant-numeric:tabular-nums">32</div><div style="font-size:10px;color:var(--text-3)">critical found</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f43f5e;font-variant-numeric:tabular-nums">68</div><div style="font-size:10px;color:var(--text-3)">total checks</div></div>
-        </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#f43f5e">↗</span></div>
-      </a>
-
-      <!-- NuboWatch -->
-      <a href="nubowatch.html" class="card r r2" style="--c:#00c896">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟢</div>
-          <div class="card-name">Nubo<em style="color:#00c896">Watch</em></div>
-        </div>
-        <div class="card-desc">Managed monitoring and observability. Prometheus, Grafana, alerting — without the overhead.</div>
-        <div class="card-graphic" style="padding:var(--s2);flex-direction:column;gap:6px;align-items:stretch">
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-3)"><span>CPU</span><span style="color:#00c896">47%</span></div>
-          <svg viewBox="0 0 200 28" style="width:100%;height:28px" preserveAspectRatio="none">
-            <polyline points="0,14 15,14 22,4 28,24 34,10 40,14 60,14 67,2 73,26 79,8 85,14 120,14 127,6 133,22 139,10 145,14 200,14" fill="none" stroke="#00c896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-            <circle cx="145" cy="14" r="3" fill="#00c896"><animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/></circle>
-          </svg>
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-3)"><span>Latency</span><span style="color:#00c896">42ms</span></div>
-          <svg viewBox="0 0 200 20" style="width:100%;height:20px" preserveAspectRatio="none">
-            <polyline points="0,10 20,8 40,12 55,6 70,10 90,11 110,9 130,13 150,7 170,10 200,9" fill="none" stroke="#00c896" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-          </svg>
-        </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#00c896">↗</span></div>
-      </a>
-
-      <!-- NuboComply -->
-      <a href="nubocomply.html" class="card r r3" style="--c:#f59e0b">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🟡</div>
-          <div class="card-name">Nubo<em style="color:#f59e0b">Comply</em></div>
-        </div>
-        <div class="card-desc">SOC2 and ISO27001 readiness. Automated gap analysis so you can land enterprise clients faster.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f59e0b">SOC2</div><div style="font-size:10px;color:var(--text-3)">ready in weeks</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f59e0b">£20k</div><div style="font-size:10px;color:var(--text-3)">saved vs consultant</div></div>
-        </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#f59e0b">↗</span></div>
-      </a>
-
-      <!-- NuboGreen -->
-      <a href="nubogreen.html" class="card r r2" style="--c:#22c55e">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🌿</div>
-          <div class="card-name">Nubo<em style="color:#22c55e">Green</em></div>
-        </div>
-        <div class="card-desc">Cloud carbon footprint reporting. ESG compliance for your infrastructure — an untapped, growing market.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#22c55e">96%</div><div style="font-size:10px;color:var(--text-3)">max reduction</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#22c55e">GHG</div><div style="font-size:10px;color:var(--text-3)">protocol aligned</div></div>
-        </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#22c55e">↗</span></div>
-      </a>
-
-      <!-- NuboPredict -->
-      <a href="nubopredict.html" class="card r r3" style="--c:#a78bfa">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔮</div>
-          <div class="card-name">Nubo<em style="color:#a78bfa">Predict</em></div>
-        </div>
-        <div class="card-desc">AI-powered spend forecasting. Know next month's cloud bill before it arrives.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#a78bfa">95%</div><div style="font-size:10px;color:var(--text-3)">forecast accuracy</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#a78bfa">-18%</div><div style="font-size:10px;color:var(--text-3)">bill surprises</div></div>
-        </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#a78bfa">↗</span></div>
-      </a>
-
-      <!-- NuboPipe -->
-      <a href="nubopipe.html" class="card r r2" style="--c:#ff3c5a">
-        <div style="display:flex;align-items:center;gap:var(--s2)">
-          <div style="width:var(--s5);height:var(--s5);background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔴</div>
-          <div class="card-name">Nubo<em style="color:#ff3c5a">Pipe</em></div>
-        </div>
-        <div class="card-desc">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div>
-        <div class="card-graphic" style="gap:var(--s3)">
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#ff3c5a">4×</div><div style="font-size:10px;color:var(--text-3)">faster deploys</div></div>
-          <div style="width:1px;height:32px;background:var(--border)"></div>
-          <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#34d399">0</div><div style="font-size:10px;color:var(--text-3)">broken builds</div></div>
-        </div>
-        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div>
-      </a>
-
-      <!-- More teaser -->
-      <div class="more-teaser r" style="border:none;background:none">
-        <p>Azure and GCP support shipping next — same products, every cloud. Follow for updates.</p>
-        <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">Follow on LinkedIn →</a>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="sec sec-alt" id="how">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag">How it works</div>
-      <h2 class="sec-h">A free audit in 48 hours</h2>
-      <p class="sec-sub">No calls. No commitment. Just a clear report showing exactly where your cloud money is going.</p>
-    </div>
-    <div class="how-grid">
-      <div class="steps r">
-        <div class="step"><div class="step-num">01</div><div><h4>Fill in the audit form</h4><p>Tell us about your setup — AWS, Azure, or both. Takes two minutes, no access needed yet.</p></div></div>
-        <div class="step"><div class="step-num">02</div><div><h4>Grant read-only access</h4><p>We guide you through creating a read-only IAM credential. We never need write access to your infrastructure.</p></div></div>
-        <div class="step"><div class="step-num">03</div><div><h4>Receive your savings report</h4><p>Within 48 hours you'll have a detailed report showing exactly what's being wasted and how to fix it.</p></div></div>
-        <div class="step"><div class="step-num">04</div><div><h4>We implement the fixes</h4><p>Optionally let us handle the fixes and monitor your account monthly so waste doesn't creep back.</p></div></div>
-      </div>
-      <div class="depth-card r r2">
-        <div class="depth-card-header">
-          <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
-          <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
-          <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
-          <div class="depth-card-title">NuboLens — example report</div>
-        </div>
-        <div class="depth-card-body">
-          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Idle EC2 instances (3)</div><div class="mm-val">£210/mo</div></div>
-          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Oversized RDS database</div><div class="mm-val">£380/mo</div></div>
-          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Unattached EBS volumes</div><div class="mm-val">£95/mo</div></div>
-          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">S3 — no lifecycle rules</div><div class="mm-val">£140/mo</div></div>
-          <div class="mm-row"><div class="mm-status" style="background:#ef4444"></div><div class="mm-label">Dev envs running 24/7</div><div class="mm-val">£290/mo</div></div>
-          <div class="mm-row"><div class="mm-status" style="background:#f59e0b"></div><div class="mm-label">Unassociated Elastic IPs</div><div class="mm-val">£22/mo</div></div>
-          <div class="depth-total"><div class="depth-total-l">Total monthly waste found</div><div class="depth-total-v">£1,137</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BUNDLE CALCULATOR -->
-<section class="sec" id="pricing">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag">Pricing</div>
-      <h2 class="sec-h">Build your bundle</h2>
-      <p class="sec-sub">Select the products you need and see your monthly price instantly. Save up to 25% when combining products.</p>
-    </div>
-    <div class="calc-wrap r">
-      <div class="calc-grid">
-        <div>
-          <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--s3)">Select products:</p>
-          <div class="calc-products" id="calcProducts">
-            <label class="calc-item" data-price="400" data-name="NuboLens"><input type="checkbox" checked/><span class="calc-item-dot" style="background:#1a8fff"></span><span class="calc-item-name">NuboLens</span><span class="calc-item-price active">£400/mo</span></label>
-            <label class="calc-item" data-price="500" data-name="NuboShield"><input type="checkbox"/><span class="calc-item-dot" style="background:#9b5cff"></span><span class="calc-item-name">NuboShield</span><span class="calc-item-price">£500/mo</span></label>
-            <label class="calc-item" data-price="450" data-name="NuboVault"><input type="checkbox"/><span class="calc-item-dot" style="background:#f43f5e"></span><span class="calc-item-name">NuboVault</span><span class="calc-item-price">£450/mo</span></label>
-            <label class="calc-item" data-price="450" data-name="NuboWatch"><input type="checkbox"/><span class="calc-item-dot" style="background:#00c896"></span><span class="calc-item-name">NuboWatch</span><span class="calc-item-price">£450/mo</span></label>
-            <label class="calc-item" data-price="600" data-name="NuboComply"><input type="checkbox"/><span class="calc-item-dot" style="background:#f59e0b"></span><span class="calc-item-name">NuboComply</span><span class="calc-item-price">£600/mo</span></label>
-            <label class="calc-item" data-price="350" data-name="NuboGreen"><input type="checkbox"/><span class="calc-item-dot" style="background:#22c55e"></span><span class="calc-item-name">NuboGreen</span><span class="calc-item-price">£350/mo</span></label>
-            <label class="calc-item" data-price="300" data-name="NuboPredict"><input type="checkbox"/><span class="calc-item-dot" style="background:#a78bfa"></span><span class="calc-item-name">NuboPredict</span><span class="calc-item-price">£300/mo</span></label>
-            <label class="calc-item" data-price="400" data-name="NuboPipe"><input type="checkbox"/><span class="calc-item-dot" style="background:#ff3c5a"></span><span class="calc-item-name">NuboPipe</span><span class="calc-item-price">£400/mo</span></label>
-          </div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-result-title">Your bundle</div>
-          <div class="calc-result-lines" id="calcLines">
-            <div class="calc-empty">Select products to see pricing</div>
-          </div>
-          <div class="calc-divider"></div>
-          <div class="calc-total-row">
-            <span class="calc-total-label">Monthly total</span>
-            <span class="calc-total-val" id="calcTotal">£400</span>
-          </div>
-          <div class="calc-saving" id="calcSaving"></div>
-          <a href="#audit" class="btn" style="width:100%;justify-content:center;margin-bottom:var(--s2)">Get started →</a>
-          <div class="calc-note">* All products include a free audit before commitment. Custom enterprise pricing available.</div>
-        </div>
+    <div class="ob-trust r">
+      <div class="ob-trust-icon">🔒</div>
+      <div>
+        <h4>Our security commitment</h4>
+        <p>Your credentials are used solely for the agreed audit. They are stored encrypted, never shared with any third party, and we request you revoke them within 30 days of audit completion unless on an active retainer. We have never and will never make changes to a client's infrastructure without explicit written approval. Read our full <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a> and <a href="terms.html" style="color:var(--accent)">Terms of Service</a>.</p>
       </div>
     </div>
 
-    <!-- Simple pricing cards below -->
-    <div style="margin-top:var(--s8)" class="r">
-      <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Or start simple:</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="p-card r">
-        <div class="p-name">One-off Audit</div>
-        <div class="p-desc">A full NuboLens scan with a detailed savings report. No ongoing commitment.</div>
-        <div><span class="p-amount">£500</span><span class="p-period"> one time</span></div>
-        <ul class="p-list">
-          <li>Full AWS or Azure audit</li>
-          <li>Detailed savings report</li>
-          <li>Actionable fix recommendations</li>
-          <li>48 hour turnaround</li>
-          <li>No ongoing commitment</li>
-        </ul>
-        <a href="#audit" class="p-btn">Get started</a>
-      </div>
-      <div class="p-card p-pop r r2">
-        <div class="p-pop-tag">Most popular</div>
-        <div class="p-name">NuboLens Retainer</div>
-        <div class="p-desc">Ongoing monitoring so waste doesn't creep back as your infrastructure grows.</div>
-        <div><span class="p-amount">£400</span><span class="p-period">/month</span></div>
-        <ul class="p-list">
-          <li>Everything in One-off Audit</li>
-          <li>Monthly automated scans</li>
-          <li>Cost spike alerts</li>
-          <li>Monthly savings report</li>
-          <li>Fix implementation included</li>
-          <li>Priority response</li>
-        </ul>
-        <a href="#audit" class="p-btn p-btn-fill">Get started</a>
-      </div>
-    </div>
-    <p class="pricing-note r">Custom pricing for larger environments or multiple products. <a href="#audit">Get in touch →</a></p>
-  </div>
-</section>
-
-
-<!-- CASE STUDY -->
-<section class="sec sec-alt" id="casestudy">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag">Case study</div>
-      <h2 class="sec-h">27 findings. £1,708/year. Under 2 minutes.</h2>
-      <p class="sec-sub">We ran NuboLens against a live AWS environment. Here's exactly what we found.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
-
-      <div class="r r2">
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.25)">
-          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)">
-            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
-            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
-            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
-            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboLens v2.0 — Audit Report</span>
-          </div>
-          <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
-            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px">High severity — 14 findings</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2 (×4)</span><span style="color:var(--text-3);flex:2">Idle instances — CPU &lt;2%</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£32.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EBS (×6)</span><span style="color:var(--text-3);flex:2">Unattached volumes (630GB)</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£50.40</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">Idle DB + backups disabled</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£15.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda (×2)</span><span style="color:var(--text-3);flex:2">100% error rate — broken functions</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">—</span></div>
-            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px">Medium severity — 11 findings</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2 (×3)</span><span style="color:var(--text-3);flex:2">Underutilised + stopped w/ EBS</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£12.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Elastic IP (×5)</span><span style="color:var(--text-3);flex:2">Unassociated addresses</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£16.00</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:var(--r1);font-size:12px"><span style="width:6px;height;6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3 (×3)</span><span style="color:var(--text-3);flex:2">No lifecycle rules</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£15.00</span></div>
-            <div style="font-size:10px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px">Low severity — 2 findings</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:var(--text-3);flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda (×2)</span><span style="color:var(--text-3);flex:2">Unused functions — 0 invocations</span><span style="color:#34d399;font-weight:500;font-variant-numeric:tabular-nums">£2.00</span></div>
-            <div style="margin-top:var(--s2);padding:var(--s2);background:var(--accent-dim);border:1px solid rgba(26,143,255,0.15);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-size:13px;color:var(--text-2)">Total monthly waste found</div>
-                <div style="font-size:11px;color:var(--text-3);margin-top:2px">27 findings · 14 HIGH · 11 MEDIUM · 2 LOW</div>
-              </div>
-              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:var(--accent);font-variant-numeric:tabular-nums">£142.40</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding:var(--s1) var(--s1) 0">
-              <span style="font-size:11px;color:var(--text-3)">Scan duration: &lt;2 minutes</span>
-              <span style="font-size:11px;color:var(--text-3)">Annual saving: <span style="color:#34d399;font-weight:600">£1,708.80</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--accent);letter-spacing:-1px;font-variant-numeric:tabular-nums">27</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">findings</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#34d399;letter-spacing:-2px;font-variant-numeric:tabular-nums">£1,708</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">saved per year</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:var(--accent);letter-spacing:-1px">&lt;2m</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">scan duration</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px">12</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">checks run</div>
-          </div>
-        </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7">Checks cover EC2, EBS, S3, RDS, Lambda, ELB, IAM and CloudWatch — cost waste, security risks, and application health in a single scan. Every finding is prioritised HIGH, MEDIUM, or LOW so you know exactly where to start.</p>
-        </div>
-        <a href="#audit" class="btn btn-lg" style="justify-content:center;text-align:center">Get your free audit →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="sec sec-alt" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="r">
-        <div class="sec-tag">About</div>
-        <h2 class="sec-h">Built by engineers,<br>for engineers</h2>
-        <p class="sec-sub" style="margin-bottom:var(--s4)">NuboLabs was built by a DevOps engineer who got tired of seeing the same problems in every AWS account — wasted spend that nobody noticed, security gaps that hadn't been audited in months, and compliance gaps that would fail any serious enterprise questionnaire.</p>
-        <p class="sec-sub">Every check in every product is one I run professionally. Automated, packaged, and made available to the teams who need it most.</p>
-        <div class="about-pills">
-          <span class="pill">AWS Certified</span><span class="pill">Azure</span><span class="pill">Terraform</span>
-          <span class="pill">Ansible</span><span class="pill">Prometheus</span><span class="pill">Grafana</span>
-          <span class="pill">CI/CD</span><span class="pill">Linux</span><span class="pill">Leeds, UK</span>
-        </div>
-      </div>
-      <div class="about-quote-card r r2">
-        <div class="about-quote">Most companies are overspending, underprotected, and running on infrastructure that was built in a rush and never revisited. We fix that.</div>
-        <div class="about-attr" style="margin-bottom:var(--s4)">Nubo Labs — Leeds, UK</div>
-        <div style="border-top:1px solid var(--border);padding-top:var(--s3)">
-          <div style="display:flex;align-items:center;gap:var(--s3)">
-            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#9b5cff);display:grid;place-items:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:#fff;flex-shrink:0">K</div>
-            <div>
-              <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text-1)">Kenzie Bollon-Kelsey</div>
-              <div style="font-size:12px;color:var(--text-3);margin-top:2px">Founder · Senior DevOps Engineer · UK Enterprise</div>
-            </div>
-          </div>
-          <p style="font-size:13px;color:var(--text-2);line-height:1.7;margin-top:var(--s2)">DevOps engineer with hands-on experience designing and securing cloud infrastructure at enterprise scale. NuboLabs is built on the checks I run professionally — automated and made available to every team.</p>
-          <div style="display:flex;gap:var(--s2);margin-top:var(--s2);flex-wrap:wrap">
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">AWS</span>
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">Azure</span>
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">Terraform</span>
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">CI/CD</span>
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">Security</span>
-            <span style="font-size:11px;color:var(--text-3);background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:3px 10px;border-radius:100px">Leeds, UK</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FULL AUDIT FORM -->
-<section class="form-section" id="audit">
-  <div class="wrap">
-    <div class="form-card r">
-      <div class="form-card-top">
-        <div class="sec-tag">Free audit</div>
-        <div class="form-card-h">Get your free audit.<br>Know in 48 hours.</div>
-        <div class="form-card-sub">Tell us about your stack and we'll run a full audit — cost waste, security gaps, compliance posture, and monitoring coverage. No calls, no commitment, no agents to install.</div>
-      </div>
-      <div class="form-body">
-        <form class="form-col" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Full audit request form">
-          <input type="hidden" name="_subject" value="New NuboLens Audit Request"/>
-          <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
-          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We have received your audit request and will be in touch within 24 hours. In the meantime, visit nubolabs.co.uk/onboarding.html to see how to prepare your AWS or Azure credentials. — The Nubo Labs team"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="hidden" name="_template" value="table"/>
-          <div class="form-row-2">
-            <div class="form-g"><label class="form-l" for="fname">Your name</label><input type="text" id="fname" name="name" class="form-i" placeholder="Alex Johnson" required/></div>
-            <div class="form-g"><label class="form-l" for="fcompany">Company</label><input type="text" id="fcompany" name="company" class="form-i" placeholder="Acme Ltd" required/></div>
-          </div>
-          <div class="form-g"><label class="form-l" for="femail">Email address</label><input type="email" id="femail" name="email" class="form-i" placeholder="alex@acme.com" required/></div>
-          <div class="form-row-2">
-            <div class="form-g"><label class="form-l" for="fplatform">Cloud platform</label><select id="fplatform" name="platform" class="form-s"><option>AWS</option><option>Azure</option><option>Both</option></select></div>
-            <div class="form-g"><label class="form-l" for="fspend">Monthly spend</label><select id="fspend" name="spend" class="form-s"><option>£1k – £5k/mo</option><option>£5k – £20k/mo</option><option>£20k – £100k/mo</option><option>£100k+/mo</option></select></div>
-          </div>
-          <div class="form-g"><label class="form-l" for="fmsg">Anything specific? (optional)</label><textarea id="fmsg" name="message" class="form-t" placeholder="High bills, security concerns, specific services..."></textarea></div>
-          <button type="submit" class="form-submit">Request free audit →</button>
-          <div class="trust-note">🔒 Read-only access only. We never store credentials. Your data is never shared.</div>
-        </form>
-        <div class="benefits">
-          <div class="benefit"><div class="benefit-icon">🔍</div><div><h4>Complete visibility</h4><p>We scan every corner of your environment — compute, storage, networking, databases.</p></div></div>
-          <div class="benefit"><div class="benefit-icon">🔒</div><div><h4>Read-only access only</h4><p>We never need write access. Your infrastructure stays completely safe throughout.</p></div></div>
-          <div class="benefit"><div class="benefit-icon">⚡</div><div><h4>48 hour turnaround</h4><p>A full savings report in your inbox within 48 hours of granting access.</p></div></div>
-          <div class="benefit"><div class="benefit-icon">💰</div><div><h4>Average saving of 30%</h4><p>Most clients find they're wasting 20–40% of their monthly cloud bill on unused resources.</p></div></div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-top:var(--s8)" class="r">
+      <p style="font-size:16px;color:var(--text-2);margin-bottom:var(--s4)">Ready to go? Send your credentials and we'll get started.</p>
+      <a href="mailto:kenziebollon@nubolabs.co.uk" class="btn btn-lg">Email credentials →</a>
     </div>
   </div>
 </section>
@@ -1046,175 +340,6 @@ document.addEventListener('click',()=>{
 });
 
 
-
-
-// Bundle calculator
-const items = document.querySelectorAll('#calcProducts .calc-item');
-const linesEl = document.getElementById('calcLines');
-const totalEl = document.getElementById('calcTotal');
-const savingEl = document.getElementById('calcSaving');
-
-function updateCalc(){
-  const selected = [];
-  items.forEach(item=>{
-    const cb = item.querySelector('input');
-    const priceEl = item.querySelector('.calc-item-price');
-    if(cb.checked){
-      selected.push({name: item.dataset.name, price: parseInt(item.dataset.price)});
-      item.classList.add('selected');
-      priceEl.classList.add('active');
-    } else {
-      item.classList.remove('selected');
-      priceEl.classList.remove('active');
-    }
-  });
-
-  if(selected.length === 0){
-    linesEl.innerHTML = '<div class="calc-empty">Select products to see pricing</div>';
-    totalEl.textContent = '£0';
-    savingEl.textContent = '';
-    return;
-  }
-
-  const subtotal = selected.reduce((s,i)=>s+i.price,0);
-  let discount = 0;
-  if(selected.length >= 5) discount = 0.25;
-  else if(selected.length >= 3) discount = 0.15;
-  else if(selected.length >= 2) discount = 0.10;
-
-  const total = Math.round(subtotal * (1-discount));
-
-  linesEl.innerHTML = selected.map(i=>
-    `<div class="calc-line"><span>${i.name}</span><span>£${i.price}/mo</span></div>`
-  ).join('');
-
-  totalEl.textContent = '£'+total.toLocaleString();
-
-  if(discount > 0){
-    const saved = subtotal - total;
-    savingEl.textContent = `You save £${saved}/mo (${Math.round(discount*100)}% bundle discount)`;
-  } else {
-    savingEl.textContent = 'Add 2+ products to unlock bundle discounts';
-  }
-}
-
-items.forEach(item=>{
-  item.querySelector('input').addEventListener('change', updateCalc);
-});
-updateCalc();
-
-
-
-
-;(function(){
-  const cc=document.getElementById('cvs'),xx=cc.getContext('2d');
-  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
-  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
-
-  // ── Cloud shape ──────────────────────────────────────────────────────────
-  function cloud(x,y,w,h,a){
-    xx.save();xx.globalAlpha=a;
-    // Soft glow behind cloud
-    const grd=xx.createRadialGradient(x+w*.5,y+h*.5,0,x+w*.5,y+h*.5,w*.6);
-    grd.addColorStop(0,'rgba(26,143,255,0.08)');
-    grd.addColorStop(1,'rgba(26,143,255,0)');
-    xx.fillStyle=grd;xx.fillRect(x-w*.1,y-h*.2,w*1.2,h*1.4);
-    // Cloud body
-    xx.fillStyle='rgba(26,143,255,1)';
-    xx.beginPath();
-    xx.moveTo(x+w*.08,y+h*.75);
-    xx.bezierCurveTo(x-w*.02,y+h*.75, x-w*.02,y+h*.38, x+w*.12,y+h*.32);
-    xx.bezierCurveTo(x+w*.08,y+h*.05, x+w*.28,y-h*.08, x+w*.45,y+h*.08);
-    xx.bezierCurveTo(x+w*.5, y-h*.1,  x+w*.72,y-h*.1,  x+w*.76,y+h*.08);
-    xx.bezierCurveTo(x+w*.92,y-h*.02, x+w*1.02,y+h*.22, x+w*.97,y+h*.38);
-    xx.bezierCurveTo(x+w*1.06,y+h*.38, x+w,y+h*.75,   x+w*.92,y+h*.75);
-    xx.closePath();xx.fill();
-    xx.restore();
-  }
-
-  // ── Clouds at different depths ────────────────────────────────────────────
-  const clouds=[
-    // background layer — slow, faint, large
-    {x:-400,y:BH*.06, w:500,h:140,vx:.08,a:.04,layer:0},
-    {x:BW*.4, y:BH*.02,w:600,h:160,vx:.06,a:.03,layer:0},
-    {x:BW*.8, y:BH*.09,w:450,h:130,vx:.07,a:.04,layer:0},
-    {x:-200,  y:BH*.84,w:520,h:150,vx:.09,a:.035,layer:0},
-    {x:BW*.6, y:BH*.89,w:480,h:140,vx:.05,a:.03,layer:0},
-    // midground — medium speed and opacity
-    {x:BW*.1, y:BH*.18,w:340,h:100,vx:.15,a:.055,layer:1},
-    {x:BW*.55,y:BH*.14,w:280,h:85, vx:.18,a:.06, layer:1},
-    {x:-150,  y:BH*.72,w:360,h:105,vx:.14,a:.05, layer:1},
-    {x:BW*.7, y:BH*.78,w:300,h:90, vx:.12,a:.055,layer:1},
-    // foreground — fast, bright, small
-    {x:BW*.25,y:BH*.28,w:200,h:65, vx:.25,a:.07, layer:2},
-    {x:BW*.7, y:BH*.32,w:180,h:60, vx:.28,a:.065,layer:2},
-    {x:-80,   y:BH*.62,w:220,h:70, vx:.22,a:.07, layer:2},
-    {x:BW*.45,y:BH*.68,w:190,h:62, vx:.26,a:.065,layer:2},
-  ];
-
-  // ── Large glowing orbs ────────────────────────────────────────────────────
-  const orbs=[
-    {x:BW*.15,y:BH*.25,r:280,vx:.04,vy:.02,a:.055},
-    {x:BW*.75,y:BH*.6, r:350,vx:-.03,vy:.015,a:.04},
-    {x:BW*.5, y:BH*.9, r:300,vx:.05,vy:-.02,a:.045},
-  ];
-
-  // ── Network particles ─────────────────────────────────────────────────────
-  const pts=Array.from({length:60},()=>({
-    x:Math.random()*BW,y:Math.random()*BH,
-    vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
-    r:Math.random()*1.4+.5,a:Math.random()*.45+.1
-  }));
-
-  let t=0;
-  (function draw(){
-    t+=.006;
-    xx.clearRect(0,0,BW,BH);
-
-    // Orbs — large soft glows
-    orbs.forEach(o=>{
-      o.x+=o.vx;o.y+=o.vy;
-      if(o.x<-o.r)o.x=BW+o.r;
-      if(o.x>BW+o.r)o.x=-o.r;
-      if(o.y<-o.r)o.y=BH+o.r;
-      if(o.y>BH+o.r)o.y=-o.r;
-      const grd=xx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
-      grd.addColorStop(0,`rgba(26,143,255,${o.a})`);
-      grd.addColorStop(.5,`rgba(26,143,255,${o.a*.3})`);
-      grd.addColorStop(1,'rgba(26,143,255,0)');
-      xx.fillStyle=grd;xx.fillRect(o.x-o.r,o.y-o.r,o.r*2,o.r*2);
-    });
-
-    // Clouds — back to front by layer
-    clouds.forEach(cl=>{
-      cl.x+=cl.vx;
-      if(cl.x>BW+cl.w+100) cl.x=-cl.w-100;
-      cloud(cl.x,cl.y,cl.w,cl.h,cl.a);
-    });
-
-    // Particle network
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=BW;if(p.x>BW)p.x=0;
-      if(p.y<0)p.y=BH;if(p.y>BH)p.y=0;
-      xx.beginPath();xx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      xx.fillStyle=`rgba(26,143,255,${p.a})`;xx.fill();
-    });
-    for(let i=0;i<pts.length;i++){
-      for(let j=i+1;j<pts.length;j++){
-        const a=pts[i],b=pts[j];
-        const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<120){
-          xx.beginPath();xx.moveTo(a.x,a.y);xx.lineTo(b.x,b.y);
-          xx.strokeStyle=`rgba(26,143,255,${.13*(1-d/120)})`;
-          xx.lineWidth=.6;xx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  })();
-})();
 </script>
 </body>
 </html>

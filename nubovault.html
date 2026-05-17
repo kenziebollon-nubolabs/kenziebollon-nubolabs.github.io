@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>NuboVault — Nubo Labs</title>
-  <meta name="description" content="Hardcoded API keys in repos. Passwords in Slack. Credentials in .env files. NuboVault finds every exposed secret and implements proper vaulting so it never happens again."/>
+  <title>NuboPredict — Nubo Labs</title>
+  <meta name="description" content="Stop being surprised by your cloud bill. NuboPredict uses AI to analyse your spend patterns, growth trajectory, and usage data to forecast next month's costs — before they arrive."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -35,11 +35,11 @@ body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;fon
 
 canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#f43f5e;
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#a78bfa;
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
   transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid #f43f5e80;border-radius:50%;
+  border:1px solid #a78bfa80;border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
 @media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
@@ -228,11 +228,11 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div class="nav-dd-inner">
             <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
             <a href="nuboshield.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
+            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
             <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
             <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
             <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
-            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
+            <a href="nubopredict.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
             <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
             <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
           </div>
@@ -250,248 +250,249 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 <div id="cur" aria-hidden="true"></div>
 <div id="cur-r" aria-hidden="true"></div>
 <canvas id="cvs" aria-hidden="true"></canvas>
-<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(244,63,94,0.14)"></div>
-<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(244,63,94,0.14)"></div>
+<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
+<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(167,139,250,0.13)"></div>
 <div class="dot-grid" aria-hidden="true"></div>
 
 <!-- HERO -->
-<section class="prod-hero" style="--pc:#f43f5e;--pc-glow:rgba(244,63,94,0.14);--pc-dim:rgba(244,63,94,0.10);--pc-border:rgba(244,63,94,0.22)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Secrets & Exposure Scanning</div>
-  <h1>Nubo<em>Vault</em></h1>
-  <p class="prod-desc">68 checks across 12 AWS services. Hardcoded API keys, private keys sitting in S3, passwords in Lambda env vars, credentials in user data — found, flagged, and remediated before an attacker finds them first.</p>
-  <div style="display:flex;gap:var(--s2);align-items:center;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .6s .5s forwards">
-    <a href="index.html#audit" class="btn btn-lg" style="background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.4);color:#fff">Get a free vault audit →</a>
-    <a href="samples.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(244,63,94,0.08);color:#f43f5e;border:1px solid rgba(244,63,94,0.3);border-radius:10px;text-decoration:none;font-weight:500;font-size:15px;transition:all .2s">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-      </svg>
-      See Sample Report
-    </a>
-  </div>
-  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access only. We never touch your infrastructure.</p>
+<section class="prod-hero" style="--pc:#a78bfa;--pc-glow:rgba(167,139,250,0.13);--pc-dim:rgba(167,139,250,0.09);--pc-border:rgba(167,139,250,0.20)">
+  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>AI-Powered Spend Forecasting</div>
+  <h1>Nubo<em>Predict</em></h1>
+  <p class="prod-desc">Stop reading AWS Cost Explorer graphs yourself. NuboPredict reads them for you — 12-month forecasts with confidence intervals, statistical anomaly detection, RI recommendations, and Claude-powered plain-English insights your CFO can actually read.</p>
+  <a href="index.html#audit" class="btn btn-lg" style="opacity:0;animation:up .6s .5s forwards;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.4)">Get a free spend forecast →</a>
+  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access. AI-powered insights. Board-ready output.</p>
 </section>
 
 <!-- STATS BAR -->
-<div style="background:var(--bg2);border-top:1px solid rgba(244,63,94,0.12);border-bottom:1px solid rgba(244,63,94,0.12);padding:var(--s5) 0;position:relative;z-index:2">
+<div style="background:var(--bg2);border-top:1px solid rgba(167,139,250,0.12);border-bottom:1px solid rgba(167,139,250,0.12);padding:var(--s5) 0;position:relative;z-index:2">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s4)">
       <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums">68</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">checks run</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">10</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">analysis modules</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#ef4444;letter-spacing:-1px;line-height:1;font-variant-numeric:tabular-nums">32</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">critical findings</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">12mo</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">forecast horizon</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1">12</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">AWS services</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">80%</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">confidence intervals</div>
       </div>
       <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#f43f5e;letter-spacing:-1px;line-height:1">&lt;5m</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">scan duration</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">AI</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">powered by Claude</div>
+      </div>
+      <div style="text-align:center;border-left:1px solid var(--border)">
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#a78bfa;letter-spacing:-1px;line-height:1">&lt;5m</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:4px">full analysis</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- WHAT WE CHECK -->
+<!-- WHAT WE DO -->
 <section class="sec" style="padding-top:var(--s10)">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f43f5e">What we scan</div>
-      <h2 class="sec-h">Every place a secret can hide.</h2>
-      <p class="sec-sub">Most breaches start with an exposed credential. NuboVault finds them across every AWS service before an attacker does.</p>
+      <div class="sec-tag" style="--accent:#a78bfa">10 analysis modules</div>
+      <h2 class="sec-h">Every dimension of your cloud spend. Explained in plain English.</h2>
+      <p class="sec-sub">NuboPredict doesn't just show you graphs — it tells you what changed, why, and what to do about it.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
 
       <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚡</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Lambda & ECS</div><div style="font-size:11px;color:var(--text-3)">Env var secrets</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📈</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Forecasting</div><div style="font-size:11px;color:var(--text-3)">Linear regression + confidence</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Hardcoded passwords & API keys</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Stripe, Twilio, SendGrid live keys</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>JWT secrets & auth tokens</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Suspicious variable names</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Deprecated runtimes</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>3/6/12 month forecast per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>80% confidence intervals</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Monthly growth rate per service</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Fast-growing service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Annual spend projection</div>
         </div>
       </div>
 
       <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🪣</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">S3 Buckets</div><div style="font-size:11px;color:var(--text-3)">File & content scanning</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔍</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Anomaly Detection</div><div style="font-size:11px;color:var(--text-3)">Statistical z-score analysis</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>.env files with live credentials</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Private keys (.pem, id_rsa, .p12)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>terraform.tfstate (infrastructure secrets)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS credentials files</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Database dumps & kubeconfigs</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Config files with embedded secrets</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Daily spend z-score analysis</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Spike and dip detection (2σ+)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>New service detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Disappeared service alerts</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Biggest MoM service movers</div>
         </div>
       </div>
 
       <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🖥️</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">EC2 & User Data</div><div style="font-size:11px;color:var(--text-3)">Instance secret scanning</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">💰</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">RI & Savings Plans</div><div style="font-size:11px;color:var(--text-3)">Purchase recommendations</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Credentials in user data scripts</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS keys bootstrapped at launch</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Sensitive data in instance tags</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Instances running 180+ days</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Database connection strings</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>RI purchase recommendations</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Break-even analysis per instance</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Compute Savings Plan opportunity</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Current RI utilisation %</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Wasted reserved capacity</div>
         </div>
       </div>
 
       <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔧</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">SSM & Secrets Manager</div><div style="font-size:11px;color:var(--text-3)">Secret store hygiene</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🏷️</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Tag Attribution</div><div style="font-size:11px;color:var(--text-3)">Cost by team & environment</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>SSM String params that should be SecureString</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Secret values scanned for patterns</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets with no rotation configured</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets not rotated in 90+ days</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Orphaned secrets (unused 90+ days)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>No resource policy (over-accessible)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost by Environment/Team/Project</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Untagged spend detection</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Department chargeback report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Cost per feature/service tag</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Owner attribution</div>
         </div>
       </div>
 
       <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#a78bfa,transparent)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">⚙️</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">CodeBuild & CloudFormation</div><div style="font-size:11px;color:var(--text-3)">Build & infra secrets</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📊</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Budget Intelligence</div><div style="font-size:11px;color:var(--text-3)">Data-driven thresholds</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Plaintext env vars in build projects</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>CFN parameters without NoEcho</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Secrets in stack outputs</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Build logs exposing credentials</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#94a3b8;font-size:10px">●</span>Stacks in ROLLBACK state</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Recommended 80%/100% thresholds</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Days until budget breach</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Month-to-date burn rate</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Projected month-end spend</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>EC2 rightsizing recommendations</div>
         </div>
       </div>
 
-      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f43f5e,transparent)"></div>
+      <div class="r r3" style="background:linear-gradient(135deg,rgba(167,139,250,0.08),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a78bfa,#818cf8,#a78bfa)"></div>
         <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">💡</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">Advisory Checks</div><div style="font-size:11px;color:var(--text-3)">Not harmful, not standard</div></div>
+          <div style="width:36px;height:36px;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🤖</div>
+          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#a78bfa">Claude AI Insights</div><div style="font-size:11px;color:var(--text-3)">Powered by Anthropic</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>No AWS Budgets configured</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Orphaned SNS topics</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Log groups with no retention</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>No IAM Identity Center (SSO)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Single-account AWS setup</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#1a8fff;font-size:10px">●</span>Expiring ACM certificates</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Executive summary (board-ready)</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>"What changed this month" narrative</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>CFO-ready monthly report</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>Top 3 concerns + opportunities</div>
+          <div style="font-size:12px;color:var(--text-2);display:flex;gap:6px"><span style="color:#a78bfa;font-size:10px;margin-top:3px">●</span>90-day outlook with confidence</div>
         </div>
       </div>
 
-    </div>
-
-    <!-- Pattern library callout -->
-    <div class="r" style="margin-top:var(--s4);background:rgba(244,63,94,0.04);border:1px solid rgba(244,63,94,0.12);border-radius:var(--r3);padding:var(--s4);display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap">
-      <div style="flex:1;min-width:200px">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:var(--s1)">25+ secret pattern types detected</div>
-        <div style="font-size:13px;color:var(--text-2);line-height:1.6">We scan file contents against patterns for AWS keys, GitHub tokens, Stripe, Twilio, SendGrid, Slack, MongoDB, PostgreSQL, MySQL, Redis, JWT, private keys, PGP keys, and more.</div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;max-width:420px">
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">AWS Keys</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">GitHub Tokens</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Stripe Live Keys</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Slack Tokens</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Private Keys</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">JWT Secrets</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">DB Connections</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Twilio</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">SendGrid</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Terraform State</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">Kubeconfigs</span>
-        <span style="font-size:11px;background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.15);color:#f43f5e;padding:3px var(--s1);border-radius:var(--r1)">PGP Keys</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDY -->
+<!-- SAMPLE OUTPUT -->
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f43f5e">Case study</div>
-      <h2 class="sec-h">68 findings. 32 CRITICAL. Under 5 minutes.</h2>
-      <p class="sec-sub">Here's exactly what NuboVault found on a live AWS account in a single scan.</p>
+      <div class="sec-tag" style="--accent:#a78bfa">Sample output</div>
+      <h2 class="sec-h">This is what your CFO gets.</h2>
+      <p class="sec-sub">Real NuboPredict output — forecasts, anomalies, RI recommendations, and AI-generated narrative in one report.</p>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
 
+      <!-- Report terminal -->
       <div class="r r2">
-        <div style="background:var(--bg3);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
-          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(244,63,94,0.04)">
+        <div style="background:var(--bg3);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3)">
+          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(167,139,250,0.04)">
             <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
             <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
             <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
-            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboVault v1.0 — Audit Report</span>
+            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboPredict v1.0 — Spend Report</span>
           </div>
-          <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
-            <div style="font-size:10px;color:#ef4444;letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px;font-weight:600">⚠ Critical — 32 findings</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">Stripe live key in env var</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">GitHub token in env var</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">.env file with AWS keys + DB password</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">terraform.tfstate with credentials</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">S3</span><span style="color:var(--text-3);flex:2">id_rsa private key in bucket</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">AWS keys + DB password in user data</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="font-size:10px;color:#f59e0b;letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px;font-weight:600">High — 23 · Medium — 7 · Advisory — 6</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">SSM</span><span style="color:var(--text-3);flex:2">5 secrets stored as plaintext String</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">CloudFormation</span><span style="color:var(--text-3);flex:2">DB password without NoEcho</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(26,143,255,0.05);border:1px solid rgba(26,143,255,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#1a8fff;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Lambda</span><span style="color:var(--text-3);flex:2">Deprecated Python 3.8 runtime</span><span style="color:#1a8fff;font-weight:600;font-size:10px">ADVISORY</span></div>
-            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-size:13px;color:var(--text-2)">Total findings</div>
-                <div style="font-size:11px;color:var(--text-3);margin-top:2px">68 findings · 12 services · &lt;5 minutes</div>
-              </div>
-              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#f43f5e;font-variant-numeric:tabular-nums">68</span>
+          <div style="padding:var(--s3);font-family:monospace;font-size:11px;color:var(--text-2)">
+
+            <div style="color:#a78bfa;margin-bottom:var(--s2)">12-Month Spend History</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Total</span><span style="color:var(--text-3)">MoM%</span><span style="color:var(--text-3)">Top service</span>
+              <span>2025-06</span><span style="color:#34d399">£142.30</span><span>—</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-07</span><span style="color:#34d399">£156.80</span><span style="color:#f59e0b">+10.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-08</span><span style="color:#34d399">£168.40</span><span style="color:#f59e0b">+7.4%</span><span style="color:var(--text-3)">Amazon RDS</span>
+              <span>2025-09</span><span style="color:#34d399">£171.20</span><span style="color:#f59e0b">+1.7%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-10</span><span style="color:#34d399">£189.60</span><span style="color:#ef4444">+10.7%</span><span style="color:var(--text-3)">AWS Lambda</span>
+              <span>2025-11</span><span style="color:#34d399">£201.40</span><span style="color:#ef4444">+6.2%</span><span style="color:var(--text-3)">Amazon EC2</span>
+              <span>2025-12</span><span style="color:#34d399">£224.80</span><span style="color:#ef4444">+11.6%</span><span style="color:var(--text-3)">Amazon EC2</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">6-Month Forecast (80% confidence)</div>
+            <div style="display:grid;grid-template-columns:auto auto auto auto;gap:3px var(--s2);margin-bottom:var(--s2)">
+              <span style="color:var(--text-3)">Month</span><span style="color:var(--text-3)">Forecast</span><span style="color:var(--text-3)">Low</span><span style="color:var(--text-3)">High</span>
+              <span>2026-01</span><span style="color:#a78bfa;font-weight:bold">£238.40</span><span style="color:var(--text-3)">£218.20</span><span style="color:var(--text-3)">£258.60</span>
+              <span>2026-02</span><span style="color:#a78bfa;font-weight:bold">£252.10</span><span style="color:var(--text-3)">£228.40</span><span style="color:var(--text-3)">£275.80</span>
+              <span>2026-03</span><span style="color:#a78bfa;font-weight:bold">£265.90</span><span style="color:var(--text-3)">£238.60</span><span style="color:var(--text-3)">£293.20</span>
+              <span>2026-04</span><span style="color:#a78bfa;font-weight:bold">£279.70</span><span style="color:var(--text-3)">£248.80</span><span style="color:var(--text-3)">£310.60</span>
+              <span>2026-05</span><span style="color:#a78bfa;font-weight:bold">£293.50</span><span style="color:var(--text-3)">£259.00</span><span style="color:var(--text-3)">£328.00</span>
+              <span>2026-06</span><span style="color:#a78bfa;font-weight:bold">£307.30</span><span style="color:var(--text-3)">£269.20</span><span style="color:var(--text-3)">£345.40</span>
+            </div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">Anomalies detected (last 30 days)</div>
+            <div style="color:#ef4444;padding:3px 0">🔴 2025-12-14  £48.20  z=+3.2σ  SPIKE — investigate</div>
+            <div style="color:#60a5fa;padding:3px 0">🔵 2025-12-22  £8.40   z=-2.1σ  DIP — low activity day</div>
+
+            <div style="color:#a78bfa;margin:var(--s2) 0 var(--s1)">RI Recommendations</div>
+            <div style="padding:3px 0">m5.large ×2  On-demand £140/mo → RI £89/mo  saves <span style="color:#34d399">£612/yr</span></div>
+            <div style="padding:3px 0">t3.medium ×3  On-demand £90/mo → RI £58/mo  saves <span style="color:#34d399">£384/yr</span></div>
+
+            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r1)">
+              <div style="color:#a78bfa;font-weight:bold;margin-bottom:4px">🤖 Claude AI — Executive Summary</div>
+              <div style="color:var(--text-2);line-height:1.6;font-size:11px">Your AWS spend has grown 7.8%/month over the last 6 months, driven primarily by EC2 and Lambda. At current trajectory your annual bill will reach <span style="color:#a78bfa">£3,240</span> by December — 58% above today. Two Reserved Instance purchases would immediately save <span style="color:#34d399">£996/year</span> with a 4-month break-even. A spend spike on Dec 14th (3.2σ above baseline) warrants investigation.</div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Right stats + CFO report -->
       <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
-          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px;font-variant-numeric:tabular-nums">32</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div>
+          <div style="background:var(--bg2);border:1px solid rgba(167,139,250,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">7.8%</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">monthly growth rate</div>
           </div>
-          <div style="background:var(--bg2);border:1px solid rgba(244,63,94,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px;font-variant-numeric:tabular-nums">68</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px">&lt;5m</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">scan duration</div>
+          <div style="background:var(--bg2);border:1px solid rgba(52,211,153,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#34d399;letter-spacing:-1px">£996</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">RI savings found/yr</div>
           </div>
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#f43f5e;letter-spacing:-1px">12</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">services scanned</div>
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#ef4444;letter-spacing:-1px">2</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">anomalies detected</div>
+          </div>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:#a78bfa;letter-spacing:-1px">£3.2k</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:4px">12mo forecast</div>
           </div>
         </div>
-        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">A Stripe live key was found in a Lambda environment variable.</strong> Anyone with AWS console access to that function — or any IAM user with lambda:GetFunction — could have been charging cards or accessing customer payment data.</p>
+
+        <div style="background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:var(--r3);padding:var(--s4)">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#a78bfa;margin-bottom:var(--s2)">🤖 CFO-Ready Monthly Report</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7">
+            <strong style="color:var(--text-1)">Current Status</strong><br>
+            • AWS spend: £224.80/mo (+11.6% vs last month)<br>
+            • Forecast: £307/mo in 6 months (£3,240/yr)<br><br>
+            <strong style="color:var(--text-1)">Key Changes</strong><br>
+            • Lambda +34% — new feature deployment Dec 12th<br>
+            • EC2 +8% — two additional instances launched<br><br>
+            <strong style="color:var(--text-1)">Action Required</strong><br>
+            • Purchase 2× m5.large RIs — saves £612/yr, 4mo break-even<br>
+            • Investigate Dec 14th spike (3.2σ anomaly, £48.20)<br>
+            • Set budget alert at £270 (80%) and £340 (100%)
+          </div>
         </div>
-        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s4)">
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7"><strong style="color:#ef4444">A terraform.tfstate file was sitting in a public-readable S3 bucket.</strong> That file contained database credentials, API keys, and infrastructure passwords for the entire production environment.</p>
-        </div>
-        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.35)">Get your free secrets audit →</a>
+
+        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
       </div>
 
     </div>
@@ -502,36 +503,38 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 <section class="sec">
   <div class="wrap">
     <div class="r">
-      <div class="sec-tag" style="--accent:#f43f5e">Pricing</div>
+      <div class="sec-tag" style="--accent:#a78bfa">Pricing</div>
       <h2 class="sec-h">Transparent pricing</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
       <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 68-check scan across 12 services with prioritised report.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£600</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Report</div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full forecast analysis with AI insights and CFO-ready report.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£400</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>68 checks across 12 services</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>CRITICAL / HIGH / MEDIUM / ADVISORY</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>File content scanning for 25+ patterns</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Exact remediation per finding</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>12-month historical analysis</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>3/6/12 month forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI & Savings Plan recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>AI executive summary</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>CFO-ready monthly report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
         </ul>
         <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
       </div>
-      <div style="background:linear-gradient(160deg,rgba(244,63,94,0.07),var(--bg2));border:1px solid rgba(244,63,94,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
-        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#f43f5e;color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px">Most popular</div>
+      <div style="background:linear-gradient(160deg,rgba(167,139,250,0.07),var(--bg2));border:1px solid rgba(167,139,250,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
+        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#a78bfa;color:#fff;font-size:10px;font-weight:700;padding:3px var(--s1);border-radius:100px">Most popular</div>
         <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Continuous scanning — catch new secrets the moment they appear.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£450</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
+        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Monthly forecast updates so you always know what's coming.</div>
+        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£300</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Weekly automated rescans</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>New secret alert within 24 hours</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Remediation implementation included</li>
-          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#f43f5e;font-weight:600;flex-shrink:0">✓</span>Monthly exposure report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Everything in one-off report</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly updated forecasts</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Anomaly alerts within 24 hours</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Monthly CFO report delivered</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>RI purchase timing recommendations</li>
+          <li style="display:flex;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#a78bfa;font-weight:600;flex-shrink:0">✓</span>Forecast vs actual tracking</li>
         </ul>
-        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#f43f5e;color:#fff;box-shadow:0 0 var(--s4) rgba(244,63,94,0.4)">Get started</a>
+        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#a78bfa;color:#fff">Get started</a>
       </div>
     </div>
   </div>
@@ -541,16 +544,16 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 <section class="sec sec-alt" style="text-align:center">
   <div class="wrap">
     <div class="r">
-      <h2 class="sec-h">Where are your secrets hiding?</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have at least one exposed credential. A Stripe key in an env var. An AWS key in a .env file. A database password in user data. Find yours before someone else does.</p>
-      <a href="index.html#audit" class="btn btn-lg" style="background:#f43f5e;box-shadow:0 0 var(--s4) rgba(244,63,94,0.35)">Get your free secrets audit →</a>
+      <h2 class="sec-h">Where will your AWS bill be in 6 months?</h2>
+      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:520px;margin:0 auto var(--s6);line-height:1.7">Most startups have no idea. NuboPredict will tell you — with confidence intervals, anomaly detection, RI recommendations, and a CFO-ready report your board can actually read.</p>
+      <a href="index.html#audit" class="btn btn-lg" style="background:#a78bfa;box-shadow:0 0 var(--s4) rgba(167,139,250,0.35)">Get your free spend forecast →</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboVault</span></div>
+    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboPredict</span></div>
     <div class="f-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#pricing">Pricing</a>
@@ -635,88 +638,106 @@ document.addEventListener('click',()=>{
   let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
   window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
 
-  function drawLock(ctx,x,y,s,locked,a){
-    ctx.save();ctx.globalAlpha=a;
-    const col=locked?'rgba(244,63,94,1)':'rgba(52,211,153,1)';
-    ctx.strokeStyle=col;ctx.lineWidth=1.5;
-    // body
-    ctx.beginPath();ctx.roundRect(x-s*.4,y,s*.8,s*.7,s*.1);ctx.stroke();
-    // shackle
-    ctx.beginPath();
-    if(locked){
-      ctx.arc(x,y+s*.05,s*.25,Math.PI,0);
-    } else {
-      ctx.arc(x+s*.15,y-s*.1,s*.25,Math.PI+.3,0);
-    }
-    ctx.stroke();
-    // keyhole
-    ctx.beginPath();ctx.arc(x,y+s*.35,s*.1,0,Math.PI*2);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(x,y+s*.45);ctx.lineTo(x,y+s*.6);ctx.stroke();
-    ctx.restore();
+  const HIST=24,FORE=12;
+  const all=HIST+FORE;
+  const padL=80,padR=60,padT=100,padB=80;
+  const chartW=BW-padL-padR,chartH=BH-padT-padB;
+
+  // Generate realistic spend data with growth
+  function getY(i){
+    const base=4000+i*120;
+    const noise=Math.sin(i*.7)*300+Math.sin(i*1.3)*150;
+    return base+noise;
   }
 
-  const locks=Array.from({length:6},(_,i)=>({
-    x:(i+.5)*(BW/6),y:BH*.2+Math.sin(i*1.2)*BH*.3,
-    s:30+Math.random()*40,
-    phase:i*1.04,
-    speed:.008+Math.random()*.004,
-    unlockAt:Math.random()*Math.PI*2,
-  }));
-
-  // Floating credential text
-  const creds=[
-    'API_KEY=●●●●●●●●',
-    'DB_PASS=●●●●●●●●',
-    'SECRET_TOKEN=●●●●',
-    'AWS_SECRET=●●●●●●',
-    '●●●●●●●●●●●●●●●●',
-  ];
-  const floats=creds.map((txt,i)=>({
-    txt,x:BW*.1+i*(BW*.18),y:BH*.6+i*40,
-    vy:-.3,a:.2+i*.05
-  }));
-
-  let t=0;
+  let t=0,revealProgress=0;
   (function draw(){
-    t+=.012;
+    t+=.008;revealProgress=Math.min(1,revealProgress+.003);
     xx.clearRect(0,0,BW,BH);
 
-    // Background grid lines
-    for(let i=0;i<BW;i+=80){
-      xx.beginPath();xx.moveTo(i,0);xx.lineTo(i,BH);
-      xx.strokeStyle='rgba(244,63,94,0.04)';xx.lineWidth=1;xx.stroke();
+    // Grid
+    for(let i=0;i<=4;i++){
+      const y=padT+chartH*(i/4);
+      xx.beginPath();xx.moveTo(padL,y);xx.lineTo(padL+chartW,y);
+      xx.strokeStyle='rgba(167,139,250,0.08)';xx.lineWidth=1;xx.stroke();
+      // Y axis labels
+      xx.font='11px Inter,sans-serif';
+      xx.fillStyle='rgba(167,139,250,0.3)';
+      xx.textAlign='right';
+      xx.fillText('£'+(8000-i*2000).toLocaleString(),padL-8,y+4);
     }
-    for(let i=0;i<BH;i+=80){
-      xx.beginPath();xx.moveTo(0,i);xx.lineTo(BW,i);
-      xx.strokeStyle='rgba(244,63,94,0.04)';xx.lineWidth=1;xx.stroke();
+    xx.textAlign='left';
+
+    // Month labels
+    for(let i=0;i<all;i+=3){
+      const x=padL+(i/all)*chartW;
+      xx.font='10px Inter,sans-serif';
+      xx.fillStyle=i<HIST?'rgba(167,139,250,0.3)':'rgba(167,139,250,0.2)';
+      xx.textAlign='center';
+      xx.fillText(`M${i+1}`,x,padT+chartH+20);
     }
+    xx.textAlign='left';
 
-    // Floating credentials
-    floats.forEach((f,i)=>{
-      f.y+=f.vy;if(f.y<-20)f.y=BH+20;
-      xx.font='13px monospace';
-      xx.fillStyle=`rgba(244,63,94,${f.a+.05*Math.sin(t+i)})`;
-      xx.fillText(f.txt,f.x,f.y);
-      // "secured" version beside
-      xx.fillStyle=`rgba(52,211,153,${(f.a+.05*Math.sin(t+i))*.8})`;
-      xx.fillText('🔒',f.x+180,f.y);
-    });
+    // Divider line between history and forecast
+    const divX=padL+(HIST/all)*chartW;
+    xx.beginPath();xx.moveTo(divX,padT-20);xx.lineTo(divX,padT+chartH+10);
+    xx.strokeStyle='rgba(167,139,250,0.2)';xx.lineWidth=1;xx.setLineDash([4,4]);xx.stroke();xx.setLineDash([]);
+    xx.font='10px Inter,sans-serif';xx.fillStyle='rgba(167,139,250,0.25)';xx.textAlign='center';
+    xx.fillText('forecast →',divX+40,padT-8);xx.fillText('← actual',divX-40,padT-8);
+    xx.textAlign='left';
 
-    // Locks
-    locks.forEach((lk,i)=>{
-      lk.phase+=lk.speed;
-      const ly=lk.y+Math.sin(lk.phase)*30;
-      const locked=Math.sin(lk.phase+lk.unlockAt)<0;
-      const alpha=.3+.15*Math.sin(lk.phase);
-      drawLock(xx,lk.x,ly,lk.s,locked,alpha);
-      // Glow when unlocking
-      if(!locked){
-        const grd=xx.createRadialGradient(lk.x,ly+lk.s*.3,0,lk.x,ly+lk.s*.3,lk.s);
-        grd.addColorStop(0,'rgba(52,211,153,0.15)');
-        grd.addColorStop(1,'rgba(52,211,153,0)');
-        xx.fillStyle=grd;xx.fillRect(lk.x-lk.s,ly,lk.s*2,lk.s);
-      }
-    });
+    // Confidence band (forecast)
+    const bandPts_upper=[],bandPts_lower=[];
+    for(let i=HIST;i<=all;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const uncertainty=(i-HIST)*80;
+      const maxY=8000,minY=2000,range=maxY-minY;
+      bandPts_upper.push([x,padT+chartH-((val+uncertainty-minY)/range)*chartH]);
+      bandPts_lower.push([x,padT+chartH-((val-uncertainty-minY)/range)*chartH]);
+    }
+    xx.beginPath();
+    bandPts_upper.forEach((p,i)=>i===0?xx.moveTo(p[0],p[1]):xx.lineTo(p[0],p[1]));
+    [...bandPts_lower].reverse().forEach(p=>xx.lineTo(p[0],p[1]));
+    xx.closePath();
+    xx.fillStyle='rgba(167,139,250,0.07)';xx.fill();
+
+    // Historical line
+    xx.beginPath();xx.lineWidth=2;xx.strokeStyle='rgba(167,139,250,0.55)';
+    for(let i=0;i<=HIST;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===0?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();
+
+    // Forecast line (dashed, animated)
+    xx.beginPath();xx.lineWidth=1.5;xx.strokeStyle='rgba(167,139,250,0.4)';
+    xx.setLineDash([6,4]);
+    const forePoints=Math.floor(FORE*revealProgress);
+    for(let i=HIST;i<=HIST+forePoints;i++){
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const maxY=8000,minY=2000,range=maxY-minY;
+      const y=padT+chartH-((val-minY)/range)*chartH;
+      i===HIST?xx.moveTo(x,y):xx.lineTo(x,y);
+    }
+    xx.stroke();xx.setLineDash([]);
+
+    // Moving dot on forecast head
+    if(forePoints>0){
+      const i=HIST+forePoints;
+      const x=padL+(i/all)*chartW;
+      const val=getY(i)+20*Math.sin(t+i);
+      const y=padT+chartH-((val-2000)/6000)*chartH;
+      xx.beginPath();xx.arc(x,y,5,0,Math.PI*2);
+      xx.fillStyle=`rgba(167,139,250,${.7+.2*Math.sin(t*3)})`;xx.fill();
+      const grd=xx.createRadialGradient(x,y,0,x,y,20);
+      grd.addColorStop(0,'rgba(167,139,250,0.3)');grd.addColorStop(1,'rgba(167,139,250,0)');
+      xx.fillStyle=grd;xx.fillRect(x-20,y-20,40,40);
+    }
 
     requestAnimationFrame(draw);
   })();
