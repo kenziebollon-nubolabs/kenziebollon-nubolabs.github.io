@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a8fff'/><text y='22' x='6' font-size='18'>☁</text></svg>"/>
-  <title>NuboShield — Nubo Labs</title>
-  <meta name="description" content="Cloud security auditing and misconfiguration detection. Find vulnerabilities, exposed IAM policies, and open attack surfaces — before attackers do."/>
+  <title>Privacy Policy — Nubo Labs</title>
+  <meta name="description" content="Nubo Labs privacy policy — how we collect, use and protect your data."/>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
@@ -21,28 +21,30 @@
 html{scroll-behavior:smooth}
 :root{
   --bg:#070b12;--bg2:#0c1220;--bg3:#101828;
-  --border:rgba(255,255,255,0.55);--border-md:rgba(255,255,255,0.11);
+  --border:rgba(255,255,255,0.06);--border-md:rgba(255,255,255,0.11);
   --text-1:#eef2f8;--text-2:#8e9db4;--text-3:#4e5f72;
   --accent:#1a8fff;--accent-dim:rgba(26,143,255,0.11);
-  --accent-glow:rgba(26,143,255,0.52);--accent-hover:#3d9fff;
+  --accent-glow:rgba(26,143,255,0.22);--accent-hover:#3d9fff;
   --green:#34d399;--red:#ef4444;--amber:#f59e0b;
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;
   --s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;
   --r1:6px;--r2:10px;--r3:16px;--r4:24px;
 }
-body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--text-1);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}.currency{font-variant-numeric:tabular-nums;vertical-align:baseline;line-height:1}
 /* cursor — default on interactive, custom elsewhere */
-
-canvas,section,main,.hero,.card-area,a,button,input,select,textarea,label{cursor:pointer!important}
+body{cursor:auto}
+canvas,section,main,.hero,.card-area,#bg-canvas{cursor:none}
+body.has-custom-cursor{cursor:none}
+a,button,input,select,textarea,label{cursor:pointer!important}
 input,select,textarea{cursor:text!important}
-#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:#9b5cff;
+#cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--accent);
   border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
-  transition:width .15s,height .15s;display:none}
+  mix-blend-mode:screen;transition:width .15s,height .15s;display:none}
 #cur-r{position:fixed;top:0;left:0;width:32px;height:32px;
-  border:1px solid #9b5cff80;border-radius:50%;
+  border:1px solid rgba(26,143,255,0.35);border-radius:50%;
   pointer-events:none;z-index:9998;transform:translate(-50%,-50%);
   transition:width .2s,height .2s,border-color .2s;display:none}
-@media(pointer:fine){*{cursor:none!important}#cur,#cur-r{display:block}input,select,textarea{cursor:text!important}}
+@media(pointer:fine){#cur,#cur-r{display:block}}
 /* canvas */
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
 /* layout */
@@ -137,409 +139,93 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 @media(max-width:640px){.nav-centre{display:none}}
 
 
-.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:float 14s ease-in-out infinite}
-.orb1{width:600px;height:500px;top:-150px;left:50%;transform:translateX(-50%);
-  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.09)),transparent 70%)}
-.orb2{width:400px;height:400px;bottom:10%;right:-100px;
-  background:radial-gradient(circle,var(--pc-glow,rgba(26,143,255,0.05)),transparent 70%);
-  animation-duration:20s;animation-delay:-8s}
-.dot-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:radial-gradient(rgba(26,143,255,0.1) 1px,transparent 1px);
-  background-size:32px 32px;opacity:.3}
-.prod-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--s8)+var(--s10)) var(--s4) var(--s10);position:relative;z-index:3;overflow:hidden}
-.prod-label{display:inline-flex;align-items:center;gap:var(--s1);
-  background:var(--pc-dim,var(--accent-dim));
-  border:1px solid var(--pc-border,rgba(26,143,255,0.18));
-  color:var(--pc,var(--accent));font-size:12px;font-weight:500;letter-spacing:.5px;
-  padding:var(--s1) var(--s2);border-radius:100px;margin-bottom:var(--s4);
-  opacity:0;animation:up .5s .1s forwards}
-.prod-label-dot{width:5px;height:5px;background:var(--pc,var(--accent));border-radius:50%;animation:blink 2s infinite}
-.prod-hero h1{font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(48px,8vw,88px);line-height:1.01;letter-spacing:-3px;
-  margin-bottom:var(--s3);color:var(--text-1);
-  opacity:0;animation:up .6s .2s forwards}
-.prod-hero h1 em{font-style:normal;color:var(--pc,var(--accent))}
-.prod-desc{font-size:clamp(16px,2vw,20px);color:var(--text-2);font-weight:300;
-  max-width:600px;line-height:1.7;margin-bottom:var(--s8);
-  opacity:0;animation:up .6s .35s forwards}
-.coming-badge{display:inline-flex;align-items:center;gap:var(--s3);
-  background:var(--bg2);border:1px solid var(--pc-border,rgba(26,143,255,0.5));
-  border-radius:var(--r4);padding:var(--s3) var(--s6);margin-bottom:var(--s8);
-  opacity:0;animation:up .6s .5s forwards;
-  box-shadow:0 0 var(--s8) var(--pc-glow,var(--accent-glow))}
-.coming-badge-icon{font-size:36px;animation:float 3s ease-in-out infinite}
-.coming-badge h3{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px}
-.coming-badge p{font-size:14px;color:var(--text-3)}
-.notify-form{display:flex;gap:var(--s1);max-width:460px;width:100%;
-  opacity:0;animation:up .6s .65s forwards}
-.notify-input{flex:1;background:rgba(255,255,255,0.04);
-  border:1px solid var(--border-md);border-radius:var(--r2);
-  padding:var(--s2);color:var(--text-1);font-size:15px;
-  font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .15s,box-shadow .15s}
-.notify-input:focus{border-color:var(--pc-border,rgba(26,143,255,0.4));
-  box-shadow:0 0 0 3px var(--pc-dim,rgba(26,143,255,0.08))}
-.notify-input::placeholder{color:var(--text-3)}
-.notify-btn{background:var(--pc,var(--accent));color:#fff;border:none;
-  border-radius:var(--r2);padding:var(--s2) var(--s3);
-  font-size:14px;font-weight:500;font-family:'Inter',sans-serif;
-  white-space:nowrap;
-  box-shadow:0 0 var(--s4) var(--pc-glow,var(--accent-glow));
-  transition:opacity .15s,transform .1s}
-.notify-btn:hover{opacity:.9;transform:translateY(-1px)}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)}
-.feat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);
-  padding:var(--s4);transition:border-color .2s,transform .2s}
-.feat-card:hover{border-color:rgba(255,255,255,0.09);transform:translateY(-2px)}
-.feat-icon{font-size:28px;margin-bottom:var(--s2)}
-.feat-title{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin-bottom:var(--s1)}
-.feat-desc{font-size:14px;color:var(--text-2);line-height:1.65}
-.feat-tags{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s8)}
-.feat-tag{font-size:12px;color:var(--text-2);background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);padding:var(--s1) var(--s2);border-radius:var(--r1)}
-/* background canvases */
-#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
-@media(max-width:640px){.feat-grid{grid-template-columns:1fr}.coming-badge{flex-direction:column;text-align:center}.notify-form{flex-direction:column}}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(100px)}
+.orb1{width:400px;height:400px;top:-100px;right:-100px;background:radial-gradient(circle,rgba(26,143,255,0.06),transparent 70%)}
+.legal-hero{padding:calc(var(--s8) + var(--s8)) var(--s4) var(--s6);position:relative;z-index:2;max-width:760px;margin:0 auto}
+.legal-hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,5vw,48px);letter-spacing:-2px;margin-bottom:var(--s2)}
+.legal-hero p{font-size:16px;color:var(--text-3)}
+.legal-body{max-width:760px;margin:0 auto;padding:0 var(--s4) var(--s16);position:relative;z-index:2}
+.legal-body h2{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin:var(--s6) 0 var(--s2);color:var(--text-1)}
+.legal-body h3{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;margin:var(--s4) 0 var(--s1);color:var(--text-1)}
+.legal-body p{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:var(--s2)}
+.legal-body ul{list-style:disc;padding-left:var(--s4);margin-bottom:var(--s2)}
+.legal-body ul li{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:var(--s1)}
+.legal-body table{width:100%;border-collapse:collapse;margin:var(--s3) 0}
+.legal-body th{font-size:13px;color:var(--text-3);font-weight:500;text-align:left;padding:var(--s1) var(--s2);border-bottom:1px solid var(--border)}
+.legal-body td{font-size:14px;color:var(--text-2);padding:var(--s2);border-bottom:1px solid var(--border)}
+.legal-divider{height:1px;background:var(--border);margin:var(--s4) 0}
 
-  
-@media(max-width:960px){
-  #bg-canvas{opacity:.3}
-  .dot-grid{opacity:.15}
-}
-@media(max-width:640px){
-  #bg-canvas{opacity:.2}
-  .dot-grid{display:none}
-  .orb,.orb1,.orb2{display:none}
-}
-</style>
+  </style>
+</head>
+<body>
+<div id="cur" aria-hidden="true"></div>
+<div id="cur-r" aria-hidden="true"></div>
+<canvas id="cvs" aria-hidden="true"></canvas>
 <nav aria-label="Main navigation">
   <div class="nav-wrap">
     <a href="index.html" class="nav-logo" aria-label="Nubo Labs home">
       <div class="nav-logo-mark" aria-hidden="true">☁</div>
       <span class="nav-logo-name">Nubo<em>Labs</em></span>
     </a>
-    <div class="nav-centre" role="navigation">
-      <div class="nav-dd">
-        <button class="nav-link" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px">
-          Products
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </button>
-        <div class="nav-dd-menu" role="menu">
-          <div class="nav-dd-inner">
-            <a href="nuboslens.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#1a8fff" aria-hidden="true"></span>NuboLens<span class="nav-dd-live">Live</span></a>
-            <a href="nuboshield.html" class="nav-dd-item" role="menuitem" style="background:rgba(255,255,255,0.06)"><span class="nav-dd-dot" style="background:#9b5cff" aria-hidden="true"></span>NuboShield<span class="nav-dd-live">Live</span></a>
-            <a href="nubovault.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f43f5e" aria-hidden="true"></span>NuboVault<span class="nav-dd-live">Live</span></a>
-            <a href="nubowatch.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#00c896" aria-hidden="true"></span>NuboWatch<span class="nav-dd-live">Live</span></a>
-            <a href="nubocomply.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#f59e0b" aria-hidden="true"></span>NuboComply<span class="nav-dd-live">Live</span></a>
-            <a href="nubogreen.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#22c55e" aria-hidden="true"></span>NuboGreen<span class="nav-dd-live">Live</span></a>
-            <a href="nubopredict.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#a78bfa" aria-hidden="true"></span>NuboPredict<span class="nav-dd-live">Live</span></a>
-            <a href="nubopipe.html" class="nav-dd-item" role="menuitem"><span class="nav-dd-dot" style="background:#ff3c5a" aria-hidden="true"></span>NuboPipe<span class="nav-dd-live">Live</span></a>
-            <a href="#" class="nav-dd-item" style="color:var(--text-3);font-size:12px;font-style:italic">+ more coming soon</a>
-          </div>
-        </div>
-      </div>
-      <a href="index.html#how" class="nav-link">How it works</a>
-      <a href="index.html#pricing" class="nav-link">Pricing</a>
-      <a href="index.html#about" class="nav-link">About</a>
-    </div>
-    <a href="index.html#audit" class="btn">Get started →</a>
+    <a href="index.html" class="nav-back">← All products</a>
+    <a href="index.html#audit" class="btn">Get a free audit →</a>
   </div>
 </nav>
-
-<div id="cur" aria-hidden="true"></div>
-<div id="cur-r" aria-hidden="true"></div>
-<canvas id="cvs" aria-hidden="true"></canvas>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="orb orb1" aria-hidden="true" style="--pc-glow:rgba(155,92,255,0.14)"></div>
-<div class="orb orb2" aria-hidden="true" style="--pc-glow:rgba(155,92,255,0.14)"></div>
-<div class="dot-grid" aria-hidden="true"></div>
-
-<!-- HERO -->
-<section class="prod-hero" style="--pc:#9b5cff;--pc-glow:rgba(155,92,255,0.14);--pc-dim:rgba(155,92,255,0.10);--pc-border:rgba(155,92,255,0.22)">
-  <div class="prod-label"><span class="prod-label-dot" aria-hidden="true"></span>Cloud Security Auditing</div>
-  <h1>Nubo<em>Shield</em></h1>
-  <p class="prod-desc">50 security checks across 9 AWS services. Misconfigurations, exposed credentials, open attack surfaces, and compliance gaps — found before attackers do. Every finding prioritised CRITICAL to LOW with exact remediation steps.</p>
-  <div style="display:flex;gap:var(--s2);align-items:center;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .6s .5s forwards">
-    <a href="index.html#audit" class="btn btn-lg" style="background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.4);color:#fff">Get a free security audit →</a>
-    <a href="samples.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(155,92,255,0.08);color:#9b5cff;border:1px solid rgba(155,92,255,0.3);border-radius:10px;text-decoration:none;font-weight:500;font-size:15px;transition:all .2s">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-      </svg>
-      See Sample Report
-    </a>
-  </div>
-  <p style="margin-top:var(--s3);font-size:14px;color:var(--text-3);opacity:0;animation:up .6s .65s forwards">Read-only access only. We never touch your infrastructure.</p>
-</section>
-
-<!-- STATS BAR -->
-<div style="background:var(--bg2);border-top:1px solid rgba(155,92,255,0.12);border-bottom:1px solid rgba(155,92,255,0.12);padding:var(--s5) 0;position:relative;z-index:2">
-  <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)">
-      <div style="text-align:center">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">50</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">security checks</div>
-      </div>
-      <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">9</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">AWS services</div>
-      </div>
-      <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#ef4444;letter-spacing:-1px;line-height:1">7</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">critical findings found</div>
-      </div>
-      <div style="text-align:center;border-left:1px solid var(--border)">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:40px;color:#9b5cff;letter-spacing:-1px;line-height:1">&lt;2m</div>
-        <div style="font-size:13px;color:var(--text-3);margin-top:4px">scan duration</div>
-      </div>
-    </div>
-  </div>
+<div class="orb orb1" aria-hidden="true"></div>
+<div class="legal-hero">
+  <div class="sec-tag">Privacy Policy</div>
+  <h1>Privacy Policy</h1>
+  <p>Last updated: May 2026</p>
 </div>
+<div class="wrap"><div class="legal-body" style="max-width:760px">
 
-<!-- WHAT WE CHECK -->
-<section class="sec" style="padding-top:var(--s10)">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag" style="--accent:#9b5cff">50 checks across 9 services</div>
-      <h2 class="sec-h">Every attack surface. Every misconfiguration.</h2>
-      <p class="sec-sub">NuboShield goes deeper than any other tool at this price point. Here's exactly what we check.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s8)">
+<h2>Who we are</h2>
+<p>Nubo Labs Ltd is a cloud infrastructure company based in Leeds, UK. Our website is nubolabs.co.uk. You can contact us at <a href="mailto:kenziebollon@nubolabs.co.uk" style="color:var(--accent)">kenziebollon@nubolabs.co.uk</a>.</p>
 
-      <!-- IAM -->
-      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">👤</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">IAM</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Root account MFA & access keys</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Users without MFA</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AdministratorAccess directly attached</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Wildcard *:* policies</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Stale access keys (90+ days)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Inactive users & password policy</div>
-        </div>
-      </div>
+<h2>What data we collect</h2>
+<p>When you submit our audit request form we collect:</p>
+<ul>
+  <li>Your name and company name</li>
+  <li>Your email address</li>
+  <li>Your cloud platform and approximate monthly spend</li>
+  <li>Any additional information you choose to provide</li>
+</ul>
+<p>We do not collect payment information, health data, or any special category personal data.</p>
 
-      <!-- EC2/Network -->
-      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🌐</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">EC2 & Networking</div><div style="font-size:11px;color:var(--text-3)">10 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>SSH/RDP open to 0.0.0.0/0</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>DB ports exposed to internet</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>All traffic open security groups</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>VPC flow logs disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Unencrypted EBS volumes</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>IMDSv2 not enforced (SSRF risk)</div>
-        </div>
-      </div>
+<h2>AWS and Azure credentials</h2>
+<p>Where you provide read-only cloud credentials as part of an audit:</p>
+<ul>
+  <li>Credentials are used solely for the agreed audit scope</li>
+  <li>Credentials are stored securely and never shared with any third party</li>
+  <li>We never make changes to your infrastructure without explicit written approval</li>
+  <li>We request credentials are revoked within 30 days of audit completion unless on an active retainer</li>
+</ul>
 
-      <!-- S3 -->
-      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🪣</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">S3 Storage</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Public access block disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Buckets without encryption</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No access logging</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>HTTPS not enforced (bucket policy)</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Versioning & lifecycle rules</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Cross-region replication</div>
-        </div>
-      </div>
+<h2>How we use your data</h2>
+<p>We use your data solely to respond to your audit request, deliver the cloud audit service, and send service-related communications. We do not sell your data. We do not share your data with third parties except where necessary to deliver the service.</p>
 
-      <!-- RDS -->
-      <div class="r" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🗄️</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">RDS Databases</div><div style="font-size:11px;color:var(--text-3)">6 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Publicly accessible databases</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>No encryption at rest</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>Automated backups disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No Multi-AZ failover</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Deletion protection disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#9b9b9b;font-size:10px">●</span>Public RDS snapshots</div>
-        </div>
-      </div>
+<h2>Legal basis for processing</h2>
+<p>We process your data under Article 6(1)(b) of UK GDPR — processing necessary for the performance of a contract, or to take steps at your request prior to entering a contract.</p>
 
-      <!-- CloudTrail + CloudWatch -->
-      <div class="r r2" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">📋</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">CloudTrail & Alarms</div><div style="font-size:11px;color:var(--text-3)">7 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>CloudTrail not enabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Single-region trail</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Log validation disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for root account usage</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for IAM changes</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No alarm for SG changes</div>
-        </div>
-      </div>
+<h2>Data retention</h2>
+<p>We retain your contact data for up to 24 months after your last interaction with us. You may request deletion at any time by emailing us.</p>
 
-      <!-- KMS + Config + Secrets -->
-      <div class="r r3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#9b5cff,transparent)"></div>
-        <div style="display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s3)">
-          <div style="width:36px;height:36px;background:rgba(155,92,255,0.12);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:16px">🔑</div>
-          <div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">KMS, Config & Secrets</div><div style="font-size:11px;color:var(--text-3)">8 checks</div></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>AWS Config not enabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#ef4444;font-size:10px">●</span>GuardDuty not enabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>KMS key rotation disabled</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Keys pending deletion in use</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>No Secrets Manager usage</div>
-          <div style="font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:6px"><span style="color:#f59e0b;font-size:10px">●</span>Secrets not rotated (90+ days)</div>
-        </div>
-      </div>
+<h2>Your rights</h2>
+<p>Under UK GDPR you have the right to access, correct, delete, or port your data, and to object to processing. To exercise any right, email <a href="mailto:kenziebollon@nubolabs.co.uk" style="color:var(--accent)">kenziebollon@nubolabs.co.uk</a>.</p>
 
-    </div>
-  </div>
-</section>
+<h2>Cookies</h2>
+<p>We use Google Analytics which sets cookies to understand site traffic. See our <a href="cookies.html" style="color:var(--accent)">Cookie Policy</a> for details. You can opt out via your browser settings.</p>
 
-<!-- CASE STUDY -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag" style="--accent:#9b5cff">Case study</div>
-      <h2 class="sec-h">50 findings. 7 CRITICAL. Under 2 minutes.</h2>
-      <p class="sec-sub">Here's exactly what NuboShield found on a live AWS account in a single scan.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s8);align-items:start">
+<h2>Changes</h2>
+<p>We may update this policy. The date at the top of this page shows when it was last updated. Continued use of our services constitutes acceptance of the updated policy.</p>
 
-      <!-- Report card -->
-      <div class="r r2">
-        <div style="background:var(--bg3);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r3);overflow:hidden;box-shadow:0 var(--s4) var(--s10) rgba(0,0,0,0.3),0 0 0 1px rgba(155,92,255,0.05)">
-          <div style="display:flex;align-items:center;gap:6px;padding:var(--s2) var(--s3);border-bottom:1px solid var(--border);background:rgba(155,92,255,0.04)">
-            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div>
-            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div>
-            <div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div>
-            <span style="font-size:11px;color:var(--text-3);margin-left:auto">NuboShield v1.0 — Security Report</span>
-          </div>
-          <div style="padding:var(--s3);display:flex;flex-direction:column;gap:4px">
-            <div style="font-size:10px;color:#ef4444;letter-spacing:1px;text-transform:uppercase;padding:var(--s1) 0 4px;font-weight:600">⚠ Critical — 7 findings</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">IAM</span><span style="color:var(--text-3);flex:2">Root account — no MFA</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">SSH open to 0.0.0.0/0</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">EC2</span><span style="color:var(--text-3);flex:2">RDP + all traffic open to internet</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">Database publicly accessible</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">CloudTrail</span><span style="color:var(--text-3);flex:2">Not enabled — no audit trail</span><span style="color:#ef4444;font-weight:600;font-size:10px">CRITICAL</span></div>
-            <div style="font-size:10px;color:#f59e0b;letter-spacing:1px;text-transform:uppercase;padding:var(--s2) 0 4px;margin-top:4px;font-weight:600">High — 14 · Medium — 17 · Low — 12</div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">IAM</span><span style="color:var(--text-3);flex:2">Wildcard *:* policy in use</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">RDS</span><span style="color:var(--text-3);flex:2">No encryption at rest</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
-            <div style="display:flex;align-items:center;gap:var(--s2);padding:var(--s1);background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.12);border-radius:var(--r1);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span><span style="flex:1;color:var(--text-2)">Config</span><span style="color:var(--text-3);flex:2">AWS Config not enabled</span><span style="color:#f59e0b;font-weight:600;font-size:10px">HIGH</span></div>
-            <div style="margin-top:var(--s2);padding:var(--s2);background:rgba(155,92,255,0.08);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r2);display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div style="font-size:13px;color:var(--text-2)">Total findings</div>
-                <div style="font-size:11px;color:var(--text-3);margin-top:2px">50 checks · 9 services · &lt;2 minutes</div>
-              </div>
-              <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#9b5cff;font-variant-numeric:tabular-nums">50</span>
-            </div>
-          </div>
-        </div>
-      </div>
+<h2>Contact</h2>
+<p>Nubo Labs Ltd, Leeds, UK<br><a href="mailto:kenziebollon@nubolabs.co.uk" style="color:var(--accent)">kenziebollon@nubolabs.co.uk</a></p>
 
-      <!-- Stats + CTA -->
-      <div style="display:flex;flex-direction:column;gap:var(--s3)" class="r r3">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)">
-          <div style="background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#ef4444;letter-spacing:-1px">7</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">critical findings</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid rgba(155,92,255,0.2);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">50</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">total findings</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">&lt;2m</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">scan duration</div>
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s3);text-align:center">
-            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:36px;color:#9b5cff;letter-spacing:-1px">9</div>
-            <div style="font-size:12px;color:var(--text-3);margin-top:4px">services audited</div>
-          </div>
-        </div>
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s4)">
-          <p style="font-size:14px;color:var(--text-2);line-height:1.7">Every finding includes the exact resource ID, a plain-English description of the risk, and step-by-step remediation instructions. No vague warnings — just clear, actionable fixes.</p>
-        </div>
-        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--r3);padding:var(--s3)">
-          <p style="font-size:13px;color:var(--text-2);line-height:1.6"><strong style="color:#ef4444">CloudTrail was disabled</strong> on this account — meaning every API call, every login, every infrastructure change was happening with zero audit trail. Any breach would be completely untraceable.</p>
-        </div>
-        <a href="index.html#audit" class="btn btn-lg" style="justify-content:center;text-align:center;background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.35)">Get your free security audit →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="sec">
-  <div class="wrap">
-    <div class="r">
-      <div class="sec-tag" style="--accent:#9b5cff">Pricing</div>
-      <h2 class="sec-h">Transparent pricing</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2);max-width:760px;margin-top:var(--s8)">
-      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:var(--s5)" class="r">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">One-off Audit</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Full 50-check scan with prioritised report and remediation steps.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£600</span><span style="font-size:14px;color:var(--text-3)"> one time</span></div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>50 checks across 9 services</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>CRITICAL / HIGH / MEDIUM / LOW severity</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Exact remediation steps per finding</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>48 hour turnaround</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Read-only access only</li>
-        </ul>
-        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;border:1px solid var(--border);color:var(--text-1);background:rgba(255,255,255,0.04)">Get started</a>
-      </div>
-      <div style="background:linear-gradient(160deg,rgba(155,92,255,0.07),var(--bg2));border:1px solid rgba(155,92,255,0.25);border-radius:var(--r3);padding:var(--s5);position:relative" class="r r2">
-        <div style="position:absolute;top:var(--s3);right:var(--s3);background:#9b5cff;color:#fff;font-size:10px;font-weight:600;padding:3px var(--s1);border-radius:100px">Most popular</div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:var(--s1)">Monthly Retainer</div>
-        <div style="font-size:14px;color:var(--text-2);margin-bottom:var(--s4)">Continuous monitoring so new misconfigurations are caught immediately.</div>
-        <div><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:56px;letter-spacing:-2px;font-variant-numeric:tabular-nums">£500</span><span style="font-size:14px;color:var(--text-3)">/month</span></div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:var(--s2);margin:var(--s3) 0 var(--s5)">
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Everything in one-off audit</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Weekly automated rescans</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>New finding alerts within 24hrs</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Fix implementation included</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Monthly security posture report</li>
-          <li style="display:flex;align-items:flex-start;gap:var(--s2);font-size:14px;color:var(--text-2)"><span style="color:#9b5cff;font-weight:600;flex-shrink:0">✓</span>Priority response</li>
-        </ul>
-        <a href="index.html#audit" style="display:block;text-align:center;text-decoration:none;padding:var(--s2) var(--s3);border-radius:var(--r2);font-size:14px;font-weight:500;background:#9b5cff;color:#fff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.4)">Get started</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="sec sec-alt" style="text-align:center">
-  <div class="wrap">
-    <div class="r">
-      <h2 class="sec-h">How exposed is your infrastructure?</h2>
-      <p style="font-size:18px;color:var(--text-2);font-weight:300;max-width:480px;margin:0 auto var(--s6);line-height:1.7">Most startups have at least one CRITICAL finding. Get your free audit and find out where you stand.</p>
-      <a href="index.html#audit" class="btn btn-lg" style="background:#9b5cff;box-shadow:0 0 var(--s4) rgba(155,92,255,0.35)">Get your free security audit →</a>
-    </div>
-  </div>
-</section>
-
+</div>
 <footer>
   <div class="footer-inner">
-    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ NuboShield</span></div>
+    <div class="f-logo">Nubo<em>Labs</em> <span style="color:var(--text-3);font-weight:400;font-size:13px;margin-left:var(--s2)">/ Privacy Policy</span></div>
     <div class="f-links">
       <a href="index.html#products">Products</a>
       <a href="index.html#pricing">Pricing</a>
@@ -547,7 +233,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <a href="index.html#audit">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-      <a href="https://www.linkedin.com/company/nubo-labs/">LinkedIn</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div style="display:flex;align-items:center;gap:var(--s3)">
       <span style="color:var(--text-3);font-size:13px">📍 Leeds, UK</span>
@@ -556,7 +243,6 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   </div>
 </footer>
 <script>
-
 
 // Custom cursor — only on pointer devices
 const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
@@ -593,8 +279,6 @@ const pts=Array.from({length:50},()=>({x:Math.random()*1920,y:Math.random()*1080
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 
-
-
 // Accessible dropdown — click/tap/keyboard + Escape + outside click
 document.querySelectorAll('.nav-dd').forEach(dd=>{
   const btn=dd.querySelector('button,a');
@@ -618,154 +302,6 @@ document.addEventListener('click',()=>{
   });
 });
 
-
-
-
-;(function(){
-  const cc=document.getElementById('bg-canvas'),xx=cc.getContext('2d');
-  let BW=cc.width=innerWidth,BH=cc.height=innerHeight;
-  window.addEventListener('resize',()=>{BW=cc.width=innerWidth;BH=cc.height=innerHeight;});
-
-  const COLS=10, ROWS=7;
-  const padX=BW*0.08, padY=BH*0.1;
-  const cellW=(BW-padX*2)/COLS, cellH=(BH-padY*2)/ROWS;
-
-  function makeLock(col, row){
-    return {
-      x: padX + col*cellW + cellW*0.5,
-      y: padY + row*cellH + cellH*0.5,
-      locked: Math.random() > 0.45,
-      lockProgress: Math.random() > 0.45 ? 1 : 0,
-      lockSpeed: 0.04 + Math.random()*0.03,
-      pulse: Math.random()*Math.PI*2,
-      size: 14 + Math.random()*6,
-      delay: (col*ROWS+row) * 18,
-      flashTimer: 0,
-    };
-  }
-
-  const locks = [];
-  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) locks.push(makeLock(c,r));
-
-  // Security sweep — a vertical line that secures locks as it passes
-  let sweepX = -100;
-  let sweepSpeed = 1.2;
-  let sweepPhase = 0; // 0=scanning left-right, 1=pausing, 2=resetting
-
-  function drawLock(ctx, x, y, s, progress, flash){
-    // progress 0=unlocked, 1=locked
-    const col = progress > 0.5
-      ? `rgba(52,211,153,${0.4+progress*0.4})`
-      : `rgba(239,68,68,${0.4+(1-progress)*0.3})`;
-
-    ctx.strokeStyle = col;
-    ctx.lineWidth = 1.5;
-
-    // Lock body (rectangle)
-    const bw=s*0.7, bh=s*0.55;
-    ctx.beginPath();
-    ctx.roundRect(x-bw/2, y, bw, bh, 3);
-    ctx.stroke();
-
-    // Keyhole
-    ctx.beginPath();
-    ctx.arc(x, y+bh*0.38, bh*0.15, 0, Math.PI*2);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(x, y+bh*0.5);
-    ctx.lineTo(x, y+bh*0.72);
-    ctx.stroke();
-
-    // Shackle — open (unlocked) or closed (locked)
-    const shackleH = s*0.42;
-    const shackleW = bw*0.55;
-    ctx.beginPath();
-    if(progress > 0.5){
-      // Closed shackle — semicircle on top
-      ctx.arc(x, y - shackleH*0.1, shackleW/2, Math.PI, 0);
-    } else {
-      // Open shackle — offset to the right
-      const openOffset = (1-progress)*s*0.35;
-      ctx.arc(x + openOffset, y - shackleH*0.1, shackleW/2, Math.PI*0.9, 0.1);
-    }
-    ctx.stroke();
-
-    // Flash glow on lock
-    if(flash > 0){
-      ctx.save();
-      ctx.globalAlpha = flash * 0.5;
-      ctx.fillStyle = 'rgba(52,211,153,1)';
-      ctx.beginPath();
-      ctx.arc(x, y+bh*0.5, s*0.9, 0, Math.PI*2);
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  let t = 0;
-  (function draw(){
-    t++;
-    xx.clearRect(0,0,BW,BH);
-
-    // Move sweep line
-    sweepX += sweepSpeed;
-    if(sweepX > BW+100){
-      sweepX = -100;
-      // Reset some locks to unlocked for next sweep
-      locks.forEach(l=>{
-        if(Math.random() > 0.7){ l.locked=false; l.lockProgress=0; }
-      });
-    }
-
-    // Sweep line glow
-    const sgrd = xx.createLinearGradient(sweepX-60,0,sweepX+20,0);
-    sgrd.addColorStop(0,'rgba(155,92,255,0)');
-    sgrd.addColorStop(0.6,'rgba(155,92,255,0.08)');
-    sgrd.addColorStop(1,'rgba(155,92,255,0.02)');
-    xx.fillStyle=sgrd;
-    xx.fillRect(sweepX-60,0,80,BH);
-
-    // Bright sweep line
-    xx.beginPath();
-    xx.moveTo(sweepX,0);
-    xx.lineTo(sweepX,BH);
-    xx.strokeStyle='rgba(155,92,255,0.35)';
-    xx.lineWidth=1.5;
-    xx.stroke();
-
-    // Update and draw locks
-    locks.forEach(lk=>{
-      lk.pulse += 0.02;
-
-      // Lock when sweep passes over
-      if(!lk.locked && sweepX > lk.x - 10 && sweepX < lk.x + 60){
-        lk.locked = true;
-        lk.flashTimer = 1;
-      }
-      if(lk.locked && lk.lockProgress < 1){
-        lk.lockProgress = Math.min(1, lk.lockProgress + lk.lockSpeed);
-      }
-      if(lk.flashTimer > 0) lk.flashTimer = Math.max(0, lk.flashTimer - 0.06);
-
-      const baseAlpha = lk.lockProgress > 0.5
-        ? 0.3 + 0.15*Math.sin(lk.pulse)
-        : 0.2 + 0.1*Math.sin(lk.pulse);
-
-      xx.save();
-      xx.globalAlpha = baseAlpha;
-      drawLock(xx, lk.x, lk.y-lk.size*0.5, lk.size, lk.lockProgress, lk.flashTimer);
-      xx.restore();
-    });
-
-    // Stats overlay — locked count
-    const lockedCount = locks.filter(l=>l.lockProgress>0.5).length;
-    xx.font = 'bold 13px monospace';
-    xx.fillStyle = 'rgba(52,211,153,0.25)';
-    xx.fillText(`${lockedCount}/${locks.length} secured`, BW*0.04, BH*0.96);
-
-    requestAnimationFrame(draw);
-  })();
-})();
 
 </script>
 </body>
