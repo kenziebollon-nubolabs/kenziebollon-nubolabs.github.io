@@ -490,11 +490,11 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   <h1>Reduce AWS waste<br>before your finance<br><em>team notices.</em></h1>
   <p class="hero-sub">Automated cloud audits, security insights, compliance readiness and infrastructure intelligence for modern engineering teams. Find what's broken, wasted, and exposed — in under 5 minutes.</p>
   <div style="display:flex;gap:var(--s2);flex-wrap:wrap;justify-content:center;align-items:center;margin-top:var(--s4)">
-    <form class="hero-capture" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Quick audit request" style="margin:0;flex-direction:column;gap:var(--s2);align-items:stretch;max-width:420px">
-      <input type="hidden" name="_subject" value="Free Audit Request"/>
+    <form class="hero-capture" action="https://api.web3forms.com/submit" method="POST" aria-label="Quick audit request" style="margin:0;flex-direction:column;gap:var(--s2);align-items:stretch;max-width:420px">
+      <input type="hidden" name="access_key" value="868e1772-6867-488b-8476-e0d8a0101a78">
+      <input type="hidden" name="subject" value="Free Audit Request — NuboLabs">
+      <input type="hidden" name="redirect" value="https://nubolabs.co.uk/thankyou.html">
       <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
-      <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We'll be in touch within 24 hours to arrange your free cloud audit. — The Nubo Labs team"/>
-      <input type="hidden" name="_captcha" value="false"/>
       <input type="email" name="email" class="capture-input" placeholder="your@company.com" required aria-label="Your work email" style="width:100%"/>
       <select name="product" required aria-label="Which audit are you interested in?" style="width:100%;padding:12px 16px;background:#0d1520;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#e2e8f0;font-size:15px;font-family:inherit;cursor:pointer;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 viewBox=%220 0 10 10%22><path d=%22M2 3.5l3 3 3-3%22 stroke=%22%2394a3b8%22 stroke-width=%221.4%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>');background-repeat:no-repeat;background-position:right 14px center">
         <option value="" disabled selected style="color:#64748b;background:#0d1520">Which audit are you interested in?</option>
@@ -965,12 +965,9 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="form-card-sub">Tell us about your stack and we'll run a full audit — cost waste, security gaps, compliance posture, and monitoring coverage. No calls, no commitment, no agents to install.</div>
       </div>
       <div class="form-body">
-        <form class="form-col" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Full audit request form">
-          <input type="hidden" name="_subject" value="New NuboLens Audit Request"/>
+        <form class="form-col" action="https://api.web3forms.com/submit" method="POST" aria-label="Full audit request form">
           <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
           <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We have received your audit request and will be in touch within 24 hours. In the meantime, visit nubolabs.co.uk/onboarding.html to see how to prepare your AWS or Azure credentials. — The Nubo Labs team"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="hidden" name="_template" value="table"/>
           <div class="form-row-2">
             <div class="form-g"><label class="form-l" for="fname">Your name</label><input type="text" id="fname" name="name" class="form-i" placeholder="Alex Johnson" required/></div>
             <div class="form-g"><label class="form-l" for="fcompany">Company</label><input type="text" id="fcompany" name="company" class="form-i" placeholder="Acme Ltd" required/></div>
