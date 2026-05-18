@@ -311,6 +311,10 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 .calc-item-name{flex:1;font-size:14px;font-weight:500}
 .calc-item-price{font-size:13px;color:var(--text-3)}
 .calc-item-price.active{color:var(--accent);font-weight:500}
+.calc-lens-tiers{margin-bottom:4px}
+.tier-btn{padding:4px 10px;font-size:11px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-3);cursor:pointer;transition:all .2s;font-family:inherit}
+.tier-btn.active{background:rgba(26,143,255,0.12);border-color:rgba(26,143,255,0.4);color:#1a8fff;font-weight:600}
+.tier-btn[data-price="0"]{border-color:rgba(26,143,255,0.3);color:#1a8fff}
 .calc-result{position:sticky;top:var(--s10);background:var(--bg3);
   border:1px solid rgba(26,143,255,0.2);border-radius:var(--r3);padding:var(--s5)}
 .calc-result-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;margin-bottom:var(--s4)}
@@ -486,13 +490,25 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
   <h1>Reduce AWS waste<br>before your finance<br><em>team notices.</em></h1>
   <p class="hero-sub">Automated cloud audits, security insights, compliance readiness and infrastructure intelligence for modern engineering teams. Find what's broken, wasted, and exposed — in under 5 minutes.</p>
   <div style="display:flex;gap:var(--s2);flex-wrap:wrap;justify-content:center;align-items:center;margin-top:var(--s4)">
-    <form class="hero-capture" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Quick audit request" style="margin:0">
-      <input type="hidden" name="_subject" value="Quick Audit Request"/>
+    <form class="hero-capture" action="https://formsubmit.co/sales%40nubolabs.co.uk" method="POST" aria-label="Quick audit request" style="margin:0;flex-direction:column;gap:var(--s2);align-items:stretch;max-width:420px">
+      <input type="hidden" name="_subject" value="Free Audit Request"/>
       <input type="hidden" name="_next" value="https://nubolabs.co.uk/thankyou.html"/>
       <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Nubo Labs! We'll be in touch within 24 hours to arrange your free cloud audit. — The Nubo Labs team"/>
       <input type="hidden" name="_captcha" value="false"/>
-      <input type="email" name="email" class="capture-input" placeholder="your@company.com" required aria-label="Your work email"/>
-      <button type="submit" class="btn">Get free audit →</button>
+      <input type="email" name="email" class="capture-input" placeholder="your@company.com" required aria-label="Your work email" style="width:100%"/>
+      <select name="product" required aria-label="Which audit are you interested in?" style="width:100%;padding:12px 16px;background:#0d1520;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#e2e8f0;font-size:15px;font-family:inherit;cursor:pointer;appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 viewBox=%220 0 10 10%22><path d=%22M2 3.5l3 3 3-3%22 stroke=%22%2394a3b8%22 stroke-width=%221.4%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>');background-repeat:no-repeat;background-position:right 14px center">
+        <option value="" disabled selected style="color:#64748b;background:#0d1520">Which audit are you interested in?</option>
+        <option value="NuboLens — Cloud Cost Audit">🔍 NuboLens — Cloud Cost Audit</option>
+        <option value="NuboShield — Security Posture Audit">🛡️ NuboShield — Security Posture Audit</option>
+        <option value="NuboVault — Secrets & Exposure Audit">🔐 NuboVault — Secrets &amp; Exposure Audit</option>
+        <option value="NuboWatch — Monitoring Audit">📊 NuboWatch — Monitoring &amp; Observability Audit</option>
+        <option value="NuboComply — Compliance Audit">✅ NuboComply — Compliance Audit</option>
+        <option value="NuboGreen — Carbon & ESG Audit">🌱 NuboGreen — Carbon &amp; ESG Audit</option>
+        <option value="NuboPredict — Spend Forecasting">📈 NuboPredict — Spend Forecasting</option>
+        <option value="NuboPipe — Pipeline Security Audit">⚙️ NuboPipe — CI/CD Pipeline Security Audit</option>
+        <option value="Not sure — tell me what I need">🤔 Not sure — advise me</option>
+      </select>
+      <button type="submit" class="btn" style="width:100%;justify-content:center">Get free audit →</button>
     </form>
     <a href="samples.html" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-1);box-shadow:none">View sample report →</a>
   </div>
@@ -573,7 +589,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <div style="font-size:10px;color:var(--text-3)">found/mo</div>
           </div>
         </div>
-        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £400/mo</span><span class="card-arrow">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £99/mo</span><span class="card-arrow">↗</span></div>
       </a>
 
 <!-- NuboShield -->
@@ -588,7 +604,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#9b5cff">50</div><div style="font-size:10px;color:var(--text-3)">total checks</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#9b5cff">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £500/mo</span><span class="card-arrow" style="color:#9b5cff">↗</span></div>
       </a>
 
       <!-- NuboVault -->
@@ -603,7 +619,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f43f5e;font-variant-numeric:tabular-nums">68</div><div style="font-size:10px;color:var(--text-3)">total checks</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#f43f5e">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £450/mo</span><span class="card-arrow" style="color:#f43f5e">↗</span></div>
       </a>
 
       <!-- NuboWatch -->
@@ -624,7 +640,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
             <polyline points="0,10 20,8 40,12 55,6 70,10 90,11 110,9 130,13 150,7 170,10 200,9" fill="none" stroke="#00c896" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
           </svg>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#00c896">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £450/mo</span><span class="card-arrow" style="color:#00c896">↗</span></div>
       </a>
 
       <!-- NuboComply -->
@@ -639,7 +655,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#f59e0b">£20k</div><div style="font-size:10px;color:var(--text-3)">saved vs consultant</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#f59e0b">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £600/mo</span><span class="card-arrow" style="color:#f59e0b">↗</span></div>
       </a>
 
       <!-- NuboGreen -->
@@ -654,7 +670,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#22c55e">GHG</div><div style="font-size:10px;color:var(--text-3)">protocol aligned</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#22c55e">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £350/mo</span><span class="card-arrow" style="color:#22c55e">↗</span></div>
       </a>
 
       <!-- NuboPredict -->
@@ -669,7 +685,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#a78bfa">-18%</div><div style="font-size:10px;color:var(--text-3)">bill surprises</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-live">● Live now</span><span class="card-arrow" style="color:#a78bfa">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £300/mo</span><span class="card-arrow" style="color:#a78bfa">↗</span></div>
       </a>
 
       <!-- NuboPipe -->
@@ -678,13 +694,13 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
           <div style="width:var(--s5);height:var(--s5);background:rgba(255,60,90,0.1);border:1px solid rgba(255,60,90,0.2);border-radius:var(--r2);display:grid;place-items:center;font-size:18px">🔴</div>
           <div class="card-name">Nubo<em style="color:#ff3c5a">Pipe</em></div>
         </div>
-        <div class="card-desc">CI/CD pipeline setup and optimisation. Ship faster with reliable, automated deployments.</div>
+        <div class="card-desc">67 pipeline security checks across IAM, secrets, containers, and branch protection. Critical findings with full remediation.</div>
         <div class="card-graphic" style="gap:var(--s3)">
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#ff3c5a">4×</div><div style="font-size:10px;color:var(--text-3)">faster deploys</div></div>
           <div style="width:1px;height:32px;background:var(--border)"></div>
           <div style="text-align:center"><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#34d399">0</div><div style="font-size:10px;color:var(--text-3)">broken builds</div></div>
         </div>
-        <div class="card-footer"><span class="badge badge-soon">Coming soon</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div>
+        <div class="card-footer"><span style="font-size:12px;color:var(--text-3)">From £400/mo</span><span class="card-arrow" style="color:#ff3c5a">↗</span></div>
       </a>
 
       <!-- More teaser -->
@@ -746,7 +762,19 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div>
           <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--s3)">Select products:</p>
           <div class="calc-products" id="calcProducts">
-            <label class="calc-item" data-price="400" data-name="NuboLens"><input type="checkbox" checked/><span class="calc-item-dot" style="background:#1a8fff"></span><span class="calc-item-name">NuboLens</span><span class="calc-item-price active">£400/mo</span></label>
+            <div class="calc-lens-wrap">
+              <label class="calc-item" id="lens-item" data-price="99" data-name="NuboLens"><input type="checkbox" id="lens-check" checked/><span class="calc-item-dot" style="background:#1a8fff"></span><span class="calc-item-name">NuboLens</span><span class="calc-item-price active" id="lens-price">£99/mo</span></label>
+              <div class="calc-lens-tiers" id="lens-tiers">
+                <div style="font-size:11px;color:var(--text-3);margin:6px 0 4px 32px">Monthly AWS spend:</div>
+                <div style="display:flex;gap:6px;margin-left:32px;flex-wrap:wrap">
+                  <button class="tier-btn active" data-price="99" data-label="£0–5k">£0–5k/mo</button>
+                  <button class="tier-btn" data-price="299" data-label="£5–20k">£5–20k/mo</button>
+                  <button class="tier-btn" data-price="799" data-label="£20–50k">£20–50k/mo</button>
+                  <button class="tier-btn" data-price="0" data-label="£50k+">£50k+ →</button>
+                </div>
+                <div style="font-size:11px;color:var(--text-3);margin:6px 0 2px 32px;font-style:italic">Price scales with your AWS spend — the more you spend, the more waste we find.</div>
+              </div>
+            </div>
             <label class="calc-item" data-price="500" data-name="NuboShield"><input type="checkbox"/><span class="calc-item-dot" style="background:#9b5cff"></span><span class="calc-item-name">NuboShield</span><span class="calc-item-price">£500/mo</span></label>
             <label class="calc-item" data-price="450" data-name="NuboVault"><input type="checkbox"/><span class="calc-item-dot" style="background:#f43f5e"></span><span class="calc-item-name">NuboVault</span><span class="calc-item-price">£450/mo</span></label>
             <label class="calc-item" data-price="450" data-name="NuboWatch"><input type="checkbox"/><span class="calc-item-dot" style="background:#00c896"></span><span class="calc-item-name">NuboWatch</span><span class="calc-item-price">£450/mo</span></label>
@@ -780,8 +808,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
     <div class="pricing-grid">
       <div class="p-card r">
         <div class="p-name">One-off Audit</div>
-        <div class="p-desc">A full NuboLens scan with a detailed savings report. No ongoing commitment.</div>
-        <div><span class="p-amount">£500</span><span class="p-period"> one time</span></div>
+        <div class="p-desc">A full audit of your chosen product with a detailed report. No ongoing commitment.</div>
+        <div><span class="p-amount">From £500</span><span class="p-period"> one time</span></div>
         <ul class="p-list">
           <li>Full AWS or Azure audit</li>
           <li>Detailed savings report</li>
@@ -1103,6 +1131,22 @@ items.forEach(item=>{
 });
 updateCalc();
 
+  // NuboLens spend tier buttons
+  document.querySelectorAll('.tier-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var price = parseInt(this.dataset.price);
+      if (price === 0) { window.location.href = '#audit'; return; }
+      document.querySelectorAll('.tier-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      var lensItem = document.getElementById('lens-item');
+      if (lensItem) {
+        lensItem.dataset.price = price;
+        document.getElementById('lens-price').textContent = '£' + price + '/mo';
+        updateCalc();
+      }
+    });
+  });
 
 
 
