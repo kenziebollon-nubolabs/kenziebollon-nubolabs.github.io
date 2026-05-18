@@ -705,7 +705,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 
       <!-- More teaser -->
       <div class="more-teaser r" style="border:none;background:none">
-        <p>Azure and GCP support shipping next — same products, every cloud. Follow for updates.</p>
+        <p>Azure support coming soon — same products, every cloud. Follow for updates.</p>
         <a href="https://www.linkedin.com/company/nubo-labs/" target="_blank" rel="noopener">Follow on LinkedIn →</a>
       </div>
 
@@ -770,7 +770,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
                   <button class="tier-btn active" data-price="99" data-label="£0–5k">£0–5k/mo</button>
                   <button class="tier-btn" data-price="299" data-label="£5–20k">£5–20k/mo</button>
                   <button class="tier-btn" data-price="799" data-label="£20–50k">£20–50k/mo</button>
-                  <button class="tier-btn" data-price="0" data-label="£50k+">£50k+ →</button>
+                  <button class="tier-btn" data-price="0" data-label="£50k+" style="border-color:rgba(26,143,255,0.4);color:#1a8fff;font-weight:600">£50k+ → contact us</button>
                 </div>
                 <div style="font-size:11px;color:var(--text-3);margin:6px 0 2px 32px;font-style:italic">Price scales with your AWS spend — the more you spend, the more waste we find.</div>
               </div>
@@ -823,7 +823,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
         <div class="p-pop-tag">Most popular</div>
         <div class="p-name">NuboLens Retainer</div>
         <div class="p-desc">Ongoing monitoring so waste doesn't creep back as your infrastructure grows.</div>
-        <div><span class="p-amount">£400</span><span class="p-period">/month</span></div>
+        <div><span class="p-amount">From £99</span><span class="p-period">/month</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin:-8px 0 12px;font-style:italic">Scales with your AWS spend — £99 to £799/mo</div>
         <ul class="p-list">
           <li>Everything in One-off Audit</li>
           <li>Monthly automated scans</li>
@@ -1133,7 +1134,7 @@ updateCalc();
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       var price = parseInt(this.dataset.price);
-      if (price === 0) { window.location.href = '#audit'; return; }
+      if (price === 0) { window.location.href = 'index.html#audit'; return; }
       document.querySelectorAll('.tier-btn').forEach(function(b){ b.classList.remove('active'); });
       this.classList.add('active');
       var lensItem = document.getElementById('lens-item');
