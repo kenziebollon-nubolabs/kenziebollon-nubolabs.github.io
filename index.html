@@ -930,7 +930,7 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 
 
 <!-- ROI CALCULATOR -->
-<section class="sec" id="roi" style="position:relative;overflow:hidden">
+<section class="sec" id="roi" style="position:relative">
   <div class="wrap">
     <div class="r" style="text-align:center;margin-bottom:var(--s6)">
       <div class="sec-tag" style="--accent:#1a8fff">ROI Calculator</div>
@@ -957,8 +957,8 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-bottom:var(--s5)">
         <div style="background:var(--bg3);border-radius:var(--r2);padding:var(--s3) var(--s4);border:1px solid var(--border)">
           <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Expected Waste</div>
-          <div id="roi-waste-pct" style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#d97706">~22%</div>
-          <div style="font-size:11px;color:var(--text-3);margin-top:2px">Industry average for accounts this size</div>
+          <div id="roi-waste-pct" style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#d97706">22%</div>
+          <div style="font-size:11px;color:var(--text-3);margin-top:2px">Typical waste for accounts this size</div>
         </div>
         <div style="background:var(--bg3);border-radius:var(--r2);padding:var(--s3) var(--s4);border:1px solid var(--border)">
           <div style="font-size:11px;color:var(--text-3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Monthly Savings</div>
@@ -1017,19 +1017,21 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 
     // Waste % scales with spend (smaller accounts waste more %)
     var pct = s < 2000 ? 28 : s < 5000 ? 25 : s < 20000 ? 22 : s < 50000 ? 18 : 15;
+    pct = Math.abs(pct);
     var monthly = Math.round(s * pct / 100);
     var annual = monthly * 12;
 
     // NuboLens tier cost
     var cost = s <= 5000 ? 99 : s <= 20000 ? 299 : s <= 50000 ? 799 : 'Custom';
     var costStr = typeof cost === 'number' ? '£' + cost + '/mo' : 'Custom';
-    var roi = typeof cost === 'number' ? Math.round(annual / (cost * 12)) + 'x' : '∞';
+    var roi = typeof cost === 'number' ? Math.round(annual / (cost * 12)) + 'x' : 'Talk to us';
 
-    wastePct.textContent = '~' + pct + '%';
+    wastePct.textContent = pct + '%';
     monthlySaving.textContent = fmt(monthly);
     annualSaving.textContent = fmt(annual);
     roiCost.textContent = costStr;
     roiMultiple.textContent = roi;
+    roiMultiple.style.fontSize = typeof cost === 'number' ? '42px' : '24px';
   }
 
   if (spend) {
