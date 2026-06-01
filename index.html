@@ -1039,6 +1039,114 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 })();
 </script>
 
+
+<!-- FAQ -->
+<section class="sec sec-alt" id="faq">
+  <div class="wrap">
+    <div class="r" style="text-align:center;margin-bottom:var(--s6)">
+      <div class="sec-tag" style="--accent:#1a8fff">FAQ</div>
+      <h2 class="sec-h">Common questions</h2>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:var(--s2)" id="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What AWS access do you need? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          We create a single read-only IAM user with a minimal policy covering only the services we scan. We never need write access, never touch your infrastructure, and can never make changes. You can delete the credentials immediately after the audit. The exact IAM policy is provided before you grant any access.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does an audit take? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          The automated scan runs in under 2 minutes. You receive your full report within 48 hours — we review findings, add context specific to your account, and send it over. No calls required.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you install any agents or software? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          No. Nothing is installed, nothing runs in your account. We use the standard AWS API via read-only credentials — the same way you'd access your account via the AWS CLI. Your infrastructure is completely untouched.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is my data kept confidential? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Your audit data is used solely to generate your report. We do not share findings with third parties, do not use your data to train models, and do not retain credentials after the audit is complete. Full details in our privacy policy.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I only want one product? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Each product is completely standalone. You can run just NuboLens for cost, just NuboShield for security, or any combination. There is no requirement to use multiple products and no bundled pricing.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What does the free audit include? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          The free audit is a full scan — not a limited trial. You get the complete report with all findings, severity ratings, plain-English explanations, and remediation steps. The only difference from a paid retainer is that a retainer runs monthly so issues are caught as your infrastructure evolves.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How is this different from AWS Trusted Advisor? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          AWS Trusted Advisor gives generic recommendations across your account. NuboLabs goes deeper — specific resource IDs, plain-English explanations written for engineers and CTOs, compliance framework mappings, and a prioritised remediation roadmap. We also cover areas Trusted Advisor doesn't touch, including secrets exposure, CI/CD pipeline security, and observability gaps.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you offer remediation as well as auditing? <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          Yes. Every report includes a remediation CTA — we can implement the fixes for you. Targeted Fix (critical and high findings) from £500, Full Hardening (all findings) from £1,500, or a Monthly Retainer that includes ongoing rescans and remediation as your infrastructure evolves.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-item{border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:rgba(26,143,255,0.3)}
+.faq-q{width:100%;background:var(--bg2);border:none;padding:var(--s3) var(--s4);text-align:left;font-size:15px;font-weight:600;color:var(--text-1);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:var(--s3);font-family:inherit;transition:background .2s}
+.faq-q:hover{background:var(--bg3)}
+.faq-icon{font-size:20px;color:#1a8fff;font-weight:300;flex-shrink:0;transition:transform .2s;line-height:1}
+.faq-a{padding:0 var(--s4);max-height:0;overflow:hidden;font-size:14px;color:var(--text-2);line-height:1.7;transition:max-height .3s ease,padding .3s ease;background:var(--bg2)}
+.faq-item.open .faq-a{max-height:300px;padding:var(--s2) var(--s4) var(--s3)}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-item.open .faq-q{color:#1a8fff}
+</style>
+
+<script>
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+
 <!-- ABOUT -->
 <section class="sec sec-alt" id="about">
   <div class="wrap">
@@ -1081,6 +1189,46 @@ footer{border-top:1px solid var(--border);padding:var(--s6) var(--s4);position:r
 </section>
 
 <!-- FULL AUDIT FORM -->
+
+<!-- TRUST STRIP -->
+<section style="padding:var(--s5) 0;background:rgba(26,143,255,0.04);border-top:1px solid rgba(26,143,255,0.1);border-bottom:1px solid rgba(26,143,255,0.1)">
+  <div class="wrap">
+    <div style="display:flex;gap:var(--s5);justify-content:center;align-items:center;flex-wrap:wrap;text-align:center">
+      <div style="display:flex;align-items:center;gap:var(--s2)">
+        <span style="font-size:20px">🔒</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1)">Read-only access</div>
+          <div style="font-size:12px;color:var(--text-3)">We can never make changes</div>
+        </div>
+      </div>
+      <div style="width:1px;height:36px;background:var(--border);flex-shrink:0"></div>
+      <div style="display:flex;align-items:center;gap:var(--s2)">
+        <span style="font-size:20px">🚫</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1)">No agents installed</div>
+          <div style="font-size:12px;color:var(--text-3)">Nothing runs in your account</div>
+        </div>
+      </div>
+      <div style="width:1px;height:36px;background:var(--border);flex-shrink:0"></div>
+      <div style="display:flex;align-items:center;gap:var(--s2)">
+        <span style="font-size:20px">🗑️</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1)">Credentials deleted after audit</div>
+          <div style="font-size:12px;color:var(--text-3)">Zero ongoing access</div>
+        </div>
+      </div>
+      <div style="width:1px;height:36px;background:var(--border);flex-shrink:0"></div>
+      <div style="display:flex;align-items:center;gap:var(--s2)">
+        <span style="font-size:20px">📋</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1)">Exact IAM policy provided</div>
+          <div style="font-size:12px;color:var(--text-3)">See every permission before granting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="form-section" id="audit">
   <div class="wrap">
     <div class="form-card r">
